@@ -1,0 +1,144 @@
+# The URL the site will be built for
+base_url = "https://undecv.github.io/blog/"
+
+theme = "tabi"
+title = "キャンディージャー"
+author = "undecV"
+default_language = "zh_TW"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+generate_feeds = true
+feed_filenames = ["atom.xml", "rss.xml"]
+# Whether to build a search index to be used later on by a JavaScript library
+# build_search_index = true
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+highlight_theme = "css"
+external_links_class = "external"
+bottom_footnotes = true
+
+[[taxonomies]]
+name = "tags"
+feed = true
+
+# [search]
+# index_format = "elasticlunr_json" # Or the less efficient "elasticlunr_javascript".
+# include_title = true
+# include_description = true
+# include_path = true
+# include_content = true
+
+[extra]
+# Put all your custom variables here
+
+# ## Search
+# index_format = "elasticlunr_javascript"
+
+# ## Appearance
+post_listing_date = "updated"  # "date", "updated" or "both"
+# show_projects_first = false
+# theme_switcher = true
+# default_theme = "dark"  # "light", "dark"
+skin = "lowcontrast_orange"
+# override_serif_with_sans = true
+# stylesheets = ["css/custom.css", "css/another.css"]
+# browser_theme_color = ["#ffffff", "#000000"]  # Safari and PWA
+compact_tags = true
+tag_sorting = "name"  # "name", "frequency"
+# show_jump_to_posts = true
+sort_by = "update_date"
+# post_listing_index_reversed = true
+
+# ## Git Repository Integration
+# remote_repository_url = "https://github.com/welpo/tabi"
+# remote_repository_git_platform = "auto"
+# remote_repository_branch = "main"
+# show_remote_changes = true
+# show_remote_source = true
+
+# ## SEO
+favicon = "favicon.32.png"
+# favicon_emoji = "👾"
+# base_canonical_url = "https://example.com"
+fediverse_creator = { handle = "undecv", domain = "g0v.social" }
+
+# ## Navigation
+menu = [
+    { name = "Posts", url = "posts", trailing_slash = true },
+    { name = "Archive", url = "archive", trailing_slash = true },
+    { name = "Tags", url = "tags", trailing_slash = true },
+    # { name = "projects", url = "projects", trailing_slash = true },
+    # { name = "about", url = "about", trailing_slash = true },
+    # { name = "Github", url = "https://github.com/undecv", trailing_slash = false },
+]
+quick_navigation_buttons = true
+toc = false
+show_previous_next_article_links = true
+# invert_previous_next_article_links = true
+previous_next_article_links_full_width = false
+footnote_backlinks = true
+
+# ## Usability
+copy_button = true
+code_block_name_links = true
+# force_codeblock_ltr = true
+katex = true
+mermaid = true
+# serve_local_mermaid = true
+# full_content_in_feed = true
+# hide_from_feed = true
+# hide_from_main_feed = true
+# feed_icon = false
+
+
+socials = [
+    { name = "Bluesky", url = "https://bsky.app/profile/poi48.xyz", icon = "bluesky" },
+    # { name = "Discord", url = "", icon = "discord" },
+    # { name = "Email", url = "", icon = "email" },
+    # { name = "Facebook", url = "", icon = "facebook" },
+    # { name = "Gitea", url = "", icon = "gitea" },
+    { name = "GitHub", url = "https://github.com/undecV/", icon = "github" },
+    # { name = "GitLab", url = "", icon = "gitlab" },
+    # { name = "instagram", url = "", icon = "instagram" },
+    { name = "Mastodon", url = "https://g0v.social/@undecv", icon = "mastodon" },
+    # { name = "Matrix", url = "", icon = "matrix" },
+    { name = "ORCID", url = "https://orcid.org/0009-0001-8137-5570", icon = "orcid" },
+    # { name = "Signal", url = "", icon = "signal" },
+    # { name = "Steam", url = "", icon = "steam" },
+    { name = "Telegram", url = "https://t.me/s/poi0048", icon = "telegram" },
+    # { name = "Twitter", url = "", icon = "twitter" },
+    # { name = "X", url = "", icon = "x" },
+    # { name = "YouTube", url = "", icon = "youtube" },
+]
+
+footer_menu = [
+    # {url = "about", name = "About", trailing_slash = true},
+    # {url = "privacy", name = "privacy", trailing_slash = true},
+    # {url = "rss.xml", name = "RSS", trailing_slash = false},
+    # {url = "atom.xml", name = "Atom", trailing_slash = false},
+    {url = "https://github.com/undecV/blog/discussions", name = "Discussions", trailing_slash = true},
+    {url = "sitemap.xml", name = "Sitemap", trailing_slash = false},
+]
+
+copyright = "© 1996-$CURRENT_YEAR undecV $SEPARATOR Unless otherwise noted, the content in this website is all rights reserved."
+
+# ## Metadata
+show_author = true
+show_reading_time = true
+show_date = true
+long_date_format = "%Y-%m-%d %H:%M:%S"
+short_date_format = "%Y-%m-%d"
+# separator = "|"
+# invert_title_order = true
+
+# ## Security
+# encode_plaintext_email = true
+
+# [extra.hcard]
+# enable = false
+# avatar = "avatars/undecV.png"
+# biography = ""
