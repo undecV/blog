@@ -35,6 +35,8 @@ feed = true
 [extra]
 # Put all your custom variables here
 
+stylesheets = ["/css/custom.css"]
+
 # ## Search
 # index_format = "elasticlunr_javascript"
 
@@ -142,3 +144,8 @@ short_date_format = "%Y-%m-%d"
 # enable = false
 # avatar = "avatars/undecV.png"
 # biography = ""
+
+[extra.analytics]
+service = "umami"
+id = "3252b6d8-dd6f-4baa-a6f2-d6078a5858c2"
+self_hosted_url = "https://umami.d.poi48.xyz"
