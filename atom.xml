@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh_TW">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>キャンディージャー</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー</title>
+    <link href="https://undecv.github.io/blog/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-06-15T00:00:00+00:00</updated>
+    <id>https://undecv.github.io/blog/atom.xml</id><entry xml:lang="zh_TW">
+        <title>Windows 系統槽備份不完全指北</title>
+        <published>2025-06-08T00:00:00+00:00</published>
+        <updated>2025-06-15T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/backup-strategy-for-the-windows-system-drive/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/backup-strategy-for-the-windows-system-drive/</id>
+        <summary type="html">Backup Strategy for the Windows System Drive&lt;br &#x2F;&gt;整槽端走，也不能漏掉一個存檔</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>打破指令和圖形界面的次元壁！用捷徑圖示執行指令</title>
+        <published>2025-05-28T05:00:00+00:00</published>
+        <updated>2025-05-29T05:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command_line_useages/windows-icon-portal/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command_line_useages/windows-icon-portal/</id>
+        <summary type="html">Windows Icon Portal&lt;br &#x2F;&gt;&lt;del&gt;在指令列尋求UX是否搞錯了什麼？&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>把任務放進佇列！用 Pueue 排隊指令</title>
+        <published>2025-05-28T04:00:00+00:00</published>
+        <updated>2025-05-28T04:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command_line_useages/pueue-introduction/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command_line_useages/pueue-introduction/</id>
+        <summary type="html">Pueue Introduction&lt;br &#x2F;&gt;&lt;del&gt;阿跟不上我的速度吧 指令（？&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>打通 Windows 和 Linux 的傳送魔法陣！在 Shell 之間反覆橫跳</title>
+        <published>2025-05-28T03:00:00+00:00</published>
+        <updated>2025-05-28T03:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command_line_useages/nested-shell-scripting/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command_line_useages/nested-shell-scripting/</id>
+        <summary type="html">Nested Shell Scripting&lt;br &#x2F;&gt;&lt;del&gt;指令界的人〇〇蚣！&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>重灌軟體自動化！Windows 的軟體管理系統</title>
+        <published>2025-05-28T02:00:00+00:00</published>
+        <updated>2025-05-28T02:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command_line_useages/windows-package-managers/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command_line_useages/windows-package-managers/</id>
+        <summary type="html">Windows Package Managers&lt;br &#x2F;&gt;&lt;del&gt;我從來不覺得重灌軟體開心過。&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>命令列從入門到出門</title>
+        <published>2025-05-28T01:00:00+00:00</published>
+        <updated>2025-05-29T01:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command_line_useages/command-line-intro/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command_line_useages/command-line-intro/</id>
+        <summary type="html">Command Line Introduction&lt;br &#x2F;&gt;&lt;del&gt;年輕人的第一條指令。&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>如何為內網服務設定自訂網域與 HTTPS：保留 TLD、ACME 證書與本地 DNS 的實踐</title>
+        <published>2025-01-27T00:00:00+00:00</published>
+        <updated>2025-06-15T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/domain-for-intranet/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/domain-for-intranet/</id>
+        <summary type="html">想為內網中的 Web Server 設定像 `web.internal` 這樣的域名，還希望能支援 HTTPS？
+本文探討保留 TLD 的限制、ACME 證書如何簽給內部服務，以及如何透過本地 DNS 配合真實域名實現內網 HTTPS 的實踐方式。
+</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>桌面級氣象站：樹梅派4B × BME680</title>
+        <published>2024-03-29T00:00:00+00:00</published>
+        <updated>2024-03-29T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/rpi4b-bme680/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/rpi4b-bme680/</id>
+        <summary type="html">&lt;del&gt;因為想讓樹莓派做一些像是樹莓派會做的事（？&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>簡報筆變成電腦遙控器？！Surface Pen 也可以支援 Google Slides！</title>
+        <published>2024-01-23T00:00:00+00:00</published>
+        <updated>2024-01-23T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/clicker-remote-control/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/clicker-remote-control/</id>
+        <summary type="html">&lt;del&gt;你的下一台遙控器何必是遙控器。&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>檔案壓縮的概論與實務</title>
+        <published>2024-01-23T00:00:00+00:00</published>
+        <updated>2024-01-23T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/file-compression/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/file-compression/</id>
+        <summary type="html">&lt;del&gt;硬碟空間就像〇〇，擠一擠還是有的。&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>BtrVol 音量控制軟體</title>
+        <published>2023-07-16T00:00:00+00:00</published>
+        <updated>2023-07-16T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/btrvol-intro/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/btrvol-intro/</id>
+        <summary type="html">&lt;del&gt;夢裡看片今日實現。&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>推薦的 Windows 應用軟體列表</title>
+        <published>2023-06-29T00:00:00+00:00</published>
+        <updated>2023-06-29T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/awesome-windows-softwares/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/awesome-windows-softwares/</id>
+        <summary type="html">List of Windows Application Software&lt;br &#x2F;&gt;&lt;del&gt;裝機必備的實用軟體大合集！&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>你也可以知道的賽博安全指南 - 帳密篇</title>
+        <published>2023-06-29T00:00:00+00:00</published>
+        <updated>2023-06-29T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/cyber-security-account/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/cyber-security-account/</id>
+        <summary type="html">&lt;del&gt;偵測到您的賬戶有異常登錄記錄，請儘速處理。&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>桌面搜尋概論，以及 CLaunch 中文化</title>
+        <published>2023-06-22T00:00:00+00:00</published>
+        <updated>2023-06-22T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/desktop-search-and-claunch-zh-tw/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/desktop-search-and-claunch-zh-tw/</id>
+        <summary type="html">我把 CLaunch 中文化了。</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>YouTubeあるある - 瀏覽器多視窗</title>
+        <published>2022-05-11T00:00:00+00:00</published>
+        <updated>2022-05-11T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube_usages/youtube-popup-video/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube_usages/youtube-popup-video/</id>
+        <summary type="html">&lt;del&gt;DD必知必會101&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>YouTubeあるある - 戲院級的觀影體驗！擴充套件 Enhancer for YouTube</title>
+        <published>2022-05-10T00:00:00+00:00</published>
+        <updated>2022-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube_usages/youtube-enhancer-for-youtube/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube_usages/youtube-enhancer-for-youtube/</id>
+        <summary type="html">&lt;del&gt;巨幅銀幕、人體工學&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>YouTubeあるある - 鎖定高畫質</title>
+        <published>2022-05-10T00:00:00+00:00</published>
+        <updated>2022-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube_usages/youtube-high-definition/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube_usages/youtube-high-definition/</id>
+        <summary type="html">&lt;del&gt;你手機可以看 4K？&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>YouTubeあるある - 我不想再看短影片</title>
+        <published>2022-05-10T00:00:00+00:00</published>
+        <updated>2022-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube_usages/youtube-never-shorts/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube_usages/youtube-never-shorts/</id>
+        <summary type="html">&lt;del&gt;抖〇一響，父母白養&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>YouTubeあるある - 在電腦上看電視：YouTube on TV 網頁版</title>
+        <published>2022-05-10T00:00:00+00:00</published>
+        <updated>2022-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube_usages/youtube-on-tv/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube_usages/youtube-on-tv/</id>
+        <summary type="html">&lt;del&gt;誰還有在看電視？&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>推薦的瀏覽器擴充套件列表</title>
+        <published>2021-05-10T00:00:00+00:00</published>
+        <updated>2021-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/awesome-addons/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/awesome-addons/</id>
+        <summary type="html">Awesome List of Brower Add-ons &#x2F; Extensions</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>Windows 下手動修正 VLC 界面縮放</title>
+        <published>2021-05-10T00:00:00+00:00</published>
+        <updated>2021-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/vlc-fractional-scaling/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/vlc-fractional-scaling/</id>
+        <summary type="html">Fix VLC UI fractional scaling in Windows.&lt;br &#x2F;&gt;&lt;del&gt;は？Windows 竟然支援高解析度螢幕？&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>［封存］把檔案壓縮影片轉檔任務放進佇列！用 WSL Task Spooler 排隊 Windows 的指令</title>
+        <published>2021-04-12T01:00:00+00:00</published>
+        <updated>2021-04-12T01:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command_line_useages/wsl-tsp/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command_line_useages/wsl-tsp/</id>
+        <summary type="html">[Archived] WSL Task Spooler Work With Batch Script</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>Raspberry Pi 4B 搭建 NAS 第二話：網路篇</title>
+        <published>2020-04-03T01:00:00+00:00</published>
+        <updated>2020-04-03T01:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/rpi4b-nas-ep2/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/rpi4b-nas-ep2/</id>
+        <summary type="html">Raspberry Pi 4B NAS Episode 2 (Network)&lt;br &#x2F;&gt;&lt;del&gt;究竟讀寫速度會卡在 USB 還是 SMB 呢？rPi4B NAS 翻車最終話！。&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>Raspberry Pi 4B 搭建 NAS 第一話：外接硬碟和 USB 篇</title>
+        <published>2020-04-03T00:00:00+00:00</published>
+        <updated>2020-04-03T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/rpi4b-nas-ep1/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/rpi4b-nas-ep1/</id>
+        <summary type="html">Raspberry Pi 4B NAS Episode 1 (HDD &amp; USB)&lt;br &#x2F;&gt;&lt;del&gt;爬文是不可能爬文的，这辈子不可能爬文的。Spec 又不會查，Run 不起來纔是正常的樣子。&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>BitTorrent 從入門到出門</title>
+        <published>2019-12-11T00:00:00+00:00</published>
+        <updated>2019-12-11T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/bittorrent-intro/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/bittorrent-intro/</id>
+        <summary type="html">BitTorrent Introduction</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>如何在不同環境下設定 Proxy 代理伺服器</title>
+        <published>2018-05-20T00:00:00+00:00</published>
+        <updated>2018-07-09T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/proxy-settings/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/proxy-settings/</id>
+        <summary type="html">Proxy Settings</summary>
+        </entry><entry xml:lang="zh_TW">
+        <title>數位影像檔案格式</title>
+        <published>2018-02-07T00:00:00+00:00</published>
+        <updated>2018-02-07T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/graphics-file-formats/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/graphics-file-formats/</id>
+        <summary type="html">Comparison of Graphics File Formats&lt;br &#x2F;&gt;在使用電腦的過程中，常見很多圖像檔案格式，例如：BMP、JPG、GIF、PNG；&lt;br &#x2F;&gt;大角蜀的你是否在使用電腦繪圖或影像處理的時候不知該使用以上何種格式而困擾？</summary>
+        </entry>
+</feed>

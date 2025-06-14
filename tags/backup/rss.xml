@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Backup</title>
+      <link>https://undecv.github.io/blog/</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>zh_TW</language>
+      <atom:link href="https://undecv.github.io/blog/tags/backup/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Windows 系統槽備份不完全指北</title>
+          <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/backup-strategy-for-the-windows-system-drive/</link>
+          <guid>https://undecv.github.io/blog/posts/backup-strategy-for-the-windows-system-drive/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/backup-strategy-for-the-windows-system-drive/">&lt;!-- Windows 系統槽備份不完全指北 --&gt;
+&lt;!-- Backup Strategy for the Windows System Drive --&gt;
+&lt;!-- &gt; 整槽端走，也不能漏掉一個存檔 --&gt;
+&lt;p&gt;重灌系統最痛苦的往往不是重灌系統這個事情本身，而是之前的備份，以及之後的恢復。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;C:&#x2F;&lt;&#x2F;code&gt; 是 Windows 的系統槽，可以說是系統的頭腦，而備份它卻讓人摸不著頭腦。而備份就像搬家，
+若是東西都有被合理的收納，那整理起來必定是會輕鬆很多。&lt;&#x2F;p&gt;
+&lt;p&gt;但話是那麼的輕鬆講，事實卻並沒有那麼簡單，軟體的設定、遊戲的存檔、預設的資料夾、……，不同的軟體有不同的想法，
+這導致我們要備份的資料四散在各處，尤其是系統槽，就像海底撈針。&lt;&#x2F;p&gt;
+&lt;p&gt;雖說有著 3 2 1 備份原則，即 3 份存檔、2 個載具、1 份異地，這方案雖然萬全，但這麼高成本且麻煩的方案一定沒有人會照做對吧？
+但是備份仍然是必要的，因為你不知道硬碟什麼時候會掛掉，等掛掉的時候就來不及了……&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zhu-yuan-zheng-die-duan-zou-du-bu-neng-fang-guo-yi-ge&quot;&gt;寧願整碟端走，都不能放過一個&lt;&#x2F;h2&gt;
+&lt;p&gt;可總有一天是要備份的，但無論是重灌系統還是遷移硬碟，一洗下去就資料全無，不會再有反悔的機會。
+所以備份的時候還是得耐下心來，我的建議是：要秉承著「寧願整碟端走，都不能放過一個」的原則。
+畢竟資料無價，雖然容量不大，但可能是幾千小時的遊戲存檔、幾百年前的老照片、國中二年寫的日記、……都是一些青澀的回憶呀。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，我推薦在手動備份的時候「全部掃過一遍，去掉不要的」地毯式掃蕩，而不是一個個去找要備份的東西精準打擊，
+因為這樣很容易有漏網之魚。多拷貝了東西雖然會佔用硬碟空間，但未來還有機會可以刪掉，少拷貝了東西可是找不回來的。
+而且有些設定放在隱藏的資料夾中，在檔案總管中打開「顯示隱藏的資料夾」，不能放過任何一個陰暗潮溼的角落。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cheng-shi-zhi-jie-zhuang-zai-xi-tong-cao&quot;&gt;程式直接裝在系統槽&lt;&#x2F;h2&gt;
+&lt;p&gt;我推薦「程式直接安裝在系統槽」裡面。在遠古時代的達人們不推薦那是由於硬碟的容量受限，
+以及機械硬碟還有防止碎片化的問題所以需要分卷。但是大人時代變了，儲空間容量已經降價到不是那麼貴了。
+固態硬碟（SSD）的普及不僅提速也使得碎片化不再是問題。所以硬碟的分卷現在基本上已經只是使用習慣上的選擇。
+而且那些需要安裝的軟體在重灌作業系統之後還得重裝，不如一起洗掉算了。&lt;&#x2F;p&gt;
+&lt;p&gt;當然遊戲的話，現在都有起動器（Launcher）也就是大家所熟知的 Steam、Battle.net 等平臺，所以遊戲本體可以放在別的地方，
+或是一起備份帶走，不然之後還再用小水管網路載回幾百 GB 的內容。&lt;&#x2F;p&gt;
+&lt;p&gt;其中值得一提的是，Steam 的遊戲預設的存放資料夾通常和 Steam 本體放在一起，這可以在 Steam 的設定中檢視，例如，
+Steam 預設安裝在 &lt;code&gt;C:\Program Files (x86)\Steam&lt;&#x2F;code&gt; 資料夾，他的遊戲就會放在 &lt;code&gt;C:\Program Files (x86)\Steam\steamapps&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;quan-jia-jiu-shi-ni-jia&quot;&gt;全家就是你家&lt;&#x2F;h2&gt;
+&lt;p&gt;另外，我也推薦平常就保持一個整理的習慣，不要把自己的東西散佈到系統槽中的其他地方。&lt;&#x2F;p&gt;
+&lt;p&gt;談到自己的東西要放在哪裡，就不得不提到用戶資料夾：&lt;code&gt;C:&#x2F;Users&#x2F;&amp;lt;你的名字&amp;gt;&lt;&#x2F;code&gt; 是系統預設的用戶資料夾，
+用戶就是你，你是電腦的用戶。相當於 Linux 的 &lt;code&gt;&#x2F;home&#x2F;&amp;lt;你的名字&amp;gt;&lt;&#x2F;code&gt;。為什麼會這麼設計，是因為其實電腦是可以多人運動的。
+通常這個資料夾會有個愛稱，Linux 上是 &lt;code&gt;~&lt;&#x2F;code&gt;，而 Windows 上是 &lt;code&gt;%USERPROFILE%&lt;&#x2F;code&gt;，
+可以直接把這串字貼到檔案總管的地址欄，它會自動跳轉過去。&lt;&#x2F;p&gt;
+&lt;p&gt;這個資料夾裡面通常裡面存著所有「用戶級的設定」和「用戶的資料」，
+包括但不限於 Desktop（桌布）、Documemts（檔案）、Downloads（下載）、Music（音樂）、Pictures（圖片）、Videos（影片）。
+這些特殊的資料夾不止有花里胡哨的圖示，還有做特殊的機制。&lt;&#x2F;p&gt;
+&lt;p&gt;無論是軟體的設定、遊戲的存檔、預設的存檔位置都在這個資料夾，OneDrive 也是推薦備份這個資料夾。
+其實 Windows 的本意就是『這是你「家」，你的個人資料都請放這裡』。&lt;&#x2F;p&gt;
+&lt;p&gt;但是，正是因為軟體的設定等東西也都預設放進這裡，一打開這個資料夾不能說是七零八落，只能說是亂七八糟，
+設定資料夾和檔案四散各處，還不能移走，移走程式就讀不到設定了，我才不想承認他是我家。
+其實 Windows 有給這些設定檔案找個好去處就是 &lt;code&gt;%APPDATA%&lt;&#x2F;code&gt;，但有些程式就是很有自己的想法。
+&lt;del&gt;其實在 Linux 上也是這樣的，並且更慘，因為沒有規範🤷。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;wei-shen-mo-dotfiles&quot;&gt;為什麼 Dotfiles？&lt;&#x2F;h3&gt;
+&lt;p&gt;當你在收拾家資料夾的時候，你一定會看到一拖拉庫 &lt;code&gt;.&lt;&#x2F;code&gt; 句點開頭的檔案和資料夾，
+他們通稱 dotfiles，Linux 系軟體的遺毒，都是一些設定檔和存檔。&lt;&#x2F;p&gt;
+&lt;p&gt;很久很久以前，
+Windows 是沒辦法用通常辦法建立 &lt;code&gt;.&lt;&#x2F;code&gt; 開頭的檔案（只能用指令），
+會提示沒有檔名（只有副檔名）。&lt;&#x2F;p&gt;
+&lt;p&gt;當時的大家對檔名都是很保守的，
+盡量保持得檔名加兩三四個字的副檔名。
+直到當今檔案種類眾多，
+大家都深受三個字的副檔名所苦，
+直到當今開發者放飛自我，不再限制字數，
+甚至不止一個副檔名，比 HTC 的下巴都多。&lt;&#x2F;p&gt;
+&lt;p&gt;在隔壁，Linux 是用 &lt;code&gt;.&lt;&#x2F;code&gt; 開頭的檔名作為隱藏檔案的標記，
+而隱藏檔案在 Windows 需要在檔案描述子中才能設定，
+所以這個 &lt;code&gt;.&lt;&#x2F;code&gt; 在 Windows 下不會隱藏檔案。&lt;&#x2F;p&gt;
+&lt;p&gt;最常見的，這些 &lt;code&gt;.&lt;&#x2F;code&gt; 開頭的檔案作為用戶設定檔（直接）放在你的家資料夾下，這很醜，非常醜，異常醜。
+但由於向下相容的歷史因素，這很難改。
+這些檔案本該去 &lt;code&gt;%APPDATA%&lt;&#x2F;code&gt;，但很顯然軟體工程師們總是很有自己的想法。&lt;&#x2F;p&gt;
+&lt;p&gt;直到那一天，
+Windows 擁抱了 Linux。
+Linux 和 Windows 的家資料夾終於殊途同歸然後同歸於盡，
+WSL 帶領著一眾 dotfiles 給 Windows 的家資料夾瘋狂洗板。
+原本就污穢不堪的家資料夾更不堪入目了。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;yu-she-zi-liao-jia-shuo-ming&quot;&gt;預設資料夾說明&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;請注意！下面的資料夾的說明僅適用於 Windows 11 24H2，
+其內容的準確性可能隨著時間而改變。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;也請注意！下面的策略是我的主觀評價，「僅供參考」，請以實際情況為準。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;接下來，我會列出「系統槽」中每個資料夾的用意，假設你的系統槽是 &lt;code&gt;C:\&lt;&#x2F;code&gt;&lt;sup&gt;[0]&lt;&#x2F;sup&gt;。
+因為基於「全面掃蕩」的原則，我建議是全部過目一遍。
+但知道了資料夾的用意之後有些資料夾就不需要點進去看了，可以看情況備份或者不備份裡面的內容。
+我沒列出來的，可能是自己或是其他軟體設定的，也請點進去看看。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: left&quot;&gt;Path&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Description&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;Strategy&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\inetpub&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;網頁伺服器服務（IIS）的資料夾，通常不會出現。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[1]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\OneDriveTemp&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;網路硬碟 OneDrive 暫存資料夾。（隱藏）&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\PerfLogs&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;用於系統效能監控。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Program Files&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕預設安裝 32-bit 應用程式的資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Program Files (x86)&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕預設安裝 64-bit 應用程式的資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\ProgramData&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕全域應用程式資料，例如設定檔等。（隱藏）&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Users&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;各個使用者的家。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;-&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Users\Default&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;新帳號範本資料夾，建新帳號時，會複製這裡的內容過去。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Users\Public&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;所有使用者共享的公共資料儲存區。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[2]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Users\&amp;lt;你的名字&amp;gt;&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;愛稱：&lt;code&gt;%USERPROFILE%&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕你的家，若著急可以直接把這個整碗端走。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Windows&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;系統核心與系統檔案所在。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;ul&gt;
+&lt;li&gt;[0]: 如果你會修改系統槽符號，你應該也不用看本文浪費時間了吧？&lt;&#x2F;li&gt;
+&lt;li&gt;[1]: 如果你會用到網頁伺服器，你應該也不用看本文浪費時間了吧？&lt;&#x2F;li&gt;
+&lt;li&gt;[2]: 單用戶應該不會有人把東西放這吧？&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;其中，有些很有自己的想法的軟體，會把設定檔、存檔等一起放在 &lt;code&gt;Program Files&lt;&#x2F;code&gt; 資料夾裡面（這不是標準實作），
+所以備份的時候還是建議掃過一遍。再次提醒，Steam 等平臺的遊戲也在裡面。&lt;&#x2F;p&gt;
+&lt;p&gt;接下來，我會列出「用戶資料夾」中每個重要資料夾的用意，
+我會直接使用 &lt;code&gt;%USERPROFILE%&lt;&#x2F;code&gt; 替代掉前面 &lt;code&gt;C:\Users\&amp;lt;你的名字&amp;gt;&lt;&#x2F;code&gt; 的部分，這也可以讓你直接貼到檔案總管的地址欄就可以直接訪問。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: left&quot;&gt;Path&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Description&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;Strategy&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\AppData&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;程式的資料。（隱藏）&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;-&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\AppData\Local&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;愛稱：&lt;code&gt;%LOCALAPPDATA%&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕本機專用資料，如快取、暫存、重下載可恢復內容。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\AppData\LocalLow&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;限低權限執行的程式儲存區。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[3]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\AppData\Roaming&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;愛稱：&lt;code&gt;%APPDATA%&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕會跟隨帳號漫遊的設定。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Contacts&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;存放聯絡人資訊。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[4]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\CrossDevice&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;微軟的「跨裝置體驗」服務資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;sup&gt;[5]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Desktop&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕桌布上的所有東西。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Documents&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放所有用戶檔案，預設的存檔位置。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Documents\My Games&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕約定俗成的遊戲存檔資料夾&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Downloads&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕存放下載來的檔案，預設的下載位置。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Favorites&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;存放 Internet Explorer（IE） 的書籤。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[4]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Links&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;曾經的快速存取列。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[4]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Music&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放音樂，甚至錄音檔。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\OneDrive&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;OneDrive 同步用。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩已經備份&lt;sup&gt;[6]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Pictures&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放圖片，包括截圖等。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Saved Games&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放遊戲存檔。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Searches&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;儲存搜尋條件（Saved Searches）的資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[4]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Videos&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放影片，包括錄影等。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\NTUSER.DAT&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;檔案，使用者註冊檔（不要動，會造成帳號損壞）。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩不要備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;以下是一些非預設的內容&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\.config&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;一些白目的軟體的設定檔案和存檔資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\&amp;lt;軟體名稱&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;一些白目的軟體的設定檔案和存檔資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Documents\&amp;lt;軟體名稱&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;一些白目的軟體的設定檔案和存檔資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\scoop&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;軟體套件管理系統 Scoop 預設安裝資料夾，可能有設定檔案。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Sync&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;同步工具 Syncthing 預設的用戶同步資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;ul&gt;
+&lt;li&gt;[3]: 通常沒什麼要備份。&lt;&#x2F;li&gt;
+&lt;li&gt;[4]: 應該沒什麼人用吧？&lt;&#x2F;li&gt;
+&lt;li&gt;[5]: 通常個資料夾的內容在你的另一臺設備上。&lt;&#x2F;li&gt;
+&lt;li&gt;[6]: 通常個資料夾已經被 OneDrive 同步了。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;其中，資料夾 &lt;code&gt;%USERPROFILE%\AppData&lt;&#x2F;code&gt; 是「程式的資料」，原意是放一些程式的設定檔，
+但裡面的東西多到根本就是在你家開了一家 Costco 一樣，是因為有些很有自己想法的軟體例如 Chrome 就會把自己裝到裡面，是為了規避管理員權限（UAC）。&lt;&#x2F;p&gt;
+&lt;p&gt;再次強調，「沒有列出的資料夾和檔案也都請掃過一遍」。
+如果還是忘了哪些檔案，那我也只能借用某知名遊戲製作人田中氏的話說，『不要太在乎得失，你要去享受這個過程』。&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
