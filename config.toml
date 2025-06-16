@@ -4,7 +4,7 @@ base_url = "https://undecv.github.io/blog/"
 theme = "tabi"
 title = "キャンディージャー"
 author = "undecV"
-default_language = "zh_TW"
+default_language = "en"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -123,6 +123,7 @@ footer_menu = [
     # {url = "rss.xml", name = "RSS", trailing_slash = false},
     # {url = "atom.xml", name = "Atom", trailing_slash = false},
     {url = "https://github.com/undecV/blog/discussions", name = "Discussions", trailing_slash = true},
+    {url = "privacy", name = "Privacy", trailing_slash = false},
     {url = "sitemap.xml", name = "Sitemap", trailing_slash = false},
 ]
 
