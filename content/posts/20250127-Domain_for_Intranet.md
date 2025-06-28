@@ -45,19 +45,22 @@ Domain Name System 比我想象的還要 naïve ...
 我還擔心 ACME 不給本地 IP 簽發證書，沒想到人家根本就不管你網路。
 
 假設購買的域名是 `domain.example`，
-在設定 DHCP 的時候，DNS 伺服器首選 本地 的 DNS Server，
-在 本地 的 DNS Srever 中設定這樣的記錄：
+在設定 DHCP 的時候，DNS 伺服器首選「本地」的 DNS Server，即是 `192.168.1.1/24`，
+在「本地」的 DNS Server 中設定這樣的記錄：
 
 ```dns
 A   lan.domain.example.     192.168.1.100
 ```
 
-由於記錄位於 NAT 之內的 本地 的 DNS Srever，所以這個 `lan.domain.example` 是無法被外部網路解析的。
+由於記錄位於 NAT 之內的「本地」的 DNS Server，所以這個 `lan.domain.example` 是無法被外部網路解析的。
 
 ACME 是自動簽發 TLS 證書給伺服器，讓伺服器有 HTTPS 可以用。
-在伺服器發出 ACME 請求後，ACME 會給一個「權杖」，把權杖輸進 DNS 記錄，ACME 看到了就證明了你對域名的控制權。
+在伺服器發出 ACME 請求後，ACME 會給一個「權杖」，把權杖輸進 DNS 記錄，ACME 看到了就證明了你對域名的控制權（即是「ACME DNS-01 考驗」）。
 所以 ACME 並不關心伺服器在哪個網路下。
 
-只要在 本地 Web Server 中就像架設對外的網站一樣，指定託管商（例如 CloudFlare）的 API 就行，讓伺服器自己完成 ACME 挑戰。
+所以其實只要在 本地 Web Server 中就像架設對外的網站一樣，指定託管商（例如 CloudFlare）的 API 就行，讓伺服器自己完成 ACME 挑戰。
 
-Reference: Wikipedia - [Non-IANA domains](https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Non-IANA_domains)
+## Reference
+
+- Wikipedia - [Non-IANA domains](https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Non-IANA_domains)
+- Let’s Encrypt - [ACME 驗證方式](https://letsencrypt.org/zh-tw/docs/challenge-types/)

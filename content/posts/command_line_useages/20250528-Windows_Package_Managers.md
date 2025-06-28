@@ -2,7 +2,7 @@
 title: "重灌軟體自動化！Windows 的軟體管理系統"
 description: "Windows Package Managers<br /><del>我從來不覺得重灌軟體開心過。</del>"
 date: 2025-05-28 02:00:00
-updated: 2025-05-28 02:00:00
+updated: 2025-06-27 02:00:00
 slug: "windows_package_managers"
 weight: 2
 taxonomies:
@@ -20,6 +20,11 @@ taxonomies:
 可以從零開始直接安裝軟體到拷貝設定檔案「一鍵裝機」一條龍，直接變成你最熟悉的形狀。
 
 好在 Windows 上也有了這類套件管理系統，最有名的莫過於 Winget、Scoop、Chocolatey。
+
+Scoop、Chocolatey 不是原生的，而 Winget 也不是很久遠也就 2021 年才誕生的，
+但這種軟體套件管理器其實非常依賴他們社群的活躍更新，軟體的管理，包括新增和更新基本上只能依靠他們不大的社群用愛發電，否則就會發生軟體更新了但是在管理器中只能找到舊版本。
+
+所以這些套件管理器讓我總感覺好用又不太好用，讓我想著等著社群壯大再說。但 Winget 作為內建於 Windows 的封弊者一般的存在，雖然年輕但好像已經被廣泛的支援。目前已經涵蓋了絕大部分我用的軟體，現在我需要手動下載的軟體屈指可數。
 
 ## Live Example
 
@@ -46,8 +51,11 @@ winget install --id "Google.Chrome"
 
 首先是 [Winget][]，由 Microsoft 官方不榮譽[^1]出品，**作業系統內建**，相容 Microsoft Store，開源，開放軟體倉庫。
 
+（截稿時）Winget 的官方倉庫**不接受**只能手動安裝的應用程式。
+
 [Winget]: https://learn.microsoft.com/zh-tw/windows/package-manager/winget/
-[^1]: https://en.wikipedia.org/wiki/Windows_Package_Manager#History
+
+[^1]: Wikipedia: [Windows Package Manager 的黑歷史](https://en.wikipedia.org/wiki/Windows_Package_Manager#History)
 
 ```powershell
 # 搜尋軟體
@@ -58,8 +66,9 @@ winget install $PACKAGE
 winget install $PACKAGE --source "msstore" --accept-source-agreements --accept-package-agreements
 # [推薦] 指定 ID 不容易裝錯
 winget install --id $PACKAGE_ID
-# 更新、刪除軟體
-winget upgrade --all
+# [極其危險] 更新軟體並且簽訂魔法少女契約
+winget upgrade --all --accept-package-agreements --accept-source-agreements
+# 刪除軟體
 winget uninstall $PACKAGE
 ```
 
@@ -107,11 +116,7 @@ Winget 本質是「安裝包管理器（Installer Manager）」，就是自動�
 現在就可以把常用的軟體安裝寫成 Shell Script，
 在重灌之後直接執行，就可以一鍵完成原本要花幾百年才能完成的重灌軟體的工作！
 
----
-
 Reference:
 
 - [ScoopInstaller/Scoop#4777#2295777](https://github.com/ScoopInstaller/Scoop/discussions/4777#discussioncomment-2295777)
 - [ScoopInstaller/Scoop#4777#2296112](https://github.com/ScoopInstaller/Scoop/discussions/4777#discussioncomment-2296112)
-
----
