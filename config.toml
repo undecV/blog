@@ -150,3 +150,4 @@ short_date_format = "%Y-%m-%d"
 service = "umami"
 id = "3252b6d8-dd6f-4baa-a6f2-d6078a5858c2"
 self_hosted_url = "https://umami.d.poi48.xyz"
+do_not_track = false
