@@ -5,7 +5,7 @@ date: 2022-05-10
 updated: 2022-05-10
 slug: "youtube_on_tv"
 taxonomies:
-  tags: [zh_TW, Firefox, Add-ons, Extensions, YouTube]
+  tags: [zh_TW, Firefox, Add-on, Extension, YouTube]
 ---
 
 > <del>誰還有在看電視？</del>

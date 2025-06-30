@@ -5,7 +5,7 @@ slug: backup_strategy_for_the_windows_system_drive
 date: 2025-06-08
 updated: 2025-06-15
 taxonomies:
-  tags: [zh_TW, Windows, Backup, File System, Computer Concepts]
+  tags: [zh_TW, Windows, Backup, File System, Computer Concept]
 ---
 
 <!-- Windows 系統槽備份不完全指北 -->

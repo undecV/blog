@@ -5,7 +5,7 @@ date: 2022-05-10
 updated: 2022-05-10
 slug: "youtube_never_shorts"
 taxonomies:
-  tags: [zh_TW, Firefox, Chrome, Add-ons, Extensions, YouTube]
+  tags: [zh_TW, Firefox, Chrome, Add-on, Extension, YouTube]
 ---
 
 <!-- # No More YouTube Shorts -->

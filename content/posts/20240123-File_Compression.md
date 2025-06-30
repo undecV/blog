@@ -5,7 +5,7 @@ date: 2024-01-23
 updated: 2024-01-23
 slug: "file_compression"
 taxonomies:
-  tags: [zh_TW, Software, File Archive, Compression, Computer Concepts]
+  tags: [zh_TW, Software, File Archive, Compression, Computer Concept]
 ---
 
 <!-- # 檔案壓縮的概論與實務 -->

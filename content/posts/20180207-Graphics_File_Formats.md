@@ -5,7 +5,7 @@ slug: graphics_file_formats
 date: 2018-02-07
 updated: 2018-02-07
 taxonomies:
-  tags: [zh_TW, Graphics, File Formats, Computer Concepts]
+  tags: [zh_TW, Graphic, File Format, Computer Concept]
 ---
 
 在使用電腦的過程中，常見很多圖像檔案格式，例如：`BMP`、`JPG`、`GIF`、`PNG`；<br />

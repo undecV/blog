@@ -7,7 +7,7 @@ slug: "argument_introduction"
 draft: true
 weight: 6
 taxonomies:
-  tags: [zh_TW, Command Line, CLI, Tutorial, Computer Concepts, Windows]
+  tags: [zh_TW, Command Line, CLI, Tutorial, Computer Concept, Windows]
 ---
 
 ```c,name=arg.c

@@ -5,7 +5,7 @@ date: 2022-05-10
 updated: 2022-05-10
 slug: "youtube_high_definition"
 taxonomies:
-  tags: [zh_TW, Firefox, Add-ons, Extensions, YouTube]
+  tags: [zh_TW, Firefox, Add-on, Extension, YouTube]
 ---
 
 <!-- # YouTube 鎖定高畫質 -->

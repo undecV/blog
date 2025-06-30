@@ -5,7 +5,7 @@ date: 2018-05-20
 updated: 2018-07-09
 slug: "proxy_settings"
 taxonomies:
-  tags: [zh_TW, Proxy, Tutorial, Computer Concepts]
+  tags: [zh_TW, Proxy, Tutorial, Computer Concept]
 ---
 
 > Ver: 3.0

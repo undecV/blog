@@ -6,7 +6,7 @@ updated: 2025-06-27 02:00:00
 slug: "windows_package_managers"
 weight: 2
 taxonomies:
-  tags: [zh_TW, Command Line, CLI, Tutorial, Computer Concepts, Software]
+  tags: [zh_TW, Command Line, CLI, Tutorial, Computer Concept, Software]
 ---
 
 現如今重灌電腦已經不是什麼困難的事情。

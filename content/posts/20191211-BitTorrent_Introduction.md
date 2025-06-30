@@ -5,7 +5,7 @@ date: 2019-12-11
 updated: 2019-12-11
 slug: "bittorrent_intro"
 taxonomies:
-  tags: [zh_TW, BitTorrent, Download, File Sharing, Tutorial, Computer Concepts]
+  tags: [zh_TW, BitTorrent, Download, File Sharing, Tutorial, Computer Concept]
 ---
 
 > Copyright © 2017 undecV.<br />

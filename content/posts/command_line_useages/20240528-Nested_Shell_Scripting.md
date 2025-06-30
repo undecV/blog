@@ -6,7 +6,7 @@ updated: 2025-05-28 03:00:00
 slug: "nested_shell_scripting"
 weight: 4
 taxonomies:
-  tags: [zh_TW, Command Line, CLI, WSL, Windows, Linux, Tutorial, Computer Concepts]
+  tags: [zh_TW, Command Line, CLI, WSL, Windows, Linux, Tutorial, Computer Concept]
 ---
 
 通常，要做一件事情是可以在一個 Shell 裡面完成的。

@@ -6,7 +6,7 @@ updated: 2025-05-29 05:00:00
 slug: "windows_icon_portal"
 weight: 3
 taxonomies:
-  tags: [zh_TW, Command Line, CLI, Tutorial, Computer Concepts, Windows]
+  tags: [zh_TW, Command Line, CLI, Tutorial, Computer Concept, Windows]
 ---
 
 用例：某個檔案希望用不是預設的程式打開，或是想把一拖拉庫的檔案丟給某個程式。

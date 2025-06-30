@@ -6,7 +6,7 @@ updated: 2025-05-29 01:00:00
 slug: "command_line_intro"
 weight: 1
 taxonomies:
-  tags: [zh_TW, Command Line, CLI, Tutorial, Computer Concepts]
+  tags: [zh_TW, Command Line, CLI, Tutorial, Computer Concept]
 ---
 
 我們使用電腦的方式大致分為兩種，

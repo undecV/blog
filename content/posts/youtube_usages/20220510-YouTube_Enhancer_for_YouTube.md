@@ -5,7 +5,7 @@ date: 2022-05-10
 updated: 2022-05-10
 slug: "youtube_enhancer_for_youtube"
 taxonomies:
-  tags: [zh_TW, Firefox, Chrome, Add-ons, Extensions, YouTube]
+  tags: [zh_TW, Firefox, Chrome, Add-on, Extension, YouTube]
 ---
 
 > <del>巨幅銀幕、人體工學</del>

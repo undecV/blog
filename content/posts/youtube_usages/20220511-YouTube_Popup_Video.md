@@ -5,7 +5,7 @@ date: 2022-05-11
 updated: 2022-05-11
 slug: "youtube_popup_video"
 taxonomies:
-  tags: [zh_TW, Firefox, Chrome, Add-ons, Extensions, YouTube]
+  tags: [zh_TW, Firefox, Chrome, Add-on, Extension, YouTube]
 ---
 
 > <del>DD必知必會101</del>
