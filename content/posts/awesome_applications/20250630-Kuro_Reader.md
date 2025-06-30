@@ -1,14 +1,12 @@
 ---
-title: Android 上的本地漫畫閱讀器推薦：Kuro Reader，支援 CBZ、SMB、無廣告
-description: "電腦裡面開了一家漫畫~~和同人誌~~圖書館，怎麼辦？急，在線等。"
-date: 2025-06-30
-updated: 2025-06-30
+title: "Android 上的本地漫畫閱讀器推薦：Kuro Reader，支援 CBZ、SMB、無廣告"
+description: "電腦裡面開了一家漫畫圖書館，怎麼辦？急，在線等。"
+date: 2025-06-30T15:00:00
+updated: 2025-06-30T15:00:00
 slug: "kuro_reader"
 taxonomies:
   tags: [zh_TW, Awesome list, Android, Application, Comic Reader, SMB, CIFS]
 ---
-
-〔 #應用推薦 〕Android 上的「本地」漫畫閱讀器 Kuro Reader
 
 專有・免費增值・[Homepage](https://kurotoshiro.dev/)・[Google Play](https://play.google.com/store/apps/details?id=br.com.kurotoshiro.kuro_reader)
 
