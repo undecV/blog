@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://undecv.github.io/blog/"
+base_url = "https://undecv.github.io/blog"
 
 theme = "tabi"
 title = "キャンディージャー"

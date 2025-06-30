@@ -1,8 +1,9 @@
 ---
 title: "如何為內網服務設定自訂網域與 HTTPS：保留 TLD、ACME 證書與本地 DNS 的實踐"
 description: |
-    想為內網中的 Web Server 設定像 `web.internal` 這樣的域名，還希望能支援 HTTPS？
-    本文探討保留 TLD 的限制、ACME 證書如何簽給內部服務，以及如何透過本地 DNS 配合真實域名實現內網 HTTPS 的實踐方式。
+  想為內網中的 Web Server 設定域名，還希望能支援 HTTPS？
+  本文探討保留 TLD 的限制、ACME 證書如何簽給內部服務，
+  以及如何透過本地 DNS 配合真實域名實現內網 HTTPS 的實踐方式。
 slug: domain_for_intranet
 date: 2025-01-27
 updated: 2025-06-15
