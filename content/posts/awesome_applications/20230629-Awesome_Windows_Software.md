@@ -5,7 +5,7 @@ date: 2023-06-29
 updated: 2023-06-29
 slug: "awesome_windows_softwares"
 taxonomies:
-  tags: [zh_TW, Awesome lists, Windows, Softwares, Apps]
+  tags: [zh_TW, Awesome list, Windows, Software, Application]
 ---
 
 推薦一些 Windows 平台下的軟體， 適合日常以及非日常使用。<br />

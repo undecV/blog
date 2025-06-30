@@ -5,7 +5,7 @@ date: 2021-05-10
 updated: 2021-05-10
 slug: "awesome_addons"
 taxonomies:
-  tags: [zh_TW, Awesome Lists, Firefox, Add-ons, Extensions]
+  tags: [zh_TW, Awesome list, Firefox, Add-on, Extension]
 ---
 
 <!-- # Awesome List of Brower Add-ons / Extensions -->
