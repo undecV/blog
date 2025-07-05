@@ -63,8 +63,7 @@ BitTorrent 的活力來源於「分享」的精神，只下載不分享的「吸
 
 - [qBittorrent](https://www.qbittorrent.org/): `自由軟體` 第三方客戶端，可訂製的種子搜尋功能。
 
-> <p style="color:crimson;font-weight:900;text-align:center;text-transform:uppercase;">請注意！ - Warning</p>
-> 據 ghacks.net 悉<sup>[uT:1]</sup>（Dec 9, 2019），uTorrent 官方客戶端被多家包括 ESET-NOD32 以及 Microsoft 在內的防毒軟體標記爲惡意軟體（Malware）<sup>[uT:2]</sup>。
+> 請注意！據 ghacks.net 悉（Dec 9, 2019），uTorrent 官方客戶端被多家包括 ESET-NOD32 以及 Microsoft 在內的防毒軟體標記爲惡意軟體（Malware）。
 
 以及一些多協定的下載工具，例如：
 

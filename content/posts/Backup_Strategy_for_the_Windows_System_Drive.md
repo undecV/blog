@@ -56,7 +56,7 @@ Steam 預設安裝在 `C:\Program Files (x86)\Steam` 資料夾，他的遊戲就
 可以直接把這串字貼到檔案總管的地址欄，它會自動跳轉過去。
 
 這個資料夾裡面通常裡面存著所有「用戶級的設定」和「用戶的資料」，
-包括但不限於 Desktop（桌布）、Documemts（檔案）、Downloads（下載）、Music（音樂）、Pictures（圖片）、Videos（影片）。
+包括但不限於 Desktop（桌布）、Documents（檔案）、Downloads（下載）、Music（音樂）、Pictures（圖片）、Videos（影片）。
 這些特殊的資料夾不止有花里胡哨的圖示，還有做特殊的機制。
 
 無論是軟體的設定、遊戲的存檔、預設的存檔位置都在這個資料夾，OneDrive 也是推薦備份這個資料夾。
@@ -159,7 +159,7 @@ WSL 帶領著一眾 dotfiles 給 Windows 的家資料夾瘋狂洗板。
 | `%USERPROFILE%\<軟體名稱>` | 一些白目的軟體的設定檔案和存檔資料夾。 | 🟨按需備份 |
 | `%USERPROFILE%\Documents\<軟體名稱>` | 一些白目的軟體的設定檔案和存檔資料夾。 | 🟨按需備份 |
 | `%USERPROFILE%\scoop` | 軟體套件管理系統 Scoop 預設安裝資料夾，可能有設定檔案。 | 🟨按需備份 |
-| `%USERPROFILE%\Sync` | 同步工具 Syncthing 預設的用戶同步資料夾。| 🟨按需備份 |
+| `%USERPROFILE%\Sync` | 同步工具 Syncthing 預設的用戶同步資料夾。| 🟩不要備份<sup>[5]</sup> |
 
 - \[3]: 通常沒什麼要備份。
 - \[4]: 應該沒什麼人用吧？
