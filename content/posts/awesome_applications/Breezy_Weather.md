@@ -1,6 +1,6 @@
 ---
 title: "純粹而不簡單的看天氣 Breezy Weather"
-description: "我都不看天氣的，我看世間冷暖。"
+description: "好看、免費、流暢、沒有廣告、資訊全面、功能豐富，最好是會這麼好的應用啦。但我都不看天氣的，我看世間冷暖。"
 date: 2025-06-30T22:00:00
 updated: 2025-06-30T22:00:00
 slug: "breezy_weather"

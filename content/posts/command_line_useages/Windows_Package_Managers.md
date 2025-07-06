@@ -1,6 +1,6 @@
 ---
 title: "重灌軟體自動化！Windows 的軟體管理系統"
-description: "Windows Package Managers<br /><del>我從來不覺得重灌軟體開心過。</del>"
+description: "重灌電腦最麻煩的就是灌回那些常用的軟體。我從來不覺得重灌軟體開心過。好在 Windows 上也有了軟體套件管理系統，讓我可以一鍵完成原本要花幾百年才能完成的重灌軟體的工作！"
 date: 2025-05-28 02:00:00
 updated: 2025-06-27 02:00:00
 slug: "windows_package_managers"

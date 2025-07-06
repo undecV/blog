@@ -1,6 +1,6 @@
 ---
 title: "Windows 系統槽備份不完全指北"
-description: "Backup Strategy for the Windows System Drive<br />整槽端走，也不能漏掉一個存檔"
+description: "系統槽可以說是系統的頭腦，而備份它卻讓人摸不著頭腦。秉承著整槽端走，也不能漏掉一個存檔的原則，這篇文章帶你看看系統槽裡面那些陰暗潮濕的角落。"
 slug: backup_strategy_for_the_windows_system_drive
 date: 2025-06-08
 updated: 2025-06-15

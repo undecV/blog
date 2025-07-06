@@ -1,6 +1,6 @@
 ---
-title: "Android 上的本地漫畫閱讀器推薦：Kuro Reader，支援 CBZ、SMB、無廣告"
-description: "電腦裡面開了一家漫畫圖書館，怎麼辦？急，在線等。"
+title: "Android 上的本地漫畫閱讀器推薦：Kuro Reader"
+description: "電腦裡面開了一家漫畫圖書館，怎麼辦？急，在線等。這裏有一款介面現代且流暢、支援壓縮檔、可以直接讀取本地網路的無廣告漫畫閱讀器。"
 date: 2025-06-30T15:00:00
 updated: 2025-06-30T15:00:00
 slug: "kuro_reader"

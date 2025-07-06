@@ -1,6 +1,6 @@
 ---
 title: "命令列從入門到出門"
-description: "Command Line Introduction<br /><del>年輕人的第一條指令。</del>"
+description: "不同於拖拉推拽煎炒烹炸的直覺而精緻操作的圖形界面，指令已經成為了只有在駭客或者工程師修電腦的時候才會出現的魔法詠唱般的存在，但這篇文章介紹命令列的基本概念，帶你寫出年輕人的第一條指令。"
 date: 2025-05-28 01:00:00
 updated: 2025-05-29 01:00:00
 slug: "command_line_intro"

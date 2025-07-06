@@ -1,6 +1,6 @@
 ---
 title: "打破指令和圖形界面的次元壁！用捷徑圖示執行指令"
-description: "Windows Icon Portal<br /><del>在指令列尋求UX是否搞錯了什麼？</del>"
+description: "想要把一拖拉庫的檔案丟給某個程式？在指令列尋求UX是否搞錯了什麼？這篇文章用幾行批次指令，把指令列工具偷渡到了圖形界面裡，打破了兩者的界線，開啟指令和圖形界面之間的「傳送門」。"
 date: 2025-05-28 05:00:00
 updated: 2025-05-29 05:00:00
 slug: "windows_icon_portal"

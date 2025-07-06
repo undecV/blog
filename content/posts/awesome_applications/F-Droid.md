@@ -1,6 +1,9 @@
 ---
 title: "Android 生態的平行宇宙：F-Droid"
-description: "開源應用和他們的產地。"
+description: |
+  有些 App 超好用，但在 Google Play 根本找不到。
+  無論是強大還是小巧、實用甚至免費、無廣告的應用都在這裡。
+  來看看我介紹開源應用和他們的產地。
 date: 2025-07-06
 updated: 2025-07-06
 slug: "fdroid"

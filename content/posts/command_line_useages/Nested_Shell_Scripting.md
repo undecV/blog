@@ -1,6 +1,6 @@
 ---
 title: "打通 Windows 和 Linux 的傳送魔法陣！在 Shell 之間反覆橫跳"
-description: "Nested Shell Scripting<br /><del>指令界的人〇〇蚣！</del>"
+description: "通常要做一件事情是可以在一個 Shell 裡面完成的。但無論是使用舊工具或是跨平臺，都使得我們不得不在不同的 Shell 之間反复橫跳。這篇文章介紹的巢狀指令呼叫根本就是指令界的人〇〇蚣！可以在不同 Shell 之間互通有無。"
 date: 2025-05-28 03:00:00
 updated: 2025-05-28 03:00:00
 slug: "nested_shell_scripting"
