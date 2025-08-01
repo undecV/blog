@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Graphic</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/graphic/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 07 Feb 2018 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>數位影像檔案格式</title>
+          <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/graphics-file-formats/</link>
+          <guid>https://undecv.github.io/blog/posts/graphics-file-formats/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/graphics-file-formats/">&lt;p&gt;在使用電腦的過程中，常見很多圖像檔案格式，例如：&lt;code&gt;BMP&lt;&#x2F;code&gt;、&lt;code&gt;JPG&lt;&#x2F;code&gt;、&lt;code&gt;GIF&lt;&#x2F;code&gt;、&lt;code&gt;PNG&lt;&#x2F;code&gt;；&lt;br &#x2F;&gt;
+大角蜀的你是否在使用電腦繪圖或影像處理的時候不知該使用以上何種格式而困擾？&lt;&#x2F;p&gt;
+&lt;p&gt;以上舉例出的不同格式，他們各自使用不同的技術，有著各自不同的特點，這決定了他們的用途和場合，那麼：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;什麼樣的圖像適用什麼樣的格式？&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;什麼樣的場合適用什麼樣的格式？&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;獻給各位大觸，大角蜀…&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ピクセル無限大 1億TB（テラバイト）&lt;br &#x2F;&gt;
+私の理想よ データファイル内緒？&lt;br &#x2F;&gt;
+JPG！&lt;br &#x2F;&gt;
+——TVアニメ「デンキ街の本屋さん」エンディング主題歌「two-Dimension&#x27;s Love」&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;dian-zhen-tu-xing-v-xiang-liang-tu-xing&quot;&gt;點陣圖形 v. 向量圖形&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;有碼和無碼&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;數位影像分為兩種類型：&lt;strong&gt;點陣圖形（Raster graphics, or bitmap）&lt;strong&gt;和&lt;&#x2F;strong&gt;向量圖形（Vector graphics）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dian-zhen-tu-xing-raster-graphics&quot;&gt;點陣圖形（Raster graphics）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;點陣圖形&lt;&#x2F;strong&gt;將圖像看成一個個「有顏色的點」所組成的陣列，這個「點」被稱之&lt;strong&gt;像素（pixel）&lt;&#x2F;strong&gt;，每個像素存儲者它的顏色的資訊。所以，像素的數量也就決定了檔案的大小：照片的尺寸越大、**每單位面積之間的像素（解析度，Dots per inch, DPI）**越多，你的圖像也就越精細。&lt;&#x2F;p&gt;
+&lt;p&gt;點陣圖形適合用於存儲照片等細節豐富的圖形。但是若將點陣圖形變形、放大等處理時，圖像容易失真：放大之後就變成了馬賽克…以及更多的處理&lt;del&gt;調教&lt;&#x2F;del&gt;的方法：去除雜訊、模糊、銳化、&lt;del&gt;打碼&lt;&#x2F;del&gt;…&lt;&#x2F;p&gt;
+&lt;p&gt;常見的點陣圖形格式有：&lt;code&gt;BMP&lt;&#x2F;code&gt;、&lt;code&gt;JPEG&lt;&#x2F;code&gt;（就是 &lt;code&gt;JPG&lt;&#x2F;code&gt;）、&lt;code&gt;GIF&lt;&#x2F;code&gt;、&lt;code&gt;PNG&lt;&#x2F;code&gt;、&lt;code&gt;TIFF&lt;&#x2F;code&gt;。以及你的編輯器所使用的：&lt;code&gt;PSD&lt;&#x2F;code&gt;、&lt;code&gt;SAI&lt;&#x2F;code&gt;、&lt;code&gt;XCF&lt;&#x2F;code&gt;，他們通常還儲存了更多的資訊以便於你的編輯，例如圖層等。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xiang-liang-tu-xing-vector-graphics&quot;&gt;向量圖形（Vector graphics）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;向量圖形&lt;&#x2F;strong&gt;將圖像的每一個元素例如點、線和面記錄下來，就像給你數學公式畫出函數的圖形一樣，通過這些元素的描述（大小、顏色、輪廓、位置…），將圖像畫出來。&lt;&#x2F;p&gt;
+&lt;p&gt;正如上面的描述，你可以&lt;del&gt;（但是很難）&lt;&#x2F;del&gt;將照片存儲為向量圖形，這個動作叫做&lt;strong&gt;矢量化（Vectorization）&lt;&#x2F;strong&gt;。但是它適合用於存儲電腦繪圖、設計等，例如設計圖、小圖標等。向量圖形可以變成點陣圖形，這個動作叫做&lt;strong&gt;柵格化（Rasterization）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;相較於點陣圖形，向量圖形通常儲存較少的資訊（取決於圖像的複雜程度），可以便利的變形、放大、修改。&lt;&#x2F;p&gt;
+&lt;p&gt;常見的向量圖形格式有：&lt;code&gt;SVG&lt;&#x2F;code&gt;，甚至&lt;code&gt;PDF&lt;&#x2F;code&gt;、Flash 的&lt;code&gt;SWF&lt;&#x2F;code&gt;也算。
+以及你的編輯器所使用的：&lt;code&gt;AI&lt;&#x2F;code&gt;、&lt;code&gt;CDR&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: center&quot;&gt;比較項目&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;點陣圖&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;向量圖&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;資訊量&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;多（決定於圖像的大小和解析度）&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;少（決定於圖像的大小和解析度）&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;細節表現&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;高&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;低&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;影像處理&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;複雜，方法多樣&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;簡單&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;變形&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;失真&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;不失真&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;se-cai-xi-tong&quot;&gt;色彩系統&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;給你一點顏色！&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;這個世界是豐富多彩的，圖像也是ww…～&lt;&#x2F;p&gt;
+&lt;p&gt;在數位影像中，顏色以數字描述，如何描述顏色也是一個大問題。
+可以描述的顏色的數量，也就是**色彩深度（Color depth）&lt;strong&gt;換總說法就是&lt;&#x2F;strong&gt;每像素需要多少 bit（bits per pixel，bpp）**決定了圖像色彩的豐富。&lt;&#x2F;p&gt;
+&lt;p&gt;一個未經壓縮的點陣圖形的大小 = 點陣的數量 × 色彩深度；
+換句話說：大小 = 長 × 寬 × 色彩深度；
+下面對圖像大小的計算舉例，均是在未壓縮的情況下和理論上的數值，將使用常見的 Full HD 熒幕的尺寸：1920 × 1080。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;er-yuan-ying-xiang-binary-image&quot;&gt;二元影像（Binary image）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;二元影像（Binary image）&lt;&#x2F;strong&gt;，非黑即白，只有兩種顏色，所以每個像素只要 1 個二進位數字（Bit）表示。&lt;&#x2F;p&gt;
+&lt;p&gt;一張 FHD 的二位元影像的大小 = 2,073,600 bits 大概就是 0.247 MB。&lt;&#x2F;p&gt;
+&lt;p&gt;我知道你用不到的就不多說了。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hui-jie-gray-scale&quot;&gt;灰階（Gray scale）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;灰階（Gray scale）&lt;&#x2F;strong&gt;，一樣只有黑白，但是每個像素有了亮度的差別，每個像素分為 256 種亮度，因為每個像素由 8 個 bit 存儲，而 8 個 bit 可以表示 256 個值（2 的 8 次方）。&lt;&#x2F;p&gt;
+&lt;p&gt;一張 FHD 的灰階影像的大小 = 16,588,800 bits 大概就是 1.978 MB。&lt;&#x2F;p&gt;
+&lt;p&gt;有了這亮度的差別，我們終於可以看到一張黑白的照片了，貓熊表示很開心。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;san-yuan-se-mo-shi-rgb-color-model&quot;&gt;三原色模式（RGB color model）&lt;&#x2F;h3&gt;
+&lt;p&gt;至此，世界終於變成了彩色。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;三原色模式（RGB color model）&lt;&#x2F;strong&gt;：&lt;strong&gt;紅（Red）、綠（Green）、藍（Blue）&lt;&#x2F;strong&gt;，混合除了我們所能看見的所有顏色。即&lt;strong&gt;加色法（Additive color）&lt;&#x2F;strong&gt;：不同顏色的光（色光）混合形成新顏色。它適用於顯示器的顯示，事實上，你的顯示器的每一個像素正是有這三種顏色的發光單元所組成的。電腦中多數圖像以這種方式存儲。&lt;&#x2F;p&gt;
+&lt;p&gt;常見的 RGB 分為 16 位元，24 位元，32 位元。&lt;&#x2F;p&gt;
+&lt;p&gt;16 位元被稱為&lt;strong&gt;高彩色（High color）&lt;&#x2F;strong&gt;，通常是各 5 位元給紅色和藍色，6 位元給綠色，這是因為人類眼睛對於綠色更為敏感；它能表示 65,536 種顏色。&lt;&#x2F;p&gt;
+&lt;p&gt;24 位元被稱為&lt;strong&gt;真彩色（True Color）&lt;&#x2F;strong&gt;，紅綠藍各 8 位元，它能表示 16,777,216 種顏色，這基本是你能看得出來的所有顏色了。&lt;&#x2F;p&gt;
+&lt;p&gt;在上面的兩種模式中，每個像素被分成三個部分，分別給了三原色，這每個部分被稱之為&lt;strong&gt;通道（Channel）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;32 位元在 24 位元的基礎上增加了 8 位元&lt;strong&gt;透明度&lt;&#x2F;strong&gt;，即&lt;strong&gt;阿爾法通道（α Channel，Alpha Channel）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;一張 FHD 的 16 位元影像的大小大概是 3.955 MB。
+一張 FHD 的 24 位元影像的大小大概是 5.933 MB。
+一張 FHD 的 32 位元影像的大小大概是 7.910 MB。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;suo-yin-cai-se-tu-xiang-indexed-color&quot;&gt;索引彩色圖像（Indexed color）&lt;&#x2F;h4&gt;
+&lt;p&gt;然而還存在 8 位元的彩色，它只能表示 256 種顏色，顯然把分給僅僅的 8 位元分給紅綠藍三種顏色那麼畫面一定是無法直視，但是在一張圖像中，不是所有顏色都用得到，相近的顏色可以標記成一種顏色，這樣的方式我們可以將一張 16 或 24 位元的圖像精簡並提取出 256 種顏色，把這 256 種顏色列成一張表格（調色盤），在像素陣列中存儲這個顏色的索引值就可以了，這麼聰明的做法被稱為&lt;strong&gt;索引彩色圖像（Indexed color）&lt;&#x2F;strong&gt;，或&lt;strong&gt;調色盤（Palette）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;亦可看成是一種影像壓縮的方式。（我自己這麼認為）&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;yin-shua-si-fen-se-mo-shi-cmyk-color-model&quot;&gt;印刷四分色模式（CMYK color model）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;印刷四分色模式（CMYK color model）&lt;strong&gt;使用印刷時的顏料（色料）混合的原理，將四種顏料混合出各種顏色：&lt;strong&gt;青色（Cyan），洋紅色（Magenta），黃色（Yellow），黑色（blacK）&lt;&#x2F;strong&gt;。即&lt;&#x2F;strong&gt;減色法（subtractive color）&lt;&#x2F;strong&gt;：每個顏色會減去（即吸收）某些顏色的光並向反射某些顏色的光，所呈現的顏色就是反射到你眼睛里的顏色；這正是你看印刷品等有顏色的物件時的物理解釋。&lt;&#x2F;p&gt;
+&lt;p&gt;正如上文所述，CMYK 被用於印刷品的印刷。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hsl-yu-hsv&quot;&gt;HSL 與 HSV&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;HSL 即色相、飽和度、亮度（英語：Hue, Saturation, Lightness）&lt;&#x2F;strong&gt;；
+HSV 將 HSL 的亮度換成&lt;strong&gt;明度（Value，Brightness）&lt;&#x2F;strong&gt;。他們使用更直覺的方式描述了一個顏色：「這是什麼顏色？深淺如何？明暗如何？」。繪畫軟體的調色盤多採取這種方式呈現，用於顏色選擇和調整。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ying-xiang-dang-an-yu-ge-shi&quot;&gt;影像檔案與格式&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;Android 把你的 JPG 給綠了你知不知道？&lt;&#x2F;del&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;29355920&quot;&gt;當然是選擇原諒她。&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;dian-zhen-tu-xing-wu-shi-zhen&quot;&gt;點陣圖形，無失真&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;bmp-bitmap&quot;&gt;BMP, Bitmap&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;BMP&lt;&#x2F;strong&gt; 本名 &lt;strong&gt;BitMaP&lt;&#x2F;strong&gt;，由微軟 Windows 使用的點陣圖格式，是最簡單的影像檔案格式之一。
+通常 BMP 的檔案是不經過壓縮的，所以檔案要大的多，正如上文的計算。
+BMP 可以選擇的色彩系統很多，每像素可以是 1、4、8、16、24、32 位元。8 位元可以是索引彩色圖像，也可以是灰階圖像。&lt;&#x2F;p&gt;
+&lt;p&gt;由於不經過壓縮，適用於在做影像處理時的原始影像和中間過程。
+過於龐大的體積不利於儲存和在網路上傳輸。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;gif-graphics-interchange-format&quot;&gt;GIF, Graphics Interchange Format&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;GIF&lt;&#x2F;strong&gt; 本名&lt;strong&gt;圖像互換格式（Graphics Interchange Format）&lt;&#x2F;strong&gt;，利用上文所述的&lt;strong&gt;索引彩色圖像方法&lt;&#x2F;strong&gt;，以 8 位元（即 256 種顏色）重現真彩色（24 位元）的圖像。&lt;&#x2F;p&gt;
+&lt;p&gt;當然，無損只在你的圖像中的顏色少於 256 色的情況下…否則相似的顏色會被合併成一種顏色表示，所以一個更多顏色的圖像被壓縮之後，就會出現顏色的細節變少了，變成同種顏色一塊一塊的。&lt;&#x2F;p&gt;
+&lt;p&gt;GIF 還有一個特性便是將多張圖像放在一個檔案中，若這些圖像按順序播放，就會變成&lt;strong&gt;動畫（Animation）&lt;&#x2F;strong&gt;，這一張張圖像被稱為&lt;strong&gt;幀（訊框、影格，Frame）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;GIF 減少了檔案的大小，保持成像的品質，適合在網際網路中傳輸，我是說，80 年代的網路速度。
+但是並不適合顏色豐富的圖像，有顏色的漸變的圖像。&lt;&#x2F;p&gt;
+&lt;p&gt;使用 GIF 有演算法的專利問題，（但現在不成問題），所以 PNG 應運而生。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;png-portable-network-graphics&quot;&gt;PNG, Portable Network Graphics&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;PNG&lt;&#x2F;strong&gt; 本名&lt;strong&gt;可攜式網路圖形（Portable Network Graphics）&lt;&#x2F;strong&gt;，目標是改善並取代 GIF，所以又名「&lt;strong&gt;P&lt;&#x2F;strong&gt;NG is &lt;strong&gt;N&lt;&#x2F;strong&gt;ot &lt;strong&gt;G&lt;&#x2F;strong&gt;IF」。
+PNG 也可以選擇很多色彩系統，可以是索引彩色圖像，也可以是灰階圖像，也可以是顏色豐富的真彩色，亦支持阿爾法通道，可以儲存透明和半透明的圖像。&lt;&#x2F;p&gt;
+&lt;p&gt;無損壓縮使得檔案變小而不會失真。&lt;&#x2F;p&gt;
+&lt;p&gt;相比於 GIF，PNG 壓縮效果更高，可以支持更高的顏色深度，沒有專利問題並且是 ISO 和 IEC 的國際標準，亦被 W3C 推薦，使用自由格式授權。但是，動畫的功能，目前 PNG 只能使用擴充標準實現。&lt;&#x2F;p&gt;
+&lt;p&gt;PNG 適合儲存和在網路上傳輸，我是說，現代的網路速度。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;tiff-tagged-image-file-format&quot;&gt;TIFF, Tagged Image File Format&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;TIFF&lt;&#x2F;strong&gt; 本名&lt;strong&gt;標籤圖檔格式（Tagged Image File Format）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;TIFF 非常的靈活，支持很多種的壓縮算法，同檔案也可以包含多個圖像，支持二元、灰階、索引和全彩色。&lt;&#x2F;p&gt;
+&lt;p&gt;許多專業的設備和軟體支持和使用 TIFF，但也是由於靈活性，在不同的軟體間可能會有兼容問題。&lt;&#x2F;p&gt;
+&lt;p&gt;TIFF 是專業的選擇：適合儲存，更適合在專業的設備和軟體間做資料交換。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dian-zhen-tu-xing-you-shi-zhen&quot;&gt;點陣圖形，有失真&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;jpeg&quot;&gt;JPEG&lt;&#x2F;h4&gt;
+&lt;p&gt;說了那麼多終於講到這個著名的格式了。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;JPEG&lt;&#x2F;strong&gt; 本名&lt;strong&gt;聯合圖像專家小組（Joint Photographic Experts Group）&lt;&#x2F;strong&gt;，常見的後綴名是 &lt;code&gt;JPG&lt;&#x2F;code&gt;，是 ISO 國際標準，也最普遍的被用來儲存和傳輸相片的格式。&lt;&#x2F;p&gt;
+&lt;p&gt;JPEG 使用一些線性代數之類的難懂的演算法，有效降低了圖像的大小，但是會造成失真。
+可以使用較低的壓縮率來減少這種現象，但是就會來了檔案大小的增加，畢竟魚和熊掌不可兼得：可以調整壓縮率以權宜。&lt;&#x2F;p&gt;
+&lt;p&gt;在網路上，一張 JPEG 可能被重複的壓縮、導致整張圖像慘不忍睹。&lt;&#x2F;p&gt;
+&lt;p&gt;JPEG 適合細節豐富的照片，非常適合在網路上傳輸；但是在壓縮過程中圖像的品質會遭受到可見的破壞，特別是有線條繪圖（drawing）和其他文字或圖示（iconic）中，這類的圖像&lt;strong&gt;在相鄰像素之間有明顯對比&lt;&#x2F;strong&gt;：因為壓縮的演算法，它們會有很顯眼的失真。&lt;&#x2F;p&gt;
+&lt;p&gt;JPEG 亦有一些專利爭議，（但現在好像也不成問題）。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;webp&quot;&gt;WebP&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;WebP&lt;&#x2F;strong&gt; 是 Google 的兒子，是 WebM 多媒體格式的姊妹項目，使用自由格式授權。可選擇有損壓縮或無損壓縮，目標是減少檔案大小，但達到和 JPEG 格式相同的圖像品質，為網路所優化。目前茁壯成長中。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xiang-liang-tu-xing&quot;&gt;向量圖形&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;svg&quot;&gt;SVG&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;SVG&lt;&#x2F;strong&gt; 本名&lt;strong&gt;可縮放向量圖形（Scalable Vector Graphics）&lt;&#x2F;strong&gt;，基於 XML 的描述二維向量圖形的格式。SVG 由 W3C 制定，是一個開放標準。
+SVG 內的物件可以是向量圖形、點陣圖像以及文字。點陣圖像可以是包括 PNG、JPEG。
+由於基於 XML，甚至可以用一般的文字編輯器便可檢視或修改。（但是一般由繪圖軟體生成和修改，&lt;del&gt;何必傷害自己呢…&lt;&#x2F;del&gt;）&lt;&#x2F;p&gt;
+&lt;p&gt;適合存儲電腦繪圖、設計等，也適合在網路上傳輸。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zong-jie&quot;&gt;總結&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;明明是講圖像的文章我卻一張圖都沒有用是不是很厲害！&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;如果你懂音樂的檔案格式：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;BMP 就像 WAV；&lt;&#x2F;li&gt;
+&lt;li&gt;JPG 就像 MP3；&lt;&#x2F;li&gt;
+&lt;li&gt;PNG 就像 FLAC；&lt;&#x2F;li&gt;
+&lt;li&gt;SVG 就像 MIDI。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;del&gt;（我亂說的）&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;以下是非常不負責任的總結：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;XCF, PDF, AI, etc.&lt;&#x2F;strong&gt;：各個平臺的原生檔案格式，用於專案的之間的交換、備份存檔，但是不適合作為發佈使用。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;BMP&lt;&#x2F;strong&gt;：&lt;del&gt;小畫家存檔&lt;&#x2F;del&gt;；影像處理時的原始影像和中間過程，要存儲請轉成 PNG。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;GIF&lt;&#x2F;strong&gt;：動圖；以及在網際網路中傳輸&lt;del&gt;入門&lt;&#x2F;del&gt;的選擇。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;PNG&lt;&#x2F;strong&gt;：&lt;del&gt;梗圖&lt;&#x2F;del&gt;；存儲 JPEG 水土不服的，那些在相鄰像素之間有明顯對比的圖像（例如，在編輯後添加過文字等物件的照片）；數位創作（畫的插畫、漫畫…）；在網際網路中傳輸&lt;del&gt;進階&lt;&#x2F;del&gt;的選擇。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;TIFF&lt;&#x2F;strong&gt;：專業的選擇，如果你用的到這個的話，我覺得你也不需要我的建議了ww…&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;JPEG&lt;&#x2F;strong&gt;：細節豐富的圖像；照片；處理過的照片；&lt;del&gt;調教過的照片&lt;&#x2F;del&gt;；不包括哪些有水土不服特徵的圖像；在網際網路中傳輸&lt;del&gt;通常&lt;&#x2F;del&gt;的選擇。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;SVG&lt;&#x2F;strong&gt;：向量圖形，幾乎唯一的選擇。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;參考&lt;&#x2F;h2&gt;
+&lt;p&gt;大部分內容均參考、照抄、翻譯自中文、英文、日文的&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Main_Page&quot;&gt;維基百科&lt;&#x2F;a&gt;。（CC BY-SA 3.0）&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Release Notes:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;2.1 Release (20180207).&lt;&#x2F;li&gt;
+&lt;li&gt;2.0 Release (20180206). Fix for jekyll.&lt;&#x2F;li&gt;
+&lt;li&gt;1.1 Release (20171209).&lt;&#x2F;li&gt;
+&lt;li&gt;1.0 Release (20171202).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>
