@@ -69,7 +69,20 @@ BME680 是 BOSCH 出品的感測器，對就是那個做家電品牌。
 首先是選擇通訊協定，我使用的 BME680 模組支援 I2C 和 SPI 實體層通訊協定，使用不同的協定電路接法不同，如何選擇實體層通訊協定可以看下面的參考。
 這裡選擇 I2C，絕對不是因為我們使用的範例程式僅支援 I2C。
 
-接線之前記得關機斷電，關機之前記得先打開 I2C 和 SPI 的支援，使用指令 `sudo raspi-config`，在 `Interfacing Options` 中啟用 `I2C` 或 `SPI`。之後接線之前記得關機斷電，這很重要所以說兩遍。
+
+接線之前記得關機斷電，關機之前記得先打開 I2C 和 SPI 的支援，使用指令：
+
+```bash
+sudo raspi-config
+```
+
+在 `Interfacing Options` 中啟用 `I2C` 或 `SPI`。檢查對應的 kernel modules 是否被成功載入：
+
+```bash
+lsmod | grep "i2c\|spi"
+```
+
+之後接線之前記得關機斷電，這很重要所以說兩遍。
 
 把感測器和樹梅派接起來沒有什麼難度，就和 Pen pineapple apple pen 一樣，只要照著感測器的 Datasheet 插到樹梅派的 GPIO 上即可。
 

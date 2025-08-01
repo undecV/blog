@@ -3,7 +3,7 @@ title: "歷史的垃圾堆"
 template: "series.html"
 sort_by: "update_date"
 transparent: true
-extra: 
+extra:
     series: true
     series_intro_templates:
         default: "這篇文章出土自 $SERIES_HTML_LINK 系列，僅供考古，不供參考。"

@@ -88,7 +88,7 @@ http=127.0.0.1:9487;https=127.0.0.1:9487;socks=127.0.0.1:9487
 socks=127.0.0.1:9487
 ```
 
-![Win10_Proxy](/images/posts/Proxy_Settings/Win10_Proxy_E.png)
+![Win10_Proxy](./images/Win10_Proxy_E.png)
 
 ### 網頁瀏覽器 - Web Browser
 
@@ -107,8 +107,8 @@ Vivaldi:
 
 以 [Mozilla Firefox](https://www.mozilla.org/zh-TW/firefox/all/) 57+ 為例：
 
-![Firefox_Proxy_1](/images/posts/Proxy_Settings/Firefox_Proxy_1_E.png)
-![Firefox_Proxy_2](/images/posts/Proxy_Settings/Firefox_Proxy_2.png)
+![Firefox_Proxy_1](./images/Firefox_Proxy_1_E.png)
+![Firefox_Proxy_2](./images/Firefox_Proxy_2.png)
 
 其他的瀏覽器設定大致相同。
 
@@ -127,9 +127,9 @@ Vivaldi:
 
 以 FoxyProxy Standard 為例：
 
-![FoxyProxy_1](/images/posts/Proxy_Settings/FoxyProxy_1_E.png)
-![FoxyProxy_2](/images/posts/Proxy_Settings/FoxyProxy_2.png)
-![FoxyProxy_3](/images/posts/Proxy_Settings/FoxyProxy_3_E.png)
+![FoxyProxy_1](./images/FoxyProxy_1_E.png)
+![FoxyProxy_2](./images/FoxyProxy_2.png)
+![FoxyProxy_3](./images/FoxyProxy_3_E.png)
 
 ### 其他軟體中的設定
 
@@ -137,7 +137,7 @@ Vivaldi:
 
 以下載器 [Free Download Manager](https://www.freedownloadmanager.org) 爲例：
 
-![FDM_1](/images/posts/Proxy_Settings/FDM_1_E.png)
+![FDM_1](./images/FDM_1_E.png)
 
 通常的，代理的設定在軟體設定界面的網路設定分頁／分類中。
 
