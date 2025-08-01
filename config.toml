@@ -73,7 +73,7 @@ menu = [
     { name = "Posts", url = "posts", trailing_slash = true },
     { name = "Archive", url = "archive", trailing_slash = true },
     { name = "Tags", url = "tags", trailing_slash = true },
-    # { name = "projects", url = "projects", trailing_slash = true },
+    { name = "Projects", url = "projects", trailing_slash = true },
     # { name = "about", url = "about", trailing_slash = true },
     # { name = "Github", url = "https://github.com/undecv", trailing_slash = false },
 ]
