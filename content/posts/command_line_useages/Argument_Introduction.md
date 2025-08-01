@@ -1,6 +1,6 @@
 ---
 title: "程式如何接收參數"
-description: "Argument Introduction<br />Hello World 之後的下一個範例程式"
+description: "從 Hello World 到能聽懂人話的程式：介紹命令列參數的使用方法，讓程式能根據輸入做不同事情。"
 date: 2025-08-01 09:00:00
 updated: 2025-08-01 09:00:00
 slug: "argument_introduction"
