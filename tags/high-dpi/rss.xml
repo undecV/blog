@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - High DPI</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/high-dpi/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Mon, 10 May 2021 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Windows 下手動修正 VLC 界面縮放</title>
+          <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/vlc-fractional-scaling/</link>
+          <guid>https://undecv.github.io/blog/posts/vlc-fractional-scaling/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/vlc-fractional-scaling/">&lt;p&gt;Fix VLC UI fractional scaling in Windows.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;高 DPI 螢幕是指是尺寸小並且有者高解析度的螢幕，但是在這高 DPI 的螢幕下，各種按鈕選單就小的就跟他的丁丁一樣，除非上滑鼠，不要說手指，用筆都很難按到。&lt;&#x2F;p&gt;
+&lt;p&gt;為了適配最新的螢幕科技，Windows 引入了 Fractional Scaling 縮放功能，讓視窗在高 DPI 螢幕上不會看得太小。&lt;&#x2F;p&gt;
+&lt;p&gt;具體設定專案是「設定」-&amp;gt;「系統」-&amp;gt;「顯示器」-&amp;gt;「縮放與版面配置」的「變更文字、應用程式與其他項目的大小」。&lt;&#x2F;p&gt;
+&lt;p&gt;但是這就像把一張低畫素圖片放大一樣，一些沒有對此優化過的舊軟體放大後會出現鋸齒、錯位是在所難免的。
+原因就是早期的軟體界面設計都是用絕對的畫素作度量。&lt;&#x2F;p&gt;
+&lt;p&gt;VLC 的界面勉強可以觸控，VLC 在觸控螢幕下，左右滑可以前後跳轉進度，上下滑可以調節音量，其他動作，甚至播放暫停就只能點按鈕了。
+但是 VLC 的界面似乎不會隨著 Windows 的設定縮放，按鈕都太小很難按到。&lt;&#x2F;p&gt;
+&lt;p&gt;其他開源的 Windows 播放器，例如 MPC-HC，甚至連 Windows 內建的 UWP 應用程式 竟然都連種陽春的觸屏手勢支援都沒有。
+Windows Phone 版的 VLC 看似是一個解決辦法，但是官方說了這不是「完整版的 VLC」，而且上一個 release tag 在一年前。
+而，最新還在測試版的 VLC 4.0 將會改頭換面，就一起期待吧。&lt;&#x2F;p&gt;
+&lt;p&gt;所以需要就強行讓 VLC 縮放界面（。&lt;&#x2F;p&gt;
+&lt;p&gt;Step 1. 創立手稿程式。在你喜歡的地方創立一個 TXT 文字檔案，開啟輸入以下手稿語言指令碼內容：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;set QT_AUTO_SCREEN_SCALE_FACTOR=0
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;set QT_SCREEN_SCALE_FACTORS=%縮放比例%
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;START &amp;quot;&amp;quot; &amp;quot;%VLC的安裝路徑%\vlc.exe&amp;quot; %*
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;例如 VLC 預設的安裝路徑，縮放比例是 1.5，內容就是這樣：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;set QT_AUTO_SCREEN_SCALE_FACTOR=0
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;set QT_SCREEN_SCALE_FACTORS=1.5
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;START &amp;quot;&amp;quot; &amp;quot;C:\Program Files\VideoLAN\VLC\vlc.exe&amp;quot; %*
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;儲存並且改後綴名為 &lt;code&gt;.bat&lt;&#x2F;code&gt;，例如檔名叫做 &lt;code&gt;VLC.bat&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;Step 2. 測試。這時候你可以，雙擊「開啟」這個手稿程式，或是將影片拖動到這個檔案的圖示上，就可以用縮放後的界面播放影片了。&lt;&#x2F;p&gt;
+&lt;p&gt;Step 3. 放置。確認手稿程式沒有 BUG 之後，放到你喜歡的地方，例如 VLC 預設的安裝路徑。&lt;&#x2F;p&gt;
+&lt;p&gt;Step 4. 將手稿程式關聯到檔案，以後就可以直接用縮放後的 VLC 開啟影片檔案了。&lt;&#x2F;p&gt;
+&lt;p&gt;找到你要看的影片檔案，例如 mp4 檔案，右鍵 Open with -&amp;gt; Choose another app -&amp;gt; 滑到底 More Apps ↓ -&amp;gt; 滑到底 &lt;code&gt;Look for another app on this PC&lt;&#x2F;code&gt;，選擇方才放好的手稿程式。&lt;&#x2F;p&gt;
+&lt;p&gt;下次遇到其他格式的影片檔案只要在 Open with -&amp;gt; Choose another app 彈出的列表中尋找，若沒有就再重複上述動作。&lt;&#x2F;p&gt;
+&lt;p&gt;是不是巨醜（，更新之前就只能將就著用吧。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;VideoLAN: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;nightlies.videolan.org&#x2F;&quot;&gt;VLC media player continuous nightly builds&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;The VideoLAN Forums: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;forum.videolan.org&#x2F;viewtopic.php?t=144476&quot;&gt;How to Enable hiDPI Scaling?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;bgstack15.wordpress.com: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;bgstack15.wordpress.com&#x2F;2019&#x2F;04&#x2F;11&#x2F;fix-vlc-ui-scaling-problems&#x2F;&quot;&gt;Fix vlc ui scaling problems&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Unix &amp;amp; Linux Stack Exchange: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;unix.stackexchange.com&#x2F;questions&#x2F;557181&#x2F;how-to-increase-dpi-for-vlc-media-player-in-cinnamon-on-uhd-display&quot;&gt;How to increase DPI for VLC media player in Cinnamon on UHD display?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

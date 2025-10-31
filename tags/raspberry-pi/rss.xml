@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Raspberry Pi</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/raspberry-pi/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 29 Mar 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>桌面級氣象站：樹梅派4B × BME680</title>
+          <pubDate>Fri, 29 Mar 2024 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/rpi4b-bme680/</link>
+          <guid>https://undecv.github.io/blog/posts/rpi4b-bme680/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/rpi4b-bme680/">&lt;!-- # 桌面級氣象站：樹梅派 × BME680 --&gt;
+&lt;p&gt;因為想讓樹莓派做一些像是樹莓派會做的事（？，
+所以買了一顆 BME680 感測器來玩玩。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ying-ti-xuan-ze&quot;&gt;硬體選擇&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;wen-shi-du-gan-ce-qi&quot;&gt;溫濕度感測器&lt;&#x2F;h3&gt;
+&lt;p&gt;溫濕度感測器的選擇有很多，常見的有 DHT11、DHT22，以及 BMP180、BME280 等，
+其中的功能、感測項目、範圍和精度都不相同，電路接法也各不相同，看下面的參考。&lt;&#x2F;p&gt;
+&lt;p&gt;DHT11、DHT22、BMP180 僅支援溫度（Temperature）和溼度（Humidity），BME280 另外支援了氣壓（Pressure），BME680 除了上述的功能，還外加了感測揮發性有機化合物（VOC）。
+更多的功能、更高的精度也就意味著更高的價格。
+&lt;del&gt;但畢竟是難得買個玩具，當然是選可玩性高的。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;至於電路，好在為了便於開發，電子材料行上賣的通常都有打包好了的模組，用杜邦線插到 樹莓派＼Arduino 上的 GPIO 就可以直接使用。&lt;&#x2F;p&gt;
+&lt;p&gt;BME680 是 BOSCH 出品的感測器，對就是那個做家電品牌。
+老師說過做硬體第一步就是去查 Datasheet。
+至於打包好的模組，模組製造商也會提供相應的 Datasheet，包含了電路的接法和一些開發資料。
+電路理所當然會改變感測器的輸入輸出，所以以模組的文檔為準。&lt;&#x2F;p&gt;
+&lt;p&gt;參考：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Random nerd tutorials: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;randomnerdtutorials.com&#x2F;dht11-vs-dht22-vs-lm35-vs-ds18b20-vs-bme280-vs-bmp180&#x2F;&quot;&gt;DHT11 vs DHT22 vs LM35 vs DS18B20 vs BME280 vs BMP180&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Bosch Sensortec: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.bosch-sensortec.com&#x2F;products&#x2F;environmental-sensors&#x2F;gas-sensors&#x2F;bme680&#x2F;&quot;&gt;Gas Sensor BME680&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Waveshare Wiki: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.waveshare.net&#x2F;wiki&#x2F;BME680_Environmental_Sensor&quot;&gt;BME680 Environmental Sensor&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;shu-mei-pai-4b&quot;&gt;樹梅派4B&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;del&gt;樹梅派沒什麼好介紹的。&lt;&#x2F;del&gt;樹梅派上有一條又粗又長的 GPIO 接口，只在大學的時候做過相關的專案&lt;del&gt;（作業）&lt;&#x2F;del&gt;，有了自己的樹梅派之後也是把它拿來當成 Headless 的 Linux 電腦來使用，總想能有一天能自己玩玩 IoT。&lt;&#x2F;p&gt;
+&lt;p&gt;要注意的是，在這個專案中使用到了 Docker，而一些 Docker container 會需要使用 64-bit 的作業系統，包括 64-bit Kernel 和 64-bit Userspace。我第一次知道 Kernel 和 Userspace 的架構可以不同...
+然而，不知道為何我的 Raspberry Pi OS 是 64-bit Kernel + 32-bit Userspace，然後就不得不重灌了...&lt;&#x2F;p&gt;
+&lt;p&gt;作業系統的架構可以通過以下指令檢查：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The kernel architecture: &lt;code&gt;uname -m&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;The userspace architecture: &lt;code&gt;getconf LONG_BIT&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;APT&#x2F;DPKG architecture: &lt;code&gt;dpkg --print-architecture&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;參考：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;LinuxServer.io: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.linuxserver.io&#x2F;blog&#x2F;a-farewell-to-arm-hf&quot;&gt;A Farewell To Arm(hf)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;zhuan-an-zong-lan&quot;&gt;專案總覽&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;感測器：BME680&lt;&#x2F;li&gt;
+&lt;li&gt;開發平台：Raspberry Pi&lt;&#x2F;li&gt;
+&lt;li&gt;開發環境：Python&lt;&#x2F;li&gt;
+&lt;li&gt;資料庫：InfluxDB&lt;&#x2F;li&gt;
+&lt;li&gt;儀錶板：Grafana&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;這個專案只是最基本的把東西串接起來，比什麼什麼課程的期末專題廢得多。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ying-ti-zu-zhuang-shi-ti-ceng&quot;&gt;硬體組裝（實體層）&lt;&#x2F;h2&gt;
+&lt;p&gt;首先是選擇通訊協定，我使用的 BME680 模組支援 I2C 和 SPI 實體層通訊協定，使用不同的協定電路接法不同，如何選擇實體層通訊協定可以看下面的參考。
+這裡選擇 I2C，絕對不是因為我們使用的範例程式僅支援 I2C。&lt;&#x2F;p&gt;
+&lt;p&gt;接線之前記得關機斷電，關機之前記得先打開 I2C 和 SPI 的支援，使用指令：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; raspi-config&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在 &lt;code&gt;Interfacing Options&lt;&#x2F;code&gt; 中啟用 &lt;code&gt;I2C&lt;&#x2F;code&gt; 或 &lt;code&gt;SPI&lt;&#x2F;code&gt;。檢查對應的 kernel modules 是否被成功載入：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;lsmod&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-pipe z-shell&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;grep&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;i2c\|spi&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;之後接線之前記得關機斷電，這很重要所以說兩遍。&lt;&#x2F;p&gt;
+&lt;p&gt;把感測器和樹梅派接起來沒有什麼難度，就和 Pen pineapple apple pen 一樣，只要照著感測器的 Datasheet 插到樹梅派的 GPIO 上即可。&lt;&#x2F;p&gt;
+&lt;p&gt;要注意的是，樹莓派 4B 官方外殼沒給 GPIO 留洞，畢竟我買的時候也沒考慮真的要玩 GPIO，接好感測器後上蓋基本上是沒法蓋回去的，走線還會卡到官方散熱模組。&lt;&#x2F;p&gt;
+&lt;p&gt;參考：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.eagletek.com.tw&#x2F;post&#x2F;i2c-spi-protocols&quot;&gt;嵌入式系統中 I2C 和 SPI 通訊協定比較&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;an-zhuang-bme680-qu-dong-cheng-shi&quot;&gt;安裝 BME680 驅動程式&lt;&#x2F;h2&gt;
+&lt;p&gt;專案的平臺使用 樹莓派上標準的 Python，使用 Package pimoroni&#x2F;bme680-python。&lt;&#x2F;p&gt;
+&lt;p&gt;由於有些作業系統的程式是依賴 Python 的，所以在 Linux 上安裝 Python 的 Packages 時，不能直接使用 &lt;code&gt;pip&lt;&#x2F;code&gt; 安裝，通常會建議在專案資料夾下使用虛擬環境 &lt;code&gt;virtualenv&lt;&#x2F;code&gt;。方法略。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;pip&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; install bme680&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;驅動程式碼中提供了範例使用程式，其中的 &lt;code&gt;read-all.py&lt;&#x2F;code&gt; 用於讀取所有參數，我們直接拿來用。&lt;&#x2F;p&gt;
+&lt;p&gt;參考：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pimoroni&#x2F;bme680-python&quot;&gt;pimoroni&#x2F;bme680-python&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;jian-li-shi-xu-zi-liao-ku-influxdb&quot;&gt;建立時序資料庫：InfluxDB&lt;&#x2F;h2&gt;
+&lt;p&gt;InfluxDB 是一個時序資料庫（TSDB），顧名思義就是把資料按時間存儲。&lt;&#x2F;p&gt;
+&lt;p&gt;我們使用開源版本的 InfluxDB OSS v2。
+InfluxDB 的選擇將會在附錄章節 InfluxDB v. Prometheus 討論。&lt;&#x2F;p&gt;
+&lt;p&gt;InfluxDB OSS v2 可以通過 Docker 安裝。（註：範例中的地址 &lt;code&gt;127.0.0.1:8086&lt;&#x2F;code&gt; 為了安全僅限本機，若要開放，可以使用任意 Web 伺服器做反向代理，同時可以考慮啟用 HTTPS。）&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;yaml&quot; class=&quot;language-yaml z-code&quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;&lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;services&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;  &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;influxdb&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;container_name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;influxdb&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;image&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;influxdb:2&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;restart&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;unless-stopped&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;ports&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;127.0.0.1:8086:8086&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;volumes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;        &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-yaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-yaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;.&#x2F;data:&#x2F;var&#x2F;lib&#x2F;influxdb2&lt;span class=&quot;z-punctuation z-definition z-string z-end z-yaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;        &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-yaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-yaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;.&#x2F;config:&#x2F;etc&#x2F;influxdb2&lt;span class=&quot;z-punctuation z-definition z-string z-end z-yaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;安裝完成後，使用瀏覽器訪問 Container 開放的 IP:Port 會看到 WebUI，做一些基本設定，例如建立賬號、建立 &lt;code&gt;bucket&lt;&#x2F;code&gt;、建立 &lt;code&gt;token&lt;&#x2F;code&gt;。
+取得 &lt;code&gt;token&lt;&#x2F;code&gt;、&lt;code&gt;org&lt;&#x2F;code&gt; 和 &lt;code&gt;bucket&lt;&#x2F;code&gt; 之後，拿個小本本記下來。&lt;&#x2F;p&gt;
+&lt;p&gt;在 Python 中，可以直接使用官方的 Package 訪問資料庫。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;pip&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; install influxdb-client&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;參考：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;InfluxDB OSS v2 Documentation: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;docs.influxdata.com&#x2F;influxdb&#x2F;v2&#x2F;install&#x2F;&quot;&gt;Install InfluxDB&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;InfluxDB Cloud (TSM) Documentation: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;docs.influxdata.com&#x2F;influxdb&#x2F;cloud&#x2F;api-guide&#x2F;client-libraries&#x2F;python&#x2F;&quot;&gt;Use the InfluxDB Python client library&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;xie-yi-dian-cheng-shi&quot;&gt;寫一點程式&lt;&#x2F;h2&gt;
+&lt;p&gt;程式有兩個任務，按指定頻率的抓取感測值，然後放進資料庫。&lt;&#x2F;p&gt;
+&lt;p&gt;我們可以直接修改上面提及的範例程式 &lt;code&gt;read-all.py&lt;&#x2F;code&gt;，畢竟是造好的輪子。
+範例程式將抓取所有感測值，並將感測值印在標準輸出上。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xie-qu-gan-ce-zhi&quot;&gt;擷取感測值&lt;&#x2F;h3&gt;
+&lt;p&gt;上文提到，BME680 還外加了感測揮發性有機化合物（VOC），VOC 感測器需要預熱。&lt;&#x2F;p&gt;
+&lt;p&gt;在範例程式中，下面的代碼啟用 VOC 感測，刪掉即關閉：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sensor&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;set_gas_status&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;bme680&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-constant z-python&quot;&gt;ENABLE_GAS_MEAS&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;若啟用了 VOC 感測，當感測器準備好的時候 &lt;code&gt;sensor.data.heat_stable == True&lt;&#x2F;code&gt; 即可得到 VOC 值 &lt;code&gt;sensor.data.gas_resistance&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;範例程式：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;Python&quot; class=&quot;language-Python z-code&quot;&gt;&lt;code class=&quot;language-Python&quot; data-lang=&quot;Python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; BME680 初始化
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sensor&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;bme680&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;BME680&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;bme680&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-constant z-python&quot;&gt;I2C_ADDR_PRIMARY&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 讀取 BME680 資料
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-statement z-conditional z-if z-python&quot;&gt;&lt;span class=&quot;z-keyword z-control z-conditional z-if z-python&quot;&gt;if&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-python&quot;&gt;not&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sensor&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;get_sensor_data&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-block z-conditional z-if z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-keyword z-control z-flow z-continue z-python&quot;&gt;continue&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;temperature&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-annotation z-variable z-python&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-support z-type z-python&quot;&gt;float&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sensor&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;data&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;temperature&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;pressure&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-annotation z-variable z-python&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-support z-type z-python&quot;&gt;float&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sensor&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;data&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;pressure&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;humidity&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-annotation z-variable z-python&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-support z-type z-python&quot;&gt;float&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sensor&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;data&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;humidity&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-string z-python&quot;&gt;f&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;temperature&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-format-spec z-python&quot;&gt;&lt;span class=&quot;z-constant z-other z-format-spec z-python&quot;&gt;:.2f&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt; °C, &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;pressure&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-format-spec z-python&quot;&gt;&lt;span class=&quot;z-constant z-other z-format-spec z-python&quot;&gt;:.2f&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt; hPa, &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;humidity&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-format-spec z-python&quot;&gt;&lt;span class=&quot;z-constant z-other z-format-spec z-python&quot;&gt;:.2f&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt; %RH&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;xie-ru-zi-liao-ku&quot;&gt;寫入資料庫&lt;&#x2F;h3&gt;
+&lt;p&gt;範例程式：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;Python&quot; class=&quot;language-Python z-code&quot;&gt;&lt;code class=&quot;language-Python&quot; data-lang=&quot;Python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; InfluxDB 客戶端初始化
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;client&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;InfluxDBClient&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;url&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;url&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;token&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;token&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;org&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;org&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; InfluxDB 寫入 API 初始化
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;write_api&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;client&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;write_api&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;write_options&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-other z-constant z-python&quot;&gt;SYNCHRONOUS&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 構建 InfluxDB 數據點
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;data_point&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Point&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;bme680&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-separator z-continuation z-line z-python&quot;&gt;\&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;field&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;temperature&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;temperature&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-separator z-continuation z-line z-python&quot;&gt;\&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;field&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;pressure&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;pressure&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-separator z-continuation z-line z-python&quot;&gt;\&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;field&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;humidity&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;humidity&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 寫入 InfluxDB
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;write_api&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;write&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;bucket&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;bucket&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;record&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;data_point&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;此時已成功的把資料寫進 InfluxDB 中，在 WebUI 界面中可以看到資料的更新。
+InfluxDB 內建資料視覺化，已經夠用了。
+&lt;del&gt;但只用它不夠潮，&lt;&#x2F;del&gt;要潮到出水，我們會用到 Grafana。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jian-li-yi-biao-ban-grafana&quot;&gt;建立儀錶板：Grafana&lt;&#x2F;h2&gt;
+&lt;p&gt;Grafana 是一個儀錶板，用於資料視覺的呈現。Gragana 一樣可以通過 Docker 安裝。（註：同樣的，範例中的地址 &lt;code&gt;127.0.0.1:3000&lt;&#x2F;code&gt; 為了安全僅限本機，若要開放，可以使用任意 Web 伺服器做反向代理，同時修改 docker compose 的環境變數 &lt;code&gt;GF_SERVER_ROOT_URL&lt;&#x2F;code&gt;，同時可以考慮啟用 HTTPS。）&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;yaml&quot; class=&quot;language-yaml z-code&quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;&lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;version&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-yaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-yaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;3.8&lt;span class=&quot;z-punctuation z-definition z-string z-end z-yaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;&lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;services&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;  &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;grafana&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;image&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;grafana&#x2F;grafana-oss&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;container_name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;grafana&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;restart&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;unless-stopped&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;ports&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;127.0.0.1:3000:3000&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;environment&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;GF_SERVER_ROOT_URL=http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;GF_DASHBOARDS_MIN_REFRESH_INTERVAL=1s&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;network_mode&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;host&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;volumes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;grafana-storage:&#x2F;var&#x2F;lib&#x2F;grafana&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;&lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;volumes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;  &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;grafana-storage&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-flow-mapping z-yaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-mapping z-begin z-yaml&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-mapping z-end z-yaml&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Grafana 中內建 InfluxDB 的支援，在資料來源中可直接選擇 InfluxDB，按說明設定即可。&lt;&#x2F;p&gt;
+&lt;p&gt;Grafana 預設的更新間隔較長，修改 docker compose 中的環境變數 &lt;code&gt;GF_DASHBOARDS_MIN_REFRESH_INTERVAL&lt;&#x2F;code&gt; 調整最小間隔（範例中為 1 秒）。&lt;&#x2F;p&gt;
+&lt;p&gt;至此，可以在 Grafana 的儀表板中「實時」看到 BME680 感測器的結果。&lt;&#x2F;p&gt;
+&lt;p&gt;參考：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;SDpower @ iT 邦幫忙: 制霸IoT 30Day！系列 第 16 篇 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;ithelp.ithome.com.tw&#x2F;articles&#x2F;10223604&quot;&gt;圖表（二）&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;appendix&quot;&gt;Appendix&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;influxdb-v-prometheus&quot;&gt;InfluxDB v. Prometheus&lt;&#x2F;h3&gt;
+&lt;p&gt;InfluxDB 是時序資料庫，時序資料 簡單來說就是 時間 對應 資料；
+而 Prometheus 更專注於監視和告警。
+簡單來說，他們關鍵的差異在於 Push（推）和 Pull（拉）模型。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;InfluxDB 使用 Push model，程式 將 資料 &lt;strong&gt;推&lt;&#x2F;strong&gt; 到資料庫中。&lt;&#x2F;li&gt;
+&lt;li&gt;Prometheus 使用 Pull model，資料 由 Prometheus &lt;strong&gt;拉&lt;&#x2F;strong&gt; 到資料庫中。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;因為是由 Prometheus 主動向程式（Exporter） 抓取資料，Exporter 將資料準備成特定的格式 metric；
+若 Exporter 要直接對接 Prometheus，Exporter 必須實作一個 Web Server：
+即是 Prometheus 向 Exporter 發送 HTTP 請求，Exporter 使用 HTTP 回應。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，資料的流程是：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;若使用 InfluxDB：資料源 -&amp;gt; 程式 -&amp;gt; InfluxDB &amp;lt;- Grafana；&lt;&#x2F;li&gt;
+&lt;li&gt;若使用 Prometheus：資料源 -&amp;gt; Exporter &amp;lt;- Prometheus &amp;lt;- Grafana。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>Raspberry Pi 4B 搭建 NAS 第二話：網路篇</title>
+          <pubDate>Fri, 03 Apr 2020 01:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/rpi4b-nas-ep2/</link>
+          <guid>https://undecv.github.io/blog/posts/rpi4b-nas-ep2/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/rpi4b-nas-ep2/">&lt;p&gt;&lt;del&gt;究竟讀寫速度會卡在 USB 還是 SMB 呢？rPi4B NAS 翻車最終話！\滑稽。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;供電的問題解決了，SMB 網路芳鄰也成功搭建了起來，那接下來就是喜聞樂見的測速時間了。&lt;&#x2F;p&gt;
+&lt;p&gt;注意，以下使用的單位，小寫 &lt;code&gt;b&lt;&#x2F;code&gt; 是 &lt;code&gt;bits&lt;&#x2F;code&gt;，大寫 &lt;code&gt;B&lt;&#x2F;code&gt; 是 &lt;code&gt;Bytes&lt;&#x2F;code&gt;，&lt;code&gt;8 bit = 1 Byte&lt;&#x2F;code&gt;，全部使用十進位的 &lt;code&gt;1 MB = 1,000,000 Bytes&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;依據 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;（WD 紅碟的 Spec），壹個典型的 2.5吋、5400RPM 的硬碟，144MB&#x2F;s，根據可愛的 Shizuku &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 測試我的行動硬碟，結果差不多。&lt;&#x2F;p&gt;
+&lt;p&gt;USB 3.0 的理論速度是 5Gb&#x2F;s，大約是 625MB&#x2F;s &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-1&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;；根據 rPi 官方的說法 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-5-1&quot;&gt;&lt;a href=&quot;#fn-5&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 和基準測試 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-1&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 有約 343MB&#x2F;s，所以 USB 在機械硬碟的速度下不會成為瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;同樣的，根據 Spec 和官方的測速 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-2&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，Ethernet 可以有幾乎真正的 GbE 的 1Gb&#x2F;s 的速度，當然要達到真正的 GbE 需要交換機、路由器、網路線、以及其他終端裝置支援。指令 ethtool eth0 可以檢視當前的連線頻寬（理想速度），然而，即使是按照理想的 1Gb&#x2F;s 的速度計算，GbE 也僅有 125Mb&#x2F;s。
+在全程使用 GbE 的情景下，這速度會是瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;而 Wi-Fi 就更慘了，還是根據官方測速 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-3&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，在 5GHz 之下僅有 114Mb&#x2F;s（約 14MB&#x2F;s）的實際速度。指令 iwconfig 可以檢視當前的連線頻寬（理想速度）。沒錯，明明是 Wi-Fi 5 卻連 4 都不如\滑稽。
+在 rPi4B 使用 Wi-Fi 的情況下，這速度會是瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;但是吼，話雖這麼說，不要忘記了，rPi4B 再怎麼說也只要一兩張小學生的 Low Cost 裝置，你還想怎樣（錘。&lt;&#x2F;p&gt;
+&lt;p&gt;可以使用 iperf3 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-3-1&quot;&gt;&lt;a href=&quot;#fn-3&quot;&gt;6&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 進行網路的實際速度的測試。
+可以使用可愛的 Shizuku &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-2&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 對本地和遠端的硬碟做讀寫速度測試。&lt;&#x2F;p&gt;
+&lt;p&gt;而，一般家用無線路由器，甚至終端裝置（電腦、手機）的 Wi-Fi 速度亦有可能成為瓶頸，例如一個標稱 AC1200 的家用無線路由器 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-7-1&quot;&gt;&lt;a href=&quot;#fn-7&quot;&gt;7&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，在 Wi-Fi 5（即 802.11ac）的 5GHz 之下的理論速度是 867Mb&#x2F;s（約 108MB&#x2F;s），而 Wi-Fi 的實際速度是非常看臉的，會收到距離、角度、障礙物、雜訊、姿勢、走位等諸多因素的影響。
+在 rPi4B 使用 GbE，而終端裝置使用 Wi-Fi 卻吃不到 GbE 以上速度的時候，這速度會是瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;而官方討論區中所述的問題，很幸運的我沒有遇到。大概是說，NTFS 在 Linux 上效能不佳，可以使用原生的 ext4 檔案系統 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-8-1&quot;&gt;&lt;a href=&quot;#fn-8&quot;&gt;8&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，以及行動硬碟的相容問題 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-9-1&quot;&gt;&lt;a href=&quot;#fn-9&quot;&gt;9&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;總結，在假設路由器、網路線等其他裝置都支援 GbE，無線網路 AC1200 的情況下：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;直接的硬碟讀寫速度：144MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;li&gt;rPi4B、電腦都使用有線網路：瓶頸會是有線網路 GbE，125MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;li&gt;rPi4B 使用有線網路，電腦使用無線網路：瓶頸會是無線網路，108MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;li&gt;rPi4B 使用無線網路：瓶頸會是 rPi4B 的無線網路，14MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;在家拉光纖指日可待。&lt;&#x2F;p&gt;
+&lt;p&gt;*[rPi]: Raspberry Pi
+*[rPi4B]: Raspberry Pi 4B
+*[GbE]: Gigabit Ethernet&lt;&#x2F;p&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;products.wdc.com&#x2F;library&#x2F;SpecSheet&#x2F;ENG&#x2F;2879-800002.pdf&quot;&gt;WD Red NAS Hard Drives (PDF)&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;Crystal Dew World： &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;crystalmark.info&#x2F;en&#x2F;software&#x2F;crystaldiskmark&#x2F;&quot;&gt;CrystalDiskMark&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-2&quot;&gt;↩2&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;USB&quot;&gt;USB&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-4-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-5&quot;&gt;
+&lt;p&gt;Raspberry Pi Documentation: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;documentation&#x2F;hardware&#x2F;raspberrypi&#x2F;usb&#x2F;README.md&quot;&gt;USB&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-5-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-6&quot;&gt;
+&lt;p&gt;The MagPi magazine: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;magpi.raspberrypi.org&#x2F;articles&#x2F;raspberry-pi-4-specs-benchmarks&quot;&gt;Raspberry Pi 4 specs and benchmarks&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-1&quot;&gt;↩&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-2&quot;&gt;↩2&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-3&quot;&gt;↩3&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Iperf&quot;&gt;Iperf&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-3-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-7&quot;&gt;
+&lt;p&gt;MikroTik Routers and Wireless: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;hap_ac2&quot;&gt;hAP ac²&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-7-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-8&quot;&gt;
+&lt;p&gt;Raspberry Pi Forums: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;forums&#x2F;viewtopic.php?f=91&amp;amp;t=243962&quot;&gt;Slow samba transfer speed on RPi4 to a usb 3.0 drive (10,4mb&#x2F;s)&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-8-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-9&quot;&gt;
+&lt;p&gt;Raspberry Pi Forums: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;forums&#x2F;viewtopic.php?p=1501426&quot;&gt;STICKY: If you have a Raspberry Pi 4 and are getting bad speeds transferring data to&#x2F;from USB3.0 SSDs, read this&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-9-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+      <item>
+          <title>Raspberry Pi 4B 搭建 NAS 第一話：外接硬碟和 USB 篇</title>
+          <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/rpi4b-nas-ep1/</link>
+          <guid>https://undecv.github.io/blog/posts/rpi4b-nas-ep1/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/rpi4b-nas-ep1/">&lt;p&gt;&lt;del&gt;爬文是不可能爬文的，这辈子不可能爬文的。Spec 又不會查，Run 不起來纔是正常的樣子。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;原本想拿 rPi4B 做 NAS 的，想當然耳，結果翻車了。&lt;&#x2F;p&gt;
+&lt;p&gt;通常使用 USB 的設備吃電都是不多的，例如滑鼠、鍵盤、隨身碟等，但是使用機械行動硬碟的時候可能就需要考慮輸出功率的因素了。
+機械硬碟吃功率主要看：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;冷啓動時的峯值功率 (Peak)&lt;&#x2F;li&gt;
+&lt;li&gt;讀寫運作中的功率（r&#x2F;w）&lt;&#x2F;li&gt;
+&lt;li&gt;沒有讀寫的閒置功率（Idle）&lt;&#x2F;li&gt;
+&lt;li&gt;待機功率（Standby and Sleep）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;現代的機械硬碟長時間沒有讀寫時會（停轉磁碟）待機以節省功率，這時候讀資料需要把磁碟重新轉起來，這也是爲什麼有時候從抓資料的時候硬碟會「當掉幾秒」的原因。&lt;&#x2F;p&gt;
+&lt;p&gt;根據&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;（WD 紅碟的 Spec）&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;（Toshiba 行動硬碟的 Spec）&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-3-1&quot;&gt;&lt;a href=&quot;#fn-3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;壹個典型的 3.5吋 內接式硬碟吃的是 12V 供電，峯值在 1.75A (21W)、讀寫大約 4.8W、閒置 3.1W，待機 0.6W；&lt;&#x2F;li&gt;
+&lt;li&gt;壹個典型的 2.5吋 內接式硬碟吃的是 5V 供電，峯值在 1A (5W)、讀寫大約 1.4W、閒置 0.6W，待機 0.2W；&lt;&#x2F;li&gt;
+&lt;li&gt;壹個典型的 2.5吋 行動硬碟，吃的是 USB 供電，最多 0.9A。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;具體請查 Spec，可以看出機械硬碟並不是省電的碟。
+不是給手機充電（使用充電協定）的情況下，通常 USB 標準給外接裝置供電都是 5V，USB 2.0 最大 0.5A、USB 3.0 最大 0.9A &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-1&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，而 USB3.1 的 Type-C 有支援最大 3A。&lt;&#x2F;p&gt;
+&lt;p&gt;對於真正的 NAS，功率必然是需要考慮的問題，在硬碟、BIOS 和 驅動程式支援的情況下，Staggered Spin-up (SSU) 可以讓硬碟陣列輪流轉以控制使用中的功率 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-7-1&quot;&gt;&lt;a href=&quot;#fn-7&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;；Power-Up In Standby (PUIS) 讓硬碟冷啟動時直接進入待機狀態而避免過大的峰值功率 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-8-1&quot;&gt;&lt;a href=&quot;#fn-8&quot;&gt;6&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;而像 rPi4B 這種本身功率就不高，只有 USB-C 3A@5V 輸入，但卻有 2x2.0 2x3.0，若按照標準算全滿則是 2.8A，那板板本身就只能用愛發電了。所以就有了最大輸出的概念，&lt;del&gt;就像跟玩文字遊戲的手機充電器一樣，~&lt;&#x2F;del&gt;rPi4B 的 USB 電流最大總和只有 1.2A &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-5-1&quot;&gt;&lt;a href=&quot;#fn-5&quot;&gt;7&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。也就是說，插好插滿最多只能輸出 6W，超出限制的時候 rPi4B 會保護性關機。&lt;&#x2F;p&gt;
+&lt;p&gt;所以 rPi4B 本身是只能插一個行動硬碟的。我直接插上了兩個硬碟之後 rPi4B 自動重開了，然後聽到硬碟在唱跳 Rap，思考了一下人生之後趕緊給關了機。&lt;&#x2F;p&gt;
+&lt;p&gt;那麼怎麼實現 rPi4B 做 NAS 呢，可以使用帶外接電源的 USB HUB &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-1&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;8&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。不帶電源的 HUB 當然用電都是從那唯一壹個 USB 接頭輸出，大約在 0.5A 甚至 0.1A，可以帶的裝置也就有限。&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-2&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 而帶電源的也需要看電源的功率，現在常見一種多一個 USB Micro-B 供電介面的小型 HUB，通常也只能從手機充電器供給 2A@5V (10W) 的功率（請查 Spec），仍然不足每個介面都插上行動硬碟。而一些附電源的 HUB 則需要根據提供的電源功率來試算。&lt;&#x2F;p&gt;
+&lt;p&gt;*[rPi]: Raspberry Pi
+*[rPi4B]: Raspberry Pi 4B&lt;&#x2F;p&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;products.wdc.com&#x2F;library&#x2F;SpecSheet&#x2F;ENG&#x2F;2879-800002.pdf&quot;&gt;WD Red NAS Hard Drives (PDF)&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.toshiba-storage.com&#x2F;products&#x2F;toshiba-portable-hard-drives-canvio-basics-2&#x2F;&quot;&gt;Toshiba Canvio Basics&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;Super User: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;superuser.com&#x2F;questions&#x2F;565653&#x2F;how-much-power-does-a-hard-drive-use&quot;&gt;How much power does a hard drive use?&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-3-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;USB&quot;&gt;USB&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-4-1&quot;&gt;↩&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-4-2&quot;&gt;↩2&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-7&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Spin-up&quot;&gt;Spin-up&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-7-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-8&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Power-up_in_standby&quot;&gt;Power-up in standby&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-8-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-5&quot;&gt;
+&lt;p&gt;Raspberry Pi Documentation: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;documentation&#x2F;faqs&#x2F;#pi-power&quot;&gt;FAQs&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-5-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-6&quot;&gt;
+&lt;p&gt;Gary Explains @ YouTube: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;O-FfOWdZAQ4&quot;&gt;Build a Raspberry Pi NAS with 4 Hard Drives and RAID&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+    </channel>
+</rss>

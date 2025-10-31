@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - NAS</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/nas/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 03 Apr 2020 01:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Raspberry Pi 4B 搭建 NAS 第二話：網路篇</title>
+          <pubDate>Fri, 03 Apr 2020 01:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/rpi4b-nas-ep2/</link>
+          <guid>https://undecv.github.io/blog/posts/rpi4b-nas-ep2/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/rpi4b-nas-ep2/">&lt;p&gt;&lt;del&gt;究竟讀寫速度會卡在 USB 還是 SMB 呢？rPi4B NAS 翻車最終話！\滑稽。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;供電的問題解決了，SMB 網路芳鄰也成功搭建了起來，那接下來就是喜聞樂見的測速時間了。&lt;&#x2F;p&gt;
+&lt;p&gt;注意，以下使用的單位，小寫 &lt;code&gt;b&lt;&#x2F;code&gt; 是 &lt;code&gt;bits&lt;&#x2F;code&gt;，大寫 &lt;code&gt;B&lt;&#x2F;code&gt; 是 &lt;code&gt;Bytes&lt;&#x2F;code&gt;，&lt;code&gt;8 bit = 1 Byte&lt;&#x2F;code&gt;，全部使用十進位的 &lt;code&gt;1 MB = 1,000,000 Bytes&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;依據 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;（WD 紅碟的 Spec），壹個典型的 2.5吋、5400RPM 的硬碟，144MB&#x2F;s，根據可愛的 Shizuku &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 測試我的行動硬碟，結果差不多。&lt;&#x2F;p&gt;
+&lt;p&gt;USB 3.0 的理論速度是 5Gb&#x2F;s，大約是 625MB&#x2F;s &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-1&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;；根據 rPi 官方的說法 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-5-1&quot;&gt;&lt;a href=&quot;#fn-5&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 和基準測試 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-1&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 有約 343MB&#x2F;s，所以 USB 在機械硬碟的速度下不會成為瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;同樣的，根據 Spec 和官方的測速 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-2&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，Ethernet 可以有幾乎真正的 GbE 的 1Gb&#x2F;s 的速度，當然要達到真正的 GbE 需要交換機、路由器、網路線、以及其他終端裝置支援。指令 ethtool eth0 可以檢視當前的連線頻寬（理想速度），然而，即使是按照理想的 1Gb&#x2F;s 的速度計算，GbE 也僅有 125Mb&#x2F;s。
+在全程使用 GbE 的情景下，這速度會是瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;而 Wi-Fi 就更慘了，還是根據官方測速 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-3&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，在 5GHz 之下僅有 114Mb&#x2F;s（約 14MB&#x2F;s）的實際速度。指令 iwconfig 可以檢視當前的連線頻寬（理想速度）。沒錯，明明是 Wi-Fi 5 卻連 4 都不如\滑稽。
+在 rPi4B 使用 Wi-Fi 的情況下，這速度會是瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;但是吼，話雖這麼說，不要忘記了，rPi4B 再怎麼說也只要一兩張小學生的 Low Cost 裝置，你還想怎樣（錘。&lt;&#x2F;p&gt;
+&lt;p&gt;可以使用 iperf3 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-3-1&quot;&gt;&lt;a href=&quot;#fn-3&quot;&gt;6&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 進行網路的實際速度的測試。
+可以使用可愛的 Shizuku &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-2&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 對本地和遠端的硬碟做讀寫速度測試。&lt;&#x2F;p&gt;
+&lt;p&gt;而，一般家用無線路由器，甚至終端裝置（電腦、手機）的 Wi-Fi 速度亦有可能成為瓶頸，例如一個標稱 AC1200 的家用無線路由器 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-7-1&quot;&gt;&lt;a href=&quot;#fn-7&quot;&gt;7&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，在 Wi-Fi 5（即 802.11ac）的 5GHz 之下的理論速度是 867Mb&#x2F;s（約 108MB&#x2F;s），而 Wi-Fi 的實際速度是非常看臉的，會收到距離、角度、障礙物、雜訊、姿勢、走位等諸多因素的影響。
+在 rPi4B 使用 GbE，而終端裝置使用 Wi-Fi 卻吃不到 GbE 以上速度的時候，這速度會是瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;而官方討論區中所述的問題，很幸運的我沒有遇到。大概是說，NTFS 在 Linux 上效能不佳，可以使用原生的 ext4 檔案系統 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-8-1&quot;&gt;&lt;a href=&quot;#fn-8&quot;&gt;8&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，以及行動硬碟的相容問題 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-9-1&quot;&gt;&lt;a href=&quot;#fn-9&quot;&gt;9&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;總結，在假設路由器、網路線等其他裝置都支援 GbE，無線網路 AC1200 的情況下：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;直接的硬碟讀寫速度：144MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;li&gt;rPi4B、電腦都使用有線網路：瓶頸會是有線網路 GbE，125MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;li&gt;rPi4B 使用有線網路，電腦使用無線網路：瓶頸會是無線網路，108MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;li&gt;rPi4B 使用無線網路：瓶頸會是 rPi4B 的無線網路，14MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;在家拉光纖指日可待。&lt;&#x2F;p&gt;
+&lt;p&gt;*[rPi]: Raspberry Pi
+*[rPi4B]: Raspberry Pi 4B
+*[GbE]: Gigabit Ethernet&lt;&#x2F;p&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;products.wdc.com&#x2F;library&#x2F;SpecSheet&#x2F;ENG&#x2F;2879-800002.pdf&quot;&gt;WD Red NAS Hard Drives (PDF)&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;Crystal Dew World： &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;crystalmark.info&#x2F;en&#x2F;software&#x2F;crystaldiskmark&#x2F;&quot;&gt;CrystalDiskMark&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-2&quot;&gt;↩2&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;USB&quot;&gt;USB&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-4-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-5&quot;&gt;
+&lt;p&gt;Raspberry Pi Documentation: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;documentation&#x2F;hardware&#x2F;raspberrypi&#x2F;usb&#x2F;README.md&quot;&gt;USB&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-5-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-6&quot;&gt;
+&lt;p&gt;The MagPi magazine: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;magpi.raspberrypi.org&#x2F;articles&#x2F;raspberry-pi-4-specs-benchmarks&quot;&gt;Raspberry Pi 4 specs and benchmarks&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-1&quot;&gt;↩&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-2&quot;&gt;↩2&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-3&quot;&gt;↩3&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Iperf&quot;&gt;Iperf&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-3-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-7&quot;&gt;
+&lt;p&gt;MikroTik Routers and Wireless: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;hap_ac2&quot;&gt;hAP ac²&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-7-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-8&quot;&gt;
+&lt;p&gt;Raspberry Pi Forums: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;forums&#x2F;viewtopic.php?f=91&amp;amp;t=243962&quot;&gt;Slow samba transfer speed on RPi4 to a usb 3.0 drive (10,4mb&#x2F;s)&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-8-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-9&quot;&gt;
+&lt;p&gt;Raspberry Pi Forums: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;forums&#x2F;viewtopic.php?p=1501426&quot;&gt;STICKY: If you have a Raspberry Pi 4 and are getting bad speeds transferring data to&#x2F;from USB3.0 SSDs, read this&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-9-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+      <item>
+          <title>Raspberry Pi 4B 搭建 NAS 第一話：外接硬碟和 USB 篇</title>
+          <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/rpi4b-nas-ep1/</link>
+          <guid>https://undecv.github.io/blog/posts/rpi4b-nas-ep1/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/rpi4b-nas-ep1/">&lt;p&gt;&lt;del&gt;爬文是不可能爬文的，这辈子不可能爬文的。Spec 又不會查，Run 不起來纔是正常的樣子。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;原本想拿 rPi4B 做 NAS 的，想當然耳，結果翻車了。&lt;&#x2F;p&gt;
+&lt;p&gt;通常使用 USB 的設備吃電都是不多的，例如滑鼠、鍵盤、隨身碟等，但是使用機械行動硬碟的時候可能就需要考慮輸出功率的因素了。
+機械硬碟吃功率主要看：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;冷啓動時的峯值功率 (Peak)&lt;&#x2F;li&gt;
+&lt;li&gt;讀寫運作中的功率（r&#x2F;w）&lt;&#x2F;li&gt;
+&lt;li&gt;沒有讀寫的閒置功率（Idle）&lt;&#x2F;li&gt;
+&lt;li&gt;待機功率（Standby and Sleep）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;現代的機械硬碟長時間沒有讀寫時會（停轉磁碟）待機以節省功率，這時候讀資料需要把磁碟重新轉起來，這也是爲什麼有時候從抓資料的時候硬碟會「當掉幾秒」的原因。&lt;&#x2F;p&gt;
+&lt;p&gt;根據&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;（WD 紅碟的 Spec）&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;（Toshiba 行動硬碟的 Spec）&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-3-1&quot;&gt;&lt;a href=&quot;#fn-3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;壹個典型的 3.5吋 內接式硬碟吃的是 12V 供電，峯值在 1.75A (21W)、讀寫大約 4.8W、閒置 3.1W，待機 0.6W；&lt;&#x2F;li&gt;
+&lt;li&gt;壹個典型的 2.5吋 內接式硬碟吃的是 5V 供電，峯值在 1A (5W)、讀寫大約 1.4W、閒置 0.6W，待機 0.2W；&lt;&#x2F;li&gt;
+&lt;li&gt;壹個典型的 2.5吋 行動硬碟，吃的是 USB 供電，最多 0.9A。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;具體請查 Spec，可以看出機械硬碟並不是省電的碟。
+不是給手機充電（使用充電協定）的情況下，通常 USB 標準給外接裝置供電都是 5V，USB 2.0 最大 0.5A、USB 3.0 最大 0.9A &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-1&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，而 USB3.1 的 Type-C 有支援最大 3A。&lt;&#x2F;p&gt;
+&lt;p&gt;對於真正的 NAS，功率必然是需要考慮的問題，在硬碟、BIOS 和 驅動程式支援的情況下，Staggered Spin-up (SSU) 可以讓硬碟陣列輪流轉以控制使用中的功率 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-7-1&quot;&gt;&lt;a href=&quot;#fn-7&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;；Power-Up In Standby (PUIS) 讓硬碟冷啟動時直接進入待機狀態而避免過大的峰值功率 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-8-1&quot;&gt;&lt;a href=&quot;#fn-8&quot;&gt;6&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;而像 rPi4B 這種本身功率就不高，只有 USB-C 3A@5V 輸入，但卻有 2x2.0 2x3.0，若按照標準算全滿則是 2.8A，那板板本身就只能用愛發電了。所以就有了最大輸出的概念，&lt;del&gt;就像跟玩文字遊戲的手機充電器一樣，~&lt;&#x2F;del&gt;rPi4B 的 USB 電流最大總和只有 1.2A &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-5-1&quot;&gt;&lt;a href=&quot;#fn-5&quot;&gt;7&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。也就是說，插好插滿最多只能輸出 6W，超出限制的時候 rPi4B 會保護性關機。&lt;&#x2F;p&gt;
+&lt;p&gt;所以 rPi4B 本身是只能插一個行動硬碟的。我直接插上了兩個硬碟之後 rPi4B 自動重開了，然後聽到硬碟在唱跳 Rap，思考了一下人生之後趕緊給關了機。&lt;&#x2F;p&gt;
+&lt;p&gt;那麼怎麼實現 rPi4B 做 NAS 呢，可以使用帶外接電源的 USB HUB &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-1&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;8&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。不帶電源的 HUB 當然用電都是從那唯一壹個 USB 接頭輸出，大約在 0.5A 甚至 0.1A，可以帶的裝置也就有限。&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-2&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 而帶電源的也需要看電源的功率，現在常見一種多一個 USB Micro-B 供電介面的小型 HUB，通常也只能從手機充電器供給 2A@5V (10W) 的功率（請查 Spec），仍然不足每個介面都插上行動硬碟。而一些附電源的 HUB 則需要根據提供的電源功率來試算。&lt;&#x2F;p&gt;
+&lt;p&gt;*[rPi]: Raspberry Pi
+*[rPi4B]: Raspberry Pi 4B&lt;&#x2F;p&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;products.wdc.com&#x2F;library&#x2F;SpecSheet&#x2F;ENG&#x2F;2879-800002.pdf&quot;&gt;WD Red NAS Hard Drives (PDF)&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.toshiba-storage.com&#x2F;products&#x2F;toshiba-portable-hard-drives-canvio-basics-2&#x2F;&quot;&gt;Toshiba Canvio Basics&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;Super User: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;superuser.com&#x2F;questions&#x2F;565653&#x2F;how-much-power-does-a-hard-drive-use&quot;&gt;How much power does a hard drive use?&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-3-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;USB&quot;&gt;USB&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-4-1&quot;&gt;↩&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-4-2&quot;&gt;↩2&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-7&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Spin-up&quot;&gt;Spin-up&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-7-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-8&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Power-up_in_standby&quot;&gt;Power-up in standby&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-8-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-5&quot;&gt;
+&lt;p&gt;Raspberry Pi Documentation: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;documentation&#x2F;faqs&#x2F;#pi-power&quot;&gt;FAQs&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-5-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-6&quot;&gt;
+&lt;p&gt;Gary Explains @ YouTube: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;O-FfOWdZAQ4&quot;&gt;Build a Raspberry Pi NAS with 4 Hard Drives and RAID&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+    </channel>
+</rss>
