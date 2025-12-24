@@ -48,7 +48,7 @@ taxonomies:
 - [Blooft](https://www.blooft.com/)
 - [Anori](https://anori.app/)
 
-![Bonjourr 預覽]()
+![Bonjourr Screenshot](./images/bonjourr-screenshot.png)
 
 除了最基礎床頭時鐘本職工作的日期和時間，
 既然天生連著網路，我們甚至可以顯示天氣等低密度、低干擾的資訊，
@@ -165,7 +165,7 @@ Remove-Item $ahk -Force
 - 風扇調整到低速模式
 - 兩個螢幕打開兩個全螢幕網頁
 
-![Cross Panel Screenshot]()
+![Cross Panel Screenshot](./images/cross-panel-screenshot.png)
 
 終於，待機的螢幕不再是冷冰冰的黑幕，
 而變成了一種有生活感、有溫度的傢俱。
