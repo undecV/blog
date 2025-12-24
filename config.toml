@@ -148,6 +148,6 @@ short_date_format = "%Y-%m-%d"
 
 [extra.analytics]
 service = "umami"
-id = "3252b6d8-dd6f-4baa-a6f2-d6078a5858c2"
+id = "d6047041-a412-4ec6-863b-c5f31d16e678"
 self_hosted_url = "https://umami.d.poi48.xyz"
 do_not_track = false
