@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Web Server</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/web-server/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 07 Feb 2017 02:00:00 +0000</lastBuildDate>
+      <item>
+          <title>［封存］Apache 伺服器簡易教程 - 添加內容篇</title>
+          <pubDate>Tue, 07 Feb 2017 02:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-2/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-2/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-2/">&lt;p&gt;&lt;del&gt;你聽說過安 ... 啊不對，自由軟體嗎？&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;在上一個簡易教程當中，我們已經架設好了 &lt;strong&gt;Apache&lt;&#x2F;strong&gt; 網頁伺服器。
+這一節將介紹怎麼將你的純手工手製初回生產限定非轉基因限量版網頁放進你的網頁伺服器當中。&lt;&#x2F;p&gt;
+&lt;p&gt;在開始之前，先複習一下「URL」的內容，如果你並不清楚「URL」是什麼，請時空穿越到上課的時候認真聽講。&lt;&#x2F;p&gt;
+&lt;p&gt;當我們在網頁瀏覽器中輸入地址 &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 時，其實我們訪問的較爲完整的 URL 是 &lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;index.html&lt;&#x2F;code&gt; ，其意義大概是：使用 &lt;code&gt;HTTP&lt;&#x2F;code&gt; 協定連接到 &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 伺服器的 &lt;code&gt;Port 80&lt;&#x2F;code&gt; ，取得 &lt;code&gt;index.html&lt;&#x2F;code&gt; 資源。&lt;&#x2F;p&gt;
+&lt;p&gt;爲什麼你只輸入了主機的 IP 位址就可訪問了呢，當然是因爲你的瀏覽器和網頁伺服器英明神武，知道你根本就懶得打那麼多字，而且也 &lt;em&gt;猜到&lt;&#x2F;em&gt; 你是想訪問這個主機的網頁，其他的部分幫你自動生成了：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;index.html&lt;&#x2F;code&gt; 文件是被當成該路徑的 &lt;strong&gt;主頁&lt;&#x2F;strong&gt; ，所以被省略 ；&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;:80&lt;&#x2F;code&gt; 是因爲 &lt;code&gt;HTTP&lt;&#x2F;code&gt; 協定通常使用 &lt;code&gt;Port 80&lt;&#x2F;code&gt; ，所以被省略；&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;http:&#x2F;&#x2F;&lt;&#x2F;code&gt; 是瀏覽器 &lt;em&gt;猜到&lt;&#x2F;em&gt; （你使用網頁瀏覽器不看網頁是做什麼呢w）你是想訪問這個主機的網頁，所以幫你自動補全了，當然現代的瀏覽器也可能會支持其他的協定，例如 FTP。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;那麼， &lt;code&gt;index.html&lt;&#x2F;code&gt; 在哪裏？就在 &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&lt;&#x2F;code&gt; 路徑下，這裏就是 &lt;strong&gt;網頁伺服器存取的預設路徑&lt;&#x2F;strong&gt; （當然也可以修改，在 Apache 的設定中）。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，把自己的網頁內容放到這個路徑下，就可以被訪問了不是嗎。
+（溫馨提示，若是你的網頁引用了其他的資源（例如圖片文件）也要一起放進來喔。）&lt;&#x2F;p&gt;
+&lt;p&gt;恩，好像很有道理，那麼就來試試看...～&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-2&#x2F;.&#x2F;images&#x2F;ERROR_01.png&quot; alt=&quot;ERROR_01&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;嗯...放不進去...～當然錯誤提示很明顯的，是 &lt;strong&gt;操作權限&lt;&#x2F;strong&gt; 的問題，請自尋解答w。&lt;&#x2F;p&gt;
+&lt;p&gt;接下來就是訪問我們的頁面，我們想要做的是：使用 &lt;code&gt;HTTP&lt;&#x2F;code&gt; 協定連接到 &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 伺服器的 &lt;code&gt;Port 80&lt;&#x2F;code&gt; ，取得 &lt;code&gt;EXPLOSION.html&lt;&#x2F;code&gt; 資源。所以，實際上較爲完整的 URL 是：&lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;EXPLOSION.html&lt;&#x2F;code&gt; 所以，你只要在瀏覽器中輸入：&lt;code&gt;127.0.0.1&#x2F;EXPLOSION.html&lt;&#x2F;code&gt;  即可。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-2&#x2F;.&#x2F;images&#x2F;EXAMPLE_01.png&quot; alt=&quot;EXAMPLE_01&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;然後我們用其他的主機試試看：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-2&#x2F;.&#x2F;images&#x2F;EXAMPLE_02.png&quot; alt=&quot;EXAMPLE_02&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;成功了誒...～&lt;&#x2F;p&gt;
+&lt;p&gt;還有另一種情況，若是我們將自己的網頁放入一個資料夾中呢？
+我們將自己的網頁放在 &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&#x2F;MY_PAGE&lt;&#x2F;code&gt; 中，那麼，我們想要做的就是：使用 &lt;code&gt;HTTP&lt;&#x2F;code&gt; 協定連接到 &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 伺服器的 &lt;code&gt;Port 80&lt;&#x2F;code&gt; ，取得 &lt;strong&gt;路徑 &lt;code&gt;&#x2F;MY_PAGE&lt;&#x2F;code&gt; 下&lt;&#x2F;strong&gt; 的 &lt;code&gt;EXPLOSION.html&lt;&#x2F;code&gt; 資源。較爲完整的 URL 是：&lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;MY_PAGE&#x2F;EXPLOSION.html&lt;&#x2F;code&gt; ，其路徑 &lt;code&gt;&#x2F;MY_PAGE&lt;&#x2F;code&gt; 是相對于 &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&lt;&#x2F;code&gt; 路徑下，例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;MY_PAGE&#x2F;EXPLOSION.html&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&#x2F;MY_PAGE&#x2F;EXPLOSION.html&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;EXPLOSION.html&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&#x2F;EXPLOSION.html&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;這樣我們的網頁也部署完成了。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;ul&gt;
+&lt;li&gt;Environment:
+&lt;ul&gt;
+&lt;li&gt;Windows 10&lt;&#x2F;li&gt;
+&lt;li&gt;with VirtualBox 5.1.10&lt;&#x2F;li&gt;
+&lt;li&gt;Lubuntu 16.10&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;See also:
+&lt;ul&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Uniform_Resource_Locator&quot;&gt;Uniform Resource Locator&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;鳥哥的 Linux 私房菜: &lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;linux.vbird.org&#x2F;linux_server&#x2F;0360apache.php&quot;&gt;WWW 伺服器 Apache&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Release Notes:
+&lt;ul&gt;
+&lt;li&gt;2.1 Update (20170207):
+&lt;ul&gt;
+&lt;li&gt;修改標題，啊現在你知道你點開的是什麼了吧。&lt;&#x2F;li&gt;
+&lt;li&gt;修改文件目錄。&lt;&#x2F;li&gt;
+&lt;li&gt;授權的鏈接的 &lt;code&gt;HTML&lt;&#x2F;code&gt; 使用 &lt;code&gt;Markdown&lt;&#x2F;code&gt; 改寫。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;2.0 Update (20170128):
+&lt;ul&gt;
+&lt;li&gt;變更授權：&lt;code&gt;Creative Commons License&lt;&#x2F;code&gt; 。&lt;&#x2F;li&gt;
+&lt;li&gt;艾瑪我連梗都會打錯我的鍵盤真是業障重啊。&lt;&#x2F;li&gt;
+&lt;li&gt;細節修正。&lt;&#x2F;li&gt;
+&lt;li&gt;內容整合。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>［封存］Apache 伺服器簡易教程 - 安裝篇</title>
+          <pubDate>Tue, 07 Feb 2017 01:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-1/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-1/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-1/">&lt;p&gt;&lt;del&gt;你可能已經成爲自由軟體的受害者w&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;廢話不說，小考太多...&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Apache&lt;&#x2F;strong&gt; 是一個開放原始碼的網頁伺服器軟體，是最流行的 Web 伺服器軟體之一。
+如果你想要架設一個網站，「LAMP」系列 &lt;strong&gt;自由軟體&lt;&#x2F;strong&gt; 會是你不錯的選擇：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux，作業系統（Operating System）&lt;&#x2F;li&gt;
+&lt;li&gt;Apache，網頁伺服器（Web server）&lt;&#x2F;li&gt;
+&lt;li&gt;MySQL，資料庫（Database）&lt;&#x2F;li&gt;
+&lt;li&gt;PHP，手稿語言（Scripting language）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;因爲你只是要完成作業而且我也沒空打那麼多字，那麼接下來就是，
+簡易的 Apache HTTP Server 搭建方法：&lt;&#x2F;p&gt;
+&lt;p&gt;以下指令適用 Ubuntu 系列作業系統。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;如果你還沒或者太久沒執行過這兩行的話：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get update&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get upgrade&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ps. 如果你不知道這兩行在做什麼：&lt;br &#x2F;&gt;
+Ask Ubuntu: command line - &lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;askubuntu.com&#x2F;questions&#x2F;222348&#x2F;what-does-sudo-apt-get-update-do&quot;&gt;What does &quot;sudo apt-get update&quot; do?&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;安裝 Apache HTTP Server。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get install apache2&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;如果成功的話...那麼恭喜你，你的 Apache 可能已經部署完成。&lt;&#x2F;p&gt;
+&lt;p&gt;那麼問題來了，我怎麼看到我的網頁呢？&lt;&#x2F;p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;打開你的瀏覽器（Web browser），輸入&lt;code&gt;localhost&lt;&#x2F;code&gt; 或者&lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 。
+如果看到了 &lt;strong&gt;測試頁面&lt;&#x2F;strong&gt; ，那麼恭喜你，你的 Apache 已經部署完成。（如圖）
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-1&#x2F;.&#x2F;images&#x2F;APACHE_TEST_PAGE.png&quot; alt=&quot;APACHE_TEST_PAGE&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;那麼問題又來了，我怎麼在原本的作業系統，或是同一網路下的主機（例如連到同一個路由器的另一台電腦）看到我的網頁呢？&lt;&#x2F;p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;設定你的虛擬機的網路：（如圖）
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-1&#x2F;.&#x2F;images&#x2F;NET_SETTING.PNG&quot; alt=&quot;NET_SETTING&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;打開你的瀏覽器，輸入你虛擬機的 IP 位址。
+如果不知道虛擬機的 IP 位址，請使用指令 &lt;code&gt;ifconfig&lt;&#x2F;code&gt; 。
+如果看到了測試頁面，那麼恭喜你，你虛擬機的網路設置完成。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;hr &#x2F;&gt;
+&lt;ul&gt;
+&lt;li&gt;Environment:
+&lt;ul&gt;
+&lt;li&gt;Windows 10&lt;&#x2F;li&gt;
+&lt;li&gt;with VirtualBox 5.1.10&lt;&#x2F;li&gt;
+&lt;li&gt;Lubuntu 16.10&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;See also:
+&lt;ul&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Apache_HTTP_Server&quot;&gt;Apache HTTP Server&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;LAMP_(software_bundle)&quot;&gt;LAMP (software bundle)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Release Notes:
+&lt;ul&gt;
+&lt;li&gt;2.1 Update (20170207):
+&lt;ul&gt;
+&lt;li&gt;修改標題，啊現在你知道你點開的是什麼了吧。&lt;&#x2F;li&gt;
+&lt;li&gt;修改檔案目錄。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;2.0 Update (20170128):
+&lt;ul&gt;
+&lt;li&gt;變更授權：&lt;code&gt;Creative Commons License&lt;&#x2F;code&gt; 。&lt;&#x2F;li&gt;
+&lt;li&gt;細節修正。&lt;&#x2F;li&gt;
+&lt;li&gt;內容整合。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

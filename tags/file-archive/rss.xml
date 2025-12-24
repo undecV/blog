@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - File Archive</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/file-archive/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 23 Jan 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>檔案壓縮的概論與實務</title>
+          <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/file-compression/</link>
+          <guid>https://undecv.github.io/blog/posts/file-compression/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/file-compression/">&lt;!-- # 檔案壓縮的概論與實務 --&gt;
+&lt;p&gt;&lt;del&gt;硬碟空間就像〇〇，擠一擠還是有的。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;本站有文章介紹過圖片檔案的壓縮格式。
+本文將注重於通用檔案壓縮，
+也就是 ZIP、7Z、RAR 該怎麼玩。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gai-lun&quot;&gt;概論&lt;&#x2F;h2&gt;
+&lt;p&gt;壓縮技術就是用時間換取空間。&lt;&#x2F;p&gt;
+&lt;p&gt;就跟我們把一堆雜物打包到一起，既節省空間，也便於攜帶和收藏。
+電腦也是一樣，把檔案壓縮成壓縮檔，節省存儲空間，也便於傳輸和存儲。&lt;&#x2F;p&gt;
+&lt;p&gt;舉一個非常不恰當的例，壓縮就像把牛奶製成奶粉，便於運輸和儲藏。而我們通常不直接吸奶粉，而解壓縮就像沖泡奶粉還原成牛奶。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，各種形式壓縮檔通常我們是無法直接使用的，軟體會在我們知道和不知道的情況下還原始的形式。&lt;&#x2F;p&gt;
+&lt;p&gt;除了常見的檔案壓縮，其實圖片、音樂、影片等媒體檔案的壓制也是一種壓縮。對於多媒體檔案，壓縮／解壓縮也通常稱為編碼／解碼。&lt;&#x2F;p&gt;
+&lt;p&gt;本文會提及多媒體壓縮，但專注於解釋通用的檔案壓縮。&lt;&#x2F;p&gt;
+&lt;p&gt;從 ZIP 到 RAR5，從 RMVB 到 AV1，壓縮格式千百種，新的演算法和格式還在被發明出來，是因為壓縮演算法的發展，還有對應不同的需求。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ya-suo-dang-de-quan-heng&quot;&gt;壓縮檔的權衡&lt;&#x2F;h3&gt;
+&lt;p&gt;壓縮技術也是一種工程學，是權衡的藝術。&lt;&#x2F;p&gt;
+&lt;p&gt;壓縮技術需要考量很多方面，就像在點技能樹一樣，需要在各個方面做出權衡。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;shi-jian-v-s-rong-liang&quot;&gt;時間 v.s. 容量&lt;&#x2F;h4&gt;
+&lt;p&gt;其中一點是壓縮和解壓縮的速度和效率，
+壓縮減少了多少容量被稱之為壓縮率，
+通常的，壓縮速度越慢，檔案越小，解壓縮速度越慢，反之亦然。&lt;&#x2F;p&gt;
+&lt;p&gt;例如一個影片，若是解壓縮（解碼）速度比影片播放速度還慢，那影片就會卡得不能看。
+而這是通用檔案壓縮容忍的壓縮解壓縮時間就比較寬裕了，會更注重於壓縮率上。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;song-san-v-s-gu-shi-ya-suo&quot;&gt;鬆散 v.s. 固實壓縮&lt;&#x2F;h4&gt;
+&lt;p&gt;固實壓縮是通用檔案壓縮的一個技術，一次壓縮一定量的資料而不是一個檔案。
+這一定量的資料被稱為一個區塊。他的好處是所有多個小檔案被分入一個區塊的時候會（大幅）提高壓縮率（壓縮檔更小）。&lt;&#x2F;p&gt;
+&lt;p&gt;但有些時候，我們只需要壓縮檔用的一兩三個檔案，這個需求便是隨機存取。
+固實壓縮若要解壓縮區塊中其中一個檔案，就必須解壓縮整個區塊，這讓隨機存取變成災難。&lt;&#x2F;p&gt;
+&lt;p&gt;所以若覺得以後要常常在不解壓縮整個檔案的情況下打開其中的某個檔案，就不要使用固實壓縮，反之亦然。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;you-sun-v-s-wu-sun-ya-suo&quot;&gt;有損 v.s. 無損壓縮&lt;&#x2F;h4&gt;
+&lt;p&gt;顧名思義有損壓縮後的檔案就再也不能變成原本的形狀，但可以在損失細節之下讓檔案更小；無損壓縮則保留所有細節，可以完全恢復。
+無損壓縮就是壓縮會不會降低原始內容品質，有損壓縮多用於多媒體壓縮，而通用檔案壓縮都是無損壓縮。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;mei-ti-dang-an-zai-ya-suo&quot;&gt;媒體檔案再壓縮&lt;&#x2F;h4&gt;
+&lt;p&gt;現代流通的媒體格式，多已經被有損或無損壓縮的非常極限了，那還有必要對媒體檔案再進行壓縮嗎？&lt;&#x2F;p&gt;
+&lt;p&gt;壓縮媒體檔案的其中一個目的，是在可接受期間內被解碼，檔案盡可能的小的同時保留最多資訊（所有細節）。&lt;&#x2F;p&gt;
+&lt;p&gt;所以這使得通用檔案壓縮仍能再壓縮媒體檔案。雖然再壓縮的空間可能極小，但擠擠總還是有的。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;lian-xu-du-xie-he-sui-ji-du-xie&quot;&gt;連續讀寫和隨機讀寫&lt;&#x2F;h4&gt;
+&lt;p&gt;請注意，這裡的 連續、隨機讀寫 不是前文所述的 鬆散、固實壓縮：雖異曲同工但不盡相同。&lt;&#x2F;p&gt;
+&lt;p&gt;壓縮軟體一大好處便是整合小檔案：如果你有看過硬碟跑分，應該可以發現硬碟的隨機讀寫效能遠小於連續讀寫效能，
+而對一拖拉庫的散裝小檔案通常就是隨機讀寫，而對其進行檔案壓縮會改善這個問題。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;ya-suo-ya-suo-dang-ya-suo-dang-qian-tao-tao-wa&quot;&gt;壓縮壓縮檔（壓縮檔嵌套，套娃）&lt;&#x2F;h4&gt;
+&lt;p&gt;壓縮壓縮檔，這種方法應該沒有什麼學名，也就是把壓縮檔再壓縮一次，也就是俗稱的套娃。&lt;&#x2F;p&gt;
+&lt;p&gt;一般來說，檔案壓縮有「儲存」和「傳輸」兩個目的，「儲存」需要減少大小的高壓縮率，而「傳輸」會需要加密和分卷。&lt;&#x2F;p&gt;
+&lt;p&gt;通常這些套娃壓縮檔的外層，是為了混淆識別，以及便於傳輸的加密和分卷。&lt;&#x2F;p&gt;
+&lt;p&gt;我會建議「儲存」壓縮後再進行「傳輸」壓縮的套娃壓縮法。在這種情景下「傳輸」壓縮甚至不需要壓縮，僅加密。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;chang-jian-wen-ti&quot;&gt;常見問題&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;dang-ming-guo-chang&quot;&gt;檔名過長&lt;&#x2F;h4&gt;
+&lt;p&gt;收納的過程便是再包裝：盡量扁平化資料夾，說人話就是減少資料夾一層包一層，以及使用儘量短的檔名。&lt;&#x2F;p&gt;
+&lt;p&gt;這不僅會使得壓縮檔看上去更簡潔，甚至可以提高壓縮率使得壓縮檔更小：在 ZIP 中，沒有資料夾的概念，每個檔案都會記錄路徑，即資料夾和檔名，所以資料夾中的每個檔案都會重複記錄一次資料夾名。&lt;&#x2F;p&gt;
+&lt;p&gt;通常作業系統（檔案系統）會對檔案的全路徑長度做限制，太長的路徑會造成解壓縮失敗。例如，你在解壓縮的時候，在某個資料夾裡解壓縮失敗，但是在某個槽下直接解壓縮卻成功即是這種問題。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;dang-ming-luan-ma&quot;&gt;檔名亂碼&lt;&#x2F;h4&gt;
+&lt;p&gt;有時候下載到的壓縮檔案，內容的檔名是一堆亂碼，這是由於早期的作業系統和壓縮軟體，並沒有考慮到當今的社會和網路如此的全球化，所以遇到不同語系的壓縮檔案就會亂碼。&lt;&#x2F;p&gt;
+&lt;p&gt;正統的解決方式是修改作業系統的預設編碼；但我們也可以使用例如 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;tw.bandisoft.com&#x2F;bandizip&#x2F;&quot;&gt;Bandizip&lt;&#x2F;a&gt; 之類有修改編碼功能的壓縮軟體。&lt;&#x2F;p&gt;
+&lt;p&gt;詳細的文字編碼問題有點複雜，有機會再撰文贅述。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dang-an-lei-xing&quot;&gt;檔案類型&lt;&#x2F;h3&gt;
+&lt;p&gt;常見的壓縮檔類型有以下幾種：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;ZIP：可能是現在流通最廣的壓縮檔格式，有夠用的功能和廣泛軟體的支援。&lt;&#x2F;li&gt;
+&lt;li&gt;7Z：開源壓縮檔的代表，原生於 7-Zip，以高效率著稱。&lt;&#x2F;li&gt;
+&lt;li&gt;RAR：商業壓縮檔的代表，原生於 WinRAR，有著豐富的功能。&lt;&#x2F;li&gt;
+&lt;li&gt;TAR.GZ：Linux 上的代表，分為打包而不壓縮的 TAR 和只能壓縮一個檔案的 GZ。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;順帶一提，壓縮軟體 &lt;em&gt;不等於&lt;&#x2F;em&gt; 壓縮檔案格式 &lt;em&gt;不等於&lt;&#x2F;em&gt; 壓縮演算法，
+但大家一般不會去修改預設的檔案格式和演算法，有機會再撰文贅述。&lt;&#x2F;p&gt;
+&lt;p&gt;不同的方法各有優劣，與各種應用場景的相性也不同，也是本文希望探討的地方。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;shi-wu&quot;&gt;實務&lt;&#x2F;h2&gt;
+&lt;p&gt;本文的指令使用 7-Zip 軟體。請見 7-Zip 的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;7-zip.opensource.jp&#x2F;chm&#x2F;cmdline&#x2F;index.htm&quot;&gt;指令說明檔&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;分卷 &lt;code&gt;-v4g&lt;&#x2F;code&gt;：若內容很大很大，例如一些遊戲，就可以進行分卷，分卷也便於儲存和在網路上傳輸，雖然硬碟的單文件上限很難碰到，但很多網路空間均有檔案大小上限，可以以此決定分卷大小；就算沒有超過上限，相比之下，分卷上傳也能顯著降低下載、上傳失敗時起肖的程度。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;固實 &lt;code&gt;-ms=on&lt;&#x2F;code&gt;：固實壓縮的概念是 將多個檔案變成一塊 而不是 以單一檔案為單位 進行壓縮。7Z 和 RAR 均可支援，ZIP 沒有。好處是在某些情境下可以增加壓縮率使得檔案更小。壞處是喪失了隨機存取的特性，使得在取用單一檔案的時候連同附近的其他檔案也會需要一起被解壓縮，這會浪費時間和算力。所以需要按需啟用。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;格式 &lt;code&gt;-t7z&lt;&#x2F;code&gt;：通常認為，7Z 格式比 ZIP 格式壓縮率更好（更小）；但 ZIP 有超廣泛的支援；而 RAR 格式具有獨到的恢復功能，可以在網路傳輸中使用，若出現壞檔可以試試運氣修復看看，但 RAR 是專有格式，僅能使用 WinRAR 壓縮。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;編碼 &lt;code&gt;-mcu=on&lt;&#x2F;code&gt;：ZIP 的文字編碼限制寬鬆，需要強制使用 Unicode 才能保證在不同語系的作業系統上可以正常使用。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;shi-yong-chang-jing&quot;&gt;使用場景&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;tong-ren-zhi-man-hua-za-zhi-cg-tu-bao&quot;&gt;同人誌、漫畫、雜誌、CG、圖包&lt;&#x2F;h4&gt;
+&lt;p&gt;ZIP 格式、最大壓縮率、萬國碼：&lt;code&gt;-tzip -mx=9 -mcu=on&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;這類資源大多是一拖拉庫的有序或無序圖片，而 ZIP 壓縮是被廣泛支援的幾乎事實標準，諸多的漫畫閱讀器均可直接讀取壓縮檔而不需要解壓縮，非固實壓縮也使得可以隨機存取，實現快速跳轉頁面。建議在資料夾中修改檔名為位數適當的前置〇的流水號。再次提醒盡量扁平化資料夾，以及需要注意 ZIP 在文字編碼上的問題。&lt;&#x2F;p&gt;
+&lt;p&gt;CB* 格式的本質就是壓縮檔，甚至內容結構都沒有規範（各閱讀器不同），例如 CBZ 就是 ZIP、CB7 就是 7Z、CBR 就是 RAR。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;dian-zi-shu&quot;&gt;電子書&lt;&#x2F;h4&gt;
+&lt;p&gt;DOCX, EPUB, ... 也是一種 ZIP：&lt;code&gt;-tzip -mx=9 -mcu=on&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;（跑題）使用 EPUB 格式可以像紙質書一樣讓電子書圖文並茂並且有豐富的排版，相比於 DOCX 的繁雜和 PDF 的臃腫死板，EPUB 可以讓讀者用他們自己舒服和習慣的字形字色背景閱讀。製作 EPUB 也需要有 HTML、CSS 的知識。EPUB 的本質是安排好的 ZIP，所以可以提高壓縮率直接再壓縮 EPUB 檔，而不需要再套一層其他壓縮格式。&lt;&#x2F;p&gt;
+&lt;p&gt;據我實驗所知，一些 EPUB 壓縮軟體並沒有使用最高壓縮率，特定情況下可以通過再壓縮節省空間。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;you-xi-cheng-shi-bei-fen-dang&quot;&gt;遊戲、程式、備份檔&lt;&#x2F;h4&gt;
+&lt;p&gt;7Z 格式、最大壓縮率、固實壓縮：&lt;code&gt;-t7z -mx=9 -ms=on&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;7Z 相比於 ZIP 有更好的壓縮率，而遊戲、程式必須全部解壓縮展開後才可執行，故不存在需要在壓縮檔內隨機存取的情況，遊戲、程式內通常也富含小檔案，固實壓縮在這個情景下可以有較好的表現。請注意 7Z 格式預設固實壓縮模式是啟用的。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;yin-le-ying-pian-dong-hua-dian-ying&quot;&gt;音樂、影片、動畫、電影&lt;&#x2F;h4&gt;
+&lt;p&gt;7Z 格式、最大壓縮率、鬆散壓縮：&lt;code&gt;-t7z -mx=9 -ms=off&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;音樂、影片等本是經過高度壓縮的檔案格式，不同的檔案格式緊密程度不同，通常再用檔案壓縮效益不大，甚至可以不需要再以檔案壓縮。若不著急或這電腦有多餘算力，或是就是要扣那幾啪的空間，當然可以選擇最高的壓縮率。而取消固實壓縮模式因為在這個情景下作用不大（甚至可能是反效果），還可以帶來隨機存取的好處，讓你在讀取其中某個檔案的時候不需要浪費時間和算力讀取其他檔案，尤其是影片每個可能都是 GiB 等級的大檔案，這個優勢會尤其明顯。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;ya-suo-ya-suo-dang-tao-wa&quot;&gt;壓縮壓縮檔（套娃）&lt;&#x2F;h4&gt;
+&lt;p&gt;7Z／RAR 格式、無壓縮、分卷、萬國碼：&lt;code&gt;-t7z -mx=0 -v4g&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;上述多種型別內容的混合，先分門別類的壓縮後，再以一個無壓縮率的壓縮檔打包，同時可以做加密和分卷的動作。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>［封存］把檔案壓縮影片轉檔任務放進佇列！用 WSL Task Spooler 排隊 Windows 的指令</title>
+          <pubDate>Mon, 12 Apr 2021 01:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/">&lt;blockquote&gt;
+&lt;p&gt;🛑（2025-05）現在我更推薦使用新的工具軟體 Pueue 達成同樣的任務，請見本站的介紹文：&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;command-line-guide&#x2F;pueue-introduction&#x2F;&quot;&gt;把指令放進佇列！用 Pueue 排隊指令&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;有時候需要執行一些時間長、需要大量系統資源的指令，例如巨量資料的計算、機器學習，或是更常用的檔案壓縮、影片轉檔。希望這些高負載的指令可以被順序執行而不是同時執行，同時執行會佔用過多的系統資源，不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。&lt;&#x2F;p&gt;
+&lt;p&gt;Linux 上有一個滿足這個需求的工具 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;vicerveza.homeunix.net&#x2F;~viric&#x2F;soft&#x2F;ts&#x2F;&quot;&gt;Task Spooler&lt;&#x2F;a&gt; (tsp)，Windows 上我沒有找到理想的替代品，但是，Windows 有 WSL。&lt;&#x2F;p&gt;
+&lt;p&gt;Task Spooler 可以：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;希望指令在一個先進先出佇列中排隊，同時有壹個或多個指令執行；&lt;&#x2F;li&gt;
+&lt;li&gt;佇列可以按需調整，新增、刪除、調整順序，甚至中止當前正在執行的任務。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;這篇文章將 Linux 中的 Task Spooler 透過 WSL 中與 Windows 的批次檔聯動，並演示了排隊 7-Zip 的多個任務。後面的章節會簡要提及 WSL 1 啓動的步驟。&lt;&#x2F;p&gt;
+&lt;p&gt;作業環境：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 10&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.7-zip.org&#x2F;&quot;&gt;7-Zip&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;WSL 1&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;xin-zeng-huan-jing-bian-shu&quot;&gt;新增環境變數&lt;&#x2F;h2&gt;
+&lt;p&gt;在指令中，若是需要使用自己安裝的程式需要指定路徑，若想要直接呼叫程式就需要把程式的路徑新增到環境變數。&lt;&#x2F;p&gt;
+&lt;p&gt;假設 7-Zip 安裝在 &lt;code&gt;C:\Program Files\7-Zip&lt;&#x2F;code&gt;，在 PowerShell 指令會需要呼叫 「&lt;code&gt;&amp;amp; &quot;C:\Program Files\7-Zip\7z.exe&quot;&lt;&#x2F;code&gt;」，若將安裝的路徑新增到環境變數之後，只需要呼叫「&lt;code&gt;7z&lt;&#x2F;code&gt;」即可。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;搜尋 &quot;Edit the system enviroment varibles&quot;，點選 &quot;Enviroment Varibles...&quot;；&lt;&#x2F;li&gt;
+&lt;li&gt;在 &quot;System varibles&quot; 中，找到並點選環境變數 &lt;code&gt;Path&lt;&#x2F;code&gt;，點選 &quot;Edit...&quot;；&lt;&#x2F;li&gt;
+&lt;li&gt;點選 &quot;New&quot; 並填入軟體的安裝路徑，例如 &lt;code&gt;C:\Program Files\7-Zip\&lt;&#x2F;code&gt;，點選 &quot;OK&quot;。&lt;&#x2F;li&gt;
+&lt;li&gt;生效會需要重新開機。（但是後面也會有需要重新開機的步驟所以可以先等等）&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;7-zip-zhi-ling-yu-pi-ci-dang&quot;&gt;7-Zip 指令與批次檔&lt;&#x2F;h2&gt;
+&lt;p&gt;Windows 版本的 7-Zip 原生支援指令行模式，&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;sevenzip.osdn.jp&#x2F;chm&#x2F;cmdline&#x2F;index.htm&quot;&gt;User&#x27;s Guide&lt;&#x2F;a&gt; 說明了詳細的用法。例如下面的指令將 &lt;code&gt;D:\src&lt;&#x2F;code&gt; 以 7z 的格式壓縮到 &lt;code&gt;D:\dst.7z&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cmd&quot; class=&quot;language-cmd z-code&quot;&gt;&lt;code class=&quot;language-cmd&quot; data-lang=&quot;cmd&quot;&gt;&lt;span class=&quot;z-source z-dosbatch&quot;&gt;7z a -t7z &lt;span class=&quot;z-string z-quoted z-double z-dosbatch&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\dst.7z&lt;span class=&quot;z-punctuation z-definition z-string z-end z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-dosbatch&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\src&lt;span class=&quot;z-punctuation z-definition z-string z-end z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;一個小小的訣竅可以節省壓縮檔案的步驟，創立一個 Batch 批次檔手稿程式，新增一個 txt 文字檔，並將副檔名改成 &lt;code&gt;.bat&lt;&#x2F;code&gt; 即可，例如 &lt;code&gt;zipit.bat&lt;&#x2F;code&gt;，編輯內容並存檔：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;7z a -tzip &amp;quot;%~1.zip&amp;quot; &amp;quot;%~1&amp;quot; -mx=9 -mcu=on
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;@PAUSE
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在檔案總管中，拖動 &lt;em&gt;&lt;strong&gt;一個&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; 檔案或者資料夾到這個 BAT 檔案的圖示上，
+便會在同個地方把這個檔案或者資料夾以 ZIP 格式壓縮，並且指定最高壓縮比（最小檔案大小、最長壓縮時間），並且最重要的指定以 Unicode 編碼檔名。這個手稿程式在後面的範例會再次用到。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wsl-an-zhuang&quot;&gt;WSL 安裝&lt;&#x2F;h2&gt;
+&lt;p&gt;M$ 秉承著打不贏就加入他們的精神，
+聯合一眾 Friends 做出了曠古未聞空前絕後驚世駭俗的 Windows Subsystem for Linux (WSL)，
+WSL 可以讓 Windows 執行 Linux 的程式，並且可以串接 Windows 的指令。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;在開始功能表中搜尋 &quot;Turn Windows features on or off&quot;，開啟 &quot;Windows Subsystem for Linux&quot;，在安裝完成後會需要重新開機。&lt;&#x2F;li&gt;
+&lt;li&gt;在 &quot;Microsoft Store&quot; 中，搜尋 &quot;WSL&quot; 即可找到諸如 Debian、Ubuntu、SUSE、Kali 各發行版，如果你是 Linux 新手，可以試試好上手的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;store&#x2F;productId&#x2F;9NBLGGH4MSV6&quot;&gt;Ubuntu&lt;&#x2F;a&gt;，後面也會拿這個舉例。&lt;&#x2F;li&gt;
+&lt;li&gt;開始選單會出現安裝後的 Ubuntu，初次使用會需要設定 UNIX 使用者名稱和密碼。這些都不會影響到原本的作業系統，忘記密碼也可以透過特殊手段重設。當你看到 &lt;code&gt;使用者名稱@電腦名:~$&lt;&#x2F;code&gt; 的時候，到此你的 WSL 的設定就完成了。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;進行 WSL 的更新，執行需要輸入剛剛設定的 UNIX 密碼：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get update&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-and z-shell&quot;&gt;&amp;amp;&amp;amp;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get upgrade&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;task-spooler&quot;&gt;Task Spooler&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR：Task Spooler 的絕妙的設計，是 伺服器＼客戶端，使用者使用 tsp 指令創立任務時，會創立一個客戶端，到後臺等待伺服器的通知後執行，完成後回報給伺服器，伺服器再通知下一個客戶端的指令執行，伺服器負責發號施令而不會執行指令。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;在 WSL 中下載安裝 Task Spooler：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get install task-spooler&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Task Spooler 的指令是 &lt;code&gt;tsp&lt;&#x2F;code&gt;，列出一些基本用法：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;V          &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 檢查版本&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;h          &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 印出說明&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; sleep 5     &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 新增指令 `sleep 5` 到任務佇列，返回的數字是任務的 ID&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp             &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 印出任務列表&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;c&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;id&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;      &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 小寫 c，檢查指定任務的輸出，&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;                &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;     替換 $id 為什麼任務 ID，不指定的話會印出最後一個&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;S&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;num&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;     &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 大寫 S，指定同時執行任務的數量，&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;                &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;     替換 $num 為數量，不指定的話會印出當前的設定&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;C          &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 大寫 C，清除已經完成的任務&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;我們也可以專門開一個終端機，使用 &lt;code&gt;watch&lt;&#x2F;code&gt; 指令來實時監視 Task Spooler 的任務列表：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;watch&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;n&lt;&#x2F;span&gt; 0.1 tsp&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;wsl-chuan-jie-zhi-ling&quot;&gt;WSL 串接指令&lt;&#x2F;h2&gt;
+&lt;p&gt;Windows 的 Batch \ PowerShell 與 WSL 之間可以 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-tw&#x2F;windows&#x2F;wsl&#x2F;interop&quot;&gt;互相串接指令&lt;&#x2F;a&gt; ，在 Batch \ PowerShell 中串接 WSL 的指令：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;PowerShell&quot; class=&quot;language-PowerShell z-code&quot;&gt;&lt;code class=&quot;language-PowerShell&quot; data-lang=&quot;PowerShell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;wsl ls &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;la  &lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 執行 WSL 端的 ls 指令列出當前路徑下所有檔案和資料夾等內容&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;wsl tsp     &lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 執行 WSL 端的 Task Spooler，印出任務列表&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在 WSL 中也可以呼叫 Windows 端的工具軟體，參數會原樣傳遞：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;7z.exe&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;t7z&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\dst.7z&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\src&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;  &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 執行 Windows 端的 7-Zip&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注意，若 WSL 安裝過移植版的「p7zip」，指令 &lt;code&gt;7z&lt;&#x2F;code&gt; 會是指「p7zip」而不是 Windows 版的「7z.exe」。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zai-pi-ci-dang-zhong-shi-yong-task-spooler&quot;&gt;在批次檔中使用 Task Spooler&lt;&#x2F;h2&gt;
+&lt;p&gt;創立一個 Batch 批次檔手稿程式，實現在檔案總管中點開就可以監視 Task Spooler 的任務列表。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;wsl watch -n 0.1 tsp
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;編輯或者複製之前範例的批次檔手稿程式 &lt;code&gt;zipit.bat&lt;&#x2F;code&gt;，與上面的例子作用是相同的，只是將指令託管到 Task Spooler 的佇列中：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;wsl tsp -f &amp;quot;7z.exe&amp;quot; a -tzip &amp;quot;%~1.zip&amp;quot; &amp;quot;%~1&amp;quot; -mx=9 -mcu=on
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在檔案總管中，拖動 &lt;em&gt;&lt;strong&gt;一個&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; 檔案或者資料夾到這個 BAT 檔案的圖示上，
+便會在同個地方把這個檔案或者資料夾以 ZIP 格式壓縮，並且指定最高壓縮比和指定以 Unicode 編碼檔名。&lt;&#x2F;p&gt;
+&lt;p&gt;這個指令，會彈出一個終端機視窗，會返回一個數字這個任務的 ID，任務完成後視窗會自動關閉。&lt;&#x2F;p&gt;
+&lt;p&gt;在監視 Task Spooler 的任務列表的終端機中，就會出現當前任務的狀態。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR：參數 &lt;code&gt;-f&lt;&#x2F;code&gt; 會阻止客戶端把指令 Fork 到背景等待執行。在我的測試中，若不加這個參數會導致加入佇列後直接執行的任務卡住，導致任務無法完成，也就沒辦法繼續執行後面的任務。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</description>
+      </item>
+    </channel>
+</rss>

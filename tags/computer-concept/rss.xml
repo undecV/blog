@@ -1,0 +1,1019 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Computer Concept</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/computer-concept/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 31 Oct 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>字元編碼簡史，以及亂碼和他們的產地</title>
+          <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/character-encoding/</link>
+          <guid>https://undecv.github.io/blog/posts/character-encoding/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/character-encoding/">&lt;p&gt;眾所周知，對於電腦的世界來說，所有的資訊都是 0 和 1，所以電腦其實最初是聽不懂人話的。
+但，在電腦之前，在那更加野性而奔放的年代，其實「&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Character_encoding&quot;&gt;字元編碼（Character encoding）&lt;&#x2F;a&gt;」的故事卻早得太多。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dian-bao-shi-ren-yu-ren-zhi-jian-yong-dian-xian-de-lian-jie&quot;&gt;電報是人與人之間（用電線的）連結&lt;&#x2F;h2&gt;
+&lt;p&gt;在那個還是齒輪機械龐克的年代，「&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Electrical_telegraph&quot;&gt;電報（Telegraph）&lt;&#x2F;a&gt;」剛剛誕生，那時候沒有螢幕、沒有電腦、甚至連電話、無線電都還沒誕生。人們希望通過電線進行人與人之間的連結，即「通」和「不通」，可那時候沒有什麼自動編碼解碼的智能玩意兒，全靠「人工智慧」，用人手按開關和人耳聽電流聲，僅以此進行通訊。&lt;&#x2F;p&gt;
+&lt;p&gt;而僅靠「通」和「斷」，聽起來是「嗶」和「靜」，用起來有點不太方便，所以我們就換一種方式，改成用「通電的長短」區分，再以「斷」加以間隔（這在通訊領域可以視為一種「調變」），再給每個字母一組「代碼」，例如「A」就是「嗶嗶—」、「B」就是「嗶—嗶嗶嗶」⋯⋯這就是「&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Morse_code&quot;&gt;摩斯電碼（Morse code）&lt;&#x2F;a&gt;」。&lt;&#x2F;p&gt;
+&lt;p&gt;沒錯，摩斯電碼可以視為一種字元編碼！「字元編碼」也就是把文字轉換成另外一種表現形式的「協定」。在電機的世界，大家相互理解靠的不是同理心，而且共同遵守一個「協定（Protocol）」，用同一種方式交流，就能相互理解。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dian-chuan-da-zi-ji-shi-ji-qi-yu-ji-qi-de-dui-hua&quot;&gt;電傳打字機是機器與機器的對話&lt;&#x2F;h2&gt;
+&lt;p&gt;然而隨著技術的發展，人門發明出了「打字機（Typewriter）」，我們有了真正意義上的機械鍵盤⋯⋯以及把字「打」在紙上的技術。然後，就有人想到遠端打字，把兩台打字機連起來，我在這裡按鍵盤，再那裡把字打出來？於是，結合了電報和打字機技術的「&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Teleprinter&quot;&gt;電傳打字機（Teleprinter）&lt;&#x2F;a&gt;」誕生了。鍵盤輸入轉換成電訊號，經過電線傳送，遠端的打字機印出字。機器和機器對話的時代來了！&lt;&#x2F;p&gt;
+&lt;p&gt;古早的機械沒有人那麼矯情，直接閱讀電的通斷，每個「通」和「斷」我們表示為「1」或「0」，我們稱之為「位元（Bit）」。為了讓機器自動處理傳遞的文字，重新設計了一套字元編碼，例如「&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Baudot_code#ITA2&quot;&gt;ITA2&lt;&#x2F;a&gt;」，用 5 個位元為一組，對應了某個「動作」，例如：「印出某個字元並後移一格」，以及一些特殊動作，比如「換行」和「回車」，為了方便理解，這些特殊動作被概念抽象成一個字元，稱之「特殊字元」或「控制字元」。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ling-qi-yi-xing-xu-yao-duo-shao-ge-zi-yuan&quot;&gt;另起一行需要多少個字元&lt;&#x2F;h3&gt;
+&lt;p&gt;在機械打字機上，機器有一個「滑台／車台（Carriage）」，上面夾著紙張；每打出一個字母，滑台就會往右移一格；打到一行末尾時，需要兩個動作才能繼續下一行：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;「回車（Carriage Return，CR）」：滑台回到最左邊；&lt;&#x2F;li&gt;
+&lt;li&gt;「換行（Line Feed，LF）」：滾筒轉動，使紙往上捲一行。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;這兩個動作完全獨立，也可以分開執行。
+由於「回車」的執行時間會比「換行」要長，所以通常是先回車再換行。
+而由於它們實在是太常一起用了，有打字員就乾脆做了一個帽子，把這兩個按鍵連起來，按一下同時觸發，有一說這也是為什麼現代還有很多鍵盤佈局的回車鍵長得異常畸形的原因。&lt;&#x2F;p&gt;
+&lt;p&gt;而這兩個特殊字元「CRLF」代表 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Newline&quot;&gt;實際上換行&lt;&#x2F;a&gt; 的傳統延續至今，現代的一些網路協定和 Windows 都是如此。
+又有人覺得為了傳統多寫一個字根本就是在浪費生命和頻寬和存儲空間，所以只保留其中一個作為實際上的換行，例如早年 Mac 僅用「CR」，以及現代 Mac 和 Linux 僅用 「LF」。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ya-ya-xue-yu-de-dian-nao&quot;&gt;牙牙學語的電腦&lt;&#x2F;h2&gt;
+&lt;p&gt;話說回來，那時候的電腦還是幾個衣櫃大的機器，更沒有便利的螢幕。那時候的電腦還靠著音樂盒一樣的打孔紙條進行輸入。之後電傳打字機被連到了電腦上，電腦和用戶對話的時代來了！這時候為了便利電腦和打字機的通訊，7 位元的「&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;ASCII&quot;&gt;ASCII&lt;&#x2F;a&gt;」編碼被制定了出來，涵蓋了大小寫英文字母、數字和基本符號，成為了現代字元編碼的基石。現代幾乎所有主流字元編碼都基於它。&lt;&#x2F;p&gt;
+&lt;p&gt;同樣的，字元編碼規定了一個被標記為文字的數字該如何解讀，例如，&lt;code&gt;0x41&lt;&#x2F;code&gt; 就是字母 &lt;code&gt;A&lt;&#x2F;code&gt;，實際存在硬碟上就是 &lt;code&gt;01000001&lt;&#x2F;code&gt;。「&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Font&quot;&gt;字型（Fonts）&lt;&#x2F;a&gt;」就是按照這套規範，畫出這個字元的樣子。&lt;&#x2F;p&gt;
+&lt;p&gt;而只有拉丁字母顯然是不夠用的，先撇開漢字文化圈不談，通過擴展 ASCII 變成 8 個位元，就多出 128 個位置，讓用字母的音位文字語言可以塞自己的字母。被稱為「擴展 ASCII 編碼」。終於，一個字元用八個位元等於一個「位元組（Byte）」的概念被確立，這也是為什麼 C 語言裡面一個位元組叫做 &lt;code&gt;char&lt;&#x2F;code&gt; 的原因。&lt;&#x2F;p&gt;
+&lt;p&gt;而漢字卻是最麻煩的，很明顯只多出來的 128 個位置是塞不下那成千上萬個常用漢字的，所以我們會需要用到兩個甚至三個位元組來表示一個漢字。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zi-shuo-zi-hua-you-bei-ge-zi-jie-du&quot;&gt;自說自話又被各自解讀&lt;&#x2F;h2&gt;
+&lt;p&gt;ASCII 正如其名是為了美國和美式英語設計的，而電腦傳播到了全世界，ASCII 也有自然需要融合各地的口味。例如日本當時出於常用的理由，相容 ASCII 的 JIS X 0201 把 &lt;code&gt;0x5C&lt;&#x2F;code&gt; 對應的「反斜線 &lt;code&gt;\&lt;&#x2F;code&gt;」改定義為「日圓符號 &lt;code&gt;¥&lt;&#x2F;code&gt;」，這也是為什麼在 Windows 日本版的電腦上路徑（看上去）是用 &lt;code&gt;¥&lt;&#x2F;code&gt; 分割的，這讓外國人看得不可思議，但實際上在底層是一致的。&lt;&#x2F;p&gt;
+&lt;p&gt;那時候，全世界都在設計自己的字元編碼，甚至每個公司都有自己的編碼，被叫做「萬碼奔騰」的年代，光是台灣就有好幾種繁體字的編碼方式遍地開花。當時席捲全球的 IBM PC DOS 為了能夠席捲全球，將這些字元編碼統整成冊，稱之「&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Code_page&quot;&gt;代碼頁（Code Pages）&lt;&#x2F;a&gt;」。例如英文的 CP437、繁體中文的 Big-5 叫做 CP950、日文 Shift-JIS 叫做 CP932，後來被 Windows 沿用。而這種「一個代碼、各自表述」的編碼方案，稱之「ANSI 編碼」（雖然和那個 ANSI 基本上八竿子打不著）。&lt;&#x2F;p&gt;
+&lt;p&gt;這種自說自話的編碼系統有個很明顯的問題，就是難以跟外國人搭話：例如，用拉丁字母的英文的編碼就沒法顯示用西里爾字母的俄文，繁體中文的編碼就難以顯示有假名的日文。一旦跨國交流就會語言不通非常尷尬，例如用 Big-5 編碼的系統打開 Shift-JIS 編碼的檔案，就會因為「不同的解讀」就會變成「亂碼（Mojibake）」。解決方式就是手動指定代碼頁。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wan-ma-gui-yi-wan-guo-ma&quot;&gt;萬碼歸一萬國碼&lt;&#x2F;h2&gt;
+&lt;p&gt;為了更方便讓各國進行文化輸出，以及解決那些舊時代的限制，電腦科學家們想到，若是只用一套字元編碼，就能包天包海的能夠包下世界上所有的字元，這就是「&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Unicode&quot;&gt;萬國碼（Unicode）&lt;&#x2F;a&gt;」。&lt;&#x2F;p&gt;
+&lt;p&gt;Unicode 為世界上所有的字元分配一個代碼點（Code Point）：包括了常見的、不常見的、從古至今活著的、失傳的、甚至虛構的大大小小林林總總各種各樣語言的字母和符號，也囊括了成千上萬個漢字即「中日韓統一表意字元」，甚至還有撲克、西洋棋之類的符號，還有表情符號 Emoji 也是其中的一部分。&lt;&#x2F;p&gt;
+&lt;p&gt;如果我們直接把這個字元對應的四位元組數字直接記錄下來，就是「UTF-32」，但電腦世界最常用的拉丁字母只在最前面的一個位元組中，這麼記錄很顯然浪費了三倍的空間。於是天才的計算機科學家們通過「可變長度編碼」的方式，讓靠前的字元比如英文用的拉丁字母僅用一個或兩個位元組表示，這就是「UTF-8」和「UTF-16」。最常用的正是 UTF-8，Windows 上對應的代碼頁是 CP65001。&lt;&#x2F;p&gt;
+&lt;p&gt;終於，字元編碼變成了「書同文」的大同世界。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;qian-xiang-xiang-rong-shi-li-shi-yi-liu-wen-ti&quot;&gt;前向相容是歷史遺留問題&lt;&#x2F;h2&gt;
+&lt;p&gt;其實 Windows 很早就用上了 Unicode ，自從比 XP 還早的 Windows 2000 的 NT 核心以來，Windows 就用上了 UTF-16LE（小端序）作為作業系統和檔案系統的唯一指定的字元編碼。可是事情並不會那麼簡單：老的程式和檔案格式尚未支援 Unicode。&lt;&#x2F;p&gt;
+&lt;p&gt;為了和平友善地支援向前相容老舊程式，Windows 至今保留了舊時代的介面和預設代碼頁的設定，所以舊 ANSI 時代的亂碼問題我們也仍然還會遇到。例如說資料交換、壓縮檔、玩日文遊戲等場景。這正是亂碼和他們的產地。而且因為我們是在解決歷史問題，事情可能會變得更加的錯綜複雜。&lt;&#x2F;p&gt;
+&lt;p&gt;舉一個實在的例子，古早的 ZIP 壓縮檔的設計，沒有考慮到這種跨語系的場景，其中被壓縮檔案的檔名是 ANSI 編碼的，至於具體是哪個編碼，它不知道，因為根本沒記下來。（後來才新增 Unicode 支援。）&lt;&#x2F;p&gt;
+&lt;p&gt;假如我們要在英文（CP437）的系統上，打開一個在日文（Shift-JIS）系統上壓縮的 ZIP 檔。那麼，被壓縮檔案的檔名是以 Shift-JIS 編碼記錄在壓縮檔內。然後這個檔案在繁體中文的作業系統上，同樣的數字被以 CP437 的方式解讀，就會變成亂碼。
+然後我們直接解壓縮這個檔名亂碼的檔案，它們就會被單純明快地「字面翻譯」成 UTF-16LE 存放在硬碟上。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;encoding_a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;shift_jis&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;encoding_b&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;cp437&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;original&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;はじめにお読みください.txt&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-string z-python&quot;&gt;f&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;Original&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-format-spec z-python&quot;&gt;&lt;span class=&quot;z-constant z-other z-format-spec z-python&quot;&gt;:&amp;lt;16&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;: &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;original&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;byte_in_archive&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-annotation z-variable z-python&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-support z-type z-python&quot;&gt;bytes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;original&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;encode&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;encoding_a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-string z-python&quot;&gt;f&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;Bytes in Archive&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-format-spec z-python&quot;&gt;&lt;span class=&quot;z-constant z-other z-format-spec z-python&quot;&gt;:&amp;lt;16&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;: &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;byte_in_archive&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;hex&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;upper&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;code_b_view&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;byte_in_archive&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;decode&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;encoding_b&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;errors&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;replace&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-string z-python&quot;&gt;f&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;CP437 View&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-format-spec z-python&quot;&gt;&lt;span class=&quot;z-constant z-other z-format-spec z-python&quot;&gt;:&amp;lt;16&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;: &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;code_b_view&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;store_in_drive&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;code_b_view&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;encode&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;UTF-16LE&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-string z-python&quot;&gt;f&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;Stored in Drive&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-format-spec z-python&quot;&gt;&lt;span class=&quot;z-constant z-other z-format-spec z-python&quot;&gt;:&amp;lt;16&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;: &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;store_in_drive&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;hex&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;upper&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;recover&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;code_b_view&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;encode&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;encoding_b&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;decode&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;encoding_a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-string z-python&quot;&gt;f&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;Recovered&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-format-spec z-python&quot;&gt;&lt;span class=&quot;z-constant z-other z-format-spec z-python&quot;&gt;:&amp;lt;16&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;: &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;recover&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;plain&quot; class=&quot;language-plain z-code&quot;&gt;&lt;code class=&quot;language-plain&quot; data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;Original        : はじめにお読みください.txt
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;Bytes in Archive: 82CD82B682DF82C982A893C782DD82AD82BE82B382A22E747874
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;CP437 View      : é═é╢é▀é╔é¿ô╟é▌é¡é╛é│éó.txt
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;Stored in Drive : E9005025E9006225E9008025E9005425E900BF00F4005F25E9008C25E900A100E9005B25E9000225E900F3002E00740078007400
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;Recovered       : はじめにお読みください.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;這也是如果你用 7Z 或新版 ZIP 等支援 Unicode 的壓縮軟體再把這些亂碼名字檔打包起來，就算是還給日文系統，他們看起來仍然是亂碼。更可怕的是，如果又被舊時代的代碼頁再次轉換⋯⋯&lt;&#x2F;p&gt;
+&lt;p&gt;那麼我們該如何修復呢，若是理想狀況，原本的 Shift-JIS 的字元對應到 CP437 中的字元可以顯示，我們就有辦法原路返回：UTF-16LE 轉 CP437，再用 Shift-JIS 解讀。但若是出現了無法對應的文字，例如 Shift-JIS 轉 Big-5 大多是沒字的，在 Unicode 轉換時，就會被替換成 &lt;code&gt;�&lt;&#x2F;code&gt; 菱形問號「替代字元（Replacement Character）」，這時候因為產生了資訊損失，就無法直接恢復了。當然最有效的方式，當然就是一開始就「正確解讀」原始的那個壓縮檔。&lt;&#x2F;p&gt;
+&lt;p&gt;字元編碼的歷史就是人與機器相互理解的過程，可是就和人與人之間一樣，想要相互理解是很困難的，在沒法理解的時候，那就只能和解。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>程式如何接收參數</title>
+          <pubDate>Fri, 01 Aug 2025 09:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/command-line-guide/argument-introduction/</link>
+          <guid>https://undecv.github.io/blog/posts/command-line-guide/argument-introduction/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/command-line-guide/argument-introduction/">&lt;p&gt;通常我們設計程式時，不會只讓它做單一件事。就像廚房里八百萬年不會拿出來用一次的攪拌機，它可以打果汁，也能打冰沙，甚至可以用來攪和麵糊。程式也是一樣，我們希望它有彈性，能根據不同需求做不同事情，而不需要每次都去修改程式碼、重新編譯或重寫一個新程式。這就是為什麼有了「命令列參數」，我們只要改變「參數（Argument）」，程式就能換出不同的用途，就像同一台攪拌機能處理不同食材一樣。&lt;&#x2F;p&gt;
+&lt;p&gt;大多數的 Shell 在啟動一個程式時，會把使用者在命令列打的「以空白分隔的字串」作為參數傳遞給程式。例如說 &lt;code&gt;ls -a -l .&#x2F;asd&lt;&#x2F;code&gt; 即是：呼叫程式 &lt;code&gt;ls&lt;&#x2F;code&gt; 並傳遞三個參數 &lt;code&gt;[&quot;-a&quot;, &quot;-l&quot;, &quot;.&#x2F;asd&quot;]&lt;&#x2F;code&gt; 給他。&lt;&#x2F;p&gt;
+&lt;p&gt;程式啟動時，這些參數會以「參數陣列」的形式傳入程式，通常包含：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;argv[0]：程式本身或它的相對或絕對路徑；&lt;&#x2F;li&gt;
+&lt;li&gt;argv[1] ... argv[n]：後續輸入的每個參數。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;眾所周知，電腦科學家們不會數數，都是從 0 開始數數。我們也按照這個慣例，用「第 0 個」表示真正的第一個參數。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;第 0 個參數表示程式本身或它的相對或絕對路徑，這是約定俗成的設計，讓程式知道它的人生三大問題之二：「我是誰？」、「我從哪裡來？」；而後所有的輸入，讓程式知道它的人生最後一大問題：「我來做什麼？」。&lt;&#x2F;p&gt;
+&lt;p&gt;我們用 C 實際操作一次。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; data-name=&quot;arg.c&quot; class=&quot;language-c z-code&quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot; data-name=&quot;arg.c&quot;&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-preprocessor z-include z-c&quot;&gt;&lt;span class=&quot;z-keyword z-control z-import z-include z-c&quot;&gt;#include&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-other z-lt-gt z-include z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-c&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;stdio.h&lt;span class=&quot;z-punctuation z-definition z-string z-end z-c&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-storage z-type z-c&quot;&gt;int&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function z-c&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-c&quot;&gt;main&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-c&quot;&gt;&lt;span class=&quot;z-meta z-group z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-c&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-c&quot;&gt;&lt;span class=&quot;z-meta z-group z-c&quot;&gt;&lt;span class=&quot;z-storage z-type z-c&quot;&gt;int&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-c&quot;&gt;argc&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-c&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-storage z-type z-c&quot;&gt;char&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-c&quot;&gt;*&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-c&quot;&gt;argv&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brackets z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-brackets z-begin z-c&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-brackets z-end z-c&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-c&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-c&quot;&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-c&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;  &lt;span class=&quot;z-comment z-line z-double-slash z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-c&quot;&gt;&#x2F;&#x2F;&lt;&#x2F;span&gt; 主程式入口，argc 是參數數量，argv 是參數陣列。
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-function z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;    &lt;span class=&quot;z-keyword z-control z-c&quot;&gt;for&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-c&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-c&quot;&gt;int&lt;&#x2F;span&gt; i &lt;span class=&quot;z-keyword z-operator z-assignment z-c&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-constant z-numeric z-integer z-decimal z-c&quot;&gt;0&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt; i &lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;lt;&lt;&#x2F;span&gt; argc&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt; i&lt;span class=&quot;z-keyword z-operator z-arithmetic z-c&quot;&gt;++&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-c&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-c&quot;&gt;{&lt;&#x2F;span&gt;  &lt;span class=&quot;z-comment z-line z-double-slash z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-c&quot;&gt;&#x2F;&#x2F;&lt;&#x2F;span&gt; 迴圈 argc 次，用於遍歷 argv[] 參數陣列。
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-function z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;        &lt;span class=&quot;z-meta z-function-call z-c&quot;&gt;&lt;span class=&quot;z-support z-function z-C99 z-c&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-c&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-c&quot;&gt;&lt;span class=&quot;z-meta z-group z-c&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;argv[&lt;span class=&quot;z-constant z-other z-placeholder z-c&quot;&gt;%d&lt;&#x2F;span&gt;] = &lt;span class=&quot;z-constant z-other z-placeholder z-c&quot;&gt;%s&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-character z-escape z-c&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-c&quot;&gt;,&lt;&#x2F;span&gt; i&lt;span class=&quot;z-punctuation z-separator z-c&quot;&gt;,&lt;&#x2F;span&gt; argv&lt;span class=&quot;z-meta z-brackets z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-brackets z-begin z-c&quot;&gt;[&lt;&#x2F;span&gt;i&lt;span class=&quot;z-punctuation z-section z-brackets z-end z-c&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-c&quot;&gt;&lt;span class=&quot;z-meta z-group z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-c&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;  &lt;span class=&quot;z-comment z-line z-double-slash z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-c&quot;&gt;&#x2F;&#x2F;&lt;&#x2F;span&gt; 印出第 i 個參數。
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-function z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;    &lt;span class=&quot;z-punctuation z-section z-block z-end z-c&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-function z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;    &lt;span class=&quot;z-keyword z-control z-flow z-return z-c&quot;&gt;return&lt;&#x2F;span&gt; &lt;span class=&quot;z-constant z-numeric z-integer z-decimal z-c&quot;&gt;0&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;  &lt;span class=&quot;z-comment z-line z-double-slash z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-c&quot;&gt;&#x2F;&#x2F;&lt;&#x2F;span&gt; 結束程式。
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-function z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-c&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;編譯並執行：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;gcc&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; arg.c&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;o&lt;&#x2F;span&gt; arg  &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 編譯程式成執行檔 `arg`&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;.&#x2F;arg&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; hello world 123&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;得到輸出：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;plain&quot; class=&quot;language-plain z-code&quot;&gt;&lt;code class=&quot;language-plain&quot; data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;argv[0] = .&#x2F;arg
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;argv[1] = hello
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;argv[2] = world
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;argv[3] = 123
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Python 的概念相同，但語法更簡單。程式碼如下：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; data-name=&quot;arg.py&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot; data-name=&quot;arg.py&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-statement z-import z-python&quot;&gt;&lt;span class=&quot;z-keyword z-control z-import z-python&quot;&gt;import&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sys&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-statement z-loop z-for z-python&quot;&gt;&lt;span class=&quot;z-keyword z-control z-loop z-for z-python&quot;&gt;for&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;i&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-target-list z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;arg&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-control z-loop z-for z-in z-python&quot;&gt;in&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-statement z-loop z-for z-python&quot;&gt; &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;enumerate&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sys&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;argv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-statement z-loop z-for z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-loop z-for z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;  &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 遍歷 argv[] 參數陣列。
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-string z-python&quot;&gt;f&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-interpolated z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;argv[&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;i&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;] = &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-begin z-python&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python z-embedded&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;arg&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-interpolation z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-interpolation z-end z-python&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;  &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 印出第 i 個參數。
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;所以我們在程式中就可以接收到「傳遞」進來的「參數」，之後我們就可以對這些參數進行解析和應用。&lt;&#x2F;p&gt;
+&lt;p&gt;我們來寫個可愛的小程式以展示它的用法：我們的程式是一個禮貌的猴子，他只喜歡香蕉，你丟給他一堆水果，它只會把香蕉吃掉，其他的還給你。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; data-name=&quot;monkey.py&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot; data-name=&quot;monkey.py&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-statement z-import z-python&quot;&gt;&lt;span class=&quot;z-keyword z-control z-import z-python&quot;&gt;import&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sys&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-statement z-loop z-for z-python&quot;&gt;&lt;span class=&quot;z-keyword z-control z-loop z-for z-python&quot;&gt;for&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;arg&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-control z-loop z-for z-in z-python&quot;&gt;in&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-statement z-loop z-for z-python&quot;&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;sys&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;argv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-statement z-loop z-for z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-loop z-for z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;  &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 遍歷 argv[] 參數陣列。
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-meta z-statement z-conditional z-if z-python&quot;&gt;&lt;span class=&quot;z-keyword z-control z-conditional z-if z-python&quot;&gt;if&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;arg&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-comparison z-python&quot;&gt;!=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;🍌&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-block z-conditional z-if z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;        &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;arg&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;end&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt; &lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;我們執行：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;python&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; monkey.py 🍇 🍊 🍋 🍌 🍎&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;會得到輸出：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;plain&quot; class=&quot;language-plain z-code&quot;&gt;&lt;code class=&quot;language-plain&quot; data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;🍇 🍊 🍋 🍎
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;但通常，我們會設計一套「參數」的規則，就像微波爐會設計多個按鈕（加熱、解凍、烤箱），搭配「說明書」告訴你怎麼使用。
+例如我們常用的 &lt;code&gt;ls -a -l .&#x2F;asd&lt;&#x2F;code&gt; 就表示：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;呼叫 &lt;code&gt;ls&lt;&#x2F;code&gt; 程式，&lt;&#x2F;li&gt;
+&lt;li&gt;並且 &lt;code&gt;-a&lt;&#x2F;code&gt; 是「印出所有內容」，&lt;&#x2F;li&gt;
+&lt;li&gt;以及 &lt;code&gt;-l&lt;&#x2F;code&gt; 是「以表格的樣子印出來」，&lt;&#x2F;li&gt;
+&lt;li&gt;最後 &lt;code&gt;.&#x2F;asd&lt;&#x2F;code&gt; 印出當前子資料夾 &lt;code&gt;asd&lt;&#x2F;code&gt; 裡面的內容。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;也會有一些約定俗成的用法，例如 &lt;code&gt;--help&lt;&#x2F;code&gt; 或 &lt;code&gt;&#x2F;?&lt;&#x2F;code&gt; 表示「印出說明書」。&lt;&#x2F;p&gt;
+&lt;p&gt;Linux 上，通常也有「整本」的說明書叫做 &lt;code&gt;man&lt;&#x2F;code&gt;，它不是在說你的軟體是真男人，而是 Manual page 的簡寫，例如查詢 &lt;code&gt;ls&lt;&#x2F;code&gt; 的說明書可以輸入 &lt;code&gt;man ls&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;但是我們寫程式的時候，自己解析這些參數實在是太麻煩了，所以我們可以使用一些套件例如 Python 上官方提供的 argparse 以及第三方但是強大的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;click.palletsprojects.com&quot;&gt;Click&lt;&#x2F;a&gt; 來設計程式接收的參數。&lt;&#x2F;p&gt;
+&lt;p&gt;有了這些命令列參數，我們就能讓同一支程式靈活應對不同需求，而不用每次都從頭寫一次。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>Windows 系統槽備份不完全指北</title>
+          <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/</link>
+          <guid>https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/">&lt;!-- Windows 系統槽備份不完全指北 --&gt;
+&lt;!-- Backup Strategy for the Windows System Drive --&gt;
+&lt;!-- &gt; 整槽端走，也不能漏掉一個存檔 --&gt;
+&lt;p&gt;重灌系統最痛苦的往往不是重灌系統這個事情本身，而是之前的備份，以及之後的恢復。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;C:&#x2F;&lt;&#x2F;code&gt; 是 Windows 的系統槽，可以說是系統的頭腦，而備份它卻讓人摸不著頭腦。而備份就像搬家，
+若是東西都有被合理的收納，那整理起來必定是會輕鬆很多。&lt;&#x2F;p&gt;
+&lt;p&gt;但話是那麼的輕鬆講，事實卻並沒有那麼簡單，軟體的設定、遊戲的存檔、預設的資料夾、……，不同的軟體有不同的想法，
+這導致我們要備份的資料四散在各處，尤其是系統槽，就像海底撈針。&lt;&#x2F;p&gt;
+&lt;p&gt;雖說有著 3 2 1 備份原則，即 3 份存檔、2 個載具、1 份異地，這方案雖然萬全，但這麼高成本且麻煩的方案一定沒有人會照做對吧？
+但是備份仍然是必要的，因為你不知道硬碟什麼時候會掛掉，等掛掉的時候就來不及了……&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zhu-yuan-zheng-die-duan-zou-du-bu-neng-fang-guo-yi-ge&quot;&gt;寧願整碟端走，都不能放過一個&lt;&#x2F;h2&gt;
+&lt;p&gt;可總有一天是要備份的，但無論是重灌系統還是遷移硬碟，一洗下去就資料全無，不會再有反悔的機會。
+所以備份的時候還是得耐下心來，我的建議是：要秉承著「寧願整碟端走，都不能放過一個」的原則。
+畢竟資料無價，雖然容量不大，但可能是幾千小時的遊戲存檔、幾百年前的老照片、國中二年寫的日記、……都是一些青澀的回憶呀。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，我推薦在手動備份的時候「全部掃過一遍，去掉不要的」地毯式掃蕩，而不是一個個去找要備份的東西精準打擊，
+因為這樣很容易有漏網之魚。多拷貝了東西雖然會佔用硬碟空間，但未來還有機會可以刪掉，少拷貝了東西可是找不回來的。
+而且有些設定放在隱藏的資料夾中，在檔案總管中打開「顯示隱藏的資料夾」，不能放過任何一個陰暗潮溼的角落。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cheng-shi-zhi-jie-zhuang-zai-xi-tong-cao&quot;&gt;程式直接裝在系統槽&lt;&#x2F;h2&gt;
+&lt;p&gt;我推薦「程式直接安裝在系統槽」裡面。在遠古時代的達人們不推薦那是由於硬碟的容量受限，
+以及機械硬碟還有防止碎片化的問題所以需要分卷。但是大人時代變了，儲空間容量已經降價到不是那麼貴了。
+固態硬碟（SSD）的普及不僅提速也使得碎片化不再是問題。所以硬碟的分卷現在基本上已經只是使用習慣上的選擇。
+而且那些需要安裝的軟體在重灌作業系統之後還得重裝，不如一起洗掉算了。&lt;&#x2F;p&gt;
+&lt;p&gt;當然遊戲的話，現在都有起動器（Launcher）也就是大家所熟知的 Steam、Battle.net 等平臺，所以遊戲本體可以放在別的地方，
+或是一起備份帶走，不然之後還再用小水管網路載回幾百 GB 的內容。&lt;&#x2F;p&gt;
+&lt;p&gt;其中值得一提的是，Steam 的遊戲預設的存放資料夾通常和 Steam 本體放在一起，這可以在 Steam 的設定中檢視，例如，
+Steam 預設安裝在 &lt;code&gt;C:\Program Files (x86)\Steam&lt;&#x2F;code&gt; 資料夾，他的遊戲就會放在 &lt;code&gt;C:\Program Files (x86)\Steam\steamapps&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;quan-jia-jiu-shi-ni-jia&quot;&gt;全家就是你家&lt;&#x2F;h2&gt;
+&lt;p&gt;另外，我也推薦平常就保持一個整理的習慣，不要把自己的東西散佈到系統槽中的其他地方。&lt;&#x2F;p&gt;
+&lt;p&gt;談到自己的東西要放在哪裡，就不得不提到用戶資料夾：&lt;code&gt;C:&#x2F;Users&#x2F;&amp;lt;你的名字&amp;gt;&lt;&#x2F;code&gt; 是系統預設的用戶資料夾，
+用戶就是你，你是電腦的用戶。相當於 Linux 的 &lt;code&gt;&#x2F;home&#x2F;&amp;lt;你的名字&amp;gt;&lt;&#x2F;code&gt;。為什麼會這麼設計，是因為其實電腦是可以多人運動的。
+通常這個資料夾會有個愛稱，Linux 上是 &lt;code&gt;~&lt;&#x2F;code&gt;，而 Windows 上是 &lt;code&gt;%USERPROFILE%&lt;&#x2F;code&gt;，
+可以直接把這串字貼到檔案總管的地址欄，它會自動跳轉過去。&lt;&#x2F;p&gt;
+&lt;p&gt;這個資料夾裡面通常裡面存著所有「用戶級的設定」和「用戶的資料」，
+包括但不限於 Desktop（桌布）、Documents（檔案）、Downloads（下載）、Music（音樂）、Pictures（圖片）、Videos（影片）。
+這些特殊的資料夾不止有花里胡哨的圖示，還有做特殊的機制。&lt;&#x2F;p&gt;
+&lt;p&gt;無論是軟體的設定、遊戲的存檔、預設的存檔位置都在這個資料夾，OneDrive 也是推薦備份這個資料夾。
+其實 Windows 的本意就是『這是你「家」，你的個人資料都請放這裡』。&lt;&#x2F;p&gt;
+&lt;p&gt;但是，正是因為軟體的設定等東西也都預設放進這裡，一打開這個資料夾不能說是七零八落，只能說是亂七八糟，
+設定資料夾和檔案四散各處，還不能移走，移走程式就讀不到設定了，我才不想承認他是我家。
+其實 Windows 有給這些設定檔案找個好去處就是 &lt;code&gt;%APPDATA%&lt;&#x2F;code&gt;，但有些程式就是很有自己的想法。
+&lt;del&gt;其實在 Linux 上也是這樣的，並且更慘，因為沒有規範🤷。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;wei-shen-mo-dotfiles&quot;&gt;為什麼 Dotfiles？&lt;&#x2F;h3&gt;
+&lt;p&gt;當你在收拾家資料夾的時候，你一定會看到一拖拉庫 &lt;code&gt;.&lt;&#x2F;code&gt; 句點開頭的檔案和資料夾，
+他們通稱 dotfiles，Linux 系軟體的遺毒，都是一些設定檔和存檔。&lt;&#x2F;p&gt;
+&lt;p&gt;很久很久以前，
+Windows 是沒辦法用通常辦法建立 &lt;code&gt;.&lt;&#x2F;code&gt; 開頭的檔案（只能用指令），
+會提示沒有檔名（只有副檔名）。&lt;&#x2F;p&gt;
+&lt;p&gt;當時的大家對檔名都是很保守的，
+盡量保持得檔名加兩三四個字的副檔名。
+直到當今檔案種類眾多，
+大家都深受三個字的副檔名所苦，
+直到當今開發者放飛自我，不再限制字數，
+甚至不止一個副檔名，比 HTC 的下巴都多。&lt;&#x2F;p&gt;
+&lt;p&gt;在隔壁，Linux 是用 &lt;code&gt;.&lt;&#x2F;code&gt; 開頭的檔名作為隱藏檔案的標記，
+而隱藏檔案在 Windows 需要在檔案描述子中才能設定，
+所以這個 &lt;code&gt;.&lt;&#x2F;code&gt; 在 Windows 下不會隱藏檔案。&lt;&#x2F;p&gt;
+&lt;p&gt;最常見的，這些 &lt;code&gt;.&lt;&#x2F;code&gt; 開頭的檔案作為用戶設定檔（直接）放在你的家資料夾下，這很醜，非常醜，異常醜。
+但由於向下相容的歷史因素，這很難改。
+這些檔案本該去 &lt;code&gt;%APPDATA%&lt;&#x2F;code&gt;，但很顯然軟體工程師們總是很有自己的想法。&lt;&#x2F;p&gt;
+&lt;p&gt;直到那一天，
+Windows 擁抱了 Linux。
+Linux 和 Windows 的家資料夾終於殊途同歸然後同歸於盡，
+WSL 帶領著一眾 dotfiles 給 Windows 的家資料夾瘋狂洗板。
+原本就污穢不堪的家資料夾更不堪入目了。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;yu-she-zi-liao-jia-shuo-ming&quot;&gt;預設資料夾說明&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;請注意！下面的資料夾的說明僅適用於 Windows 11 24H2，
+其內容的準確性可能隨著時間而改變。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;也請注意！下面的策略是我的主觀評價，「僅供參考」，請以實際情況為準。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;接下來，我會列出「系統槽」中每個資料夾的用意，假設你的系統槽是 &lt;code&gt;C:\&lt;&#x2F;code&gt;&lt;sup&gt;[0]&lt;&#x2F;sup&gt;。
+因為基於「全面掃蕩」的原則，我建議是全部過目一遍。
+但知道了資料夾的用意之後有些資料夾就不需要點進去看了，可以看情況備份或者不備份裡面的內容。
+我沒列出來的，可能是自己或是其他軟體設定的，也請點進去看看。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: left&quot;&gt;Path&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Description&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;Strategy&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\inetpub&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;網頁伺服器服務（IIS）的資料夾，通常不會出現。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[1]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\OneDriveTemp&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;網路硬碟 OneDrive 暫存資料夾。（隱藏）&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\PerfLogs&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;用於系統效能監控。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Program Files&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕預設安裝 32-bit 應用程式的資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Program Files (x86)&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕預設安裝 64-bit 應用程式的資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\ProgramData&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕全域應用程式資料，例如設定檔等。（隱藏）&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Users&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;各個使用者的家。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;-&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Users\Default&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;新帳號範本資料夾，建新帳號時，會複製這裡的內容過去。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Users\Public&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;所有使用者共享的公共資料儲存區。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[2]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Users\&amp;lt;你的名字&amp;gt;&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;愛稱：&lt;code&gt;%USERPROFILE%&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕你的家，若著急可以直接把這個整碗端走。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;C:\Windows&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;系統核心與系統檔案所在。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;ul&gt;
+&lt;li&gt;[0]: 如果你會修改系統槽符號，你應該也不用看本文浪費時間了吧？&lt;&#x2F;li&gt;
+&lt;li&gt;[1]: 如果你會用到網頁伺服器，你應該也不用看本文浪費時間了吧？&lt;&#x2F;li&gt;
+&lt;li&gt;[2]: 單用戶應該不會有人把東西放這吧？&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;其中，有些很有自己的想法的軟體，會把設定檔、存檔等一起放在 &lt;code&gt;Program Files&lt;&#x2F;code&gt; 資料夾裡面（這不是標準實作），
+所以備份的時候還是建議掃過一遍。再次提醒，Steam 等平臺的遊戲也在裡面。&lt;&#x2F;p&gt;
+&lt;p&gt;接下來，我會列出「用戶資料夾」中每個重要資料夾的用意，
+我會直接使用 &lt;code&gt;%USERPROFILE%&lt;&#x2F;code&gt; 替代掉前面 &lt;code&gt;C:\Users\&amp;lt;你的名字&amp;gt;&lt;&#x2F;code&gt; 的部分，這也可以讓你直接貼到檔案總管的地址欄就可以直接訪問。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: left&quot;&gt;Path&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Description&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;Strategy&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\AppData&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;程式的資料。（隱藏）&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;-&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\AppData\Local&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;愛稱：&lt;code&gt;%LOCALAPPDATA%&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕本機專用資料，如快取、暫存、重下載可恢復內容。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\AppData\LocalLow&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;限低權限執行的程式儲存區。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[3]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\AppData\Roaming&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;愛稱：&lt;code&gt;%APPDATA%&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕會跟隨帳號漫遊的設定。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Contacts&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;存放聯絡人資訊。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[4]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\CrossDevice&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;微軟的「跨裝置體驗」服務資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩無需備份&lt;sup&gt;[5]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Desktop&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕桌布上的所有東西。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Documents&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放所有用戶檔案，預設的存檔位置。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Documents\My Games&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕約定俗成的遊戲存檔資料夾&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Downloads&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔重要〕存放下載來的檔案，預設的下載位置。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Favorites&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;存放 Internet Explorer（IE） 的書籤。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[4]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Links&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;曾經的快速存取列。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[4]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Music&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放音樂，甚至錄音檔。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\OneDrive&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;OneDrive 同步用。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩已經備份&lt;sup&gt;[6]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Pictures&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放圖片，包括截圖等。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Saved Games&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放遊戲存檔。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Searches&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;儲存搜尋條件（Saved Searches）的資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;sup&gt;[4]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Videos&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;〔非常重要〕存放影片，包括錄影等。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟥必須備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\NTUSER.DAT&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;檔案，使用者註冊檔（不要動，會造成帳號損壞）。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩不要備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;以下是一些非預設的內容&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\.config&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;一些白目的軟體的設定檔案和存檔資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\&amp;lt;軟體名稱&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;一些白目的軟體的設定檔案和存檔資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Documents\&amp;lt;軟體名稱&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;一些白目的軟體的設定檔案和存檔資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\scoop&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;軟體套件管理系統 Scoop 預設安裝資料夾，可能有設定檔案。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟨按需備份&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;%USERPROFILE%\Sync&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;同步工具 Syncthing 預設的用戶同步資料夾。&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;🟩不要備份&lt;sup&gt;[5]&lt;&#x2F;sup&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;ul&gt;
+&lt;li&gt;[3]: 通常沒什麼要備份。&lt;&#x2F;li&gt;
+&lt;li&gt;[4]: 應該沒什麼人用吧？&lt;&#x2F;li&gt;
+&lt;li&gt;[5]: 通常個資料夾的內容在你的另一臺設備上。&lt;&#x2F;li&gt;
+&lt;li&gt;[6]: 通常個資料夾已經被 OneDrive 同步了。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;其中，資料夾 &lt;code&gt;%USERPROFILE%\AppData&lt;&#x2F;code&gt; 是「程式的資料」，原意是放一些程式的設定檔，
+但裡面的東西多到根本就是在你家開了一家 Costco 一樣，是因為有些很有自己想法的軟體例如 Chrome 就會把自己裝到裡面，是為了規避管理員權限（UAC）。&lt;&#x2F;p&gt;
+&lt;p&gt;再次強調，「沒有列出的資料夾和檔案也都請掃過一遍」。
+如果還是忘了哪些檔案，那我也只能借用某知名遊戲製作人田中氏的話說，『不要太在乎得失，你要去享受這個過程』。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>打破指令和圖形界面的次元壁！用捷徑圖示執行指令</title>
+          <pubDate>Wed, 28 May 2025 05:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/</link>
+          <guid>https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/">&lt;p&gt;用例：某個檔案希望用不是預設的程式打開，或是想把一拖拉庫的檔案丟給某個程式。&lt;&#x2F;p&gt;
+&lt;p&gt;Windows 下的圖形界面，有個非常好用的功能，就是拖動一個或者一拖拉庫檔案或者資料夾到一個程式的圖示上，可以用程式打開這些檔案。&lt;&#x2F;p&gt;
+&lt;p&gt;這個方法可以適用在一些特殊的檔案，不限但包括 &lt;code&gt;.exe&lt;&#x2F;code&gt; 執行檔、 &lt;code&gt;.lnk&lt;&#x2F;code&gt; 捷徑 和 Batch &lt;code&gt;.bat&lt;&#x2F;code&gt; 批次檔上。
+但絕大部分的檔案可能都不行，例如 Python 的 &lt;code&gt;.py&lt;&#x2F;code&gt; 和 PowerShell 的 &lt;code&gt;.ps1&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR: 這類 Script 並非可執行檔，Windows 不會自動以解譯器打開，
+且 PowerShell 的執行政策（Execution Policy）限制了 .ps1 的直接執行。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;最簡單的用法例如，想要用記事本編輯一個文字檔，但沒有它沒有綁定擴展名不能預設用記事本開啟，
+就可以把這個檔案直接拖動到記事本的圖示上，就可以直接用記事本打開它了。&lt;&#x2F;p&gt;
+&lt;p&gt;這個功能的本質是，將檔案或資料夾拖動到程式的圖示，把這他們的路徑以「參數」的方式，傳遞給拖拽的目標。
+例如說，你把檔案 &lt;code&gt;1.txt&lt;&#x2F;code&gt; 和 &lt;code&gt;2.txt&lt;&#x2F;code&gt; 拖動到 &lt;code&gt;code.exe&lt;&#x2F;code&gt; 程式上，實際上會執行 &lt;code&gt;code.exe 1.txt 2.txt&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;這個功能根本就是打破指令和圖形界面的次元壁：既能享受圖形界面的直覺，又能享受指令列的自動化。&lt;&#x2F;p&gt;
+&lt;p&gt;但，有時候我們寫了一個 PowerShell 的 shell script，
+或是 Python 程式懶得編譯成 &lt;code&gt;.exe&lt;&#x2F;code&gt; 執行檔（Do not try it at home，超級麻煩），我們還是希望可以使用這個便利的功能。
+以 Python 為例，我們就可以用批次檔寫一個「傳送門」：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;@ECHO OFF
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;python -u .&#x2F;random_script.py %*
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;@PAUSE
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;這個批次檔的意思是，
+先用 &lt;code&gt;@ECHO OFF&lt;&#x2F;code&gt; 關閉多餘的 Prompt 輸出。
+再用 Python 執行 script，並把參數傳遞進去。這裡的 &lt;code&gt;%*&lt;&#x2F;code&gt; 就是批次檔所得到的「所有參數」。
+但通常這個批次檔執行完程式後，發現自己沒啥可做了就會直接退出，然後終端界面就會像您的未來一樣轉瞬即逝，
+所以最後我們加上 &lt;code&gt;@PAUSE&lt;&#x2F;code&gt; 暫停看看程式的輸出。&lt;&#x2F;p&gt;
+&lt;p&gt;在批次檔中，變數 &lt;code&gt;%*&lt;&#x2F;code&gt; 的意思是批次檔所得到的「所有參數」，
+還可以展開來 &lt;code&gt;%0&lt;&#x2F;code&gt; 表示批次檔自己所在的位置、&lt;code&gt;%1&lt;&#x2F;code&gt; 表示第一個參數、&lt;code&gt;%2&lt;&#x2F;code&gt; 表示第二個參數、依此類推。
+變數 &lt;code&gt;%*&lt;&#x2F;code&gt; 不包括 &lt;code&gt;%0&lt;&#x2F;code&gt;。
+這因為電腦中通常數數是從 0 開始，而第〇個參數通常表示程式自己的路徑。
+還可以用一些前綴來修飾這些變數，例如 &lt;code&gt;%~dp0&lt;&#x2F;code&gt; 表示「批次檔當前所在的資料夾路徑且去掉引號」。
+可以通過 &lt;code&gt;CALL &#x2F;?&lt;&#x2F;code&gt; 和 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;learn.microsoft.com&#x2F;en-us&#x2F;windows-server&#x2F;administration&#x2F;windows-commands&#x2F;call&quot;&gt;官方文檔&lt;&#x2F;a&gt; 查看他的用法。&lt;&#x2F;p&gt;
+&lt;p&gt;例如說，你把檔案 &lt;code&gt;1.txt&lt;&#x2F;code&gt; 和 &lt;code&gt;2.txt&lt;&#x2F;code&gt; 拖動到這個批次檔上，
+實際上批次檔會執行 &lt;code&gt;python -u .&#x2F;random_script.py 1.txt 2.txt&lt;&#x2F;code&gt;。
+（過程是：〔檔案〕-&amp;gt;〔批次檔〕-&amp;gt;〔程式〕）&lt;&#x2F;p&gt;
+&lt;p&gt;所以 Python script 也可以是一種 shell script，不再需要 Batch 黑魔法詠唱一般的文法。&lt;&#x2F;p&gt;
+&lt;p&gt;甚至，我們可以給這個批次檔「傳送門」建立一個捷徑，設定一個圖標，捷徑也會把拖動到它上面的檔案和資料夾以參數的方式傳遞給其目標，
+比如我們寫好的「傳送門」批次檔，這個批次檔在呼叫程式並且再把參數傳遞過去（過程是：〔檔案〕-&amp;gt;〔捷徑〕-&amp;gt;〔批次檔〕-&amp;gt;〔程式〕）。
+這樣就可以把任何檔案拖進這個捷徑，就會自動傳遞給你的程式處理。&lt;&#x2F;p&gt;
+&lt;p&gt;聰明的你一定能想到，誒那我能不能跳過批次檔，直接用捷徑呼叫程式呢？（過程是：〔檔案〕-&amp;gt;〔捷徑〕-&amp;gt;〔程式〕）
+當然不是不行，但在我的測試中，這樣會比較容易遇到空格和引號的跳脫問題，而且沒有批次檔方案靈活，只好作罷。&lt;&#x2F;p&gt;
+&lt;p&gt;這樣，我們用幾行批次指令，把 CLI 工具偷渡到了圖形界面裡，打破了兩者的界線，開啟了指令和圖形界面之間的「傳送門」。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>打通 Windows 和 Linux 的傳送魔法陣！在 Shell 之間反覆橫跳</title>
+          <pubDate>Wed, 28 May 2025 03:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/</link>
+          <guid>https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/">&lt;p&gt;通常，要做一件事情是可以在一個 Shell 裡面完成的。
+但，CMD 和 PowerShell 目前還是各有千秋，
+以及 Windows Subsystem Linux (WSL) 使得可以使用 Linux 中的程式，
+這使得我們不得不在這些 Shell 裡面反复橫跳。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;nested-shell-scripting&quot;&gt;Nested Shell Scripting&lt;&#x2F;h2&gt;
+&lt;p&gt;上文說過，Shell 不過是一個程式，本質上只是能執行程式的直譯器，而 Shell 可以呼叫程式，
+因此只要能呼叫，Shell 就能嵌套執行另一個 Shell 的程式碼。所以 Shell 之間可以互通有無。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;del&gt;這根本就是指令界的人〇〇蚣！&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;由於 Windows 11 預設的 Windows Terminal 預設的是 PowerShell，在懶得切換 Shell 的前提下，我最經常做的就是檢查檔案的散列值：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;wsl sha256sum &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;c SHA256SUMS
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;回顧一下指令的構成，指令按空格分割，第一個是執行的程式，而後所有的部分作為「參數」丟給程式。
+這個指令的意思是，執行 &lt;code&gt;wsl&lt;&#x2F;code&gt; 並且把 &lt;code&gt;sha256sum -c SHA256SUMS&lt;&#x2F;code&gt; 作為參數丟給它。然後 &lt;code&gt;wsl&lt;&#x2F;code&gt; 會打開預設的 WSL 並且把這些參數作為指令執行，就是打開 &lt;code&gt;sha256sum&lt;&#x2F;code&gt; 計算散列值程式，並且把 &lt;code&gt;-c SHA256SUMS&lt;&#x2F;code&gt; 作為參數丟給它，讓程式知道要做的是「比對檔案 &lt;code&gt;SHA256SUMS&lt;&#x2F;code&gt; 中的散列值的一致性」。&lt;&#x2F;p&gt;
+&lt;p&gt;當然，執行這個指令前提是你已經調教好了一個能用的 WSL。
+並且遇到了 Linux 和 WIndows 跨平臺的時候，還得記得解決 BOM 和 換行符 的問題。&lt;&#x2F;p&gt;
+&lt;p&gt;以及「跳脫字元」和「引號定義」，這在一個 Shell 中不成大問題，但跨 Shell 的時候傳遞參數，由於不同的 Shell 有不同的跳脫字元和引號定義，在傳遞的時候整條鏈路都必須要做處理，甚至需要多次「跳脫跳脫字元」，這個根本就是連老手都會翻車的地獄試煉，必須要精通整條鏈路上所有 Shell 的行為，尤其是跳脫規則與參數傳遞邏輯。&lt;&#x2F;p&gt;
+&lt;p&gt;如此如此這般這般，就打通了 Windows 和 Linux 兩個世界線的傳送魔法陣。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;more-command-line-tools&quot;&gt;More Command-line Tools&lt;&#x2F;h2&gt;
+&lt;p&gt;我們常用的那些指令列工具，像是 &lt;code&gt;ls&lt;&#x2F;code&gt;、&lt;code&gt;cat&lt;&#x2F;code&gt;、&lt;code&gt;grep&lt;&#x2F;code&gt;、&lt;code&gt;top&lt;&#x2F;code&gt;，可能都是幾個世紀前的產物了。不過現在 Rust-lang、Go-lang 等新語言的流行，使得很多指令列工具被挖出來砍掉重寫，也讓這些老工具煥發第二春。
+例如說 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;sharkdp&#x2F;bat&quot;&gt;sharkdp&#x2F;bat&lt;&#x2F;a&gt; 升級了 &lt;code&gt;cat&lt;&#x2F;code&gt; 印出文字檔；
+又例如說 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ogham&#x2F;exa&quot;&gt;ogham&#x2F;exa&lt;&#x2F;a&gt; 升級了 &lt;code&gt;ls&lt;&#x2F;code&gt; 印出資料夾中的內容；
+再例如說 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;BurntSushi&#x2F;ripgrep&#x2F;tree&#x2F;master&quot;&gt;BurntSushi&#x2F;ripgrep&lt;&#x2F;a&gt; 升級了 &lt;code&gt;grep&lt;&#x2F;code&gt; 搜尋工具；
+這也順便帶來的另一個好處，他們在重寫的時候，有可能順便考慮一下跨平臺：這使得以前一些 Linux 獨佔的工具有機會在 Windows 中原生的使用。
+甚至許多這些重寫的工具也都已經登上 Scoop 或 Winget，直接安裝即可使用，無痛邁入新世代。&lt;&#x2F;p&gt;
+&lt;p&gt;所以在遇事不決 WSL 之前，不妨先搜尋一下需要的工具或功能是不是已經有偉人寫好了。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>重灌軟體自動化！Windows 的軟體管理系統</title>
+          <pubDate>Wed, 28 May 2025 02:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/</link>
+          <guid>https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/">&lt;p&gt;現如今重灌電腦已經不是什麼困難的事情。
+而重灌電腦最麻煩的就是灌回那些常用的軟體。
+傳統上 Windows 要重灌軟體，通常是這樣的步驟：打開瀏覽器、搜尋軟體官方網站、找到載點下載安裝包、安裝一直按下一步，然後重複一百萬遍……
+真的好想讓電腦變成自己的形狀。&lt;&#x2F;p&gt;
+&lt;p&gt;在 Linux 上有各種軟體套件管理系統（Package Manager）來幫你管理軟體：
+例如 Debian 的 &lt;code&gt;apt&lt;&#x2F;code&gt;、或者 Fedora 的 &lt;code&gt;dnf&lt;&#x2F;code&gt;，一個指令就可以幫你從軟體倉庫載軟體下來自動安裝。
+甚至有 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.chezmoi.io&#x2F;&quot;&gt;chezmoi&lt;&#x2F;a&gt; 之類的軟體幫你管理設定檔案，
+可以從零開始直接安裝軟體到拷貝設定檔案「一鍵裝機」一條龍，直接變成你最熟悉的形狀。&lt;&#x2F;p&gt;
+&lt;p&gt;好在 Windows 上也有了這類套件管理系統，最有名的莫過於 Winget、Scoop、Chocolatey。&lt;&#x2F;p&gt;
+&lt;p&gt;Scoop、Chocolatey 不是原生的，而 Winget 也不是很久遠也就 2021 年才誕生的，
+但這種軟體套件管理器其實非常依賴他們社群的活躍更新，軟體的管理，包括新增和更新基本上只能依靠他們不大的社群用愛發電，否則就會發生軟體更新了但是在管理器中只能找到舊版本。&lt;&#x2F;p&gt;
+&lt;p&gt;所以這些套件管理器讓我總感覺好用又不太好用，讓我想著等著社群壯大再說。但 Winget 作為內建於 Windows 的封弊者一般的存在，雖然年輕但好像已經被廣泛的支援。目前已經涵蓋了絕大部分我用的軟體，現在我需要手動下載的軟體屈指可數。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;live-example&quot;&gt;Live Example&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;用 Edge 載其他瀏覽器是不是一種 NTR？&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;舉例一個非常實在的例子，重灌作業系統之後第一件事就是重灌瀏覽器，
+通常我們需要打開 Edge -&amp;gt; 用 Bing 搜尋你要的瀏覽器 -&amp;gt; 找到對應的載點 -&amp;gt; 等下載 -&amp;gt; 手動安裝。
+現在只需要打開終端機然後貼上這一列指令：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 從 MS Store 安裝 Mozilla Firefox 並且簽訂魔法少女契約&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Mozilla Firefox&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;s &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;msstore&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;source&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;package&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 從 winget 預設倉庫安裝 Google Chrome&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;id &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Google.Chrome&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;這樣，重灌作業系統的時候就再也不需要用 Edge 來載其他瀏覽器了。
+&lt;del&gt;Edge 再也不會因為被戴綠帽子而傷心落淚。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;winget&quot;&gt;Winget&lt;&#x2F;h2&gt;
+&lt;p&gt;首先是 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-tw&#x2F;windows&#x2F;package-manager&#x2F;winget&#x2F;&quot;&gt;Winget&lt;&#x2F;a&gt;，由 Microsoft 官方不榮譽&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;出品，&lt;strong&gt;作業系統內建&lt;&#x2F;strong&gt;，相容 Microsoft Store，開源，開放軟體倉庫。&lt;&#x2F;p&gt;
+&lt;p&gt;（截稿時）Winget 的官方倉庫&lt;strong&gt;不接受&lt;&#x2F;strong&gt;只能手動安裝的應用程式。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 搜尋軟體&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget search &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 安裝軟體&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; [推薦] 從 MS Store 安裝軟體並且簽訂魔法少女契約&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;source &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;msstore&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;source&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;package&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; [推薦] 指定 ID 不容易裝錯&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;id &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE_ID&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; [極其危險] 更新軟體並且簽訂魔法少女契約&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget upgrade &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;all &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;package&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;source&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 刪除軟體&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget uninstall &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;scoop&quot;&gt;Scoop&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;scoop.sh&#x2F;&quot;&gt;Scoop&lt;&#x2F;a&gt; 精通指令列工具，也能裝一些常見的軟體。
+它可以有自己的獨立安裝路徑（&lt;code&gt;~&#x2F;scoop&#x2F;&lt;&#x2F;code&gt;），不依賴系統（登錄檔、環境變數），
+好處是可以不需要作業系統管理員權限（UAC-free），也就是人們常說的「綠色軟體」，不會動到系統層級設定「污染」環境。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop install neovim
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop update &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;*&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop uninstall python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;chocolatey&quot;&gt;Chocolatey&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chocolatey.org&#x2F;&quot;&gt;Chocolatey&lt;&#x2F;a&gt; 雖然看上去有些笨重，但若有一些複雜的安裝流程就可以靠它。甚至是字型也可以！&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;choco install &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;choco upgrade &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;choco uninstall &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;而，Scoop 和 Chocolatey 不是作業系統內建，但他們都有指令化的安裝方式。
+由於安裝方式因地制宜，這裡就不贅述，可以參考他們的官方網站和文檔。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;versus&quot;&gt;Versus&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR: 他們的差異&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;安裝程式的本質是把程式的執行檔、依賴庫、設定檔、捷徑、登錄檔等放到他們該去的地方。安裝檔正是在做這些事情。&lt;&#x2F;p&gt;
+&lt;p&gt;Winget 本質是「安裝包管理器（Installer Manager）」，就是自動幫你載安裝包下來安裝。
+但，有時候就不喜歡安裝包的行為，一個是安裝檔行為不可控，可能偷渡一些設定、GUI 介面也難以自動化。&lt;&#x2F;p&gt;
+&lt;p&gt;「軟體套件管理器（Package Manager）」則傾向管理軟體檔案與設定過程的全流程。
+所以 Chocolatey 把安裝軟體的過程用 Script 改寫，透明且靈活。&lt;&#x2F;p&gt;
+&lt;p&gt;更是有 Scoop，將軟體放在自己肚子裡，安裝軟體甚至可以不需要管理員權限。
+因為不會修改到作業系統相關的內容例如說登錄檔，也就是說不會「污染」作業系統的環境。
+（當然安裝 GUI 程式或是普通的安裝到系統 Scoop 也是可以做。）&lt;&#x2F;p&gt;
+&lt;p&gt;現在就可以把常用的軟體安裝寫成 Shell Script，
+在重灌之後直接執行，就可以一鍵完成原本要花幾百年才能完成的重灌軟體的工作！&lt;&#x2F;p&gt;
+&lt;p&gt;Reference:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ScoopInstaller&#x2F;Scoop&#x2F;discussions&#x2F;4777#discussioncomment-2295777&quot;&gt;ScoopInstaller&#x2F;Scoop#4777#2295777&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ScoopInstaller&#x2F;Scoop&#x2F;discussions&#x2F;4777#discussioncomment-2296112&quot;&gt;ScoopInstaller&#x2F;Scoop#4777#2296112&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Windows_Package_Manager#History&quot;&gt;Windows Package Manager 的黑歷史&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+      <item>
+          <title>命令列從入門到出門</title>
+          <pubDate>Wed, 28 May 2025 01:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/</link>
+          <guid>https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/">&lt;p&gt;我們使用電腦的方式大致分為兩種，
+一個是圖形用戶界面（GUI），就是大家耳熟能詳簡易直觀的視窗、圖形、按鈕、選單⋯
+圖形用戶界面的普及，讓我們使用電腦的方式改頭換面。
+拖拉推拽煎炒烹炸的直覺而精緻操作使得使用電腦的門檻大大降低。&lt;&#x2F;p&gt;
+&lt;p&gt;但在那很久很久以前，人與電腦之間的交互只能依靠的是黑底白字的命令列界面（CLI）完成。
+命令列既然是上古遺物，但原理簡單，反而容易理解。
+其實指令就像和電腦對話，打字告訴電腦做什麼，電腦做完了回報或者不回報給你，只是要說電腦聽得懂的語言。&lt;&#x2F;p&gt;
+&lt;p&gt;很久很久以後的今天，對於一般的使用者而言，
+指令已經成為了只有在駭客或者工程師修電腦的時候才會出現的魔法詠唱般的存在，
+大概現在只會搓玻璃的小朋友們可能已經很難想像那個人均駭客帝國的時代了。&lt;&#x2F;p&gt;
+&lt;p&gt;實際上，命令列界面相關的程式仍是電腦中重要的一部分，甚至他們的推陳出新都從未停止過。
+如上文所言，指令其實不是什麼艱澀難懂的東西，只是需要一點學習門檻，以及億點點🤏的腦汁。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;preliminaries&quot;&gt;Preliminaries&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;terminology&quot;&gt;Terminology&lt;&#x2F;h3&gt;
+&lt;p&gt;在這裡先簡短的介紹一下專有名詞，很久很久以前，電腦還是衣櫃那麼大的時代，要對電腦做操作，
+要通過電腦身上的主控台（Console），大概就像電箱上的配電盤，後來電腦科學家們發現，
+要用電腦得站在電腦前面有點累的腰疼，也不方便多人運動，於是就把控制裝置拉出來，就是終端機（Terminal），
+而上古世紀還沒有螢幕的時候，大家用的是電傳打字機（Typewriter, TTY）。
+而時至今日，我們所熟知的螢幕鍵盤替代了機械的打字機，
+卻仍在用黑底白字模擬當年的終端機（Terminal Emulator），述說著那個年代的技術。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shell&quot;&gt;Shell&lt;&#x2F;h3&gt;
+&lt;p&gt;作業系統的「內核 Kernel」負責運作，用戶通過「殼層 Shell」與之交互。
+這個「殼層」其實就是一個特殊的軟體，一種指令直譯器（Command Interpreter），一台電腦上可以同時有多種多樣好幾個。
+例如 Windows 下傳統的 CMD 和新血 PowerShell，Linux 下的 Bash 和 Zsh；
+圖形界面的也可以叫 Shell，例如 Windows Shell 包括大家熟悉的 &lt;code&gt;explorer.exe&lt;&#x2F;code&gt;，
+Linux 下的 Gnome、KDE、XFCE … 但是我們這裡先講命令列。&lt;&#x2F;p&gt;
+&lt;p&gt;不同的 Shell 的指令有不同的寫法，就像不同的程式語言一樣，
+但指令基本上在做的事情都是存取系統資源和呼叫程式或 Scripts。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;command-line&quot;&gt;Command line&lt;&#x2F;h3&gt;
+&lt;p&gt;命令列其實非常好理解，主要就是「教哪個程式怎麼做事」，指令的各個部分用空格隔開，
+通常包括做什麼（程式），對誰做（輸入），怎麼做（參數）。
+舉個最最簡單的例子：&lt;code&gt;cp a.txt b.txt&lt;&#x2F;code&gt; 就是複製 （&lt;code&gt;cp&lt;&#x2F;code&gt;）檔案 &lt;code&gt;a.txt&lt;&#x2F;code&gt; 到 &lt;code&gt;b.txt&lt;&#x2F;code&gt;。
+是不是簡單又暴力呢。
+在這裡，&lt;code&gt;cp&lt;&#x2F;code&gt; 是「目標程式或者指令」，而後所有的東西都是「參數（Arguments）」。
+這套邏輯在各大平台幾乎都是一樣的。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ 玩弄指令有風險，使用前請詳閱以下說明&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;再舉個更簡單的例子：&lt;code&gt;rm &#x2F;*&lt;&#x2F;code&gt; 就是刪除（&lt;code&gt;rm&lt;&#x2F;code&gt;）電腦中的所有檔案（&lt;code&gt;&#x2F;*&lt;&#x2F;code&gt;），這聽起來很恐怖對吧，
+這指令只和我們常用的清除當前資料夾下所有檔案 &lt;code&gt;rm .&#x2F;*&lt;&#x2F;code&gt; 只有一點點的距離。而指令一旦執行更是往往回頭無岸，
+這也是為什麼沒事不要輕易的教純真的用戶使用指令，
+所以各位在使用命令列的時候必須完全理解自己輸入或者拷貝來的指令甚至於每一個符號，以免追悔莫及。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;get-help&quot;&gt;Get-Help&lt;&#x2F;h3&gt;
+&lt;p&gt;搞懂一個指令是非常重要的，而不懂的時候就要「尋求幫助」。&lt;&#x2F;p&gt;
+&lt;p&gt;PowerShell 的&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;learn.microsoft.com&#x2F;en-us&#x2F;powershell&#x2F;scripting&#x2F;learn&#x2F;ps101&#x2F;02-help-system?view=powershell-7.5&quot;&gt;官方文檔&lt;&#x2F;a&gt;說過『專家並不總是知道答案，但他們知道如何找出答案。』&lt;&#x2F;p&gt;
+&lt;p&gt;Shell 作為人與電腦的中介，甚至在古代是唯一的中介，通常自備使用說明書，
+在 Linux 上有手冊頁（manual pages）可以通過指令例如 &lt;code&gt;man ls&lt;&#x2F;code&gt; 查詢幫助文檔，
+在 Windows 的 PowerShell 中，也有查詢指令說明和資訊的工具，
+&lt;code&gt;Get-Help&lt;&#x2F;code&gt;、&lt;code&gt;Get-Command&lt;&#x2F;code&gt;、和 &lt;code&gt;Get-Member&lt;&#x2F;code&gt; 被稱為「三個核心 cmdlet」，可見他們對幫助文檔的重視。&lt;&#x2F;p&gt;
+&lt;p&gt;命令列軟體通常也會有選項可以印出他的用法，包括參數的含義，例如 &lt;code&gt;7z.exe --help&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;還是搞不懂的話，那，還有 Google 搜尋。&lt;&#x2F;p&gt;
+&lt;p&gt;搞懂了指令之後我們就可以開始寫指令了，但一列指令可能不那麼的能體現出指令的優勢，
+複製檔案的 Ctrl + C、Ctrl + V 肯定比敲一列又臭又長的指令快得多，那什麼為什麼還需要用指令？
+因為指令其實就是一列的文字，而文字可以做的操作就多得多了，可以很方便複製貼上修改，可以被重複、組合、排程、自動化。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shell-script&quot;&gt;Shell Script&lt;&#x2F;h3&gt;
+&lt;p&gt;假設遇到的這樣的問題：改一百萬個檔名、壓縮一百萬和檔案。
+或者更進階一些：按照日期分類一百萬張照片。
+又例如說、自動備份、批量上傳、資料清洗、……&lt;&#x2F;p&gt;
+&lt;p&gt;這種簡單而重複的作業，GUI 程式可能少有對應的工具，而 Shell script 正是其絕佳的解決方案！
+Windows 的遠古 shell script 叫做 Batch 即是批次處理的意思。&lt;&#x2F;p&gt;
+&lt;p&gt;把一坨指令放在一起執行的正是 Shell Scripts。
+還可以善用變數、迴圈和判斷加以智能。
+這時候您會發現您的電腦長大了會自己做事了。&lt;&#x2F;p&gt;
+&lt;p&gt;有了這些基礎知識，接下來就會介紹一些進階的使用技巧。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>檔案壓縮的概論與實務</title>
+          <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/file-compression/</link>
+          <guid>https://undecv.github.io/blog/posts/file-compression/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/file-compression/">&lt;!-- # 檔案壓縮的概論與實務 --&gt;
+&lt;p&gt;&lt;del&gt;硬碟空間就像〇〇，擠一擠還是有的。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;本站有文章介紹過圖片檔案的壓縮格式。
+本文將注重於通用檔案壓縮，
+也就是 ZIP、7Z、RAR 該怎麼玩。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gai-lun&quot;&gt;概論&lt;&#x2F;h2&gt;
+&lt;p&gt;壓縮技術就是用時間換取空間。&lt;&#x2F;p&gt;
+&lt;p&gt;就跟我們把一堆雜物打包到一起，既節省空間，也便於攜帶和收藏。
+電腦也是一樣，把檔案壓縮成壓縮檔，節省存儲空間，也便於傳輸和存儲。&lt;&#x2F;p&gt;
+&lt;p&gt;舉一個非常不恰當的例，壓縮就像把牛奶製成奶粉，便於運輸和儲藏。而我們通常不直接吸奶粉，而解壓縮就像沖泡奶粉還原成牛奶。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，各種形式壓縮檔通常我們是無法直接使用的，軟體會在我們知道和不知道的情況下還原始的形式。&lt;&#x2F;p&gt;
+&lt;p&gt;除了常見的檔案壓縮，其實圖片、音樂、影片等媒體檔案的壓制也是一種壓縮。對於多媒體檔案，壓縮／解壓縮也通常稱為編碼／解碼。&lt;&#x2F;p&gt;
+&lt;p&gt;本文會提及多媒體壓縮，但專注於解釋通用的檔案壓縮。&lt;&#x2F;p&gt;
+&lt;p&gt;從 ZIP 到 RAR5，從 RMVB 到 AV1，壓縮格式千百種，新的演算法和格式還在被發明出來，是因為壓縮演算法的發展，還有對應不同的需求。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ya-suo-dang-de-quan-heng&quot;&gt;壓縮檔的權衡&lt;&#x2F;h3&gt;
+&lt;p&gt;壓縮技術也是一種工程學，是權衡的藝術。&lt;&#x2F;p&gt;
+&lt;p&gt;壓縮技術需要考量很多方面，就像在點技能樹一樣，需要在各個方面做出權衡。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;shi-jian-v-s-rong-liang&quot;&gt;時間 v.s. 容量&lt;&#x2F;h4&gt;
+&lt;p&gt;其中一點是壓縮和解壓縮的速度和效率，
+壓縮減少了多少容量被稱之為壓縮率，
+通常的，壓縮速度越慢，檔案越小，解壓縮速度越慢，反之亦然。&lt;&#x2F;p&gt;
+&lt;p&gt;例如一個影片，若是解壓縮（解碼）速度比影片播放速度還慢，那影片就會卡得不能看。
+而這是通用檔案壓縮容忍的壓縮解壓縮時間就比較寬裕了，會更注重於壓縮率上。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;song-san-v-s-gu-shi-ya-suo&quot;&gt;鬆散 v.s. 固實壓縮&lt;&#x2F;h4&gt;
+&lt;p&gt;固實壓縮是通用檔案壓縮的一個技術，一次壓縮一定量的資料而不是一個檔案。
+這一定量的資料被稱為一個區塊。他的好處是所有多個小檔案被分入一個區塊的時候會（大幅）提高壓縮率（壓縮檔更小）。&lt;&#x2F;p&gt;
+&lt;p&gt;但有些時候，我們只需要壓縮檔用的一兩三個檔案，這個需求便是隨機存取。
+固實壓縮若要解壓縮區塊中其中一個檔案，就必須解壓縮整個區塊，這讓隨機存取變成災難。&lt;&#x2F;p&gt;
+&lt;p&gt;所以若覺得以後要常常在不解壓縮整個檔案的情況下打開其中的某個檔案，就不要使用固實壓縮，反之亦然。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;you-sun-v-s-wu-sun-ya-suo&quot;&gt;有損 v.s. 無損壓縮&lt;&#x2F;h4&gt;
+&lt;p&gt;顧名思義有損壓縮後的檔案就再也不能變成原本的形狀，但可以在損失細節之下讓檔案更小；無損壓縮則保留所有細節，可以完全恢復。
+無損壓縮就是壓縮會不會降低原始內容品質，有損壓縮多用於多媒體壓縮，而通用檔案壓縮都是無損壓縮。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;mei-ti-dang-an-zai-ya-suo&quot;&gt;媒體檔案再壓縮&lt;&#x2F;h4&gt;
+&lt;p&gt;現代流通的媒體格式，多已經被有損或無損壓縮的非常極限了，那還有必要對媒體檔案再進行壓縮嗎？&lt;&#x2F;p&gt;
+&lt;p&gt;壓縮媒體檔案的其中一個目的，是在可接受期間內被解碼，檔案盡可能的小的同時保留最多資訊（所有細節）。&lt;&#x2F;p&gt;
+&lt;p&gt;所以這使得通用檔案壓縮仍能再壓縮媒體檔案。雖然再壓縮的空間可能極小，但擠擠總還是有的。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;lian-xu-du-xie-he-sui-ji-du-xie&quot;&gt;連續讀寫和隨機讀寫&lt;&#x2F;h4&gt;
+&lt;p&gt;請注意，這裡的 連續、隨機讀寫 不是前文所述的 鬆散、固實壓縮：雖異曲同工但不盡相同。&lt;&#x2F;p&gt;
+&lt;p&gt;壓縮軟體一大好處便是整合小檔案：如果你有看過硬碟跑分，應該可以發現硬碟的隨機讀寫效能遠小於連續讀寫效能，
+而對一拖拉庫的散裝小檔案通常就是隨機讀寫，而對其進行檔案壓縮會改善這個問題。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;ya-suo-ya-suo-dang-ya-suo-dang-qian-tao-tao-wa&quot;&gt;壓縮壓縮檔（壓縮檔嵌套，套娃）&lt;&#x2F;h4&gt;
+&lt;p&gt;壓縮壓縮檔，這種方法應該沒有什麼學名，也就是把壓縮檔再壓縮一次，也就是俗稱的套娃。&lt;&#x2F;p&gt;
+&lt;p&gt;一般來說，檔案壓縮有「儲存」和「傳輸」兩個目的，「儲存」需要減少大小的高壓縮率，而「傳輸」會需要加密和分卷。&lt;&#x2F;p&gt;
+&lt;p&gt;通常這些套娃壓縮檔的外層，是為了混淆識別，以及便於傳輸的加密和分卷。&lt;&#x2F;p&gt;
+&lt;p&gt;我會建議「儲存」壓縮後再進行「傳輸」壓縮的套娃壓縮法。在這種情景下「傳輸」壓縮甚至不需要壓縮，僅加密。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;chang-jian-wen-ti&quot;&gt;常見問題&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;dang-ming-guo-chang&quot;&gt;檔名過長&lt;&#x2F;h4&gt;
+&lt;p&gt;收納的過程便是再包裝：盡量扁平化資料夾，說人話就是減少資料夾一層包一層，以及使用儘量短的檔名。&lt;&#x2F;p&gt;
+&lt;p&gt;這不僅會使得壓縮檔看上去更簡潔，甚至可以提高壓縮率使得壓縮檔更小：在 ZIP 中，沒有資料夾的概念，每個檔案都會記錄路徑，即資料夾和檔名，所以資料夾中的每個檔案都會重複記錄一次資料夾名。&lt;&#x2F;p&gt;
+&lt;p&gt;通常作業系統（檔案系統）會對檔案的全路徑長度做限制，太長的路徑會造成解壓縮失敗。例如，你在解壓縮的時候，在某個資料夾裡解壓縮失敗，但是在某個槽下直接解壓縮卻成功即是這種問題。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;dang-ming-luan-ma&quot;&gt;檔名亂碼&lt;&#x2F;h4&gt;
+&lt;p&gt;有時候下載到的壓縮檔案，內容的檔名是一堆亂碼，這是由於早期的作業系統和壓縮軟體，並沒有考慮到當今的社會和網路如此的全球化，所以遇到不同語系的壓縮檔案就會亂碼。&lt;&#x2F;p&gt;
+&lt;p&gt;正統的解決方式是修改作業系統的預設編碼；但我們也可以使用例如 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;tw.bandisoft.com&#x2F;bandizip&#x2F;&quot;&gt;Bandizip&lt;&#x2F;a&gt; 之類有修改編碼功能的壓縮軟體。&lt;&#x2F;p&gt;
+&lt;p&gt;詳細的文字編碼問題有點複雜，有機會再撰文贅述。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dang-an-lei-xing&quot;&gt;檔案類型&lt;&#x2F;h3&gt;
+&lt;p&gt;常見的壓縮檔類型有以下幾種：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;ZIP：可能是現在流通最廣的壓縮檔格式，有夠用的功能和廣泛軟體的支援。&lt;&#x2F;li&gt;
+&lt;li&gt;7Z：開源壓縮檔的代表，原生於 7-Zip，以高效率著稱。&lt;&#x2F;li&gt;
+&lt;li&gt;RAR：商業壓縮檔的代表，原生於 WinRAR，有著豐富的功能。&lt;&#x2F;li&gt;
+&lt;li&gt;TAR.GZ：Linux 上的代表，分為打包而不壓縮的 TAR 和只能壓縮一個檔案的 GZ。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;順帶一提，壓縮軟體 &lt;em&gt;不等於&lt;&#x2F;em&gt; 壓縮檔案格式 &lt;em&gt;不等於&lt;&#x2F;em&gt; 壓縮演算法，
+但大家一般不會去修改預設的檔案格式和演算法，有機會再撰文贅述。&lt;&#x2F;p&gt;
+&lt;p&gt;不同的方法各有優劣，與各種應用場景的相性也不同，也是本文希望探討的地方。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;shi-wu&quot;&gt;實務&lt;&#x2F;h2&gt;
+&lt;p&gt;本文的指令使用 7-Zip 軟體。請見 7-Zip 的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;7-zip.opensource.jp&#x2F;chm&#x2F;cmdline&#x2F;index.htm&quot;&gt;指令說明檔&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;分卷 &lt;code&gt;-v4g&lt;&#x2F;code&gt;：若內容很大很大，例如一些遊戲，就可以進行分卷，分卷也便於儲存和在網路上傳輸，雖然硬碟的單文件上限很難碰到，但很多網路空間均有檔案大小上限，可以以此決定分卷大小；就算沒有超過上限，相比之下，分卷上傳也能顯著降低下載、上傳失敗時起肖的程度。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;固實 &lt;code&gt;-ms=on&lt;&#x2F;code&gt;：固實壓縮的概念是 將多個檔案變成一塊 而不是 以單一檔案為單位 進行壓縮。7Z 和 RAR 均可支援，ZIP 沒有。好處是在某些情境下可以增加壓縮率使得檔案更小。壞處是喪失了隨機存取的特性，使得在取用單一檔案的時候連同附近的其他檔案也會需要一起被解壓縮，這會浪費時間和算力。所以需要按需啟用。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;格式 &lt;code&gt;-t7z&lt;&#x2F;code&gt;：通常認為，7Z 格式比 ZIP 格式壓縮率更好（更小）；但 ZIP 有超廣泛的支援；而 RAR 格式具有獨到的恢復功能，可以在網路傳輸中使用，若出現壞檔可以試試運氣修復看看，但 RAR 是專有格式，僅能使用 WinRAR 壓縮。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;編碼 &lt;code&gt;-mcu=on&lt;&#x2F;code&gt;：ZIP 的文字編碼限制寬鬆，需要強制使用 Unicode 才能保證在不同語系的作業系統上可以正常使用。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;shi-yong-chang-jing&quot;&gt;使用場景&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;tong-ren-zhi-man-hua-za-zhi-cg-tu-bao&quot;&gt;同人誌、漫畫、雜誌、CG、圖包&lt;&#x2F;h4&gt;
+&lt;p&gt;ZIP 格式、最大壓縮率、萬國碼：&lt;code&gt;-tzip -mx=9 -mcu=on&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;這類資源大多是一拖拉庫的有序或無序圖片，而 ZIP 壓縮是被廣泛支援的幾乎事實標準，諸多的漫畫閱讀器均可直接讀取壓縮檔而不需要解壓縮，非固實壓縮也使得可以隨機存取，實現快速跳轉頁面。建議在資料夾中修改檔名為位數適當的前置〇的流水號。再次提醒盡量扁平化資料夾，以及需要注意 ZIP 在文字編碼上的問題。&lt;&#x2F;p&gt;
+&lt;p&gt;CB* 格式的本質就是壓縮檔，甚至內容結構都沒有規範（各閱讀器不同），例如 CBZ 就是 ZIP、CB7 就是 7Z、CBR 就是 RAR。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;dian-zi-shu&quot;&gt;電子書&lt;&#x2F;h4&gt;
+&lt;p&gt;DOCX, EPUB, ... 也是一種 ZIP：&lt;code&gt;-tzip -mx=9 -mcu=on&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;（跑題）使用 EPUB 格式可以像紙質書一樣讓電子書圖文並茂並且有豐富的排版，相比於 DOCX 的繁雜和 PDF 的臃腫死板，EPUB 可以讓讀者用他們自己舒服和習慣的字形字色背景閱讀。製作 EPUB 也需要有 HTML、CSS 的知識。EPUB 的本質是安排好的 ZIP，所以可以提高壓縮率直接再壓縮 EPUB 檔，而不需要再套一層其他壓縮格式。&lt;&#x2F;p&gt;
+&lt;p&gt;據我實驗所知，一些 EPUB 壓縮軟體並沒有使用最高壓縮率，特定情況下可以通過再壓縮節省空間。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;you-xi-cheng-shi-bei-fen-dang&quot;&gt;遊戲、程式、備份檔&lt;&#x2F;h4&gt;
+&lt;p&gt;7Z 格式、最大壓縮率、固實壓縮：&lt;code&gt;-t7z -mx=9 -ms=on&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;7Z 相比於 ZIP 有更好的壓縮率，而遊戲、程式必須全部解壓縮展開後才可執行，故不存在需要在壓縮檔內隨機存取的情況，遊戲、程式內通常也富含小檔案，固實壓縮在這個情景下可以有較好的表現。請注意 7Z 格式預設固實壓縮模式是啟用的。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;yin-le-ying-pian-dong-hua-dian-ying&quot;&gt;音樂、影片、動畫、電影&lt;&#x2F;h4&gt;
+&lt;p&gt;7Z 格式、最大壓縮率、鬆散壓縮：&lt;code&gt;-t7z -mx=9 -ms=off&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;音樂、影片等本是經過高度壓縮的檔案格式，不同的檔案格式緊密程度不同，通常再用檔案壓縮效益不大，甚至可以不需要再以檔案壓縮。若不著急或這電腦有多餘算力，或是就是要扣那幾啪的空間，當然可以選擇最高的壓縮率。而取消固實壓縮模式因為在這個情景下作用不大（甚至可能是反效果），還可以帶來隨機存取的好處，讓你在讀取其中某個檔案的時候不需要浪費時間和算力讀取其他檔案，尤其是影片每個可能都是 GiB 等級的大檔案，這個優勢會尤其明顯。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;ya-suo-ya-suo-dang-tao-wa&quot;&gt;壓縮壓縮檔（套娃）&lt;&#x2F;h4&gt;
+&lt;p&gt;7Z／RAR 格式、無壓縮、分卷、萬國碼：&lt;code&gt;-t7z -mx=0 -v4g&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;上述多種型別內容的混合，先分門別類的壓縮後，再以一個無壓縮率的壓縮檔打包，同時可以做加密和分卷的動作。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>BitTorrent 從入門到出門</title>
+          <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/bittorrent-intro/</link>
+          <guid>https://undecv.github.io/blog/posts/bittorrent-intro/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/bittorrent-intro/">&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;BitTorrent 協定&lt;&#x2F;strong&gt; 俗稱 &lt;code&gt;BT下載&lt;&#x2F;code&gt;、&lt;code&gt;種子下載&lt;&#x2F;code&gt;，常見的形態還有 &lt;code&gt;Magnet（磁力鏈接）&lt;&#x2F;code&gt;，是現代主流的網路檔案分享方式之一。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gai-lun&quot;&gt;概論&lt;&#x2F;h2&gt;
+&lt;p&gt;Bit 譯作「比特」是電腦數據的基本單位，Torrent 意爲「激流」。BitTorrent 通常可以指本文所述的 &lt;strong&gt;開放的 BitTorrent 協定&lt;&#x2F;strong&gt; 或是 BitTorrent 官方客戶端，以及 BitTorrent 公司。&lt;&#x2F;p&gt;
+&lt;p&gt;相比於 BitTorrent，傳統的中心化檔案下載模式，通常是一個伺服器（發布者）分發給所有客戶端（下載者），客戶端越多，下載速率被平分，也就越慢；一旦伺服器端故障，檔案便不再可下載。&lt;&#x2F;p&gt;
+&lt;p&gt;而 BitTorrent 是一種基於端對端（Peer-to-Peer, P2P）的傳輸協定。不同於傳統的下載方式，BitTorrent 同時下載的客戶端越多，速度越快；並且在特定情況下，檔案發布者退出也不會導致檔案無法下載。&lt;&#x2F;p&gt;
+&lt;p&gt;這麼神奇的功效得益於「我為人人，人人為我」的精神：每個 &lt;strong&gt;下載者&lt;&#x2F;strong&gt; 同時也是 &lt;strong&gt;分享者&lt;&#x2F;strong&gt;，不僅 &lt;strong&gt;發布者&lt;&#x2F;strong&gt; 會傳給下載者，每個下載者將自己已經取得的部分「分享」給還未取得這部分的其他下載者，其他下載者也他們已經載好但是你還沒有的部分「分享」給你。這樣的傳輸方式可以加快傳輸的速度、減輕發布者伺服器負擔，甚至當下載者們有了檔案的每個部分，發布者退出網路也不會影響檔案的分享。&lt;&#x2F;p&gt;
+&lt;p&gt;當你想要使用 BitTorrent 下載檔案時，你會先取得一個 &lt;strong&gt;種子文件&lt;&#x2F;strong&gt;，裏頭記載着 &lt;strong&gt;追蹤伺服器&lt;&#x2F;strong&gt; 以及檔案的資訊，追蹤伺服器根據這些檔案的資訊帶你找到發佈者、分享者、下載者這些 Friends。其中，&lt;strong&gt;DHT 網路&lt;&#x2F;strong&gt; 可以當成是由參與的用戶組成的分散式追蹤伺服器。&lt;&#x2F;p&gt;
+&lt;p&gt;也可以使用 &lt;strong&gt;磁力鏈接&lt;&#x2F;strong&gt;，看上去就像一個特殊的網址，它包含了你要載的檔案的資訊。如果沒有或是你不想用種子文件，客戶端可以直接根據磁力鏈接找到你要的檔案和 Friends。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;jiao-se&quot;&gt;角色&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;檔案（File）&lt;&#x2F;strong&gt; 被分割成一個個小 &lt;strong&gt;塊（Pieces）&lt;&#x2F;strong&gt;，檔案資料以 塊 為單元被分享。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;下載者&lt;&#x2F;strong&gt; 或稱之 &lt;strong&gt;節點（Peers）&lt;&#x2F;strong&gt; 是想要檔案的人。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;分享者&lt;&#x2F;strong&gt; 或稱之 &lt;strong&gt;種子（Seeds）&lt;&#x2F;strong&gt; 是任何分享檔案的人。不只是 &lt;strong&gt;發布者&lt;&#x2F;strong&gt;，當下載者開始分享它已經取得的部分，他們也會變成種子。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;客戶端（Client）&lt;&#x2F;strong&gt; 也就是你執行 BitTorrent 下載的軟體。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;種子文件（Torrent file, &lt;code&gt;*.torrent&lt;&#x2F;code&gt;）&lt;&#x2F;strong&gt; 記載了追蹤伺服器以及你要載的一個或一堆檔案的資訊。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;磁力鏈接（Magnet）&lt;&#x2F;strong&gt; 像特殊的網址，它包含了你要載的檔案的資訊。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;追蹤伺服器（Tracker）&lt;&#x2F;strong&gt; 根據你提供的種子文件裡面的檔案資訊，帶你找到 Friends。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;DHT&lt;&#x2F;strong&gt; 譯作 &lt;strong&gt;分散式哈希表&lt;&#x2F;strong&gt; 可以想象成是特殊的分散式的追蹤伺服器。它由參與的用戶組成網路，將資訊以分布的方式存儲在每個客戶端之中。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;zhong-zi-yu-ke-yong-xing&quot;&gt;種子與可用性&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 檔案的可見性來自種子們的分享，所以當檔案的種子們 &lt;strong&gt;沒有完整的檔案&lt;&#x2F;strong&gt; 又甚至根本沒有種子了，下載就會 &lt;strong&gt;無法完成&lt;&#x2F;strong&gt;，直到有更多片段或完整檔案的種子們再次上線。&lt;&#x2F;p&gt;
+&lt;p&gt;打開 &lt;strong&gt;使用 DHT 網路&lt;&#x2F;strong&gt; 選項 或 &lt;strong&gt;手動添加追蹤伺服器&lt;&#x2F;strong&gt;（後文會提到）可能可以搶救一下。&lt;&#x2F;p&gt;
+&lt;p&gt;客戶端中的詳細任務訊息會給出當前分享網路是否有完整的檔案的 &lt;strong&gt;可用性（Availability）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，BitTorrent 的檔案下載具有時效性，走過路過不要錯過，也請記得分享：）&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xi-xie&quot;&gt;吸血&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 的活力來源於「分享」的精神，只下載不分享的「吸血」行爲招人唾棄，會嚴重破壞 BitTorrent 的社會環境。
+也請不要使用諸如 &lt;em&gt;迅雷&lt;&#x2F;em&gt; 等吸血下載工具，現在的主流下載客戶端會對吸血行爲有保護機制。
+一些追蹤伺服器也許會追蹤分享率和分享時間。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cao-zuo&quot;&gt;操作&lt;&#x2F;h2&gt;
+&lt;p&gt;實際操作比上面的理論（？簡單多了，就像傳統下載，將下載地址導入到下載工具（客戶端），只是導入的東西變成了 &lt;strong&gt;種子文件&lt;&#x2F;strong&gt; 或 &lt;strong&gt;磁力鏈接&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ke-hu-duan&quot;&gt;客戶端&lt;&#x2F;h3&gt;
+&lt;p&gt;一些 BitTorrent 專用客戶端，例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.qbittorrent.org&#x2F;&quot;&gt;qBittorrent&lt;&#x2F;a&gt;: &lt;code&gt;自由軟體&lt;&#x2F;code&gt; 第三方客戶端，可訂製的種子搜尋功能。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;請注意！據 ghacks.net 悉（Dec 9, 2019），uTorrent 官方客戶端被多家包括 ESET-NOD32 以及 Microsoft 在內的防毒軟體標記爲惡意軟體（Malware）。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;以及一些多協定的下載工具，例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;aria2.github.io&#x2F;&quot;&gt;aria2&lt;&#x2F;a&gt;: &lt;code&gt;自由軟體&lt;&#x2F;code&gt; 多協議命令行下載工具，功能強大需要調教。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;she-ding-ke-hu-duan&quot;&gt;設定客戶端&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 客戶端就像一般下載工具，除了那些都有的例如代理、下載速度限制、最大活躍下載任務、下載位置等設定，例舉一些 BitTorrent 特有的設定：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;上傳速度限制：分享的速度限制；&lt;&#x2F;li&gt;
+&lt;li&gt;分享率：當分享的資料量達到檔案的 N 倍後結束任務；&lt;&#x2F;li&gt;
+&lt;li&gt;分享時間：當分享的時間超過 T 時間後結束任務；&lt;&#x2F;li&gt;
+&lt;li&gt;啓用 DHT 網路；&lt;&#x2F;li&gt;
+&lt;li&gt;...&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;shou-dong-tian-jia-zhui-zong-si-fu-qi-ke-xuan-bu-zou&quot;&gt;手動添加追蹤伺服器（可選步驟）&lt;&#x2F;h3&gt;
+&lt;p&gt;除了種子文件中提供的追蹤伺服器，你也可以將追蹤伺服器預置在客戶端中。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Github · &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ngosang&#x2F;trackerslist&quot;&gt;ngosang&#x2F;trackerslist&lt;&#x2F;a&gt;: Updated list of public BitTorrent trackers（&lt;strong&gt;⚠ 未測試&lt;&#x2F;strong&gt;）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;lai-yuan&quot;&gt;來源&lt;&#x2F;h3&gt;
+&lt;p&gt;一些自由軟體爲了減輕其分發的成本，會使用 BitTorrent 做爲取得的方式。
+也有一些種子文件的彙集網站。&lt;&#x2F;p&gt;
+&lt;p&gt;你會取得一個 &lt;code&gt;*.torrent&lt;&#x2F;code&gt; 的 &lt;strong&gt;種子文件&lt;&#x2F;strong&gt;，或是在 &lt;code&gt;🧲&lt;&#x2F;code&gt; 磁鐵圖標 附近找到像這樣的 &lt;strong&gt;磁力鏈接&lt;&#x2F;strong&gt;：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;URI&quot; class=&quot;language-URI z-code&quot;&gt;&lt;code class=&quot;language-URI&quot; data-lang=&quot;URI&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;magnet:?xt=urn:btih:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;將他們導入到你選擇的客戶端中就可以開始下載。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wen-xin-ti-shi&quot;&gt;溫馨提示&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;liu-liang-jing-gao&quot;&gt;流量警告&lt;&#x2F;h3&gt;
+&lt;p&gt;通常的，運營商統計的數據流量包括了下載和上傳（分享）的流量。在使用計量型方案請謹慎使用。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shen-fen-bao-lu-jing-gao&quot;&gt;身份暴露警告&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 的設計沒有考量匿名性，當你下載任何檔案的時候，你此時的 IP 地址 會被所有參與下載的 Friends 看到。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hai-zei-ban-jing-gao&quot;&gt;海賊版警告&lt;&#x2F;h3&gt;
+&lt;p&gt;去中心化的設計 BitTorrent 可以減輕發布者的負擔，但是也爲海賊版提供了平臺。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;支持和購買正版才能夠讓美好的創作永續！&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;feng-suo-jing-gao&quot;&gt;封鎖警告&lt;&#x2F;h3&gt;
+&lt;p&gt;由於以上全部或部分的問題，一些網絡會封鎖＼禁止 BitTorrent 協定，例如學術網路或公司企業網路。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;reference&quot;&gt;REFERENCE&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;BitTorrent_(protocol)&quot;&gt;BitTorrent&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Magnet_URI_scheme&quot;&gt;Magnet URI scheme&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Quora: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.quora.com&#x2F;How-do-BitTorrent-magnet-links-work&#x2F;answer&#x2F;Stanislav-Shalunov&quot;&gt;Stanislav Shalunov&#x27;s answer to How do BitTorrent magnet links work?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Stack overflow: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;28601408&quot;&gt;What exactly is the info_Hash in a torrent file&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>如何在不同環境下設定 Proxy 代理伺服器</title>
+          <pubDate>Sun, 20 May 2018 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/proxy-settings/</link>
+          <guid>https://undecv.github.io/blog/posts/proxy-settings/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/proxy-settings/">&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;dai-li&quot;&gt;代理&lt;&#x2F;h2&gt;
+&lt;p&gt;代理（Proxy）是一種網絡服務，允許兩個通訊方之間進行非直接的連線。&lt;&#x2F;p&gt;
+&lt;p&gt;例如：A 與 B 之間需要進行通訊，但是無法（或者不想）建立直接的連線；A 與 P、B 與 P 之間能進行正常的通訊，那麼，藉由 P，可在 A 與 B 之間建立通訊的通道。在這當中 P 就是 代理伺服器（Proxy Server）。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;plain&quot; class=&quot;language-plain z-code&quot;&gt;&lt;code class=&quot;language-plain&quot; data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;+----------+      |防|                       +----------+
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|          | &amp;lt;--- |火| ----- 無法鏈接 -----&amp;gt; |          |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;| 你的電腦 |      |牆|      +----------+     | 目標網站 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|          | &amp;lt;------------&amp;gt; |          | &amp;lt;-&amp;gt; |          |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;+----------+   沒有被牆的   | 遠程電腦 |     +----------+
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  &#x2F;______\                  |          |       &#x2F;______\
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;                            +----------+
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;                              &#x2F;______\
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;代理伺服器可以是閘道器、路由器，也可是一臺電腦或者虛擬機，也可是你電腦中的軟體；代理伺服器亦可不止一個。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ben-di-dai-li&quot;&gt;本地代理&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;本地代理&lt;&#x2F;strong&gt;，是代理的一種應用方式，將網絡連線轉送到本地的地址，通常用於將網絡連線轉到一些網路工具軟體中。&lt;&#x2F;p&gt;
+&lt;p&gt;本地代理通常使用本機地址（&lt;code&gt;localhost&lt;&#x2F;code&gt;, &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt;, &lt;code&gt;[::1]&lt;&#x2F;code&gt;）。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tong-xun-xie-ding&quot;&gt;通訊協定&lt;&#x2F;h2&gt;
+&lt;p&gt;代理所使用的通訊協定通常是 HTTP 和 SOCKS，SOCKS 常用的有版本 4 和 5 所以經常被簡寫成 SOCKS4 和 SOCKS5。&lt;&#x2F;p&gt;
+&lt;p&gt;不同的協定之間不能互通，甚至 SOCKS4 和 SOCKS5 之間也不能互通，設定時請注意差別。&lt;&#x2F;p&gt;
+&lt;p&gt;通常情況下，建議優先選擇 SOCKS 5 協定。&lt;&#x2F;p&gt;
+&lt;p&gt;參考：
+&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;zh-tw&#x2F;SOCKS&quot;&gt;SOCKS - 維基百科，自由的百科全書&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;she-ding&quot;&gt;設定&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;請注意！在下面的截圖中，一些設定的内容請根據實際情況填寫。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;在設定過程中，必要填寫代理伺服器的 &lt;strong&gt;Address（地址）&lt;&#x2F;strong&gt; 和 &lt;strong&gt;Port（端口）&lt;&#x2F;strong&gt;，選擇填寫的有轉發規則。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果你的代理伺服器設定在遠端，那麼需要填寫的通常是遠端電腦伺服器的地址和端口。&lt;&#x2F;li&gt;
+&lt;li&gt;如果你的代理伺服器設定在電腦上（代理軟體），那麼需要填寫的通常是本機地址和軟體指定的端口。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;windows-10&quot;&gt;Windows 10&lt;&#x2F;h3&gt;
+&lt;p&gt;Windows 10 的設定（&lt;code&gt;Settings&lt;&#x2F;code&gt;）中提供了代理的選項。在系統中設定代理的好處是不需要爲每一個軟體都配置代理，也使得不支持設定代理的軟體也能夠使用代理。&lt;&#x2F;p&gt;
+&lt;p&gt;Windows 10 的代理 &lt;strong&gt;默認&lt;&#x2F;strong&gt; 使用的是 &lt;strong&gt;HTTP 協定&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;Step 1: 打開代理的設定頁面，你有兩種方法打開它：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;在開始菜單 &lt;code&gt;Start menu&lt;&#x2F;code&gt; 中搜尋代理 &lt;code&gt;Proxy&lt;&#x2F;code&gt; 進入系統設置 &lt;code&gt;Setings&lt;&#x2F;code&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;或是：&lt;code&gt;Start menu&lt;&#x2F;code&gt; → &lt;code&gt;Setings&lt;&#x2F;code&gt; → &lt;code&gt;Network &amp;amp; Internet&lt;&#x2F;code&gt; → &lt;code&gt;Proxy&lt;&#x2F;code&gt; → &lt;code&gt;Manual proxy setup&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;接下來：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;打開 &lt;code&gt;Use a proxy server&lt;&#x2F;code&gt;；&lt;&#x2F;li&gt;
+&lt;li&gt;填入 Address（地址） 和 Port（端口）；&lt;&#x2F;li&gt;
+&lt;li&gt;通常地，打開 &lt;code&gt;Don&#x27;t use the proxy server for local (internet) address&lt;&#x2F;code&gt;（不要將代理用於本地地址）選項。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;如果需要設定 &lt;strong&gt;除了 HTTP 之外的協定&lt;&#x2F;strong&gt;（例如 SOCKS）或 &lt;strong&gt;多種代理協定&lt;&#x2F;strong&gt;，可以在 Address（地址）處以下列格式填寫， Port（端口）無需填寫：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;plain&quot; class=&quot;language-plain z-code&quot;&gt;&lt;code class=&quot;language-plain&quot; data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;http=&amp;lt;ADDRESS&amp;gt;:&amp;lt;PORT&amp;gt;;https=&amp;lt;ADDRESS&amp;gt;:&amp;lt;PORT&amp;gt;;socks=&amp;lt;ADDRESS&amp;gt;:&amp;lt;PORT&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;例如：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;plain&quot; class=&quot;language-plain z-code&quot;&gt;&lt;code class=&quot;language-plain&quot; data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;http=127.0.0.1:9487;https=127.0.0.1:9487;socks=127.0.0.1:9487
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;plain&quot; class=&quot;language-plain z-code&quot;&gt;&lt;code class=&quot;language-plain&quot; data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;socks=127.0.0.1:9487
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;proxy-settings&#x2F;.&#x2F;images&#x2F;Win10_Proxy_E.png&quot; alt=&quot;Win10_Proxy&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;wang-ye-liu-lan-qi-web-browser&quot;&gt;網頁瀏覽器 - Web Browser&lt;&#x2F;h3&gt;
+&lt;p&gt;瀏覽器的代理設定，使用這個方法將代理只應用於瀏覽器。通常的，在瀏覽器的設定頁面中就可以設定代理。使用瀏覽器内置的代理設定簡單，不必安裝額外的插件或軟體；但是更推薦使用瀏覽器的插件（Add-ons, or Extensions），他們更加便利和功能强大，插件方法的設定見下一節。&lt;&#x2F;p&gt;
+&lt;p&gt;瀏覽器內置的設定，例如：&lt;&#x2F;p&gt;
+&lt;p&gt;Firefox:
+&lt;code&gt;Menu button&lt;&#x2F;code&gt; → &lt;code&gt;Options&lt;&#x2F;code&gt; → &lt;code&gt;Geneal&lt;&#x2F;code&gt; → &lt;code&gt;Network proxy&lt;&#x2F;code&gt; → &lt;code&gt;Settings...&lt;&#x2F;code&gt; → &lt;code&gt;Manual proxy configuration&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Chrome:
+&lt;code&gt;Menu button&lt;&#x2F;code&gt; → &lt;code&gt;Settings&lt;&#x2F;code&gt; → &lt;code&gt;Advabced&lt;&#x2F;code&gt; → &lt;code&gt;System&lt;&#x2F;code&gt; → &lt;code&gt;Open proxy settings&lt;&#x2F;code&gt; → (System setting)&lt;&#x2F;p&gt;
+&lt;p&gt;Vivaldi:
+&lt;code&gt;Menu button&lt;&#x2F;code&gt; → &lt;code&gt;Tools&lt;&#x2F;code&gt; → &lt;code&gt;Settings&lt;&#x2F;code&gt; → &lt;code&gt;Network&lt;&#x2F;code&gt; → &lt;code&gt;Proxies&lt;&#x2F;code&gt; → &lt;code&gt;Proxy Settings&lt;&#x2F;code&gt; → (System setting)&lt;&#x2F;p&gt;
+&lt;p&gt;以 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.mozilla.org&#x2F;zh-TW&#x2F;firefox&#x2F;all&#x2F;&quot;&gt;Mozilla Firefox&lt;&#x2F;a&gt; 57+ 為例：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;proxy-settings&#x2F;.&#x2F;images&#x2F;Firefox_Proxy_1_E.png&quot; alt=&quot;Firefox_Proxy_1&quot; &#x2F;&gt;
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;proxy-settings&#x2F;.&#x2F;images&#x2F;Firefox_Proxy_2.png&quot; alt=&quot;Firefox_Proxy_2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;其他的瀏覽器設定大致相同。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;wang-ye-liu-lan-qi-cha-jian-web-browser-add-ons-extensions&quot;&gt;網頁瀏覽器插件 - Web Browser Add-ons &#x2F; Extensions&lt;&#x2F;h3&gt;
+&lt;p&gt;插件的下載地址：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;getfoxyproxy.org&#x2F;&quot;&gt;FoxyProxy Standard&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;foxyproxy-standard&#x2F;&quot;&gt;Firefox Add-ons&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;foxyproxy-standard&#x2F;gcknhkkoolaabfmlnjonogaaifnjlfnp&quot;&gt;Chrome Extensions&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;FelisCatus&#x2F;SwitchyOmega&quot;&gt;Proxy SwitchyOmega&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;switchyomega&#x2F;&quot;&gt;Firefox Add-ons&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;proxy-switchyomega&#x2F;padekgcemlokbadohgkifijomclgjgif&quot;&gt;Chrome Extensions&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;將插件下載並安裝到瀏覽器后，點擊插件的圖標並進入插件的設定頁面並進行設定，在開關、切換、修改代理設定也只需要通過點擊插件的圖標即可。&lt;&#x2F;p&gt;
+&lt;p&gt;以 FoxyProxy Standard 為例：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;proxy-settings&#x2F;.&#x2F;images&#x2F;FoxyProxy_1_E.png&quot; alt=&quot;FoxyProxy_1&quot; &#x2F;&gt;
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;proxy-settings&#x2F;.&#x2F;images&#x2F;FoxyProxy_2.png&quot; alt=&quot;FoxyProxy_2&quot; &#x2F;&gt;
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;proxy-settings&#x2F;.&#x2F;images&#x2F;FoxyProxy_3_E.png&quot; alt=&quot;FoxyProxy_3&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;qi-ta-ruan-ti-zhong-de-she-ding&quot;&gt;其他軟體中的設定&lt;&#x2F;h3&gt;
+&lt;p&gt;通常的，一些需要網絡連線的應用軟體會提供代理伺服器的設定，若無，可以使用系統代理的方法解決。&lt;&#x2F;p&gt;
+&lt;p&gt;以下載器 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.freedownloadmanager.org&quot;&gt;Free Download Manager&lt;&#x2F;a&gt; 爲例：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;proxy-settings&#x2F;.&#x2F;images&#x2F;FDM_1_E.png&quot; alt=&quot;FDM_1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;通常的，代理的設定在軟體設定界面的網路設定分頁／分類中。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Release Notes:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;3.0 Release (20180709).&lt;&#x2F;li&gt;
+&lt;li&gt;2.0 Release (20180520).&lt;&#x2F;li&gt;
+&lt;li&gt;1.0 Release (20180210).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>數位影像檔案格式</title>
+          <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/graphics-file-formats/</link>
+          <guid>https://undecv.github.io/blog/posts/graphics-file-formats/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/graphics-file-formats/">&lt;p&gt;在使用電腦的過程中，常見很多圖像檔案格式，例如：&lt;code&gt;BMP&lt;&#x2F;code&gt;、&lt;code&gt;JPG&lt;&#x2F;code&gt;、&lt;code&gt;GIF&lt;&#x2F;code&gt;、&lt;code&gt;PNG&lt;&#x2F;code&gt;；&lt;br &#x2F;&gt;
+大角蜀的你是否在使用電腦繪圖或影像處理的時候不知該使用以上何種格式而困擾？&lt;&#x2F;p&gt;
+&lt;p&gt;以上舉例出的不同格式，他們各自使用不同的技術，有著各自不同的特點，這決定了他們的用途和場合，那麼：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;什麼樣的圖像適用什麼樣的格式？&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;什麼樣的場合適用什麼樣的格式？&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;獻給各位大觸，大角蜀…&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ピクセル無限大 1億TB（テラバイト）&lt;br &#x2F;&gt;
+私の理想よ データファイル内緒？&lt;br &#x2F;&gt;
+JPG！&lt;br &#x2F;&gt;
+——TVアニメ「デンキ街の本屋さん」エンディング主題歌「two-Dimension&#x27;s Love」&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;dian-zhen-tu-xing-v-xiang-liang-tu-xing&quot;&gt;點陣圖形 v. 向量圖形&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;有碼和無碼&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;數位影像分為兩種類型：&lt;strong&gt;點陣圖形（Raster graphics, or bitmap）&lt;strong&gt;和&lt;&#x2F;strong&gt;向量圖形（Vector graphics）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dian-zhen-tu-xing-raster-graphics&quot;&gt;點陣圖形（Raster graphics）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;點陣圖形&lt;&#x2F;strong&gt;將圖像看成一個個「有顏色的點」所組成的陣列，這個「點」被稱之&lt;strong&gt;像素（pixel）&lt;&#x2F;strong&gt;，每個像素存儲者它的顏色的資訊。所以，像素的數量也就決定了檔案的大小：照片的尺寸越大、**每單位面積之間的像素（解析度，Dots per inch, DPI）**越多，你的圖像也就越精細。&lt;&#x2F;p&gt;
+&lt;p&gt;點陣圖形適合用於存儲照片等細節豐富的圖形。但是若將點陣圖形變形、放大等處理時，圖像容易失真：放大之後就變成了馬賽克…以及更多的處理&lt;del&gt;調教&lt;&#x2F;del&gt;的方法：去除雜訊、模糊、銳化、&lt;del&gt;打碼&lt;&#x2F;del&gt;…&lt;&#x2F;p&gt;
+&lt;p&gt;常見的點陣圖形格式有：&lt;code&gt;BMP&lt;&#x2F;code&gt;、&lt;code&gt;JPEG&lt;&#x2F;code&gt;（就是 &lt;code&gt;JPG&lt;&#x2F;code&gt;）、&lt;code&gt;GIF&lt;&#x2F;code&gt;、&lt;code&gt;PNG&lt;&#x2F;code&gt;、&lt;code&gt;TIFF&lt;&#x2F;code&gt;。以及你的編輯器所使用的：&lt;code&gt;PSD&lt;&#x2F;code&gt;、&lt;code&gt;SAI&lt;&#x2F;code&gt;、&lt;code&gt;XCF&lt;&#x2F;code&gt;，他們通常還儲存了更多的資訊以便於你的編輯，例如圖層等。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xiang-liang-tu-xing-vector-graphics&quot;&gt;向量圖形（Vector graphics）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;向量圖形&lt;&#x2F;strong&gt;將圖像的每一個元素例如點、線和面記錄下來，就像給你數學公式畫出函數的圖形一樣，通過這些元素的描述（大小、顏色、輪廓、位置…），將圖像畫出來。&lt;&#x2F;p&gt;
+&lt;p&gt;正如上面的描述，你可以&lt;del&gt;（但是很難）&lt;&#x2F;del&gt;將照片存儲為向量圖形，這個動作叫做&lt;strong&gt;矢量化（Vectorization）&lt;&#x2F;strong&gt;。但是它適合用於存儲電腦繪圖、設計等，例如設計圖、小圖標等。向量圖形可以變成點陣圖形，這個動作叫做&lt;strong&gt;柵格化（Rasterization）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;相較於點陣圖形，向量圖形通常儲存較少的資訊（取決於圖像的複雜程度），可以便利的變形、放大、修改。&lt;&#x2F;p&gt;
+&lt;p&gt;常見的向量圖形格式有：&lt;code&gt;SVG&lt;&#x2F;code&gt;，甚至&lt;code&gt;PDF&lt;&#x2F;code&gt;、Flash 的&lt;code&gt;SWF&lt;&#x2F;code&gt;也算。
+以及你的編輯器所使用的：&lt;code&gt;AI&lt;&#x2F;code&gt;、&lt;code&gt;CDR&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: center&quot;&gt;比較項目&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;點陣圖&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;向量圖&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;資訊量&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;多（決定於圖像的大小和解析度）&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;少（決定於圖像的大小和解析度）&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;細節表現&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;高&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;低&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;影像處理&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;複雜，方法多樣&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;簡單&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;變形&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;失真&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;不失真&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;se-cai-xi-tong&quot;&gt;色彩系統&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;給你一點顏色！&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;這個世界是豐富多彩的，圖像也是ww…～&lt;&#x2F;p&gt;
+&lt;p&gt;在數位影像中，顏色以數字描述，如何描述顏色也是一個大問題。
+可以描述的顏色的數量，也就是**色彩深度（Color depth）&lt;strong&gt;換總說法就是&lt;&#x2F;strong&gt;每像素需要多少 bit（bits per pixel，bpp）**決定了圖像色彩的豐富。&lt;&#x2F;p&gt;
+&lt;p&gt;一個未經壓縮的點陣圖形的大小 = 點陣的數量 × 色彩深度；
+換句話說：大小 = 長 × 寬 × 色彩深度；
+下面對圖像大小的計算舉例，均是在未壓縮的情況下和理論上的數值，將使用常見的 Full HD 熒幕的尺寸：1920 × 1080。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;er-yuan-ying-xiang-binary-image&quot;&gt;二元影像（Binary image）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;二元影像（Binary image）&lt;&#x2F;strong&gt;，非黑即白，只有兩種顏色，所以每個像素只要 1 個二進位數字（Bit）表示。&lt;&#x2F;p&gt;
+&lt;p&gt;一張 FHD 的二位元影像的大小 = 2,073,600 bits 大概就是 0.247 MB。&lt;&#x2F;p&gt;
+&lt;p&gt;我知道你用不到的就不多說了。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hui-jie-gray-scale&quot;&gt;灰階（Gray scale）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;灰階（Gray scale）&lt;&#x2F;strong&gt;，一樣只有黑白，但是每個像素有了亮度的差別，每個像素分為 256 種亮度，因為每個像素由 8 個 bit 存儲，而 8 個 bit 可以表示 256 個值（2 的 8 次方）。&lt;&#x2F;p&gt;
+&lt;p&gt;一張 FHD 的灰階影像的大小 = 16,588,800 bits 大概就是 1.978 MB。&lt;&#x2F;p&gt;
+&lt;p&gt;有了這亮度的差別，我們終於可以看到一張黑白的照片了，貓熊表示很開心。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;san-yuan-se-mo-shi-rgb-color-model&quot;&gt;三原色模式（RGB color model）&lt;&#x2F;h3&gt;
+&lt;p&gt;至此，世界終於變成了彩色。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;三原色模式（RGB color model）&lt;&#x2F;strong&gt;：&lt;strong&gt;紅（Red）、綠（Green）、藍（Blue）&lt;&#x2F;strong&gt;，混合除了我們所能看見的所有顏色。即&lt;strong&gt;加色法（Additive color）&lt;&#x2F;strong&gt;：不同顏色的光（色光）混合形成新顏色。它適用於顯示器的顯示，事實上，你的顯示器的每一個像素正是有這三種顏色的發光單元所組成的。電腦中多數圖像以這種方式存儲。&lt;&#x2F;p&gt;
+&lt;p&gt;常見的 RGB 分為 16 位元，24 位元，32 位元。&lt;&#x2F;p&gt;
+&lt;p&gt;16 位元被稱為&lt;strong&gt;高彩色（High color）&lt;&#x2F;strong&gt;，通常是各 5 位元給紅色和藍色，6 位元給綠色，這是因為人類眼睛對於綠色更為敏感；它能表示 65,536 種顏色。&lt;&#x2F;p&gt;
+&lt;p&gt;24 位元被稱為&lt;strong&gt;真彩色（True Color）&lt;&#x2F;strong&gt;，紅綠藍各 8 位元，它能表示 16,777,216 種顏色，這基本是你能看得出來的所有顏色了。&lt;&#x2F;p&gt;
+&lt;p&gt;在上面的兩種模式中，每個像素被分成三個部分，分別給了三原色，這每個部分被稱之為&lt;strong&gt;通道（Channel）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;32 位元在 24 位元的基礎上增加了 8 位元&lt;strong&gt;透明度&lt;&#x2F;strong&gt;，即&lt;strong&gt;阿爾法通道（α Channel，Alpha Channel）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;一張 FHD 的 16 位元影像的大小大概是 3.955 MB。
+一張 FHD 的 24 位元影像的大小大概是 5.933 MB。
+一張 FHD 的 32 位元影像的大小大概是 7.910 MB。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;suo-yin-cai-se-tu-xiang-indexed-color&quot;&gt;索引彩色圖像（Indexed color）&lt;&#x2F;h4&gt;
+&lt;p&gt;然而還存在 8 位元的彩色，它只能表示 256 種顏色，顯然把分給僅僅的 8 位元分給紅綠藍三種顏色那麼畫面一定是無法直視，但是在一張圖像中，不是所有顏色都用得到，相近的顏色可以標記成一種顏色，這樣的方式我們可以將一張 16 或 24 位元的圖像精簡並提取出 256 種顏色，把這 256 種顏色列成一張表格（調色盤），在像素陣列中存儲這個顏色的索引值就可以了，這麼聰明的做法被稱為&lt;strong&gt;索引彩色圖像（Indexed color）&lt;&#x2F;strong&gt;，或&lt;strong&gt;調色盤（Palette）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;亦可看成是一種影像壓縮的方式。（我自己這麼認為）&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;yin-shua-si-fen-se-mo-shi-cmyk-color-model&quot;&gt;印刷四分色模式（CMYK color model）&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;印刷四分色模式（CMYK color model）&lt;strong&gt;使用印刷時的顏料（色料）混合的原理，將四種顏料混合出各種顏色：&lt;strong&gt;青色（Cyan），洋紅色（Magenta），黃色（Yellow），黑色（blacK）&lt;&#x2F;strong&gt;。即&lt;&#x2F;strong&gt;減色法（subtractive color）&lt;&#x2F;strong&gt;：每個顏色會減去（即吸收）某些顏色的光並向反射某些顏色的光，所呈現的顏色就是反射到你眼睛里的顏色；這正是你看印刷品等有顏色的物件時的物理解釋。&lt;&#x2F;p&gt;
+&lt;p&gt;正如上文所述，CMYK 被用於印刷品的印刷。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hsl-yu-hsv&quot;&gt;HSL 與 HSV&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;HSL 即色相、飽和度、亮度（英語：Hue, Saturation, Lightness）&lt;&#x2F;strong&gt;；
+HSV 將 HSL 的亮度換成&lt;strong&gt;明度（Value，Brightness）&lt;&#x2F;strong&gt;。他們使用更直覺的方式描述了一個顏色：「這是什麼顏色？深淺如何？明暗如何？」。繪畫軟體的調色盤多採取這種方式呈現，用於顏色選擇和調整。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ying-xiang-dang-an-yu-ge-shi&quot;&gt;影像檔案與格式&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;Android 把你的 JPG 給綠了你知不知道？&lt;&#x2F;del&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;29355920&quot;&gt;當然是選擇原諒她。&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;dian-zhen-tu-xing-wu-shi-zhen&quot;&gt;點陣圖形，無失真&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;bmp-bitmap&quot;&gt;BMP, Bitmap&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;BMP&lt;&#x2F;strong&gt; 本名 &lt;strong&gt;BitMaP&lt;&#x2F;strong&gt;，由微軟 Windows 使用的點陣圖格式，是最簡單的影像檔案格式之一。
+通常 BMP 的檔案是不經過壓縮的，所以檔案要大的多，正如上文的計算。
+BMP 可以選擇的色彩系統很多，每像素可以是 1、4、8、16、24、32 位元。8 位元可以是索引彩色圖像，也可以是灰階圖像。&lt;&#x2F;p&gt;
+&lt;p&gt;由於不經過壓縮，適用於在做影像處理時的原始影像和中間過程。
+過於龐大的體積不利於儲存和在網路上傳輸。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;gif-graphics-interchange-format&quot;&gt;GIF, Graphics Interchange Format&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;GIF&lt;&#x2F;strong&gt; 本名&lt;strong&gt;圖像互換格式（Graphics Interchange Format）&lt;&#x2F;strong&gt;，利用上文所述的&lt;strong&gt;索引彩色圖像方法&lt;&#x2F;strong&gt;，以 8 位元（即 256 種顏色）重現真彩色（24 位元）的圖像。&lt;&#x2F;p&gt;
+&lt;p&gt;當然，無損只在你的圖像中的顏色少於 256 色的情況下…否則相似的顏色會被合併成一種顏色表示，所以一個更多顏色的圖像被壓縮之後，就會出現顏色的細節變少了，變成同種顏色一塊一塊的。&lt;&#x2F;p&gt;
+&lt;p&gt;GIF 還有一個特性便是將多張圖像放在一個檔案中，若這些圖像按順序播放，就會變成&lt;strong&gt;動畫（Animation）&lt;&#x2F;strong&gt;，這一張張圖像被稱為&lt;strong&gt;幀（訊框、影格，Frame）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;GIF 減少了檔案的大小，保持成像的品質，適合在網際網路中傳輸，我是說，80 年代的網路速度。
+但是並不適合顏色豐富的圖像，有顏色的漸變的圖像。&lt;&#x2F;p&gt;
+&lt;p&gt;使用 GIF 有演算法的專利問題，（但現在不成問題），所以 PNG 應運而生。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;png-portable-network-graphics&quot;&gt;PNG, Portable Network Graphics&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;PNG&lt;&#x2F;strong&gt; 本名&lt;strong&gt;可攜式網路圖形（Portable Network Graphics）&lt;&#x2F;strong&gt;，目標是改善並取代 GIF，所以又名「&lt;strong&gt;P&lt;&#x2F;strong&gt;NG is &lt;strong&gt;N&lt;&#x2F;strong&gt;ot &lt;strong&gt;G&lt;&#x2F;strong&gt;IF」。
+PNG 也可以選擇很多色彩系統，可以是索引彩色圖像，也可以是灰階圖像，也可以是顏色豐富的真彩色，亦支持阿爾法通道，可以儲存透明和半透明的圖像。&lt;&#x2F;p&gt;
+&lt;p&gt;無損壓縮使得檔案變小而不會失真。&lt;&#x2F;p&gt;
+&lt;p&gt;相比於 GIF，PNG 壓縮效果更高，可以支持更高的顏色深度，沒有專利問題並且是 ISO 和 IEC 的國際標準，亦被 W3C 推薦，使用自由格式授權。但是，動畫的功能，目前 PNG 只能使用擴充標準實現。&lt;&#x2F;p&gt;
+&lt;p&gt;PNG 適合儲存和在網路上傳輸，我是說，現代的網路速度。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;tiff-tagged-image-file-format&quot;&gt;TIFF, Tagged Image File Format&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;TIFF&lt;&#x2F;strong&gt; 本名&lt;strong&gt;標籤圖檔格式（Tagged Image File Format）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;TIFF 非常的靈活，支持很多種的壓縮算法，同檔案也可以包含多個圖像，支持二元、灰階、索引和全彩色。&lt;&#x2F;p&gt;
+&lt;p&gt;許多專業的設備和軟體支持和使用 TIFF，但也是由於靈活性，在不同的軟體間可能會有兼容問題。&lt;&#x2F;p&gt;
+&lt;p&gt;TIFF 是專業的選擇：適合儲存，更適合在專業的設備和軟體間做資料交換。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dian-zhen-tu-xing-you-shi-zhen&quot;&gt;點陣圖形，有失真&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;jpeg&quot;&gt;JPEG&lt;&#x2F;h4&gt;
+&lt;p&gt;說了那麼多終於講到這個著名的格式了。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;JPEG&lt;&#x2F;strong&gt; 本名&lt;strong&gt;聯合圖像專家小組（Joint Photographic Experts Group）&lt;&#x2F;strong&gt;，常見的後綴名是 &lt;code&gt;JPG&lt;&#x2F;code&gt;，是 ISO 國際標準，也最普遍的被用來儲存和傳輸相片的格式。&lt;&#x2F;p&gt;
+&lt;p&gt;JPEG 使用一些線性代數之類的難懂的演算法，有效降低了圖像的大小，但是會造成失真。
+可以使用較低的壓縮率來減少這種現象，但是就會來了檔案大小的增加，畢竟魚和熊掌不可兼得：可以調整壓縮率以權宜。&lt;&#x2F;p&gt;
+&lt;p&gt;在網路上，一張 JPEG 可能被重複的壓縮、導致整張圖像慘不忍睹。&lt;&#x2F;p&gt;
+&lt;p&gt;JPEG 適合細節豐富的照片，非常適合在網路上傳輸；但是在壓縮過程中圖像的品質會遭受到可見的破壞，特別是有線條繪圖（drawing）和其他文字或圖示（iconic）中，這類的圖像&lt;strong&gt;在相鄰像素之間有明顯對比&lt;&#x2F;strong&gt;：因為壓縮的演算法，它們會有很顯眼的失真。&lt;&#x2F;p&gt;
+&lt;p&gt;JPEG 亦有一些專利爭議，（但現在好像也不成問題）。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;webp&quot;&gt;WebP&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;WebP&lt;&#x2F;strong&gt; 是 Google 的兒子，是 WebM 多媒體格式的姊妹項目，使用自由格式授權。可選擇有損壓縮或無損壓縮，目標是減少檔案大小，但達到和 JPEG 格式相同的圖像品質，為網路所優化。目前茁壯成長中。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xiang-liang-tu-xing&quot;&gt;向量圖形&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;svg&quot;&gt;SVG&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;SVG&lt;&#x2F;strong&gt; 本名&lt;strong&gt;可縮放向量圖形（Scalable Vector Graphics）&lt;&#x2F;strong&gt;，基於 XML 的描述二維向量圖形的格式。SVG 由 W3C 制定，是一個開放標準。
+SVG 內的物件可以是向量圖形、點陣圖像以及文字。點陣圖像可以是包括 PNG、JPEG。
+由於基於 XML，甚至可以用一般的文字編輯器便可檢視或修改。（但是一般由繪圖軟體生成和修改，&lt;del&gt;何必傷害自己呢…&lt;&#x2F;del&gt;）&lt;&#x2F;p&gt;
+&lt;p&gt;適合存儲電腦繪圖、設計等，也適合在網路上傳輸。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zong-jie&quot;&gt;總結&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;明明是講圖像的文章我卻一張圖都沒有用是不是很厲害！&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;如果你懂音樂的檔案格式：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;BMP 就像 WAV；&lt;&#x2F;li&gt;
+&lt;li&gt;JPG 就像 MP3；&lt;&#x2F;li&gt;
+&lt;li&gt;PNG 就像 FLAC；&lt;&#x2F;li&gt;
+&lt;li&gt;SVG 就像 MIDI。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;del&gt;（我亂說的）&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;以下是非常不負責任的總結：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;XCF, PDF, AI, etc.&lt;&#x2F;strong&gt;：各個平臺的原生檔案格式，用於專案的之間的交換、備份存檔，但是不適合作為發佈使用。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;BMP&lt;&#x2F;strong&gt;：&lt;del&gt;小畫家存檔&lt;&#x2F;del&gt;；影像處理時的原始影像和中間過程，要存儲請轉成 PNG。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;GIF&lt;&#x2F;strong&gt;：動圖；以及在網際網路中傳輸&lt;del&gt;入門&lt;&#x2F;del&gt;的選擇。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;PNG&lt;&#x2F;strong&gt;：&lt;del&gt;梗圖&lt;&#x2F;del&gt;；存儲 JPEG 水土不服的，那些在相鄰像素之間有明顯對比的圖像（例如，在編輯後添加過文字等物件的照片）；數位創作（畫的插畫、漫畫…）；在網際網路中傳輸&lt;del&gt;進階&lt;&#x2F;del&gt;的選擇。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;TIFF&lt;&#x2F;strong&gt;：專業的選擇，如果你用的到這個的話，我覺得你也不需要我的建議了ww…&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;JPEG&lt;&#x2F;strong&gt;：細節豐富的圖像；照片；處理過的照片；&lt;del&gt;調教過的照片&lt;&#x2F;del&gt;；不包括哪些有水土不服特徵的圖像；在網際網路中傳輸&lt;del&gt;通常&lt;&#x2F;del&gt;的選擇。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;SVG&lt;&#x2F;strong&gt;：向量圖形，幾乎唯一的選擇。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;參考&lt;&#x2F;h2&gt;
+&lt;p&gt;大部分內容均參考、照抄、翻譯自中文、英文、日文的&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Main_Page&quot;&gt;維基百科&lt;&#x2F;a&gt;。（CC BY-SA 3.0）&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Release Notes:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;2.1 Release (20180207).&lt;&#x2F;li&gt;
+&lt;li&gt;2.0 Release (20180206). Fix for jekyll.&lt;&#x2F;li&gt;
+&lt;li&gt;1.1 Release (20171209).&lt;&#x2F;li&gt;
+&lt;li&gt;1.0 Release (20171202).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

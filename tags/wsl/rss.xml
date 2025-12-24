@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - WSL</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/wsl/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 28 May 2025 03:00:00 +0000</lastBuildDate>
+      <item>
+          <title>打通 Windows 和 Linux 的傳送魔法陣！在 Shell 之間反覆橫跳</title>
+          <pubDate>Wed, 28 May 2025 03:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/</link>
+          <guid>https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/">&lt;p&gt;通常，要做一件事情是可以在一個 Shell 裡面完成的。
+但，CMD 和 PowerShell 目前還是各有千秋，
+以及 Windows Subsystem Linux (WSL) 使得可以使用 Linux 中的程式，
+這使得我們不得不在這些 Shell 裡面反复橫跳。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;nested-shell-scripting&quot;&gt;Nested Shell Scripting&lt;&#x2F;h2&gt;
+&lt;p&gt;上文說過，Shell 不過是一個程式，本質上只是能執行程式的直譯器，而 Shell 可以呼叫程式，
+因此只要能呼叫，Shell 就能嵌套執行另一個 Shell 的程式碼。所以 Shell 之間可以互通有無。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;del&gt;這根本就是指令界的人〇〇蚣！&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;由於 Windows 11 預設的 Windows Terminal 預設的是 PowerShell，在懶得切換 Shell 的前提下，我最經常做的就是檢查檔案的散列值：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;wsl sha256sum &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;c SHA256SUMS
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;回顧一下指令的構成，指令按空格分割，第一個是執行的程式，而後所有的部分作為「參數」丟給程式。
+這個指令的意思是，執行 &lt;code&gt;wsl&lt;&#x2F;code&gt; 並且把 &lt;code&gt;sha256sum -c SHA256SUMS&lt;&#x2F;code&gt; 作為參數丟給它。然後 &lt;code&gt;wsl&lt;&#x2F;code&gt; 會打開預設的 WSL 並且把這些參數作為指令執行，就是打開 &lt;code&gt;sha256sum&lt;&#x2F;code&gt; 計算散列值程式，並且把 &lt;code&gt;-c SHA256SUMS&lt;&#x2F;code&gt; 作為參數丟給它，讓程式知道要做的是「比對檔案 &lt;code&gt;SHA256SUMS&lt;&#x2F;code&gt; 中的散列值的一致性」。&lt;&#x2F;p&gt;
+&lt;p&gt;當然，執行這個指令前提是你已經調教好了一個能用的 WSL。
+並且遇到了 Linux 和 WIndows 跨平臺的時候，還得記得解決 BOM 和 換行符 的問題。&lt;&#x2F;p&gt;
+&lt;p&gt;以及「跳脫字元」和「引號定義」，這在一個 Shell 中不成大問題，但跨 Shell 的時候傳遞參數，由於不同的 Shell 有不同的跳脫字元和引號定義，在傳遞的時候整條鏈路都必須要做處理，甚至需要多次「跳脫跳脫字元」，這個根本就是連老手都會翻車的地獄試煉，必須要精通整條鏈路上所有 Shell 的行為，尤其是跳脫規則與參數傳遞邏輯。&lt;&#x2F;p&gt;
+&lt;p&gt;如此如此這般這般，就打通了 Windows 和 Linux 兩個世界線的傳送魔法陣。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;more-command-line-tools&quot;&gt;More Command-line Tools&lt;&#x2F;h2&gt;
+&lt;p&gt;我們常用的那些指令列工具，像是 &lt;code&gt;ls&lt;&#x2F;code&gt;、&lt;code&gt;cat&lt;&#x2F;code&gt;、&lt;code&gt;grep&lt;&#x2F;code&gt;、&lt;code&gt;top&lt;&#x2F;code&gt;，可能都是幾個世紀前的產物了。不過現在 Rust-lang、Go-lang 等新語言的流行，使得很多指令列工具被挖出來砍掉重寫，也讓這些老工具煥發第二春。
+例如說 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;sharkdp&#x2F;bat&quot;&gt;sharkdp&#x2F;bat&lt;&#x2F;a&gt; 升級了 &lt;code&gt;cat&lt;&#x2F;code&gt; 印出文字檔；
+又例如說 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ogham&#x2F;exa&quot;&gt;ogham&#x2F;exa&lt;&#x2F;a&gt; 升級了 &lt;code&gt;ls&lt;&#x2F;code&gt; 印出資料夾中的內容；
+再例如說 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;BurntSushi&#x2F;ripgrep&#x2F;tree&#x2F;master&quot;&gt;BurntSushi&#x2F;ripgrep&lt;&#x2F;a&gt; 升級了 &lt;code&gt;grep&lt;&#x2F;code&gt; 搜尋工具；
+這也順便帶來的另一個好處，他們在重寫的時候，有可能順便考慮一下跨平臺：這使得以前一些 Linux 獨佔的工具有機會在 Windows 中原生的使用。
+甚至許多這些重寫的工具也都已經登上 Scoop 或 Winget，直接安裝即可使用，無痛邁入新世代。&lt;&#x2F;p&gt;
+&lt;p&gt;所以在遇事不決 WSL 之前，不妨先搜尋一下需要的工具或功能是不是已經有偉人寫好了。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>［封存］把檔案壓縮影片轉檔任務放進佇列！用 WSL Task Spooler 排隊 Windows 的指令</title>
+          <pubDate>Mon, 12 Apr 2021 01:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/">&lt;blockquote&gt;
+&lt;p&gt;🛑（2025-05）現在我更推薦使用新的工具軟體 Pueue 達成同樣的任務，請見本站的介紹文：&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;command-line-guide&#x2F;pueue-introduction&#x2F;&quot;&gt;把指令放進佇列！用 Pueue 排隊指令&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;有時候需要執行一些時間長、需要大量系統資源的指令，例如巨量資料的計算、機器學習，或是更常用的檔案壓縮、影片轉檔。希望這些高負載的指令可以被順序執行而不是同時執行，同時執行會佔用過多的系統資源，不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。&lt;&#x2F;p&gt;
+&lt;p&gt;Linux 上有一個滿足這個需求的工具 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;vicerveza.homeunix.net&#x2F;~viric&#x2F;soft&#x2F;ts&#x2F;&quot;&gt;Task Spooler&lt;&#x2F;a&gt; (tsp)，Windows 上我沒有找到理想的替代品，但是，Windows 有 WSL。&lt;&#x2F;p&gt;
+&lt;p&gt;Task Spooler 可以：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;希望指令在一個先進先出佇列中排隊，同時有壹個或多個指令執行；&lt;&#x2F;li&gt;
+&lt;li&gt;佇列可以按需調整，新增、刪除、調整順序，甚至中止當前正在執行的任務。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;這篇文章將 Linux 中的 Task Spooler 透過 WSL 中與 Windows 的批次檔聯動，並演示了排隊 7-Zip 的多個任務。後面的章節會簡要提及 WSL 1 啓動的步驟。&lt;&#x2F;p&gt;
+&lt;p&gt;作業環境：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 10&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.7-zip.org&#x2F;&quot;&gt;7-Zip&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;WSL 1&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;xin-zeng-huan-jing-bian-shu&quot;&gt;新增環境變數&lt;&#x2F;h2&gt;
+&lt;p&gt;在指令中，若是需要使用自己安裝的程式需要指定路徑，若想要直接呼叫程式就需要把程式的路徑新增到環境變數。&lt;&#x2F;p&gt;
+&lt;p&gt;假設 7-Zip 安裝在 &lt;code&gt;C:\Program Files\7-Zip&lt;&#x2F;code&gt;，在 PowerShell 指令會需要呼叫 「&lt;code&gt;&amp;amp; &quot;C:\Program Files\7-Zip\7z.exe&quot;&lt;&#x2F;code&gt;」，若將安裝的路徑新增到環境變數之後，只需要呼叫「&lt;code&gt;7z&lt;&#x2F;code&gt;」即可。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;搜尋 &quot;Edit the system enviroment varibles&quot;，點選 &quot;Enviroment Varibles...&quot;；&lt;&#x2F;li&gt;
+&lt;li&gt;在 &quot;System varibles&quot; 中，找到並點選環境變數 &lt;code&gt;Path&lt;&#x2F;code&gt;，點選 &quot;Edit...&quot;；&lt;&#x2F;li&gt;
+&lt;li&gt;點選 &quot;New&quot; 並填入軟體的安裝路徑，例如 &lt;code&gt;C:\Program Files\7-Zip\&lt;&#x2F;code&gt;，點選 &quot;OK&quot;。&lt;&#x2F;li&gt;
+&lt;li&gt;生效會需要重新開機。（但是後面也會有需要重新開機的步驟所以可以先等等）&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;7-zip-zhi-ling-yu-pi-ci-dang&quot;&gt;7-Zip 指令與批次檔&lt;&#x2F;h2&gt;
+&lt;p&gt;Windows 版本的 7-Zip 原生支援指令行模式，&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;sevenzip.osdn.jp&#x2F;chm&#x2F;cmdline&#x2F;index.htm&quot;&gt;User&#x27;s Guide&lt;&#x2F;a&gt; 說明了詳細的用法。例如下面的指令將 &lt;code&gt;D:\src&lt;&#x2F;code&gt; 以 7z 的格式壓縮到 &lt;code&gt;D:\dst.7z&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cmd&quot; class=&quot;language-cmd z-code&quot;&gt;&lt;code class=&quot;language-cmd&quot; data-lang=&quot;cmd&quot;&gt;&lt;span class=&quot;z-source z-dosbatch&quot;&gt;7z a -t7z &lt;span class=&quot;z-string z-quoted z-double z-dosbatch&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\dst.7z&lt;span class=&quot;z-punctuation z-definition z-string z-end z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-dosbatch&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\src&lt;span class=&quot;z-punctuation z-definition z-string z-end z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;一個小小的訣竅可以節省壓縮檔案的步驟，創立一個 Batch 批次檔手稿程式，新增一個 txt 文字檔，並將副檔名改成 &lt;code&gt;.bat&lt;&#x2F;code&gt; 即可，例如 &lt;code&gt;zipit.bat&lt;&#x2F;code&gt;，編輯內容並存檔：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;7z a -tzip &amp;quot;%~1.zip&amp;quot; &amp;quot;%~1&amp;quot; -mx=9 -mcu=on
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;@PAUSE
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在檔案總管中，拖動 &lt;em&gt;&lt;strong&gt;一個&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; 檔案或者資料夾到這個 BAT 檔案的圖示上，
+便會在同個地方把這個檔案或者資料夾以 ZIP 格式壓縮，並且指定最高壓縮比（最小檔案大小、最長壓縮時間），並且最重要的指定以 Unicode 編碼檔名。這個手稿程式在後面的範例會再次用到。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wsl-an-zhuang&quot;&gt;WSL 安裝&lt;&#x2F;h2&gt;
+&lt;p&gt;M$ 秉承著打不贏就加入他們的精神，
+聯合一眾 Friends 做出了曠古未聞空前絕後驚世駭俗的 Windows Subsystem for Linux (WSL)，
+WSL 可以讓 Windows 執行 Linux 的程式，並且可以串接 Windows 的指令。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;在開始功能表中搜尋 &quot;Turn Windows features on or off&quot;，開啟 &quot;Windows Subsystem for Linux&quot;，在安裝完成後會需要重新開機。&lt;&#x2F;li&gt;
+&lt;li&gt;在 &quot;Microsoft Store&quot; 中，搜尋 &quot;WSL&quot; 即可找到諸如 Debian、Ubuntu、SUSE、Kali 各發行版，如果你是 Linux 新手，可以試試好上手的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;store&#x2F;productId&#x2F;9NBLGGH4MSV6&quot;&gt;Ubuntu&lt;&#x2F;a&gt;，後面也會拿這個舉例。&lt;&#x2F;li&gt;
+&lt;li&gt;開始選單會出現安裝後的 Ubuntu，初次使用會需要設定 UNIX 使用者名稱和密碼。這些都不會影響到原本的作業系統，忘記密碼也可以透過特殊手段重設。當你看到 &lt;code&gt;使用者名稱@電腦名:~$&lt;&#x2F;code&gt; 的時候，到此你的 WSL 的設定就完成了。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;進行 WSL 的更新，執行需要輸入剛剛設定的 UNIX 密碼：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get update&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-and z-shell&quot;&gt;&amp;amp;&amp;amp;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get upgrade&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;task-spooler&quot;&gt;Task Spooler&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR：Task Spooler 的絕妙的設計，是 伺服器＼客戶端，使用者使用 tsp 指令創立任務時，會創立一個客戶端，到後臺等待伺服器的通知後執行，完成後回報給伺服器，伺服器再通知下一個客戶端的指令執行，伺服器負責發號施令而不會執行指令。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;在 WSL 中下載安裝 Task Spooler：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get install task-spooler&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Task Spooler 的指令是 &lt;code&gt;tsp&lt;&#x2F;code&gt;，列出一些基本用法：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;V          &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 檢查版本&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;h          &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 印出說明&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; sleep 5     &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 新增指令 `sleep 5` 到任務佇列，返回的數字是任務的 ID&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp             &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 印出任務列表&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;c&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;id&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;      &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 小寫 c，檢查指定任務的輸出，&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;                &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;     替換 $id 為什麼任務 ID，不指定的話會印出最後一個&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;S&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;num&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;     &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 大寫 S，指定同時執行任務的數量，&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;                &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;     替換 $num 為數量，不指定的話會印出當前的設定&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;C          &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 大寫 C，清除已經完成的任務&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;我們也可以專門開一個終端機，使用 &lt;code&gt;watch&lt;&#x2F;code&gt; 指令來實時監視 Task Spooler 的任務列表：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;watch&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;n&lt;&#x2F;span&gt; 0.1 tsp&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;wsl-chuan-jie-zhi-ling&quot;&gt;WSL 串接指令&lt;&#x2F;h2&gt;
+&lt;p&gt;Windows 的 Batch \ PowerShell 與 WSL 之間可以 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-tw&#x2F;windows&#x2F;wsl&#x2F;interop&quot;&gt;互相串接指令&lt;&#x2F;a&gt; ，在 Batch \ PowerShell 中串接 WSL 的指令：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;PowerShell&quot; class=&quot;language-PowerShell z-code&quot;&gt;&lt;code class=&quot;language-PowerShell&quot; data-lang=&quot;PowerShell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;wsl ls &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;la  &lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 執行 WSL 端的 ls 指令列出當前路徑下所有檔案和資料夾等內容&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;wsl tsp     &lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 執行 WSL 端的 Task Spooler，印出任務列表&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在 WSL 中也可以呼叫 Windows 端的工具軟體，參數會原樣傳遞：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;7z.exe&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;t7z&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\dst.7z&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\src&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;  &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 執行 Windows 端的 7-Zip&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注意，若 WSL 安裝過移植版的「p7zip」，指令 &lt;code&gt;7z&lt;&#x2F;code&gt; 會是指「p7zip」而不是 Windows 版的「7z.exe」。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zai-pi-ci-dang-zhong-shi-yong-task-spooler&quot;&gt;在批次檔中使用 Task Spooler&lt;&#x2F;h2&gt;
+&lt;p&gt;創立一個 Batch 批次檔手稿程式，實現在檔案總管中點開就可以監視 Task Spooler 的任務列表。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;wsl watch -n 0.1 tsp
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;編輯或者複製之前範例的批次檔手稿程式 &lt;code&gt;zipit.bat&lt;&#x2F;code&gt;，與上面的例子作用是相同的，只是將指令託管到 Task Spooler 的佇列中：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;wsl tsp -f &amp;quot;7z.exe&amp;quot; a -tzip &amp;quot;%~1.zip&amp;quot; &amp;quot;%~1&amp;quot; -mx=9 -mcu=on
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在檔案總管中，拖動 &lt;em&gt;&lt;strong&gt;一個&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; 檔案或者資料夾到這個 BAT 檔案的圖示上，
+便會在同個地方把這個檔案或者資料夾以 ZIP 格式壓縮，並且指定最高壓縮比和指定以 Unicode 編碼檔名。&lt;&#x2F;p&gt;
+&lt;p&gt;這個指令，會彈出一個終端機視窗，會返回一個數字這個任務的 ID，任務完成後視窗會自動關閉。&lt;&#x2F;p&gt;
+&lt;p&gt;在監視 Task Spooler 的任務列表的終端機中，就會出現當前任務的狀態。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR：參數 &lt;code&gt;-f&lt;&#x2F;code&gt; 會阻止客戶端把指令 Fork 到背景等待執行。在我的測試中，若不加這個參數會導致加入佇列後直接執行的任務卡住，導致任務無法完成，也就沒辦法繼續執行後面的任務。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</description>
+      </item>
+    </channel>
+</rss>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Cyber Security</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/cyber-security/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 29 Jun 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>你也可以知道的賽博安全指南 - 帳密篇</title>
+          <pubDate>Thu, 29 Jun 2023 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/cyber-security-account/</link>
+          <guid>https://undecv.github.io/blog/posts/cyber-security-account/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/cyber-security-account/">&lt;!-- # 你也可以知道的賽博安全指南 - 帳密篇 --&gt;
+&lt;p&gt;&lt;del&gt;偵測到您的賬戶有異常登錄記錄，請儘速處理。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;na-ge-wang-ba-dan-hai-ke-a&quot;&gt;哪個王八蛋駭客啊&lt;&#x2F;h2&gt;
+&lt;p&gt;我不是總統也不是百萬 YouTuber，為什麼有人想要偷我的賬戶？&lt;&#x2F;p&gt;
+&lt;p&gt;有一些王八蛋駭客可以拿你的電腦當成網路攻擊的跳板；
+通過你的賬戶向你周圍的家人、朋友投送詐欺資訊；
+甚至勒索、盜取你的銀行賬戶，
+這些都是有利可圖的。&lt;&#x2F;p&gt;
+&lt;p&gt;而網路安全也是一種工程學，駭入也是講究成本的，
+一般人不是會是高價值目標，
+所以通常駭客不會花很大心力去駭入一個普通人的賬戶，
+通常這些駭入行動都是由駭客編寫的精妙程式執行的。
+而提高駭入的成本，也許就能讓駭客放棄駭入你的賬戶。&lt;&#x2F;p&gt;
+&lt;p&gt;通常，安全性和便利性是一個權衡，越安全也就越麻煩，
+甚至，一些過時的古早設計既麻煩還不安全。
+資訊安全已是現代網路的一門大學問，
+而現代的工具在設計時，則是同時考慮了安全性和便利性。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mi-ma-ti-shi-wen-ti-jiu-shi-yi-ge-chao-ji-bai-chi-she-ji&quot;&gt;密碼提示問題就是一個超級白痴設計&lt;&#x2F;h2&gt;
+&lt;p&gt;通常在註冊賬戶的時候，
+系統會要求你選擇幾個問題回答，
+例如你出生的城市、寵物的名字...
+但你是考試都考的幾罷昏的好學生，
+你會很認真的回答這些問題，
+但認真回答這些問題反而會讓你的賬戶安全形同虛設，
+因為所有的答案都可以從你的 Twitter、Facebook 之類的社群平臺中找到，
+這被稱作社交工程（Social Engineering）。&lt;&#x2F;p&gt;
+&lt;p&gt;至於亂填的答案，當我要找回密碼的時候，
+我怎麼會記得當時胡扯了什麼答案，
+於是三個問題就變成了三組（弱）密碼，
+但我就是因為忘記密碼才會用到它們不是嗎...&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mi-ma-na-mo-duo-na-mo-chang&quot;&gt;密碼拿麼多、拿麼長&lt;&#x2F;h2&gt;
+&lt;p&gt;例如 Google &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;、Yahoo &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 在你註冊賬戶的時候都指導你設計密碼的策略。&lt;&#x2F;p&gt;
+&lt;p&gt;一個優秀的密碼要十幾位包含數字大小寫字母符號還要好記又難猜，
+想出一個密碼比晚餐吃什麼還要困難。&lt;&#x2F;p&gt;
+&lt;p&gt;但是駭客甚至不需要去猜你的密碼，
+它只要攻擊一個網站的帳密資料庫，
+就可以知道成千上「有用的」密碼。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;monitor.firefox.com&#x2F;&quot;&gt;Firefox Monitor&lt;&#x2F;a&gt; 提供一個服務，
+幫你檢查、追蹤你的賬戶是否是洩漏事件的受害者。&lt;&#x2F;p&gt;
+&lt;p&gt;這就也為什麼要在不同的網站也要使用不同的密碼，
+否則只要知道了一組密碼，
+就可以在所有那些共用密碼的網站上登錄。&lt;&#x2F;p&gt;
+&lt;p&gt;那，密碼拿麼多、拿麼長，我怎麼可能記得住？&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wan-fa-gui-yi-yi-gui-he-chu&quot;&gt;萬法歸一，一歸何處？&lt;&#x2F;h2&gt;
+&lt;p&gt;記住密碼的方式，可以做成記憶土司吃掉，也可以拿小本本記下來，
+但現代人有現代人的解決方式。&lt;&#x2F;p&gt;
+&lt;p&gt;密碼管理器可以幫你記住帳密，
+現代的瀏覽器例如 Firefox 和 Chrome 都有密碼管理器的功能，
+會幫你記住不同網站登錄的賬戶密碼，就可以一鍵登錄。
+省去了記憶的部分，就使得在註冊一些網站的時候可以使用亂數密碼。&lt;&#x2F;p&gt;
+&lt;p&gt;很明顯的，密碼管理器用得好是萬法歸一，用不好就是&lt;strong&gt;單點故障&lt;&#x2F;strong&gt;。
+只要誰取得了你瀏覽器的使用權限，
+甚至取得了 Firefox、Google 賬戶，
+也就得到了你所有的的密碼。&lt;&#x2F;p&gt;
+&lt;p&gt;記得設定主密碼（Primary Password）使得密碼管理器更加安全，
+在每次存取密碼管理器的時候都需要輸入主密碼，
+這樣只要記得主密碼就可以存取全部網站。
+但是即使 Firefox、Google 賬戶被盜也偷不走所有密碼，
+當然，主密碼的安全就變得至關重要。&lt;&#x2F;p&gt;
+&lt;p&gt;也有其他提供密碼管理器的服務，如 LastPass、1Password，
+使用之前就要評估他們信譽和安全性；
+當然還有免費、開源的本地端的密碼管理器軟體，例如 KeePass，以及它的變種 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;keepassxc.org&#x2F;&quot;&gt;KeePassXC&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;例如，KeePass 會把密碼存儲成一個加密的檔案，就像密碼的保險箱，
+就是有宵小偷走了保險箱，也幾乎不可能打開它。
+當然保險箱丟了密碼也就都不見了，所以備份也是很重要的。
+KeePass 也可以拿來存儲一些像是金鑰之類的資訊，
+甚至是身份證、護照影印件之類的重要內容。&lt;&#x2F;p&gt;
+&lt;p&gt;當然，拿小本本記下來是物理上的安全。
+像是一些丟掉就找不回賬戶的恢復金鑰（Recovery Code），
+印出來藏好也是真的安心。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ru-guo-yi-ci-bu-gou-an-quan-na-jiu-liang-ci&quot;&gt;如果一次不夠安全，那就兩次&lt;&#x2F;h2&gt;
+&lt;p&gt;現代的網路安全已經認為只有密碼是不夠安全的，
+很多的網站已經強制要求用戶啟用二階段驗證。
+顧名思義，二階段驗證（Two-step authentication）就是在登錄之後再進行一次驗證。&lt;&#x2F;p&gt;
+&lt;p&gt;二階段驗證用於確認在操作的人是賬戶擁有者本尊，
+所以設定二階段驗證能大大提高安全性。&lt;&#x2F;p&gt;
+&lt;p&gt;二階段驗證有很多種類，
+例如指紋、手機、附近信任的藍牙設備都可以作為二階段驗證的工具，
+當然還有最常見的 OTP (One-Time Password) 是基於時間的一次性密碼：
+每隔幾秒就會刷新的數字。&lt;&#x2F;p&gt;
+&lt;p&gt;使用 OTP 不需要特殊的工具，只需要 OTP 產生器。
+例如 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=com.google.android.apps.authenticator2&quot;&gt;Google Authenticator&lt;&#x2F;a&gt; 的 Android 應用程式。&lt;&#x2F;p&gt;
+&lt;p&gt;當然，使用二階段驗證時，記得保護、備份好恢復金鑰。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;yue-wei-xian-de-di-fang-yue-an-quan&quot;&gt;越危險的地方越安全&lt;&#x2F;h2&gt;
+&lt;p&gt;上面的方法讓你的風險集中到了幾個地方，
+像是 Forefox、Google、Microsoft 賬戶，
+儲存二階段驗證的設備，
+還有密碼管理器的檔案和主密碼。
+好處是你只要花更少的心力維護更多的賬戶，
+但是也要花更多的力氣去維護這些重要的地方，
+例如設定專用的、更強的密碼。&lt;&#x2F;p&gt;
+&lt;p&gt;老生常談的基本的網路安全概念，
+就像醫生要你保持健康的生活一樣置若罔聞。
+保護資安還有太多太多地方要注意，例如說：
+不要在不安全的地方（例如公司、學校、影印店等公用電腦）登錄賬戶。
+不要在不信任的設備（例如公用電腦）上接入手機、隨身碟等存儲裝置。
+也不要把手機插在奇怪的地方（例如共用充電器）。
+不要連結陌生的 Wi-Fi，使用 VPN（虛擬私人網路）等。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ben-mi-ma-ni-hai-wo-hao-diu-lian&quot;&gt;笨密碼，你害我好丟臉&lt;&#x2F;h2&gt;
+&lt;p&gt;無密碼的時代或許是我們的未來，
+許多科技公司和資安專家越來越希望減少和消滅密碼。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;你已經在用的「使用 Google 帳戶登入」就是開放授權（OAuth），
+讓你用一個賬戶就可以在各個網站上暢通無阻。&lt;&#x2F;li&gt;
+&lt;li&gt;你也許已經在用的指紋掃描、面部識別、視網膜掃描等生物識別，
+刑事偵查正式走進千家萬戶。&lt;&#x2F;li&gt;
+&lt;li&gt;Windows 11 強制要求的 TPM 2.0 也是其中一環，
+驗證資訊會安全地存儲在這特殊設計的安全晶片上。&lt;&#x2F;li&gt;
+&lt;li&gt;更多的安全裝置例如智能卡或隨身碟一樣的金鑰，
+有著電影一般的儀式感。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;然而，目前這些技術都還需要進一步的發展和普及。
+也並不存在絕對安全的方法。&lt;&#x2F;p&gt;
+&lt;p&gt;也許那一天，電腦比你還知道你是你。&lt;&#x2F;p&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;Google: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;support.google.com&#x2F;accounts&#x2F;answer&#x2F;32040?hl=zh-Hant&quot;&gt;設定高強度密碼並強化帳戶安全性&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;Yahoo: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;tw.help.yahoo.com&#x2F;kb&#x2F;sln3012.html&quot;&gt;建立高安全性密碼的秘訣&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+    </channel>
+</rss>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Bitbucket</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/bitbucket/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 02 Mar 2017 02:00:00 +0000</lastBuildDate>
+      <item>
+          <title>［封存］不用指令也可以使用 Git - GitHub Desktop 與 Bitbucket 篇</title>
+          <pubDate>Thu, 02 Mar 2017 02:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep2/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep2/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep2/">&lt;p&gt;&lt;del&gt;我亂說的。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;從零開始的 Git 使用教學。&lt;br &#x2F;&gt;
+GitHub Desktop 與 Bitbucket 篇。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;在上文（&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;git-without-command&#x2F;git-without-command-ep1&#x2F;&quot;&gt;不用指令也可以使用 Git 系列之 GitHub Desktop 客戶端篇&lt;&#x2F;a&gt;）中，你已經完成了 GitHub Desktop 的設定，也了解的最基本的 Git 操作在 GitHub Desktop 下如何完成。&lt;&#x2F;p&gt;
+&lt;p&gt;本文將會告訴你，如何在 GitHub Desktop 中，與 Bitbucket 愉快的玩耍。
+Bitbucket 相對於 Github，免費支持最多 5 人的私有版本庫。
+當然，GitHub Desktop 是由 GitHub 出品，Bitbucket 也有自己的 Git 客戶端叫做 SourceTree。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;到 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;bitbucket.org&#x2F;&quot;&gt;Bitbucket&lt;&#x2F;a&gt; 註冊賬戶。（我再略！&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;在 Bitbucket 網頁中如何創建一個版本庫，在頁面最上方的 &lt;code&gt;Repositories&lt;&#x2F;code&gt; 菜單中選擇 &lt;code&gt;Create repository&lt;&#x2F;code&gt;，並填入相關的資訊（名字，公開，版本庫的類型，描述，etc...）。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;請注意，Bitbucket 除了 Git 之外，還提供另一種版本管理的軟體，但是我們仍然選擇 Git。&lt;&#x2F;p&gt;
+&lt;p&gt;請注意，在 Git 中，動作 &lt;code&gt;Fork&lt;&#x2F;code&gt; 可以將一個（你不具編輯權限的）版本庫複製一份完全相同的版本庫到你的賬戶下，
+這樣你對該版本庫就有完全的權限操作。在 &lt;code&gt;Forking&lt;&#x2F;code&gt; 選項中，可以選擇是否應許他人 Fork 你的版本庫。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;git-without-command&#x2F;git-without-command-ep2&#x2F;.&#x2F;images_ep2&#x2F;P_00.png&quot; alt=&quot;Options&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;設定 GitHub Desktop：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;右上角的 齒輪，然後選擇 Options...。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;git-without-command&#x2F;git-without-command-ep2&#x2F;.&#x2F;images_ep1&#x2F;P_01.png&quot; alt=&quot;Options&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;設定項目，其中的：
+2. Configure git：你的 Git 配置，要使用 Git 你需要一個全名（&lt;code&gt;Full name&lt;&#x2F;code&gt;）和電郵地址（&lt;code&gt;Email&lt;&#x2F;code&gt;），請與在註冊 Bitbucket 時所填寫的一致，這樣 Git 才會知道誰提交了編輯。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;git-without-command&#x2F;git-without-command-ep2&#x2F;.&#x2F;images_ep1&#x2F;P_02.png&quot; alt=&quot;Options&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;這樣，你的 GitHub Desktop 就設定完了，
+那麼，該如何在 GitHub Desktop 中，與 Bitbucket 愉快的玩耍呢？&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;在你的版本庫列表中，右擊并選擇 &lt;code&gt;Open in Git Shell&lt;&#x2F;code&gt;， 打開 Shell（PowerShell 或者 CMD）。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;git-without-command&#x2F;git-without-command-ep2&#x2F;.&#x2F;images_ep2&#x2F;P_01.png&quot; alt=&quot;Options&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;使用 &lt;code&gt;cd&lt;&#x2F;code&gt; 指令，回到 Clone path，或者你想要把版本庫放置的地方。&lt;&#x2F;li&gt;
+&lt;li&gt;在你的 Bitbucket 版本庫的頁面中，點擊左邊的 &lt;code&gt;Clone&lt;&#x2F;code&gt;，並且複製文字框內的所有內容。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;git-without-command&#x2F;git-without-command-ep2&#x2F;.&#x2F;images_ep2&#x2F;P_02.png&quot; alt=&quot;Options&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;在你的 Shell 中（PowerShell 或者 CMD）中粘貼所有的內容並且執行。
+&lt;ul&gt;
+&lt;li&gt;這個指令就是將你的 Bitbucket 版本庫，克隆一份到你指定的目錄下。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;回到 GitHub Desktop 中，點擊左上角的 &lt;code&gt;+&lt;&#x2F;code&gt; 號，選擇 &lt;code&gt;Add&lt;&#x2F;code&gt; 頁面，並且選擇你剛剛克隆的版本庫所在的目錄。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;git-without-command&#x2F;git-without-command-ep2&#x2F;.&#x2F;images_ep2&#x2F;P_03.png&quot; alt=&quot;Options&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;之後它就會出現在左邊的版本庫列表中，其他的操作就跟上一個教學差不多了。&lt;&#x2F;p&gt;
+&lt;p&gt;最後，你已經了解了在 GitHub Desktop 下如何使用 Bitbucket 託管的版本庫。那麼，你也可能感興趣：
+不用指令也可以使用 Git 系列之 &lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;git-without-command&#x2F;git-without-command-ep3&#x2F;&quot;&gt;GitHub Desktop + GitHub 篇&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
