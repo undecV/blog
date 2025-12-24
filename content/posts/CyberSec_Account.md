@@ -3,7 +3,7 @@ title: "你也可以知道的賽博安全指南 - 帳密篇"
 description: "<del>偵測到您的賬戶有異常登錄記錄，請儘速處理。</del>"
 date: 2023-06-29
 updated: 2023-06-29
-slug: "cyber_security_account"
+slug: "cyber-security-account"
 taxonomies:
   tags: [zh_TW, Cyber Security]
 ---

@@ -3,7 +3,7 @@ title: "Raspberry Pi 4B 搭建 NAS 第二話：網路篇"
 description: "Raspberry Pi 4B NAS Episode 2 (Network)<br /><del>究竟讀寫速度會卡在 USB 還是 SMB 呢？rPi4B NAS 翻車最終話！。</del>"
 date: 2020-04-03 01:00:00
 updated: 2020-04-03 01:00:00
-slug: "rpi4b_nas_ep2"
+slug: "rpi4b-nas-ep2"
 taxonomies:
   tags: [zh_TW, Raspberry Pi, NAS, HDD, Ethernet, Wi-Fi]
 ---

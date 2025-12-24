@@ -3,7 +3,7 @@ title: "BitTorrent 從入門到出門"
 description: "BitTorrent Introduction"
 date: 2019-12-11
 updated: 2019-12-11
-slug: "bittorrent_intro"
+slug: "bittorrent-intro"
 taxonomies:
   tags: [zh_TW, BitTorrent, Download, File Sharing, Tutorial, Computer Concept]
 ---

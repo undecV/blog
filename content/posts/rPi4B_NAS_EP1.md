@@ -3,7 +3,7 @@ title: "Raspberry Pi 4B 搭建 NAS 第一話：外接硬碟和 USB 篇"
 description: "Raspberry Pi 4B NAS Episode 1 (HDD & USB)<br /><del>爬文是不可能爬文的，这辈子不可能爬文的。Spec 又不會查，Run 不起來纔是正常的樣子。</del>"
 date: 2020-04-03 00:00:00
 updated: 2020-04-03 00:00:00
-slug: "rpi4b_nas_ep1"
+slug: "rpi4b-nas-ep1"
 taxonomies:
   tags: [zh_TW, Raspberry Pi, NAS, HDD, USB, USB HUB]
 ---

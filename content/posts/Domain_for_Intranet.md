@@ -4,7 +4,7 @@ description: |
   想為內網中的 Web Server 設定域名，還希望能支援 HTTPS？
   本文探討保留 TLD 的限制、ACME 證書如何簽給內部服務，
   以及如何透過本地 DNS 配合真實域名實現內網 HTTPS 的實踐方式。
-slug: domain_for_intranet
+slug: domain-for-intranet
 date: 2025-01-27
 updated: 2025-06-15
 taxonomies:

@@ -3,7 +3,7 @@ title: "Windows 下手動修正 VLC 界面縮放"
 description: "Fix VLC UI fractional scaling in Windows.<br /><del>は？Windows 竟然支援高解析度螢幕？</del>"
 date: 2021-05-10
 updated: 2021-05-10
-slug: "vlc_fractional_scaling"
+slug: "vlc-fractional-scaling"
 taxonomies:
   tags: [zh_TW, VLC, Media Player, Windows, High DPI, Touchscreen, Fractional Scaling]
 ---

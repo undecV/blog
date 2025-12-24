@@ -3,7 +3,7 @@ title: "桌面搜尋概論，以及 CLaunch 中文化"
 description: "我把 CLaunch 中文化了。"
 date: 2023-06-22
 updated: 2023-06-22
-slug: "desktop_search_and_claunch_zh_tw"
+slug: "desktop-search-and-claunch-zh_tw"
 taxonomies:
   tags: [zh_TW, Dogfooding, Desktop search, Launcher, Software, Translation]
 ---

@@ -3,7 +3,7 @@ title: "簡報筆變成電腦遙控器？！Surface Pen 也可以支援 Google S
 description: "~~你的下一台遙控器何必是遙控器。~~"
 date: 2024-01-23
 updated: 2024-01-23
-slug: "clicker_remote_control"
+slug: "clicker-remote-control"
 taxonomies:
   tags: [zh_TW, AHK, Clicker, Remote Control, Surface, Surface Pen, Stylus]
 ---

@@ -3,7 +3,7 @@ title: "BtrVol 音量控制軟體"
 description: "<del>夢裡看片今日實現。</del>"
 date: 2023-07-16
 updated: 2023-07-16
-slug: "btrvol_intro"
+slug: "btrvol-intro"
 taxonomies:
   tags: [zh_TW, Software, Volume Control]
 ---

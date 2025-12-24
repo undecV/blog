@@ -3,7 +3,7 @@ title: "桌面級氣象站：樹梅派4B × BME680"
 description: "<del>因為想讓樹莓派做一些像是樹莓派會做的事（？</del>"
 date: 2024-03-29
 updated: 2024-03-29
-slug: "rpi4b_bme680"
+slug: "rpi4b-bme680"
 taxonomies:
   tags: [zh_TW, Raspberry Pi, IoT, BME680, Sensor, TSDB, InfluxDB, Dashboard, Grafana, Prometheus]
 ---

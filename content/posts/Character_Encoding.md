@@ -3,7 +3,7 @@ title: "字元編碼簡史，以及亂碼和他們的產地"
 description: "這篇文章希望用講故事的方式，儘量避開一些技術上的眉眉角角，通俗地介紹字元編碼的簡單歷史，以及亂碼的成因和解法。"
 date: 2025-10-31
 updated: 2025-10-31
-slug: "character_encoding"
+slug: "character-encoding"
 taxonomies:
   tags: [zh_TW, Computer Concept, Character Encoding, Mojibake]
 ---

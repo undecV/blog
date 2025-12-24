@@ -3,7 +3,7 @@ title: "檔案壓縮的概論與實務"
 description: "<del>硬碟空間就像〇〇，擠一擠還是有的。</del>"
 date: 2024-01-23
 updated: 2024-01-23
-slug: "file_compression"
+slug: "file-compression"
 taxonomies:
   tags: [zh_TW, Software, File Archive, Compression, Computer Concept]
 ---
