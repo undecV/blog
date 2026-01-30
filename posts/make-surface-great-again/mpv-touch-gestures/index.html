@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 全能型影片播放器 mpv 被迫支援觸控螢幕辛酸畫面流出</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="觸控螢幕上最好的影片播放器，竟然是不支援觸控的播放器？本篇介紹如何用開源如開掛的播放器 mpv，透過社群腳本與設定打造支援手勢操作、預覽縮圖與現代化介面的極致體驗。並提供一鍵安裝懶人包，讓 mpv 擁有媲美手機播放器的直覺觸控操作體驗！" />
+        <meta property="og:description" content="觸控螢幕上最好的影片播放器，竟然是不支援觸控的播放器？本篇介紹如何用開源如開掛的播放器 mpv，透過社群腳本與設定打造支援手勢操作、預覽縮圖與現代化介面的極致體驗。並提供一鍵安裝懶人包，讓 mpv 擁有媲美手機播放器的直覺觸控操作體驗！" />
+
+    
+
+    <meta property="og:title" content="全能型影片播放器 mpv 被迫支援觸控螢幕辛酸畫面流出" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;make-surface-great-again&#x2F;mpv-touch-gestures&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            全能型影片播放器 mpv 被迫支援觸控螢幕辛酸畫面流出
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2025-07-11"><span class='separator' aria-hidden='true'>•</span>2025-07-11</time></li><li title="2032 words"><span class='separator' aria-hidden='true'>•</span>11 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/awesome-list/">Awesome list</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/windows/">Windows</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/software/">Software</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/application/">Application</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/tablet/">Tablet</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/surface/">Surface</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/touch-screen/">Touch Screen</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/touch-gesture/">Touch Gesture</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/media-player/">Media Player</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/video-player/">Video Player</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/mpv/">mpv</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2025-07-11">Updated on 2025-07-11</time></li>
+        </ul>
+            <p class="p-summary" hidden>觸控螢幕上最好的影片播放器，竟然是不支援觸控的播放器？本篇介紹如何用開源如開掛的播放器 mpv，透過社群腳本與設定打造支援手勢操作、預覽縮圖與現代化介面的極致體驗。並提供一鍵安裝懶人包，讓 mpv 擁有媲美手機播放器的直覺觸控操作體驗！</p><section class="e-content body">
+    <section class="series-page-intro">
+                <p>這篇文章來自 <a href="https://undecv.github.io/blog/posts/make-surface-great-again/" aria_label="讓 Surface 再次偉大">讓 Surface 再次偉大</a> 系列。</p>
+
+            </section>
+<p><a class="external" href="https://www.youtube.com/">YouTube</a> 作為年輕人的電視，可以說是承包了我所有休息時間。而它作為全世界最大的影片平台，從電腦到手機，從網頁到應用，它的播放器也許是最多人使用的存在。</p>
+<p>雖然作為播放器，它沒有過多的元素，功能更不複雜，但也確實還是實用的。除掉那些該有的基本操作之外，錦上添花的也有像是進度條預覽的功能。並且作為支援行動裝置的播放器，自然有一些觸手友善的簡單手勢功能。包括經典的縮放，雙擊快進快退，以及大家都歧視<sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup>但我就是喜歡的長按兩倍速。</p>
+<p>自從 iPhone 定義了滑手機就是搓玻璃的時代，觸控就是行動裝置互動的基本，所以手機上的影片播放器正是為了觸控螢幕而設計。而這些為了觸控螢幕而生的手勢，也讓我感覺到了操作影片播放器的直覺和便利。</p>
+<p>但在 Windows 上，作為一個桌面端的作業系統，其平台的影片播放器多是為了桌面而設計，少有支援觸控。 <del>畢竟除了 Surface 也沒幾台 Windows 設備支援觸控螢幕，</del> 更不要說桌面系統支援觸控是千古難題（想看我吐槽可以看看<a href="https://undecv.github.io/blog/posts/make-surface-great-again/make-surface-great-again-intro/">上篇文章</a>）。</p>
+<p>電腦是這樣的，手機的影片播放器只要全身心的支援觸控螢幕，拖拉推拽，煎炒烹炸就可以，可電腦要考慮的事情就很多了。</p>
+<p>其實網頁版的 YouTube 是支援觸控螢幕的，這讓我在 Surface 有了行動裝置本該有的體驗。但，本地檔案的播放器呢？</p>
+<p>Windows 內建的播放器在觸控支援上還是有的，但其功能也就只能說夠用，一些進階的功能是沒有的，例如說直覺的手勢，但對我來說最致命的還是缺少支援一些奇奇怪怪的格式。</p>
+<p>而第三方播放器，大家常用的例如 PotPlayer 和 KMPlayer 免費專有軟體，不得不說他們功能確實強大，但大多都帶有廣告，甚至一些還在安裝的時候夾帶私貨。雖說這是賺錢的事兒不寒磣吧，但我既然還有得選，就⋯⋯</p>
+<p>自由軟體，常見的 <a class="external" href="https://codecguide.com/">Codec Guide</a> 的 MPC-HC 其實是幾百個世紀前（？）的播放器改版維護至今，雖然介面老派，但功能也絕對不輸，老當益壯說的就是他。</p>
+<p><a class="external" href="https://www.videolan.org/vlc/">VLC</a> 也有現代而不當代的介面，不僅支援眾多歪門邪道的編碼，甚至在串流上有所造詣，而且介面也可以安裝外觀造型。但可惜的是，也許是因為他的團隊重心想在編碼和串流這些背後的重要技術，前端播放介面的更新比較慢熱，我非常期待的第四代至今還在難產 :( ，但還是我最常用的播放器。</p>
+<p>但是話說回來，他們都不支援觸控耶？直到我再次遇到了 <a class="external" href="https://mpv.io/">mpv</a>，其實我一直知道這貨的存在，可是講道理，雖然它是強到根本就像轉生異世界開掛龍傲天一般的存在，但那精簡到沒有的介面、指令的操作、手動格式綁定、甚至官方都沒有提供開箱即用的安裝安裝程式（第三方支援），無一不讓我望而卻步。</p>
+<blockquote>
+<p>欸欸欸欸欸別走啊！我後面準備好了一份懶人包，一鍵安裝 mpv 以及這次介紹的所有模組。</p>
+</blockquote>
+<p>但要知道，這種使用門檻高到鯉魚躍龍門一般難如登天的軟體，萬一不小心上了手，那可就像成癮一般再也回不去了，頭都不回的那種：像是音樂播放器 <a class="external" href="https://www.foobar2000.org/">Foobar2000</a>，又像是多協定下載器 <a class="external" href="https://aria2.github.io/">Aria2</a>，再像是文字編輯器的 <a class="external" href="https://www.vim.org/">Vim</a> 和 <a class="external" href="https://www.gnu.org/s/emacs/">Emacs</a> ⋯⋯這都是超硬核的骨灰級玩家才嚐得到的醍醐味。</p>
+<p>話是那麼說，但 mpv 其實不難理解，他的播放器介面渾然一體，按鈕、進度條漂浮在影片之上，平時隱藏不見，滑鼠移過去就會顯示，稱之 OSC（Over Screen Control），更多高級功能藏在快速鍵中。</p>
+<p>可是我為什麼只是想看個影片還要背快速鍵啊，我不知道還要考試，我又沒有唸書！也沒關係，我們可以通過 scripts 對 mpv 做客製化，這正是它的迷人之處。</p>
+<p>而 mpv 的 scripts，就像瀏覽器擴充套件、或是遊戲模組，可以理解為超級靈活的設定檔，幾乎讓 mpv 有無限的可能。我們入門玩家也不需要自己寫，社群裡也已經有前輩們準備了。</p>
+<blockquote>
+<p>以下都是一鍵安裝腳本包含的內容，如果想要使用腳本，這些都 <strong>不需要</strong> 操作。</p>
+</blockquote>
+<p>我推薦使用 Scoop 軟體套件管理器安裝 mpv，簡單無痛。</p>
+<ul>
+<li>首先去 <a class="external" href="https://scoop.sh/">Scoop</a> 官方網站，按照指定的步驟安裝 Scoop；</li>
+<li>到軟體倉庫中找到 <a class="external" href="https://scoop.sh/#/apps?q=mpv&amp;id=b05b47128464d8969416289383fbfc69a47353e3">extras/mpv</a> 並且安裝。</li>
+</ul>
+<blockquote>
+<p>注意！有 <code>mpv</code> 和 <code>mpv-git</code> 前者是穩定版較穩定，後者是開發版較新但可能不穩定。</p>
+</blockquote>
+<p>如果用 Scoop 安裝，mpv 的設定檔通常放在 <code>%USERPROFILE%\scoop\apps\mpv\current\portable_config</code>，設定檔路徑可能隨著按照的方式各有不同。這個設定檔資料夾因為太長下面統稱 <code>$configDir</code>，除了 mpv 的設定檔 <code>mpv.conf</code> 直接放在這個資料夾下，裡面還有兩個資料夾：</p>
+<ul>
+<li>Scripts 通常是「<code>.lua</code> 檔案」放這裡面：<code>$configDir/scripts</code></li>
+<li>Scripts 對應的「<code>.conf</code> 設定檔」放這裡面：<code>$configDir/script-opts</code></li>
+</ul>
+<p>以上就是初學者所需知道的一切，只需要丟東西到指定地方即可。</p>
+<p>為了強迫 mpv 支援更友善的介面和觸控手勢，我們建立一個設定檔 <code>mpv.conf</code> 添加兩三個選項。而設定檔的內容只要參照 <a class="external" href="https://mpv.io/manual/master/">官方文檔</a> 就有。</p>
+<pre data-lang="toml" data-name="mpv.conf" class="language-toml z-code"><code class="language-toml" data-lang="toml" data-name="mpv.conf"><span class="z-source z-toml"><span class="z-comment z-line z-number-sign z-toml"><span class="z-punctuation z-definition z-comment z-toml">#</span> 關閉原生的 OSD Bar，uosc 會替代他的功能。</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">osd-bar</span></span><span class="z-punctuation z-definition z-key-value z-toml">=</span><span class="z-invalid z-illegal z-value z-toml">no</span>
+</span><span class="z-source z-toml">
+</span><span class="z-source z-toml"><span class="z-comment z-line z-number-sign z-toml"><span class="z-punctuation z-definition z-comment z-toml">#</span> 觸控手勢需要使用邊框和禁止視窗拖動。</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">border</span></span><span class="z-punctuation z-definition z-key-value z-toml">=</span><span class="z-invalid z-illegal z-value z-toml">yes</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">window-dragging</span></span><span class="z-punctuation z-definition z-key-value z-toml">=</span><span class="z-invalid z-illegal z-value z-toml">no</span>
+</span></code></pre>
+<blockquote>
+<p>TL;DR: 如果沒禁止「視窗拖動」，拖動視窗的任意部分都會拖動整個視窗，會使得觸控手勢失效，「邊框」是為了在禁止視窗拖動之後還能移動視窗（拖動邊框即可）。</p>
+</blockquote>
+<p>然後給它加裝一些 scripts。都只是按照他們提供的說明，簡單下載指定的檔案放到指定的地方即可。</p>
+<ul>
+<li><a class="external" href="https://github.com/tomasklaen/uosc">uosc</a>（LGPL-2.1）是更友善、現代、介面豐富的 osc 介面；</li>
+<li><a class="external" href="https://github.com/po5/thumbfast">thumbfast</a>（MPL-2.0）支援進度條預覽功能；</li>
+<li><a class="external" href="https://github.com/christoph-heinrich/mpv-pointer-event">mpv-pointer-event</a>（GPL-2.0）和 <a class="external" href="https://github.com/christoph-heinrich/mpv-touch-gestures">mpv-touch-gestures</a>（GPL-2.0）支援觸控手勢。</li>
+</ul>
+<p>最後就可以在 <code>script-opts</code> 資料夾，客製化 scripts 的一些設定，他們預設的設定檔裡通常都有詳盡的說明，所以我就不再贅述。</p>
+<p>其實比想象的還要簡單得多對吧！但我還是整理了上述所有除了安裝 Scoop 之外的所有步驟，製作成了這個一鍵安裝懶人包。可以把下面的安裝指令貼到 Powershell 中一鍵安裝。</p>
+<p>雖說我已經檢查過這個指令的有效性，但我還是希望您在使用的時候能明白每列指令在做啥 :) ，這個指令用 Scoop 安裝 mpv 之後，偵測設定檔資料夾路徑，直接從社群腳本的倉庫下載所需檔案並放到指定位置。</p>
+<blockquote>
+<p>時效性：截稿時 2025 年 7 月，安裝指令的內容可能隨時改變和失效。</p>
+</blockquote>
+<pre data-lang="powershell" data-name="touch_mpv.ps1" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell" data-name="touch_mpv.ps1"><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> This script is licensed under the MIT License, See &lt;https://opensource.org/licenses/MIT&gt;.<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> Install mpv and dependencies<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Installing mpv and dependents (yt-dlp and ffmpeg) ...<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">scoop bucket add extras
+</span><span class="z-source z-powershell">scoop install extras<span class="z-keyword z-operator z-assignment z-powershell">/</span>mpv
+</span><span class="z-source z-powershell">scoop bucket add main
+</span><span class="z-source z-powershell">scoop install main<span class="z-keyword z-operator z-assignment z-powershell">/</span>yt<span class="z-keyword z-operator z-assignment z-powershell">-</span>dlp
+</span><span class="z-source z-powershell">scoop install main<span class="z-keyword z-operator z-assignment z-powershell">/</span>ffmpeg
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Done<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> Locate mpv installation and config folders<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>mpvDir</span> <span class="z-keyword z-operator z-assignment z-powershell">=</span> <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell">scoop prefix mpv</span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>.Trim<span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>
+</span><span class="z-source z-powershell"><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>configDir</span> <span class="z-keyword z-operator z-assignment z-powershell">=</span> <span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>mpvDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>portable_config<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptsDir</span> <span class="z-keyword z-operator z-assignment z-powershell">=</span> <span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>configDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>scripts<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptOptsDir</span> <span class="z-keyword z-operator z-assignment z-powershell">=</span> <span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>configDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>script-opts<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Config path: <span class="z-constant z-character z-escape z-powershell">`&quot;</span><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>configDir</span><span class="z-constant z-character z-escape z-powershell">`&quot;</span><span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">New-Item</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>ItemType Directory <span class="z-keyword z-operator z-assignment z-powershell">-</span>Force <span class="z-keyword z-operator z-assignment z-powershell">-</span>Path <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>configDir</span><span class="z-keyword z-operator z-other z-powershell">,</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptsDir</span><span class="z-keyword z-operator z-other z-powershell">,</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptOptsDir</span> <span class="z-keyword z-operator z-other z-powershell">|</span> <span class="z-support z-function z-powershell">Out-Null</span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> Install uosc<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Installing uosc ...<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>uoscZip</span> <span class="z-keyword z-operator z-assignment z-powershell">=</span> <span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span><span class="z-support z-variable z-drive z-powershell">env:</span>TEMP</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>uosc.zip<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Invoke-WebRequest</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Uri <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://github.com/tomasklaen/uosc/releases/latest/download/uosc.zip<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>OutFile <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>uoscZip</span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Expand-Archive</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Path <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>uoscZip</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>DestinationPath <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>configDir</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Force
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Remove-Item</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Force <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>uoscZip</span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Invoke-WebRequest</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Uri <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://github.com/tomasklaen/uosc/releases/latest/download/uosc.conf<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>OutFile <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptOptsDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>uosc.conf<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Done<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> Create mpv.conf<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Creating mpv.conf ...<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>mpvConf</span> <span class="z-keyword z-operator z-assignment z-powershell">=</span> <span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>configDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>mpv.conf<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-keyword z-control z-powershell">if</span> <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-keyword z-operator z-logical z-powershell">-not</span> <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-support z-function z-powershell">Test-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>mpvConf</span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span> <span class="z-meta z-scriptblock z-powershell"><span class="z-punctuation z-section z-braces z-begin z-powershell">{</span>
+</span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell">@&quot;
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell"># uosc provides seeking &amp; volume indicators (via flash-timeline and flash-volume commands)
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell"># if you decide to use them, you don&#39;t need osd-bar
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell">osd-bar=no
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell"># uosc will draw its own window controls and border if you disable window border
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell">border=yes
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell">window-dragging=no
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell"># If the UI feels sluggish/slow while playing video, you can remedy this a bit
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell"># video-sync=display-resample
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-string z-quoted z-double z-heredoc z-powershell">&quot;@</span> <span class="z-keyword z-operator z-other z-powershell">|</span> <span class="z-support z-function z-powershell">Set-Content</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Encoding UTF8 <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>mpvConf</span>
+</span></span><span class="z-source z-powershell"><span class="z-meta z-scriptblock z-powershell"><span class="z-punctuation z-section z-braces z-end z-powershell">}</span></span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Done<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> Install thumbfast<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Installing thumbfast ...<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Invoke-WebRequest</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Uri <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://raw.githubusercontent.com/po5/thumbfast/refs/heads/master/thumbfast.lua<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>OutFile <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptsDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>thumbfast.lua<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Invoke-WebRequest</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Uri <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://raw.githubusercontent.com/po5/thumbfast/refs/heads/master/thumbfast.conf<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>OutFile <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptOptsDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>thumbfast.conf<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Done<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> Install pointer-event<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Installing pointer-event ...<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Invoke-WebRequest</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Uri <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://raw.githubusercontent.com/christoph-heinrich/mpv-pointer-event/refs/heads/master/pointer-event.lua<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>OutFile <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptsDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>pointer-event.lua<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Done<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> Install touch-gestures<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Installing touch-gestures ...<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Invoke-WebRequest</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Uri <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://raw.githubusercontent.com/christoph-heinrich/mpv-touch-gestures/refs/heads/master/touch-gestures.lua<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>OutFile <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptsDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>touch-gestures.lua<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Invoke-WebRequest</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Uri <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://raw.githubusercontent.com/christoph-heinrich/mpv-touch-gestures/refs/heads/master/touch-gestures.conf<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>OutFile <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptOptsDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>touch-gestures.conf<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Invoke-WebRequest</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Uri <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://raw.githubusercontent.com/christoph-heinrich/mpv-touch-gestures/refs/heads/master/pointer-event.conf<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>OutFile <span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>scriptOptsDir</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>pointer-event.conf<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Done<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Write-Host</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>mpv + uosc + gesture environment is ready!<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>ForegroundColor Green
+</span></code></pre>
+<footer class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p>商周 - 網路溫度計 DailyView：<a class="external" href="https://www.businessweekly.com.tw/focus/blog/3018096">Netflix小編稱1.5倍速追劇，為什麼被炎上？</a> <a href="#fr-1-1">↩</a></p>
+</li>
+</ol>
+</footer>
+
+    
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/command-line-guide/argument-introduction/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">程式如何接收參數</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/make-surface-great-again/make-surface-great-again-intro/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">讓 Surface 再次偉大：觸手友善的電腦和作業系統</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

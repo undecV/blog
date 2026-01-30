@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 打破指令和圖形界面的次元壁！用捷徑圖示執行指令</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="想要把一拖拉庫的檔案丟給某個程式？在指令列尋求UX是否搞錯了什麼？這篇文章用幾行批次指令，把指令列工具偷渡到了圖形界面裡，打破了兩者的界線，開啟指令和圖形界面之間的「傳送門」。" />
+        <meta property="og:description" content="想要把一拖拉庫的檔案丟給某個程式？在指令列尋求UX是否搞錯了什麼？這篇文章用幾行批次指令，把指令列工具偷渡到了圖形界面裡，打破了兩者的界線，開啟指令和圖形界面之間的「傳送門」。" />
+
+    
+
+    <meta property="og:title" content="打破指令和圖形界面的次元壁！用捷徑圖示執行指令" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;command-line-guide&#x2F;windows-icon-portal&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            打破指令和圖形界面的次元壁！用捷徑圖示執行指令
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2025-05-28T05:00:00"><span class='separator' aria-hidden='true'>•</span>2025-05-28</time></li><li title="1076 words"><span class='separator' aria-hidden='true'>•</span>6 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/command-line/">Command Line</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/cli/">CLI</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/tutorial/">Tutorial</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/computer-concept/">Computer Concept</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/windows/">Windows</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2025-05-29T05:00:00">Updated on 2025-05-29</time></li>
+        </ul>
+            <p class="p-summary" hidden>想要把一拖拉庫的檔案丟給某個程式？在指令列尋求UX是否搞錯了什麼？這篇文章用幾行批次指令，把指令列工具偷渡到了圖形界面裡，打破了兩者的界線，開啟指令和圖形界面之間的「傳送門」。</p><section class="e-content body">
+    <section class="series-page-intro">
+                <p>這篇文章來自 <a href="https://undecv.github.io/blog/posts/command-line-guide/" aria_label="命令列從入門到出門">命令列從入門到出門</a> 系列。</p>
+
+            </section>
+<p>用例：某個檔案希望用不是預設的程式打開，或是想把一拖拉庫的檔案丟給某個程式。</p>
+<p>Windows 下的圖形界面，有個非常好用的功能，就是拖動一個或者一拖拉庫檔案或者資料夾到一個程式的圖示上，可以用程式打開這些檔案。</p>
+<p>這個方法可以適用在一些特殊的檔案，不限但包括 <code>.exe</code> 執行檔、 <code>.lnk</code> 捷徑 和 Batch <code>.bat</code> 批次檔上。
+但絕大部分的檔案可能都不行，例如 Python 的 <code>.py</code> 和 PowerShell 的 <code>.ps1</code>。</p>
+<blockquote>
+<p>TL;DR: 這類 Script 並非可執行檔，Windows 不會自動以解譯器打開，
+且 PowerShell 的執行政策（Execution Policy）限制了 .ps1 的直接執行。</p>
+</blockquote>
+<p>最簡單的用法例如，想要用記事本編輯一個文字檔，但沒有它沒有綁定擴展名不能預設用記事本開啟，
+就可以把這個檔案直接拖動到記事本的圖示上，就可以直接用記事本打開它了。</p>
+<p>這個功能的本質是，將檔案或資料夾拖動到程式的圖示，把這他們的路徑以「參數」的方式，傳遞給拖拽的目標。
+例如說，你把檔案 <code>1.txt</code> 和 <code>2.txt</code> 拖動到 <code>code.exe</code> 程式上，實際上會執行 <code>code.exe 1.txt 2.txt</code>。</p>
+<p>這個功能根本就是打破指令和圖形界面的次元壁：既能享受圖形界面的直覺，又能享受指令列的自動化。</p>
+<p>但，有時候我們寫了一個 PowerShell 的 shell script，
+或是 Python 程式懶得編譯成 <code>.exe</code> 執行檔（Do not try it at home，超級麻煩），我們還是希望可以使用這個便利的功能。
+以 Python 為例，我們就可以用批次檔寫一個「傳送門」：</p>
+<pre data-lang="batch" class="language-batch z-code"><code class="language-batch" data-lang="batch"><span class="z-text z-plain">@ECHO OFF
+</span><span class="z-text z-plain">python -u ./random_script.py %*
+</span><span class="z-text z-plain">@PAUSE
+</span></code></pre>
+<p>這個批次檔的意思是，
+先用 <code>@ECHO OFF</code> 關閉多餘的 Prompt 輸出。
+再用 Python 執行 script，並把參數傳遞進去。這裡的 <code>%*</code> 就是批次檔所得到的「所有參數」。
+但通常這個批次檔執行完程式後，發現自己沒啥可做了就會直接退出，然後終端界面就會像您的未來一樣轉瞬即逝，
+所以最後我們加上 <code>@PAUSE</code> 暫停看看程式的輸出。</p>
+<p>在批次檔中，變數 <code>%*</code> 的意思是批次檔所得到的「所有參數」，
+還可以展開來 <code>%0</code> 表示批次檔自己所在的位置、<code>%1</code> 表示第一個參數、<code>%2</code> 表示第二個參數、依此類推。
+變數 <code>%*</code> 不包括 <code>%0</code>。
+這因為電腦中通常數數是從 0 開始，而第〇個參數通常表示程式自己的路徑。
+還可以用一些前綴來修飾這些變數，例如 <code>%~dp0</code> 表示「批次檔當前所在的資料夾路徑且去掉引號」。
+可以通過 <code>CALL /?</code> 和 <a class="external" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/call">官方文檔</a> 查看他的用法。</p>
+<p>例如說，你把檔案 <code>1.txt</code> 和 <code>2.txt</code> 拖動到這個批次檔上，
+實際上批次檔會執行 <code>python -u ./random_script.py 1.txt 2.txt</code>。
+（過程是：〔檔案〕-&gt;〔批次檔〕-&gt;〔程式〕）</p>
+<p>所以 Python script 也可以是一種 shell script，不再需要 Batch 黑魔法詠唱一般的文法。</p>
+<p>甚至，我們可以給這個批次檔「傳送門」建立一個捷徑，設定一個圖標，捷徑也會把拖動到它上面的檔案和資料夾以參數的方式傳遞給其目標，
+比如我們寫好的「傳送門」批次檔，這個批次檔在呼叫程式並且再把參數傳遞過去（過程是：〔檔案〕-&gt;〔捷徑〕-&gt;〔批次檔〕-&gt;〔程式〕）。
+這樣就可以把任何檔案拖進這個捷徑，就會自動傳遞給你的程式處理。</p>
+<p>聰明的你一定能想到，誒那我能不能跳過批次檔，直接用捷徑呼叫程式呢？（過程是：〔檔案〕-&gt;〔捷徑〕-&gt;〔程式〕）
+當然不是不行，但在我的測試中，這樣會比較容易遇到空格和引號的跳脫問題，而且沒有批次檔方案靈活，只好作罷。</p>
+<p>這樣，我們用幾行批次指令，把 CLI 工具偷渡到了圖形界面裡，打破了兩者的界線，開啟了指令和圖形界面之間的「傳送門」。</p>
+
+    
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">Windows 系統槽備份不完全指北</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">命令列從入門到出門</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

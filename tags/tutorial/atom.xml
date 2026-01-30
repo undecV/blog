@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;undecv.github.io&#x2F;blog</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>Tutorial</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー - Tutorial</title>
+    <link href="https://undecv.github.io/blog/tags/tutorial/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog/tags/tutorial/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-08-01T09:00:00+00:00</updated><id>https://undecv.github.io/blog/tags/tutorial/atom.xml</id><entry xml:lang="en">
+        <title>程式如何接收參數</title>
+        <published>2025-08-01T09:00:00+00:00</published>
+        <updated>2025-08-01T09:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command-line-guide/argument-introduction/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command-line-guide/argument-introduction/</id>
+        <summary type="html">從 Hello World 到能聽懂人話的程式：介紹命令列參數的使用方法，讓程式能根據輸入做不同事情。</summary>
+        </entry><entry xml:lang="en">
+        <title>打破指令和圖形界面的次元壁！用捷徑圖示執行指令</title>
+        <published>2025-05-28T05:00:00+00:00</published>
+        <updated>2025-05-29T05:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/</id>
+        <summary type="html">想要把一拖拉庫的檔案丟給某個程式？在指令列尋求UX是否搞錯了什麼？這篇文章用幾行批次指令，把指令列工具偷渡到了圖形界面裡，打破了兩者的界線，開啟指令和圖形界面之間的「傳送門」。</summary>
+        </entry><entry xml:lang="en">
+        <title>把任務放進佇列！用 Pueue 排隊指令</title>
+        <published>2025-05-28T04:00:00+00:00</published>
+        <updated>2025-05-28T04:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command-line-guide/pueue-introduction/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command-line-guide/pueue-introduction/</id>
+        <summary type="html">有時我們會需要執行一拖拉庫需要漫長時間而繁重的操作。一旦執行下去就得等到海枯石爛。同時執行不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。這時候就會希望它們放進佇列，能夠自動排隊執行，還能動態調整佇列順序、暫停、取消⋯⋯有這種工具嗎？</summary>
+        </entry><entry xml:lang="en">
+        <title>打通 Windows 和 Linux 的傳送魔法陣！在 Shell 之間反覆橫跳</title>
+        <published>2025-05-28T03:00:00+00:00</published>
+        <updated>2025-05-28T03:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/</id>
+        <summary type="html">通常要做一件事情是可以在一個 Shell 裡面完成的。但無論是使用舊工具或是跨平臺，都使得我們不得不在不同的 Shell 之間反复橫跳。這篇文章介紹的巢狀指令呼叫根本就是指令界的人〇〇蚣！可以在不同 Shell 之間互通有無。</summary>
+        </entry><entry xml:lang="en">
+        <title>重灌軟體自動化！Windows 的軟體管理系統</title>
+        <published>2025-05-28T02:00:00+00:00</published>
+        <updated>2025-06-27T02:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/</id>
+        <summary type="html">重灌電腦最麻煩的就是灌回那些常用的軟體。我從來不覺得重灌軟體開心過。好在 Windows 上也有了軟體套件管理系統，讓我可以一鍵完成原本要花幾百年才能完成的重灌軟體的工作！</summary>
+        </entry><entry xml:lang="en">
+        <title>命令列從入門到出門</title>
+        <published>2025-05-28T01:00:00+00:00</published>
+        <updated>2025-05-29T01:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/</id>
+        <summary type="html">不同於拖拉推拽煎炒烹炸的直覺而精緻操作的圖形界面，指令已經成為了只有在駭客或者工程師修電腦的時候才會出現的魔法詠唱般的存在，但這篇文章介紹命令列的基本概念，帶你寫出年輕人的第一條指令。</summary>
+        </entry><entry xml:lang="en">
+        <title>BitTorrent 從入門到出門</title>
+        <published>2019-12-11T00:00:00+00:00</published>
+        <updated>2019-12-11T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/bittorrent-intro/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/bittorrent-intro/</id>
+        <summary type="html">BitTorrent Introduction</summary>
+        </entry><entry xml:lang="en">
+        <title>如何在不同環境下設定 Proxy 代理伺服器</title>
+        <published>2018-05-20T00:00:00+00:00</published>
+        <updated>2018-07-09T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/proxy-settings/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/proxy-settings/</id>
+        <summary type="html">Proxy Settings</summary>
+        </entry>
+</feed>

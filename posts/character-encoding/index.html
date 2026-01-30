@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 字元編碼簡史，以及亂碼和他們的產地</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="這篇文章希望用講故事的方式，儘量避開一些技術上的眉眉角角，通俗地介紹字元編碼的簡單歷史，以及亂碼的成因和解法。" />
+        <meta property="og:description" content="這篇文章希望用講故事的方式，儘量避開一些技術上的眉眉角角，通俗地介紹字元編碼的簡單歷史，以及亂碼的成因和解法。" />
+
+    
+
+    <meta property="og:title" content="字元編碼簡史，以及亂碼和他們的產地" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;character-encoding&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            字元編碼簡史，以及亂碼和他們的產地
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/character-encoding/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2025-10-31"><span class='separator' aria-hidden='true'>•</span>2025-10-31</time></li><li title="2919 words"><span class='separator' aria-hidden='true'>•</span>15 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/computer-concept/">Computer Concept</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/character-encoding/">Character Encoding</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/mojibake/">Mojibake</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2025-10-31">Updated on 2025-10-31</time></li>
+        </ul>
+            <p class="p-summary" hidden>這篇文章希望用講故事的方式，儘量避開一些技術上的眉眉角角，通俗地介紹字元編碼的簡單歷史，以及亂碼的成因和解法。</p><section class="e-content body"><p>眾所周知，對於電腦的世界來說，所有的資訊都是 0 和 1，所以電腦其實最初是聽不懂人話的。
+但，在電腦之前，在那更加野性而奔放的年代，其實「<a class="external" href="https://en.wikipedia.org/wiki/Character_encoding">字元編碼（Character encoding）</a>」的故事卻早得太多。</p>
+<h2 id="dian-bao-shi-ren-yu-ren-zhi-jian-yong-dian-xian-de-lian-jie">電報是人與人之間（用電線的）連結</h2>
+<p>在那個還是齒輪機械龐克的年代，「<a class="external" href="https://en.wikipedia.org/wiki/Electrical_telegraph">電報（Telegraph）</a>」剛剛誕生，那時候沒有螢幕、沒有電腦、甚至連電話、無線電都還沒誕生。人們希望通過電線進行人與人之間的連結，即「通」和「不通」，可那時候沒有什麼自動編碼解碼的智能玩意兒，全靠「人工智慧」，用人手按開關和人耳聽電流聲，僅以此進行通訊。</p>
+<p>而僅靠「通」和「斷」，聽起來是「嗶」和「靜」，用起來有點不太方便，所以我們就換一種方式，改成用「通電的長短」區分，再以「斷」加以間隔（這在通訊領域可以視為一種「調變」），再給每個字母一組「代碼」，例如「A」就是「嗶嗶—」、「B」就是「嗶—嗶嗶嗶」⋯⋯這就是「<a class="external" href="https://en.wikipedia.org/wiki/Morse_code">摩斯電碼（Morse code）</a>」。</p>
+<p>沒錯，摩斯電碼可以視為一種字元編碼！「字元編碼」也就是把文字轉換成另外一種表現形式的「協定」。在電機的世界，大家相互理解靠的不是同理心，而且共同遵守一個「協定（Protocol）」，用同一種方式交流，就能相互理解。</p>
+<h2 id="dian-chuan-da-zi-ji-shi-ji-qi-yu-ji-qi-de-dui-hua">電傳打字機是機器與機器的對話</h2>
+<p>然而隨著技術的發展，人門發明出了「打字機（Typewriter）」，我們有了真正意義上的機械鍵盤⋯⋯以及把字「打」在紙上的技術。然後，就有人想到遠端打字，把兩台打字機連起來，我在這裡按鍵盤，再那裡把字打出來？於是，結合了電報和打字機技術的「<a class="external" href="https://en.wikipedia.org/wiki/Teleprinter">電傳打字機（Teleprinter）</a>」誕生了。鍵盤輸入轉換成電訊號，經過電線傳送，遠端的打字機印出字。機器和機器對話的時代來了！</p>
+<p>古早的機械沒有人那麼矯情，直接閱讀電的通斷，每個「通」和「斷」我們表示為「1」或「0」，我們稱之為「位元（Bit）」。為了讓機器自動處理傳遞的文字，重新設計了一套字元編碼，例如「<a class="external" href="https://en.wikipedia.org/wiki/Baudot_code#ITA2">ITA2</a>」，用 5 個位元為一組，對應了某個「動作」，例如：「印出某個字元並後移一格」，以及一些特殊動作，比如「換行」和「回車」，為了方便理解，這些特殊動作被概念抽象成一個字元，稱之「特殊字元」或「控制字元」。</p>
+<h3 id="ling-qi-yi-xing-xu-yao-duo-shao-ge-zi-yuan">另起一行需要多少個字元</h3>
+<p>在機械打字機上，機器有一個「滑台／車台（Carriage）」，上面夾著紙張；每打出一個字母，滑台就會往右移一格；打到一行末尾時，需要兩個動作才能繼續下一行：</p>
+<ul>
+<li>「回車（Carriage Return，CR）」：滑台回到最左邊；</li>
+<li>「換行（Line Feed，LF）」：滾筒轉動，使紙往上捲一行。</li>
+</ul>
+<p>這兩個動作完全獨立，也可以分開執行。
+由於「回車」的執行時間會比「換行」要長，所以通常是先回車再換行。
+而由於它們實在是太常一起用了，有打字員就乾脆做了一個帽子，把這兩個按鍵連起來，按一下同時觸發，有一說這也是為什麼現代還有很多鍵盤佈局的回車鍵長得異常畸形的原因。</p>
+<p>而這兩個特殊字元「CRLF」代表 <a class="external" href="https://en.wikipedia.org/wiki/Newline">實際上換行</a> 的傳統延續至今，現代的一些網路協定和 Windows 都是如此。
+又有人覺得為了傳統多寫一個字根本就是在浪費生命和頻寬和存儲空間，所以只保留其中一個作為實際上的換行，例如早年 Mac 僅用「CR」，以及現代 Mac 和 Linux 僅用 「LF」。</p>
+<h2 id="ya-ya-xue-yu-de-dian-nao">牙牙學語的電腦</h2>
+<p>話說回來，那時候的電腦還是幾個衣櫃大的機器，更沒有便利的螢幕。那時候的電腦還靠著音樂盒一樣的打孔紙條進行輸入。之後電傳打字機被連到了電腦上，電腦和用戶對話的時代來了！這時候為了便利電腦和打字機的通訊，7 位元的「<a class="external" href="https://en.wikipedia.org/wiki/ASCII">ASCII</a>」編碼被制定了出來，涵蓋了大小寫英文字母、數字和基本符號，成為了現代字元編碼的基石。現代幾乎所有主流字元編碼都基於它。</p>
+<p>同樣的，字元編碼規定了一個被標記為文字的數字該如何解讀，例如，<code>0x41</code> 就是字母 <code>A</code>，實際存在硬碟上就是 <code>01000001</code>。「<a class="external" href="https://en.wikipedia.org/wiki/Font">字型（Fonts）</a>」就是按照這套規範，畫出這個字元的樣子。</p>
+<p>而只有拉丁字母顯然是不夠用的，先撇開漢字文化圈不談，通過擴展 ASCII 變成 8 個位元，就多出 128 個位置，讓用字母的音位文字語言可以塞自己的字母。被稱為「擴展 ASCII 編碼」。終於，一個字元用八個位元等於一個「位元組（Byte）」的概念被確立，這也是為什麼 C 語言裡面一個位元組叫做 <code>char</code> 的原因。</p>
+<p>而漢字卻是最麻煩的，很明顯只多出來的 128 個位置是塞不下那成千上萬個常用漢字的，所以我們會需要用到兩個甚至三個位元組來表示一個漢字。</p>
+<h2 id="zi-shuo-zi-hua-you-bei-ge-zi-jie-du">自說自話又被各自解讀</h2>
+<p>ASCII 正如其名是為了美國和美式英語設計的，而電腦傳播到了全世界，ASCII 也有自然需要融合各地的口味。例如日本當時出於常用的理由，相容 ASCII 的 JIS X 0201 把 <code>0x5C</code> 對應的「反斜線 <code>\</code>」改定義為「日圓符號 <code>¥</code>」，這也是為什麼在 Windows 日本版的電腦上路徑（看上去）是用 <code>¥</code> 分割的，這讓外國人看得不可思議，但實際上在底層是一致的。</p>
+<p>那時候，全世界都在設計自己的字元編碼，甚至每個公司都有自己的編碼，被叫做「萬碼奔騰」的年代，光是台灣就有好幾種繁體字的編碼方式遍地開花。當時席捲全球的 IBM PC DOS 為了能夠席捲全球，將這些字元編碼統整成冊，稱之「<a class="external" href="https://en.wikipedia.org/wiki/Code_page">代碼頁（Code Pages）</a>」。例如英文的 CP437、繁體中文的 Big-5 叫做 CP950、日文 Shift-JIS 叫做 CP932，後來被 Windows 沿用。而這種「一個代碼、各自表述」的編碼方案，稱之「ANSI 編碼」（雖然和那個 ANSI 基本上八竿子打不著）。</p>
+<p>這種自說自話的編碼系統有個很明顯的問題，就是難以跟外國人搭話：例如，用拉丁字母的英文的編碼就沒法顯示用西里爾字母的俄文，繁體中文的編碼就難以顯示有假名的日文。一旦跨國交流就會語言不通非常尷尬，例如用 Big-5 編碼的系統打開 Shift-JIS 編碼的檔案，就會因為「不同的解讀」就會變成「亂碼（Mojibake）」。解決方式就是手動指定代碼頁。</p>
+<h2 id="wan-ma-gui-yi-wan-guo-ma">萬碼歸一萬國碼</h2>
+<p>為了更方便讓各國進行文化輸出，以及解決那些舊時代的限制，電腦科學家們想到，若是只用一套字元編碼，就能包天包海的能夠包下世界上所有的字元，這就是「<a class="external" href="https://en.wikipedia.org/wiki/Unicode">萬國碼（Unicode）</a>」。</p>
+<p>Unicode 為世界上所有的字元分配一個代碼點（Code Point）：包括了常見的、不常見的、從古至今活著的、失傳的、甚至虛構的大大小小林林總總各種各樣語言的字母和符號，也囊括了成千上萬個漢字即「中日韓統一表意字元」，甚至還有撲克、西洋棋之類的符號，還有表情符號 Emoji 也是其中的一部分。</p>
+<p>如果我們直接把這個字元對應的四位元組數字直接記錄下來，就是「UTF-32」，但電腦世界最常用的拉丁字母只在最前面的一個位元組中，這麼記錄很顯然浪費了三倍的空間。於是天才的計算機科學家們通過「可變長度編碼」的方式，讓靠前的字元比如英文用的拉丁字母僅用一個或兩個位元組表示，這就是「UTF-8」和「UTF-16」。最常用的正是 UTF-8，Windows 上對應的代碼頁是 CP65001。</p>
+<p>終於，字元編碼變成了「書同文」的大同世界。</p>
+<h2 id="qian-xiang-xiang-rong-shi-li-shi-yi-liu-wen-ti">前向相容是歷史遺留問題</h2>
+<p>其實 Windows 很早就用上了 Unicode ，自從比 XP 還早的 Windows 2000 的 NT 核心以來，Windows 就用上了 UTF-16LE（小端序）作為作業系統和檔案系統的唯一指定的字元編碼。可是事情並不會那麼簡單：老的程式和檔案格式尚未支援 Unicode。</p>
+<p>為了和平友善地支援向前相容老舊程式，Windows 至今保留了舊時代的介面和預設代碼頁的設定，所以舊 ANSI 時代的亂碼問題我們也仍然還會遇到。例如說資料交換、壓縮檔、玩日文遊戲等場景。這正是亂碼和他們的產地。而且因為我們是在解決歷史問題，事情可能會變得更加的錯綜複雜。</p>
+<p>舉一個實在的例子，古早的 ZIP 壓縮檔的設計，沒有考慮到這種跨語系的場景，其中被壓縮檔案的檔名是 ANSI 編碼的，至於具體是哪個編碼，它不知道，因為根本沒記下來。（後來才新增 Unicode 支援。）</p>
+<p>假如我們要在英文（CP437）的系統上，打開一個在日文（Shift-JIS）系統上壓縮的 ZIP 檔。那麼，被壓縮檔案的檔名是以 Shift-JIS 編碼記錄在壓縮檔內。然後這個檔案在繁體中文的作業系統上，同樣的數字被以 CP437 的方式解讀，就會變成亂碼。
+然後我們直接解壓縮這個檔名亂碼的檔案，它們就會被單純明快地「字面翻譯」成 UTF-16LE 存放在硬碟上。</p>
+<pre data-lang="python" class="language-python z-code"><code class="language-python" data-lang="python"><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">encoding_a</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">shift_jis<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span>
+</span><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">encoding_b</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">cp437<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span>
+</span><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">original</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">はじめにお読みください.txt<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span>
+</span><span class="z-source z-python"><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-support z-function z-builtin z-python">print</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-storage z-type z-string z-python">f</span><span class="z-meta z-string z-interpolated z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-interpolated z-python"><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">Original<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span></span><span class="z-meta z-format-spec z-python"><span class="z-constant z-other z-format-spec z-python">:&lt;16</span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python">: </span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">original</span></span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+</span><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">byte_in_archive</span></span><span class="z-punctuation z-separator z-annotation z-variable z-python">:</span> <span class="z-meta z-qualified-name z-python"><span class="z-support z-type z-python">bytes</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">original</span></span><span class="z-meta z-qualified-name z-python"><span class="z-punctuation z-accessor z-dot z-python">.</span></span><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-meta z-generic-name z-python">encode</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">encoding_a</span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+</span><span class="z-source z-python"><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-support z-function z-builtin z-python">print</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-storage z-type z-string z-python">f</span><span class="z-meta z-string z-interpolated z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-interpolated z-python"><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">Bytes in Archive<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span></span><span class="z-meta z-format-spec z-python"><span class="z-constant z-other z-format-spec z-python">:&lt;16</span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python">: </span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">byte_in_archive</span></span><span class="z-meta z-qualified-name z-python"><span class="z-punctuation z-accessor z-dot z-python">.</span></span><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-meta z-generic-name z-python">hex</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-punctuation z-accessor z-dot z-python">.</span></span><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-meta z-generic-name z-python">upper</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+</span><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">code_b_view</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">byte_in_archive</span></span><span class="z-meta z-qualified-name z-python"><span class="z-punctuation z-accessor z-dot z-python">.</span></span><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-meta z-generic-name z-python">decode</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">encoding_b</span></span><span class="z-punctuation z-separator z-arguments z-python">,</span> <span class="z-variable z-parameter z-python">errors</span><span class="z-keyword z-operator z-assignment z-python">=</span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">replace<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+</span><span class="z-source z-python"><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-support z-function z-builtin z-python">print</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-storage z-type z-string z-python">f</span><span class="z-meta z-string z-interpolated z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-interpolated z-python"><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">CP437 View<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span></span><span class="z-meta z-format-spec z-python"><span class="z-constant z-other z-format-spec z-python">:&lt;16</span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python">: </span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">code_b_view</span></span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+</span><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">store_in_drive</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">code_b_view</span></span><span class="z-meta z-qualified-name z-python"><span class="z-punctuation z-accessor z-dot z-python">.</span></span><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-meta z-generic-name z-python">encode</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">UTF-16LE<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+</span><span class="z-source z-python"><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-support z-function z-builtin z-python">print</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-storage z-type z-string z-python">f</span><span class="z-meta z-string z-interpolated z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-interpolated z-python"><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">Stored in Drive<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span></span><span class="z-meta z-format-spec z-python"><span class="z-constant z-other z-format-spec z-python">:&lt;16</span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python">: </span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">store_in_drive</span></span><span class="z-meta z-qualified-name z-python"><span class="z-punctuation z-accessor z-dot z-python">.</span></span><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-meta z-generic-name z-python">hex</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-punctuation z-accessor z-dot z-python">.</span></span><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-meta z-generic-name z-python">upper</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+</span><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">recover</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">code_b_view</span></span><span class="z-meta z-qualified-name z-python"><span class="z-punctuation z-accessor z-dot z-python">.</span></span><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-meta z-generic-name z-python">encode</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">encoding_b</span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-punctuation z-accessor z-dot z-python">.</span></span><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-meta z-generic-name z-python">decode</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">encoding_a</span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+</span><span class="z-source z-python"><span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-support z-function z-builtin z-python">print</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-storage z-type z-string z-python">f</span><span class="z-meta z-string z-interpolated z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-interpolated z-python"><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">Recovered<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span></span><span class="z-meta z-format-spec z-python"><span class="z-constant z-other z-format-spec z-python">:&lt;16</span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python">: </span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-begin z-python">{</span><span class="z-source z-python z-embedded"><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">recover</span></span></span></span><span class="z-meta z-interpolation z-python"><span class="z-punctuation z-section z-interpolation z-end z-python">}</span></span><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+</span></code></pre>
+<pre data-lang="plain" class="language-plain z-code"><code class="language-plain" data-lang="plain"><span class="z-text z-plain">Original        : はじめにお読みください.txt
+</span><span class="z-text z-plain">Bytes in Archive: 82CD82B682DF82C982A893C782DD82AD82BE82B382A22E747874
+</span><span class="z-text z-plain">CP437 View      : é═é╢é▀é╔é¿ô╟é▌é¡é╛é│éó.txt
+</span><span class="z-text z-plain">Stored in Drive : E9005025E9006225E9008025E9005425E900BF00F4005F25E9008C25E900A100E9005B25E9000225E900F3002E00740078007400
+</span><span class="z-text z-plain">Recovered       : はじめにお読みください.txt
+</span></code></pre>
+<p>這也是如果你用 7Z 或新版 ZIP 等支援 Unicode 的壓縮軟體再把這些亂碼名字檔打包起來，就算是還給日文系統，他們看起來仍然是亂碼。更可怕的是，如果又被舊時代的代碼頁再次轉換⋯⋯</p>
+<p>那麼我們該如何修復呢，若是理想狀況，原本的 Shift-JIS 的字元對應到 CP437 中的字元可以顯示，我們就有辦法原路返回：UTF-16LE 轉 CP437，再用 Shift-JIS 解讀。但若是出現了無法對應的文字，例如 Shift-JIS 轉 Big-5 大多是沒字的，在 Unicode 轉換時，就會被替換成 <code>�</code> 菱形問號「替代字元（Replacement Character）」，這時候因為產生了資訊損失，就無法直接恢復了。當然最有效的方式，當然就是一開始就「正確解讀」原始的那個壓縮檔。</p>
+<p>字元編碼的歷史就是人與機器相互理解的過程，可是就和人與人之間一樣，想要相互理解是很困難的，在沒法理解的時候，那就只能和解。</p>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/windows-bedside-display/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">把電腦變成床頭時鐘：在 Windows 上打造一個低干擾的睡前待機模式</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/command-line-guide/argument-introduction/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">程式如何接收參數</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/character-encoding/#dian-bao-shi-ren-yu-ren-zhi-jian-yong-dian-xian-de-lian-jie">電報是人與人之間（用電線的）連結</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/character-encoding/#dian-chuan-da-zi-ji-shi-ji-qi-yu-ji-qi-de-dui-hua">電傳打字機是機器與機器的對話</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/character-encoding/#ling-qi-yi-xing-xu-yao-duo-shao-ge-zi-yuan">另起一行需要多少個字元</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/character-encoding/#ya-ya-xue-yu-de-dian-nao">牙牙學語的電腦</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/character-encoding/#zi-shuo-zi-hua-you-bei-ge-zi-jie-du">自說自話又被各自解讀</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/character-encoding/#wan-ma-gui-yi-wan-guo-ma">萬碼歸一萬國碼</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/character-encoding/#qian-xiang-xiang-rong-shi-li-shi-yi-liu-wen-ti">前向相容是歷史遺留問題</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

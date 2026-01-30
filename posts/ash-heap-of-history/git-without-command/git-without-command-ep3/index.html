@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • ［封存］不用指令也可以使用 Git - GitHub Desktop 與 GitHub 篇</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="[Archived] Git Without Command - GitHub Desktop with GitHub" />
+        <meta property="og:description" content="[Archived] Git Without Command - GitHub Desktop with GitHub" />
+
+    
+
+    <meta property="og:title" content="［封存］不用指令也可以使用 Git - GitHub Desktop 與 GitHub 篇" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;git-without-command&#x2F;git-without-command-ep3&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            ［封存］不用指令也可以使用 Git - GitHub Desktop 與 GitHub 篇
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep3/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2017-03-02T03:00:00"><span class='separator' aria-hidden='true'>•</span>2017-03-02</time></li><li title="460 words"><span class='separator' aria-hidden='true'>•</span>3 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/git/">Git</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/github/">GitHub</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/github-desktop/">GitHub Desktop</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2017-03-02T03:00:00">Updated on 2017-03-02</time></li>
+        </ul>
+            <p class="p-summary" hidden>[Archived] Git Without Command - GitHub Desktop with GitHub</p><section class="e-content body">
+    <section class="series-page-intro">
+                <p>這篇文章出土自 <a href="https://undecv.github.io/blog/posts/ash-heap-of-history/" aria_label="歷史的垃圾堆">歷史的垃圾堆</a> 系列，僅供考古，不供參考。</p>
+
+            </section>
+<p><del>我亂說的。</del></p>
+<p>從零開始的 Git 使用教學。<br />
+GitHub Desktop 與 GitHub 篇。</p>
+<blockquote>
+<p>This work © 2017 by undecV is licensed under <a class="external" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+</blockquote>
+<p>在上文（<a href="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep1/">不用指令也可以使用 Git 系列之 GitHub Desktop 客戶端篇</a>）中，
+你已經完成了 GitHub Desktop 的設定，也了解的最基本的 Git 操作在 GitHub Desktop 下如何完成。</p>
+<p>本文將會告訴你，如何在 GitHub Desktop 中，與 GitHub 愉快的玩耍。</p>
+<ol>
+<li>到 <a class="external" href="https://github.com/">GitHub</a> 註冊賬戶。（我再略！</li>
+<li>在 GitHub 網頁中如何創建一個版本庫，在頁面最上方的 <code>+</code> 菜單中選擇 <code>New repository</code>，
+並填入相關的資訊（名字，描述，公開，授權，etc...）。
+請注意 GitHub 免費版是不支持私有版本庫的。
+<ul>
+<li><img src="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep3/./images_ep3/P_B01.png" alt="Options" /></li>
+</ul>
+</li>
+<li>設定 GitHub Desktop：
+<ol>
+<li>右上角的 齒輪，然後選擇 Options...。
+<ul>
+<li><img src="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep3/./images_ep1/P_01.png" alt="Options" /></li>
+</ul>
+</li>
+<li>設定項目，其中的：
+<ol>
+<li>Accounts：你的 GitHub 賬戶，點擊 <code>Add account</code> 登錄你的賬戶。</li>
+<li>Configure git：你的 Git 配置，要使用 Git 你需要一個全名（<code>Full name</code>）和電郵地址（<code>Email</code>），
+請與在註冊 GitHub 時所填寫的一致，這樣 Git 才會知道誰提交了編輯。</li>
+</ol>
+<ul>
+<li><img src="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep3/./images_ep1/P_02.png" alt="Options" /></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<p>這樣，你的 GitHub Desktop 就設定完了，
+那麼，該如何在 GitHub Desktop 中，與 GitHub 愉快的玩耍呢？</p>
+<ol start="4">
+<li>點擊左上角的 <code>+</code> 號，選擇 <code>Clone</code>，然後在左方你可以看到你的賬戶，右邊則有你在 GitHub 上託管的版本庫，選擇你需要克隆的版本庫。
+<ul>
+<li><img src="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep3/./images_ep3/P_00.png" alt="Options" /></li>
+</ul>
+</li>
+</ol>
+<p>之後的操作就跟上一個教學差不多了。</p>
+<p>最後，你已經了解了在 GitHub Desktop 下如何使用 GitHub 託管的版本庫。那麼，你也可能感興趣：
+不用指令也可以使用 Git 系列之 <a href="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep2/">GitHub Desktop + Bitbucket 篇</a>。</p>
+
+    <section class="series-page-outro">
+                <p>感謝你閱讀 <a href="https://undecv.github.io/blog/posts/ash-heap-of-history/" aria_label="歷史的垃圾堆">歷史的垃圾堆</a> 系列的這篇文物。再次提醒：<strong>DO NOT TRY IT AT HOME!</strong></p>
+
+            </section>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/graphics-file-formats/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">數位影像檔案格式</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep2/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">［封存］不用指令也可以使用 Git - GitHub Desktop 與 Bitbucket 篇</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Markdown</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/markdown/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 01 Mar 2017 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>［封存］精簡版 Markdown 語法</title>
+          <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/">&lt;blockquote&gt;
+&lt;p&gt;Apache HTTP server - Part 番外之一&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Q: 如何快速生成作業要求的 HTML 網頁？&lt;br &#x2F;&gt;
+&lt;del&gt;連猴子都能懂的 Markdown 教學&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This work by me is marked &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;publicdomain&#x2F;zero&#x2F;1.0&#x2F;&quot;&gt;CC0 1.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Markdown&lt;&#x2F;strong&gt; 是一種&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80&quot;&gt;輕量級標記式語言&lt;&#x2F;a&gt;，
+創始人為&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E7%B4%84%E7%BF%B0%C2%B7%E6%A0%BC%E9%AD%AF%E4%BC%AF&quot;&gt;約翰·格魯伯&lt;&#x2F;a&gt;（John Gruber）。
+它允許人們「使用易讀易寫的純文字格式編寫檔案，然後轉換成有效的&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;XHTML&quot;&gt;XHTML&lt;&#x2F;a&gt;
+（或者&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;HTML&quot;&gt;HTML&lt;&#x2F;a&gt;）檔案」。
+-- Wikipedia (&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;zh-tw&#x2F;Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC&quot;&gt;CC BY-SA 3.0&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Markdown 的檔案擴展名為&lt;code&gt;.md&lt;&#x2F;code&gt; 。&lt;&#x2F;p&gt;
+&lt;p&gt;光是這個介紹就很符合作業要求啊，可是我經常拿來轉換成 PDF 就是了ww。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;**注意！**並不是所有的 Markdown 編輯器或閱讀器都能完整的包括下述的功能，在不同的編輯器和 CSS Theme 下，顯示的結果可能略有不同。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;biao-ti&quot;&gt;標題&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-heading z-1 z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-heading z-begin z-markdown&quot;&gt;#&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-heading z-1 z-markdown&quot;&gt;&lt;span class=&quot;z-entity z-name z-section z-markdown&quot;&gt;一級標題&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-whitespace z-newline z-markdown&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-heading z-2 z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-heading z-begin z-markdown&quot;&gt;##&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-heading z-2 z-markdown&quot;&gt;&lt;span class=&quot;z-entity z-name z-section z-markdown&quot;&gt;二級標題&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-whitespace z-newline z-markdown&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-heading z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-heading z-begin z-markdown&quot;&gt;###&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-heading z-markdown&quot;&gt;&lt;span class=&quot;z-entity z-name z-section z-markdown&quot;&gt;三級標題&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-whitespace z-newline z-markdown&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-heading z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-heading z-begin z-markdown&quot;&gt;####&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-heading z-markdown&quot;&gt;&lt;span class=&quot;z-entity z-name z-section z-markdown&quot;&gt;四級標題&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-whitespace z-newline z-markdown&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-heading z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-heading z-begin z-markdown&quot;&gt;#####&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-heading z-markdown&quot;&gt;&lt;span class=&quot;z-entity z-name z-section z-markdown&quot;&gt;五級標題&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-whitespace z-newline z-markdown&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-heading z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-heading z-begin z-markdown&quot;&gt;######&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-heading z-markdown&quot;&gt;&lt;span class=&quot;z-entity z-name z-section z-markdown&quot;&gt;六級標題&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-whitespace z-newline z-markdown&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ul&gt;
+&lt;li&gt;&lt;h1 id=&quot;yi-ji-biao-ti&quot;&gt;一級標題&lt;&#x2F;h1&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h2 id=&quot;er-ji-biao-ti&quot;&gt;二級標題&lt;&#x2F;h2&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;san-ji-biao-ti&quot;&gt;三級標題&lt;&#x2F;h3&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h4 id=&quot;si-ji-biao-ti&quot;&gt;四級標題&lt;&#x2F;h4&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h5 id=&quot;wu-ji-biao-ti&quot;&gt;五級標題&lt;&#x2F;h5&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h6 id=&quot;liu-ji-biao-ti&quot;&gt;六級標題&lt;&#x2F;h6&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;duan-luo&quot;&gt;段落&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;空行分割段落。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;lie-biao&quot;&gt;列表&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-list z-unnumbered z-bullet z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-list_item z-markdown&quot;&gt;-&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-unnumbered z-markdown&quot;&gt; &lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt;其一
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-list z-unnumbered z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-unnumbered z-bullet z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-list_item z-markdown&quot;&gt;-&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-unnumbered z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt; 其一
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-list z-unnumbered z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-unnumbered z-bullet z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-list_item z-markdown&quot;&gt;-&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-unnumbered z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt; 其一
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ul&gt;
+&lt;li&gt;其一&lt;&#x2F;li&gt;
+&lt;li&gt;其一&lt;&#x2F;li&gt;
+&lt;li&gt;其一&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;you-xu-lie-biao&quot;&gt;有序列表&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-list z-numbered z-bullet z-markdown&quot;&gt;1&lt;span class=&quot;z-punctuation z-definition z-list_item z-markdown&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-numbered z-markdown&quot;&gt; &lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt;其一
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-list z-numbered z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-numbered z-bullet z-markdown&quot;&gt;2&lt;span class=&quot;z-punctuation z-definition z-list_item z-markdown&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-numbered z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt; 其二
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-list z-numbered z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-numbered z-bullet z-markdown&quot;&gt;3&lt;span class=&quot;z-punctuation z-definition z-list_item z-markdown&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-list z-numbered z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-list z-markdown&quot;&gt; 其三
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ol&gt;
+&lt;li&gt;其一&lt;&#x2F;li&gt;
+&lt;li&gt;其二&lt;&#x2F;li&gt;
+&lt;li&gt;其三&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;lian-jie-lian-jie-yin-yong-tu-pian&quot;&gt;鏈接、鏈接引用、圖片&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-link z-inline z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-link z-begin z-markdown&quot;&gt;[&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-link z-inline z-description z-markdown&quot;&gt;Markdown - 維基百科，自由的百科全書&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-link z-inline z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-link z-end z-markdown&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-link z-inline z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-metadata z-begin z-markdown&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-link z-inline z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-underline z-link z-markdown&quot;&gt;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;Markdown&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-metadata z-end z-markdown&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;Markdown&quot;&gt;Markdown - 維基百科，自由的百科全書&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-link z-reference z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-link z-begin z-markdown&quot;&gt;[&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-link z-reference z-description z-markdown&quot;&gt;文字&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-link z-reference z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-link z-end z-markdown&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-link z-reference z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-constant z-begin z-markdown&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-other z-reference z-link z-markdown&quot;&gt;標籤&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-constant z-end z-markdown&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;markdown-example&#x2F;%E5%9C%B0%E5%9D%80&quot; title=&quot;標題&quot;&gt;文字&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-link z-reference z-def z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-constant z-begin z-markdown&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-reference z-link z-markdown&quot;&gt;標籤&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-constant z-end z-markdown&quot;&gt;]&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-markdown&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-markup z-underline z-link z-markdown&quot;&gt;地址&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-other z-link z-description z-title z-markdown&quot;&gt; &lt;span class=&quot;z-punctuation z-definition z-string z-begin z-markdown&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;標題&lt;span class=&quot;z-punctuation z-definition z-string z-end z-markdown&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ul&gt;
+&lt;li&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-image z-inline z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-image z-begin z-markdown&quot;&gt;![&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-image z-inline z-description z-markdown&quot;&gt;當圖片無法顯示時顯示這段文字&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-image z-inline z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-image z-end z-markdown&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-image z-inline z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-metadata z-begin z-markdown&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-image z-inline z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-underline z-link z-image z-markdown&quot;&gt;pic.png&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-metadata z-end z-markdown&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;[pic]: pic.png
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ul&gt;
+&lt;li&gt;![當圖片無法顯示時顯示這段文字][pic.png]&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;文字&lt;span class=&quot;z-meta z-link z-reference z-footnote z-markdown-extra&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-link z-begin z-markdown&quot;&gt;[^&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-link z-reference z-literal z-footnote-id z-markdown&quot;&gt;1&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-link z-end z-markdown&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-link z-reference z-footnote z-markdown-extra&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-link z-begin z-markdown&quot;&gt;[^&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-link z-reference z-literal z-footnote-id z-markdown&quot;&gt;1&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-link z-end z-markdown&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;: 註腳
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ul&gt;
+&lt;li&gt;文字&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;qiang-diao&quot;&gt;強調&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-italic z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-italic z-begin z-markdown&quot;&gt;*&lt;&#x2F;span&gt;強調&lt;span class=&quot;z-punctuation z-definition z-italic z-end z-markdown&quot;&gt;*&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-markup z-italic z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-italic z-begin z-markdown&quot;&gt;_&lt;&#x2F;span&gt;強調&lt;span class=&quot;z-punctuation z-definition z-italic z-end z-markdown&quot;&gt;_&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-bold z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bold z-begin z-markdown&quot;&gt;**&lt;&#x2F;span&gt;加重強調&lt;span class=&quot;z-punctuation z-definition z-bold z-end z-markdown&quot;&gt;**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-markup z-bold z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bold z-begin z-markdown&quot;&gt;__&lt;&#x2F;span&gt;加重強調&lt;span class=&quot;z-punctuation z-definition z-bold z-end z-markdown&quot;&gt;__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-tag z-inline z-any z-html&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-tag z-begin z-html&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-tag z-inline z-any z-html&quot;&gt;u&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-tag z-end z-html&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;底線&lt;span class=&quot;z-meta z-tag z-inline z-any z-html&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-tag z-begin z-html&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-tag z-inline z-any z-html&quot;&gt;u&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-tag z-end z-html&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-raw z-inline z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-raw z-begin z-markdown&quot;&gt;`&lt;&#x2F;span&gt;程式&lt;span class=&quot;z-punctuation z-definition z-raw z-end z-markdown&quot;&gt;`&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-strikethrough z-markdown-gfm&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-strikethrough z-begin z-markdown&quot;&gt;~~&lt;&#x2F;span&gt;刪除&lt;span class=&quot;z-punctuation z-definition z-strikethrough z-end z-markdown&quot;&gt;~~&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-disable-markdown&quot;&gt;&lt;span class=&quot;z-comment z-block z-html&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-html&quot;&gt;&amp;lt;!--&lt;&#x2F;span&gt;注釋&lt;span class=&quot;z-punctuation z-definition z-comment z-end z-html&quot;&gt;--&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-disable-markdown&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;強調&lt;&#x2F;em&gt; &lt;em&gt;強調&lt;&#x2F;em&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;加重強調&lt;&#x2F;strong&gt; &lt;strong&gt;加重強調&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;u&gt;底線&lt;&#x2F;u&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;程式&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;del&gt;刪除&lt;&#x2F;del&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;!--注釋--&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;shu-xue&quot;&gt;數學&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;$1+1 = 2$
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;$$
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;2+2 = 4
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-paragraph z-markdown&quot;&gt;$$
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;ul&gt;
+&lt;li&gt;$1+1 = 2$&lt;&#x2F;li&gt;
+&lt;li&gt;$$
+2+2 = 4
+$$&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;biao-ge&quot;&gt;表格&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-table z-header z-markdown-gfm&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; T1   &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt;  T2  &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt;   T3 &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-table z-header-separator z-markdown-gfm&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-table-cell-alignment z-markdown&quot;&gt;:&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-table-header z-markdown&quot;&gt;---&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-table-cell-alignment z-markdown&quot;&gt;:&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-table-header z-markdown&quot;&gt;--&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-table-cell-alignment z-markdown&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-section z-table-header z-markdown&quot;&gt;---&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-table-cell-alignment z-markdown&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-table z-markdown-gfm&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-table z-markdown-gfm&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; C1R1 &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; C2R1 &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; C3R1 &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-table z-markdown-gfm&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; C2R1 &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; C2R2 &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt; C3R2 &lt;span class=&quot;z-punctuation z-separator z-table-cell z-markdown&quot;&gt;|&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: left&quot;&gt;T1&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;T2&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: right&quot;&gt;T3&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;C1R1&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;C2R1&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;C3R1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;C2R1&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;C2R2&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;C3R2&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;can-zhao&quot;&gt;參照&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-blockquote z-markdown&quot;&gt;&amp;gt;&lt;&#x2F;span&gt; 參照
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-blockquote z-markdown&quot;&gt;&amp;gt;&lt;&#x2F;span&gt; 第一層
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-blockquote z-markdown&quot;&gt;&amp;gt;&lt;&#x2F;span&gt; 
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-blockquote z-markdown&quot;&gt;&amp;gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-blockquote z-markdown&quot;&gt;&amp;gt;&lt;&#x2F;span&gt; 第二層
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-blockquote z-markdown&quot;&gt;&amp;gt;&lt;&#x2F;span&gt; 
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-markup z-quote z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-blockquote z-markdown&quot;&gt;&amp;gt;&lt;&#x2F;span&gt; 第一層
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;演示：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;參照&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;第一層&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;第二層&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;第一層&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;fen-ge-xian&quot;&gt;分割線&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown z-code&quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-separator z-thematic-break z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-thematic-break z-markdown&quot;&gt;---&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-separator z-thematic-break z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-thematic-break z-markdown&quot;&gt;***&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-separator z-thematic-break z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-thematic-break z-markdown&quot;&gt;-----&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-html z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-block-level z-markdown&quot;&gt;&lt;span class=&quot;z-meta z-separator z-thematic-break z-markdown&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-thematic-break z-markdown&quot;&gt;*****&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：
+&lt;hr &#x2F;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;hr &#x2F;&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;hr &#x2F;&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;cheng-shi-ma&quot;&gt;程式碼&lt;&#x2F;h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用三個反引號 &lt;code&gt;```&lt;&#x2F;code&gt; 。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;演示：&lt;pre data-lang=&quot;c++&quot; class=&quot;language-c++ z-code&quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;z-source z-c++&quot;&gt;&lt;span class=&quot;z-meta z-preprocessor z-include z-c++&quot;&gt;&lt;span class=&quot;z-keyword z-control z-import z-include z-c++&quot;&gt;#include&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-other z-lt-gt z-include z-c++&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-c++&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;iostream&lt;span class=&quot;z-punctuation z-definition z-string z-end z-c++&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c++&quot;&gt;&lt;span class=&quot;z-keyword z-control z-c++&quot;&gt;using&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-control z-c++&quot;&gt;namespace&lt;&#x2F;span&gt; std&lt;span class=&quot;z-punctuation z-terminator z-c++&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c++&quot;&gt;&lt;span class=&quot;z-storage z-type z-c&quot;&gt;int&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function z-c++&quot;&gt;&lt;span class=&quot;z-meta z-toc-list z-full-identifier z-c++&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-c++&quot;&gt;main&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-c++&quot;&gt;&lt;span class=&quot;z-meta z-group z-c++&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-c++&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-c++&quot;&gt;&lt;span class=&quot;z-meta z-group z-c++&quot;&gt;&lt;span class=&quot;z-storage z-type z-c&quot;&gt;int&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-c++&quot;&gt;argc&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-c++&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-storage z-type z-c&quot;&gt;char&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-c&quot;&gt;*&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-c++&quot;&gt;argv&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brackets z-c++&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-brackets z-begin z-c++&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-brackets z-end z-c++&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-c++&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-c++&quot;&gt;&lt;span class=&quot;z-meta z-block z-c++&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-c++&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-c++&quot;&gt;&lt;span class=&quot;z-meta z-block z-c++&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c++&quot;&gt;&lt;span class=&quot;z-meta z-function z-c++&quot;&gt;&lt;span class=&quot;z-meta z-block z-c++&quot;&gt;    &lt;span class=&quot;z-meta z-function-call z-c++&quot;&gt;&lt;span class=&quot;z-support z-function z-C99 z-c&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-c++&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-c++&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-c++&quot;&gt;&lt;span class=&quot;z-meta z-group z-c++&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Hello World!&lt;span class=&quot;z-punctuation z-definition z-string z-end z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-c++&quot;&gt;&lt;span class=&quot;z-meta z-group z-c++&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-c++&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c++&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c++&quot;&gt;&lt;span class=&quot;z-meta z-function z-c++&quot;&gt;&lt;span class=&quot;z-meta z-block z-c++&quot;&gt;    &lt;span class=&quot;z-meta z-function-call z-c++&quot;&gt;&lt;span class=&quot;z-support z-function z-C99 z-c&quot;&gt;system&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-c++&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-c++&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-c++&quot;&gt;&lt;span class=&quot;z-meta z-group z-c++&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;pause&lt;span class=&quot;z-punctuation z-definition z-string z-end z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-c++&quot;&gt;&lt;span class=&quot;z-meta z-group z-c++&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-c++&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c++&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c++&quot;&gt;&lt;span class=&quot;z-meta z-function z-c++&quot;&gt;&lt;span class=&quot;z-meta z-block z-c++&quot;&gt;    &lt;span class=&quot;z-keyword z-control z-flow z-return z-c++&quot;&gt;return&lt;&#x2F;span&gt; &lt;span class=&quot;z-constant z-numeric z-integer z-decimal z-c++&quot;&gt;0&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c++&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c++&quot;&gt;&lt;span class=&quot;z-meta z-function z-c++&quot;&gt;&lt;span class=&quot;z-meta z-block z-c++&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-c++&quot;&gt;&lt;span class=&quot;z-meta z-block z-c++&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-c++&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;See Also:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Markdown&quot;&gt;Markdown&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;GitBook 中文解說: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;wastemobile.gitbooks.io&#x2F;gitbook-chinese&#x2F;content&#x2F;format&#x2F;markdown.html&quot;&gt;Markdown&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;註腳 &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+    </channel>
+</rss>

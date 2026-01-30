@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 把電腦變成床頭時鐘：在 Windows 上打造一個低干擾的睡前待機模式</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="我不喜歡睡覺時關掉電腦，但夜晚點亮的螢幕就像一顆 disco 球，無時無刻地對外輻射著誘惑與慾望。這篇文章記錄我嘗試在 Windows 上，用腳本一鍵把螢幕、風扇和瀏覽器調整為低干擾狀態，讓待機的電腦變成一件有溫度的傢俱。" />
+        <meta property="og:description" content="我不喜歡睡覺時關掉電腦，但夜晚點亮的螢幕就像一顆 disco 球，無時無刻地對外輻射著誘惑與慾望。這篇文章記錄我嘗試在 Windows 上，用腳本一鍵把螢幕、風扇和瀏覽器調整為低干擾狀態，讓待機的電腦變成一件有溫度的傢俱。" />
+
+    
+
+    <meta property="og:title" content="把電腦變成床頭時鐘：在 Windows 上打造一個低干擾的睡前待機模式" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;windows-bedside-display&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            把電腦變成床頭時鐘：在 Windows 上打造一個低干擾的睡前待機模式
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/windows-bedside-display/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2025-12-24"><span class='separator' aria-hidden='true'>•</span>2025-12-24</time></li><li title="1930 words"><span class='separator' aria-hidden='true'>•</span>10 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/windows/">Windows</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/scripting/">Scripting</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/automation/">Automation</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/ahk/">AHK</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2025-12-24">Updated on 2025-12-24</time></li>
+        </ul>
+            <p class="p-summary" hidden>我不喜歡睡覺時關掉電腦，但夜晚點亮的螢幕就像一顆 disco 球，無時無刻地對外輻射著誘惑與慾望。這篇文章記錄我嘗試在 Windows 上，用腳本一鍵把螢幕、風扇和瀏覽器調整為低干擾狀態，讓待機的電腦變成一件有溫度的傢俱。</p><section class="e-content body"><p>我有一個怪癖就是睡覺的時候不喜歡關掉電腦。</p>
+<p>畢竟如果不顯示一些什麼東西的話，兩片烏漆墨黑還那麼大的黑幕，感覺非常的有壓迫感。</p>
+<p>可是睡覺的時候總不能拿螢幕當小夜燈吧？</p>
+<p>所以我平常的 routine 就是睡前「螢幕亮度調整到最低」，「風扇調整到低速模式」，「回到暗色的桌面」。
+可是 Windows 的調整這些設定尤為麻煩，
+一套 SOP 做下來人都清醒了，我本來是要去睡覺的不是嗎...</p>
+<p>又想到 Apple 給 iPhone 的 iOS 實裝的「待機模式（Standby mode）」，
+將 iPhone 連接至充電器並側放，即可讓螢幕變成桌上時鐘。</p>
+<p>為了安撫我的睡眠，我想要在 Windows 電腦上也實現這個效果：
+讓電腦螢幕「一鍵」變成低干擾的桌面時鐘。</p>
+<h2 id="meng-qi-shi-de-di-fang">夢起始的地方</h2>
+<p>首先，我們想要讓罹患 ADHD 的螢幕可以安靜下來。</p>
+<p>年紀見長的小朋友們可能知道，在前 LCD 螢幕時代，我們有一個東西叫做「螢幕保護程式」。
+螢幕保護程式在不動電腦多久之後會自動進入一個「螢幕保護」畫面。
+可是這個功能雖然 Windows 11 仍然健在，但實際上也還是那個時代原封不動的東西，
+畫風極為復古。
+而且螢幕保護是一個相較來說變動極快的畫面，不適合當睡覺房間裡的桌邊裝飾，
+畢竟應該沒人想要睡覺的時候，自己的電腦卻在床頭開趴。</p>
+<p>可是我們需要只是像床頭時鐘一樣，漂亮地顯示時間日期即可。</p>
+<p>有一類應用專門用於美化瀏覽器的起始頁／新分頁，
+他們讓起始頁變成一種低干擾、可視化且具儀式感的頁面，還提供豐富的客製化。
+以替代原本真的啥都沒有的空白頁，或是資訊過載的瀏覽器預設起始頁。</p>
+<p>這類應用通常以瀏覽器擴充套件的形式存在，一些亦有部署網頁版本，例如：</p>
+<ul>
+<li><a class="external" href="https://tabliss.io/">Tabliss</a></li>
+<li><a class="external" href="https://bonjourr.fr/">Bonjourr</a></li>
+<li><a class="external" href="https://www.blooft.com/">Blooft</a></li>
+<li><a class="external" href="https://anori.app/">Anori</a></li>
+</ul>
+<p><img src="https://undecv.github.io/blog/posts/windows-bedside-display/./images/bonjourr-screenshot.png" alt="Bonjourr Screenshot" /></p>
+<p>除了最基礎床頭時鐘本職工作的日期和時間，
+既然天生連著網路，我們甚至可以顯示天氣等低密度、低干擾的資訊，
+進一步，我們還能加入適量的人生雞湯，作為一種溫和且自我說服式的精神滋養。</p>
+<p>如果使用功能豐富的 Anori，真的像是手機擺設小部件一般，甚至有行事曆和新聞訂閱。
+真的可以像 iOS 的待機模式顯示行事曆，讓明天的 agenda 來焦慮今天的自己。</p>
+<p>最後我選了 Tabliss <del>，不為什麼，單純是用習慣了</del>。</p>
+<h2 id="yi-shan-yi-shan-xiao-xing-xing">一閃一閃小星星</h2>
+<p>夜晚中點亮的電腦螢幕，
+根本就是房間裡的 disco 球，
+無時無刻地對外輻射著誘惑與慾望。</p>
+<p>所以除了讓電腦螢幕安靜下來，我也希望能夠降低它的亮度。</p>
+<blockquote>
+<p>註：我用一臺筆電外接一個螢幕，孤陋寡聞的我不瞭解其他情況。</p>
+</blockquote>
+<p>Windows 調節螢幕亮度的功能，只能調整我筆電本體的螢幕。
+而我的外接螢幕可能是過於古老，作業系統中甚至沒有找到直接調整亮度的地方。
+我總不可能每天都按螢幕上的實體按鈕吧，那可多麻煩。</p>
+<p>其實一些螢幕提供 DDC/CI 協定，可以用軟體控制亮度。
+可我怎麼用了那麼多年電腦怎麼才知道有這種東西...</p>
+<p><a class="external" href="https://twinkletray.com/">Twinkle Tray</a> 正是調節螢幕亮度的軟體，可以同時控制多個螢幕的亮度。</p>
+<p>而且 Twinkle Tray 可以通過指令控制，例如把調整「所有螢幕」的亮度到「100%」閃光彈：</p>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell"><span class="z-keyword z-operator z-other z-powershell">&amp;</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span><span class="z-support z-variable z-drive z-powershell">env:</span>LOCALAPPDATA</span>\Programs\twinkle-tray\Twinkle Tray.exe<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>All <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>Set<span class="z-keyword z-operator z-assignment z-powershell">=</span><span class="z-constant z-numeric z-integer z-powershell">100</span>
+</span></code></pre>
+<p>有了指令調整螢幕亮度，我們已經朝著自動化睡眠邁入了第一步。</p>
+<h2 id="bi-dian-de-zi-dong-zhu-lu">筆電的自動著陸</h2>
+<p>最好睡的環境莫過於坐飛機，
+優秀睡眠的品質莫過於下飛機。
+而筆電風扇的聲音，完美地模擬了飛機引擎的噪聲（不是）。</p>
+<p>現代的筆電都會提供風扇運轉的模式，以適應各種工作場景。
+而我的筆電全速運轉的時候，那個風扇聲音宛如飛機起飛。
+但我可不想在睡覺的時候還要收直椅背、拉起桌板，
+所以在睡覺之前，我會把風扇調整成靜音（Silent）模式。</p>
+<p>可如果你和我一樣是封閉硬體廠商的受害者，
+例如〇碩的 Armoury Create 是不提供外界操作介入的，
+最便利的可能就只是鍵盤上那個無法被軟體模擬的硬組合鍵。</p>
+<p>好在 <a class="external" href="https://github.com/seerge/g-helper">G-Helper</a> 提供了第三方的控制面板，
+雖然無法直接通過指令列控制，
+但好在提供了可以被軟體模擬的組合鍵，使得我們可以便利的操作它。</p>
+<blockquote>
+<p>本章節內容為供應商相依（Vendor-dependent），實作方式請依實際需求自行調整。</p>
+</blockquote>
+<p>通過 PowerShell 模擬按鍵：</p>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell"><span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-support z-function z-powershell">New-Object</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>ComObject WScript.Shell</span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>.SendKeys<span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-interpolated z-simple z-source z-powershell"><span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>^+%{F16}<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span></span><span class="z-punctuation z-section z-group z-end z-powershell">)</span>
+</span></code></pre>
+<p>由於 API 限制，上面的指令有 <code>F17</code> 之類找不到的鍵，可以通過 AHK 模擬按鍵：</p>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell"><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>ahkExe</span> <span class="z-keyword z-operator z-assignment z-powershell">=</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>C:\Program Files\AutoHotkey\v2\AutoHotkey.exe<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>ahk</span> <span class="z-keyword z-operator z-assignment z-powershell">=</span> <span class="z-support z-function z-powershell">Join-Path</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span><span class="z-support z-variable z-drive z-powershell">env:</span>TEMP</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>oneshot.ahk<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Send &#39;^+!{F17}&#39;<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-other z-powershell">|</span> <span class="z-support z-function z-powershell">Set-Content</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Path <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>ahk</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Encoding UTF8
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Start-Process</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>FilePath <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>ahkExe</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>ArgumentList <span class="z-meta z-group z-array-expression z-powershell"><span class="z-keyword z-other z-array z-begin z-powershell">@</span><span class="z-punctuation z-section z-group z-begin z-powershell">(</span><span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>ahk</span><span class="z-punctuation z-section z-group z-end z-powershell">)</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Wait <span class="z-keyword z-operator z-assignment z-powershell">-</span>NoNewWindow
+</span><span class="z-source z-powershell"><span class="z-support z-function z-powershell">Remove-Item</span> <span class="z-variable z-other z-readwrite z-powershell"><span class="z-punctuation z-definition z-variable z-powershell">$</span>ahk</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span>Force
+</span></code></pre>
+<h2 id="shuang-zi-zuo-de-liu-lan-qi">雙子座的瀏覽器</h2>
+<p>最後，我們想要讓兩個網頁分別佔據左右兩個螢幕，
+就像雙子座一樣，外表相似、步調一致，但各自獨立運行。</p>
+<p>但這看似簡單的問題卻沒有那麼簡單。</p>
+<!-- 眾所周知我是 Firefox 用戶，
+但 Firefox 提供的 Kiosk 模式是為了商業看板設計的，故意設計的關閉困難 ~~（其實只要 `Alt+F4`）~~ 。
+但我只需要做一個床頭時鐘，沒必要自己搞自己。 -->
+<p>顯示網頁當然就是 Chrome，它有幾個參數：</p>
+<ul>
+<li><code>--app</code> 可以讓網頁像應用一樣最小 UI 模式啟動；</li>
+<li><code>--window-position</code> 決定啟動時視窗的位置，座標原點是主螢幕的左上角為 <code>0,0</code>；</li>
+<li><code>--start-fullscreen</code> 直接進入全螢幕模式；</li>
+</ul>
+<p>然而在我的測試下，可能是由於作業系統的限制，
+若是同一個 Instance（例如，兩個一樣的 Chrome），即使 Profile 不同，也無法準確的套用 <code>--window-position</code> 設定，
+第二個視窗會被誘拐到第一個視窗附近。</p>
+<p>我們需要兩個彼此獨立、卻行為一致的瀏覽器視窗，
+所以我們用最簡單暴力的 workaround：直接用兩個不同的、不常用的 Chrome。</p>
+<p>最後我們就可以一鍵啟動兩個雙子 Chrome：</p>
+<ul>
+<li>右邊主螢幕使用 Chrome Dev，座標是 <code>0,0</code>，</li>
+<li>左邊副螢幕使用 Chrome Beta，座標是 <code>-1920,0</code>，</li>
+</ul>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell"><span class="z-keyword z-operator z-other z-powershell">&amp;</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>C:\Program Files\Google\Chrome Beta\Application\chrome.exe<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>window<span class="z-keyword z-operator z-assignment z-powershell">-</span>position<span class="z-keyword z-operator z-assignment z-powershell">=</span><span class="z-constant z-numeric z-integer z-powershell">-1920</span><span class="z-keyword z-operator z-other z-powershell">,</span><span class="z-constant z-numeric z-integer z-powershell">0</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-support z-function z-powershell">start-fullscreen</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>app<span class="z-keyword z-operator z-assignment z-powershell">=</span><span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://web.tabliss.io/<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-keyword z-operator z-other z-powershell">&amp;</span> <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>C:\Program Files\Google\Chrome Dev\Application\chrome.exe<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>window<span class="z-keyword z-operator z-assignment z-powershell">-</span>position<span class="z-keyword z-operator z-assignment z-powershell">=</span><span class="z-constant z-numeric z-integer z-powershell">0</span><span class="z-keyword z-operator z-other z-powershell">,</span><span class="z-constant z-numeric z-integer z-powershell">0</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-support z-function z-powershell">start-fullscreen</span> <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>app<span class="z-keyword z-operator z-assignment z-powershell">=</span><span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>https://web.tabliss.io/<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span></code></pre>
+<blockquote>
+<p>請按照自己的佈置按需設定。</p>
+</blockquote>
+<p>最後，把它們捏到一起，包裝成一個 PowerShell 腳本，就有了一鍵啟動的「睡前模式」：</p>
+<ul>
+<li>螢幕亮度調整到最低</li>
+<li>風扇調整到低速模式</li>
+<li>兩個螢幕打開兩個全螢幕網頁</li>
+</ul>
+<p><img src="https://undecv.github.io/blog/posts/windows-bedside-display/./images/cross-panel-screenshot.png" alt="Cross Panel Screenshot" /></p>
+<p>終於，待機的螢幕不再是冷冰冰的黑幕，
+而變成了一種有生活感、有溫度的傢俱。</p>
+<h2 id="appendix">Appendix</h2>
+<p>安裝上面所有提到的工具都可以從 <code>winget</code> 安裝。</p>
+<p>通過 <code>winget</code> 安裝 Twinkle Tray：</p>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell">winget install <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>id <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>xanderfrangos.twinkletray<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span></code></pre>
+<p>通過 <code>winget</code> 安裝 G-Helper：</p>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell">winget install <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>id <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>seerge.g-helper<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span></code></pre>
+<p>通過 <code>winget</code> 安裝 AutoHotkey v2：</p>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell">winget install <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>id <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>AutoHotkey.AutoHotkey<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span></code></pre>
+<p>通過 <code>winget</code> 安裝兩個不常用的 Chrome：</p>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell">winget install <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>id <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Google.Chrome.Beta<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">winget install <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>id <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Google.Chrome.Dev<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span></code></pre>
+<p>由於 Chrome 的滾動更新，<code>winget</code> 的 Metadata 更新可能不是那麼的及時，這讓雜湊（hash）驗證失效，導致安裝失敗，如果遇到的話可以等，或是繞過 Hash 驗證。</p>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell">winget settings <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>enable InstallerHashOverride
+</span><span class="z-source z-powershell">winget install <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>id <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Google.Chrome.Beta<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span> <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>ignore<span class="z-keyword z-operator z-assignment z-powershell">-</span>security<span class="z-keyword z-operator z-assignment z-powershell">-</span>hash
+</span><span class="z-source z-powershell">winget settings <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>disable InstallerHashOverride
+</span></code></pre>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/recommended-applications/recommended-applications/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">用過都說好的應用推薦</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/character-encoding/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">字元編碼簡史，以及亂碼和他們的產地</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/windows-bedside-display/#meng-qi-shi-de-di-fang">夢起始的地方</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/windows-bedside-display/#yi-shan-yi-shan-xiao-xing-xing">一閃一閃小星星</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/windows-bedside-display/#bi-dian-de-zi-dong-zhu-lu">筆電的自動著陸</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/windows-bedside-display/#shuang-zi-zuo-de-liu-lan-qi">雙子座的瀏覽器</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/windows-bedside-display/#appendix">Appendix</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

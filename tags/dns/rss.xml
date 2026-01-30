@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - DNS</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/dns/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>如何為內網服務設定自訂網域與 HTTPS：保留 TLD、ACME 證書與本地 DNS 的實踐</title>
+          <pubDate>Mon, 27 Jan 2025 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/domain-for-intranet/</link>
+          <guid>https://undecv.github.io/blog/posts/domain-for-intranet/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/domain-for-intranet/">&lt;p&gt;假設一個情況，內部 NAT 網路有以下設施僅為內網服務：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;路由器兼任 DNS Server &lt;code&gt;192.168.1.1&#x2F;24&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;本地 Web Server &lt;code&gt;192.168.1.100&#x2F;24&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;如何為這本地 Web Server 設定域名，最好還能有 HTTPS？&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;local-tlds&quot;&gt;Local TLDs&lt;&#x2F;h2&gt;
+&lt;p&gt;首先想到的是使用幾個保留域名，
+可以在 DNS Srever 中設定這樣的記錄：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;dns&quot; class=&quot;language-dns z-code&quot;&gt;&lt;code class=&quot;language-dns&quot; data-lang=&quot;dns&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;A   web.local.      192.168.1.100
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;A   web.lan.        192.168.1.100
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;A   web.internal.   192.168.1.100
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;*.local.&lt;&#x2F;code&gt; 雖然是本地專用的 TLD，但被指定為 mDNS 專用，所以亂用會出事。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;*.intranet.&lt;&#x2F;code&gt;、&lt;code&gt;*.private.&lt;&#x2F;code&gt;、&lt;code&gt;*.corp.&lt;&#x2F;code&gt;、&lt;code&gt;*.home.&lt;&#x2F;code&gt;、&lt;code&gt;*.lan.&lt;&#x2F;code&gt; ... 也是 RFC 6762 規範的保留 TLDs，
+但 Firefox 無法解析，會跳到搜尋，需要到 &lt;code&gt;about:config&lt;&#x2F;code&gt; 打開相關的選項，但這哪是個人事阿。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;*.internal.&lt;&#x2F;code&gt; 既是保留 TLD，又可以被解析，看上去是目前私有 TLD 的最佳解。
+但講道理，別人域名都兩三個字母，這真的是又臭又長，你要我打這個單字我還不如打 IP ...&lt;&#x2F;p&gt;
+&lt;p&gt;保留 TLDs 誰都可以添加記錄，所以除了自己簽發，自然是沒有 TLS 證書的。還要考慮發行證書，這又哪是個人事阿。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;real-domain&quot;&gt;Real Domain&lt;&#x2F;h2&gt;
+&lt;p&gt;Domain Name System 比我想象的還要 naïve ...
+我原本還在想，要是在 CloudFlare 裡面添加 NAT 的 IP，那萬一被人 nslookup 到了是有多丟人。
+我還擔心 ACME 不給本地 IP 簽發證書，沒想到人家根本就不管你網路。&lt;&#x2F;p&gt;
+&lt;p&gt;假設購買的域名是 &lt;code&gt;domain.example&lt;&#x2F;code&gt;，
+在設定 DHCP 的時候，DNS 伺服器首選「本地」的 DNS Server，即是 &lt;code&gt;192.168.1.1&#x2F;24&lt;&#x2F;code&gt;，
+在「本地」的 DNS Server 中設定這樣的記錄：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;dns&quot; class=&quot;language-dns z-code&quot;&gt;&lt;code class=&quot;language-dns&quot; data-lang=&quot;dns&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;A   lan.domain.example.     192.168.1.100
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;由於記錄位於 NAT 之內的「本地」的 DNS Server，所以這個 &lt;code&gt;lan.domain.example&lt;&#x2F;code&gt; 是無法被外部網路解析的。&lt;&#x2F;p&gt;
+&lt;p&gt;ACME 是自動簽發 TLS 證書給伺服器，讓伺服器有 HTTPS 可以用。
+在伺服器發出 ACME 請求後，ACME 會給一個「權杖」，把權杖輸進 DNS 記錄，ACME 看到了就證明了你對域名的控制權（即是「ACME DNS-01 考驗」）。
+所以 ACME 並不關心伺服器在哪個網路下。&lt;&#x2F;p&gt;
+&lt;p&gt;所以其實只要在 本地 Web Server 中就像架設對外的網站一樣，指定託管商（例如 CloudFlare）的 API 就行，讓伺服器自己完成 ACME 挑戰。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Wikipedia - &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;List_of_Internet_top-level_domains#Non-IANA_domains&quot;&gt;Non-IANA domains&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Let’s Encrypt - &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;letsencrypt.org&#x2F;zh-tw&#x2F;docs&#x2F;challenge-types&#x2F;&quot;&gt;ACME 驗證方式&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

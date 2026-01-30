@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Software</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/software/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 11 Jul 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>全能型影片播放器 mpv 被迫支援觸控螢幕辛酸畫面流出</title>
+          <pubDate>Fri, 11 Jul 2025 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/</link>
+          <guid>https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/">&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;&quot;&gt;YouTube&lt;&#x2F;a&gt; 作為年輕人的電視，可以說是承包了我所有休息時間。而它作為全世界最大的影片平台，從電腦到手機，從網頁到應用，它的播放器也許是最多人使用的存在。&lt;&#x2F;p&gt;
+&lt;p&gt;雖然作為播放器，它沒有過多的元素，功能更不複雜，但也確實還是實用的。除掉那些該有的基本操作之外，錦上添花的也有像是進度條預覽的功能。並且作為支援行動裝置的播放器，自然有一些觸手友善的簡單手勢功能。包括經典的縮放，雙擊快進快退，以及大家都歧視&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;但我就是喜歡的長按兩倍速。&lt;&#x2F;p&gt;
+&lt;p&gt;自從 iPhone 定義了滑手機就是搓玻璃的時代，觸控就是行動裝置互動的基本，所以手機上的影片播放器正是為了觸控螢幕而設計。而這些為了觸控螢幕而生的手勢，也讓我感覺到了操作影片播放器的直覺和便利。&lt;&#x2F;p&gt;
+&lt;p&gt;但在 Windows 上，作為一個桌面端的作業系統，其平台的影片播放器多是為了桌面而設計，少有支援觸控。 &lt;del&gt;畢竟除了 Surface 也沒幾台 Windows 設備支援觸控螢幕，&lt;&#x2F;del&gt; 更不要說桌面系統支援觸控是千古難題（想看我吐槽可以看看&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;make-surface-great-again&#x2F;make-surface-great-again-intro&#x2F;&quot;&gt;上篇文章&lt;&#x2F;a&gt;）。&lt;&#x2F;p&gt;
+&lt;p&gt;電腦是這樣的，手機的影片播放器只要全身心的支援觸控螢幕，拖拉推拽，煎炒烹炸就可以，可電腦要考慮的事情就很多了。&lt;&#x2F;p&gt;
+&lt;p&gt;其實網頁版的 YouTube 是支援觸控螢幕的，這讓我在 Surface 有了行動裝置本該有的體驗。但，本地檔案的播放器呢？&lt;&#x2F;p&gt;
+&lt;p&gt;Windows 內建的播放器在觸控支援上還是有的，但其功能也就只能說夠用，一些進階的功能是沒有的，例如說直覺的手勢，但對我來說最致命的還是缺少支援一些奇奇怪怪的格式。&lt;&#x2F;p&gt;
+&lt;p&gt;而第三方播放器，大家常用的例如 PotPlayer 和 KMPlayer 免費專有軟體，不得不說他們功能確實強大，但大多都帶有廣告，甚至一些還在安裝的時候夾帶私貨。雖說這是賺錢的事兒不寒磣吧，但我既然還有得選，就⋯⋯&lt;&#x2F;p&gt;
+&lt;p&gt;自由軟體，常見的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;codecguide.com&#x2F;&quot;&gt;Codec Guide&lt;&#x2F;a&gt; 的 MPC-HC 其實是幾百個世紀前（？）的播放器改版維護至今，雖然介面老派，但功能也絕對不輸，老當益壯說的就是他。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.videolan.org&#x2F;vlc&#x2F;&quot;&gt;VLC&lt;&#x2F;a&gt; 也有現代而不當代的介面，不僅支援眾多歪門邪道的編碼，甚至在串流上有所造詣，而且介面也可以安裝外觀造型。但可惜的是，也許是因為他的團隊重心想在編碼和串流這些背後的重要技術，前端播放介面的更新比較慢熱，我非常期待的第四代至今還在難產 :( ，但還是我最常用的播放器。&lt;&#x2F;p&gt;
+&lt;p&gt;但是話說回來，他們都不支援觸控耶？直到我再次遇到了 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mpv.io&#x2F;&quot;&gt;mpv&lt;&#x2F;a&gt;，其實我一直知道這貨的存在，可是講道理，雖然它是強到根本就像轉生異世界開掛龍傲天一般的存在，但那精簡到沒有的介面、指令的操作、手動格式綁定、甚至官方都沒有提供開箱即用的安裝安裝程式（第三方支援），無一不讓我望而卻步。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;欸欸欸欸欸別走啊！我後面準備好了一份懶人包，一鍵安裝 mpv 以及這次介紹的所有模組。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;但要知道，這種使用門檻高到鯉魚躍龍門一般難如登天的軟體，萬一不小心上了手，那可就像成癮一般再也回不去了，頭都不回的那種：像是音樂播放器 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.foobar2000.org&#x2F;&quot;&gt;Foobar2000&lt;&#x2F;a&gt;，又像是多協定下載器 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;aria2.github.io&#x2F;&quot;&gt;Aria2&lt;&#x2F;a&gt;，再像是文字編輯器的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.vim.org&#x2F;&quot;&gt;Vim&lt;&#x2F;a&gt; 和 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.gnu.org&#x2F;s&#x2F;emacs&#x2F;&quot;&gt;Emacs&lt;&#x2F;a&gt; ⋯⋯這都是超硬核的骨灰級玩家才嚐得到的醍醐味。&lt;&#x2F;p&gt;
+&lt;p&gt;話是那麼說，但 mpv 其實不難理解，他的播放器介面渾然一體，按鈕、進度條漂浮在影片之上，平時隱藏不見，滑鼠移過去就會顯示，稱之 OSC（Over Screen Control），更多高級功能藏在快速鍵中。&lt;&#x2F;p&gt;
+&lt;p&gt;可是我為什麼只是想看個影片還要背快速鍵啊，我不知道還要考試，我又沒有唸書！也沒關係，我們可以通過 scripts 對 mpv 做客製化，這正是它的迷人之處。&lt;&#x2F;p&gt;
+&lt;p&gt;而 mpv 的 scripts，就像瀏覽器擴充套件、或是遊戲模組，可以理解為超級靈活的設定檔，幾乎讓 mpv 有無限的可能。我們入門玩家也不需要自己寫，社群裡也已經有前輩們準備了。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下都是一鍵安裝腳本包含的內容，如果想要使用腳本，這些都 &lt;strong&gt;不需要&lt;&#x2F;strong&gt; 操作。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;我推薦使用 Scoop 軟體套件管理器安裝 mpv，簡單無痛。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先去 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;scoop.sh&#x2F;&quot;&gt;Scoop&lt;&#x2F;a&gt; 官方網站，按照指定的步驟安裝 Scoop；&lt;&#x2F;li&gt;
+&lt;li&gt;到軟體倉庫中找到 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;scoop.sh&#x2F;#&#x2F;apps?q=mpv&amp;amp;id=b05b47128464d8969416289383fbfc69a47353e3&quot;&gt;extras&#x2F;mpv&lt;&#x2F;a&gt; 並且安裝。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意！有 &lt;code&gt;mpv&lt;&#x2F;code&gt; 和 &lt;code&gt;mpv-git&lt;&#x2F;code&gt; 前者是穩定版較穩定，後者是開發版較新但可能不穩定。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;如果用 Scoop 安裝，mpv 的設定檔通常放在 &lt;code&gt;%USERPROFILE%\scoop\apps\mpv\current\portable_config&lt;&#x2F;code&gt;，設定檔路徑可能隨著按照的方式各有不同。這個設定檔資料夾因為太長下面統稱 &lt;code&gt;$configDir&lt;&#x2F;code&gt;，除了 mpv 的設定檔 &lt;code&gt;mpv.conf&lt;&#x2F;code&gt; 直接放在這個資料夾下，裡面還有兩個資料夾：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Scripts 通常是「&lt;code&gt;.lua&lt;&#x2F;code&gt; 檔案」放這裡面：&lt;code&gt;$configDir&#x2F;scripts&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Scripts 對應的「&lt;code&gt;.conf&lt;&#x2F;code&gt; 設定檔」放這裡面：&lt;code&gt;$configDir&#x2F;script-opts&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;以上就是初學者所需知道的一切，只需要丟東西到指定地方即可。&lt;&#x2F;p&gt;
+&lt;p&gt;為了強迫 mpv 支援更友善的介面和觸控手勢，我們建立一個設定檔 &lt;code&gt;mpv.conf&lt;&#x2F;code&gt; 添加兩三個選項。而設定檔的內容只要參照 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mpv.io&#x2F;manual&#x2F;master&#x2F;&quot;&gt;官方文檔&lt;&#x2F;a&gt; 就有。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;toml&quot; data-name=&quot;mpv.conf&quot; class=&quot;language-toml z-code&quot;&gt;&lt;code class=&quot;language-toml&quot; data-lang=&quot;toml&quot; data-name=&quot;mpv.conf&quot;&gt;&lt;span class=&quot;z-source z-toml&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-toml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-toml&quot;&gt;#&lt;&#x2F;span&gt; 關閉原生的 OSD Bar，uosc 會替代他的功能。&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-toml&quot;&gt;&lt;span class=&quot;z-meta z-tag z-key z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-toml&quot;&gt;osd-bar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-key-value z-toml&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-invalid z-illegal z-value z-toml&quot;&gt;no&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-toml&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-toml&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-toml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-toml&quot;&gt;#&lt;&#x2F;span&gt; 觸控手勢需要使用邊框和禁止視窗拖動。&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-toml&quot;&gt;&lt;span class=&quot;z-meta z-tag z-key z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-toml&quot;&gt;border&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-key-value z-toml&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-invalid z-illegal z-value z-toml&quot;&gt;yes&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-toml&quot;&gt;&lt;span class=&quot;z-meta z-tag z-key z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-toml&quot;&gt;window-dragging&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-key-value z-toml&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-invalid z-illegal z-value z-toml&quot;&gt;no&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR: 如果沒禁止「視窗拖動」，拖動視窗的任意部分都會拖動整個視窗，會使得觸控手勢失效，「邊框」是為了在禁止視窗拖動之後還能移動視窗（拖動邊框即可）。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;然後給它加裝一些 scripts。都只是按照他們提供的說明，簡單下載指定的檔案放到指定的地方即可。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tomasklaen&#x2F;uosc&quot;&gt;uosc&lt;&#x2F;a&gt;（LGPL-2.1）是更友善、現代、介面豐富的 osc 介面；&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;po5&#x2F;thumbfast&quot;&gt;thumbfast&lt;&#x2F;a&gt;（MPL-2.0）支援進度條預覽功能；&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;christoph-heinrich&#x2F;mpv-pointer-event&quot;&gt;mpv-pointer-event&lt;&#x2F;a&gt;（GPL-2.0）和 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;christoph-heinrich&#x2F;mpv-touch-gestures&quot;&gt;mpv-touch-gestures&lt;&#x2F;a&gt;（GPL-2.0）支援觸控手勢。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;最後就可以在 &lt;code&gt;script-opts&lt;&#x2F;code&gt; 資料夾，客製化 scripts 的一些設定，他們預設的設定檔裡通常都有詳盡的說明，所以我就不再贅述。&lt;&#x2F;p&gt;
+&lt;p&gt;其實比想象的還要簡單得多對吧！但我還是整理了上述所有除了安裝 Scoop 之外的所有步驟，製作成了這個一鍵安裝懶人包。可以把下面的安裝指令貼到 Powershell 中一鍵安裝。&lt;&#x2F;p&gt;
+&lt;p&gt;雖說我已經檢查過這個指令的有效性，但我還是希望您在使用的時候能明白每列指令在做啥 :) ，這個指令用 Scoop 安裝 mpv 之後，偵測設定檔資料夾路徑，直接從社群腳本的倉庫下載所需檔案並放到指定位置。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;時效性：截稿時 2025 年 7 月，安裝指令的內容可能隨時改變和失效。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;pre data-lang=&quot;powershell&quot; data-name=&quot;touch_mpv.ps1&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot; data-name=&quot;touch_mpv.ps1&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; This script is licensed under the MIT License, See &amp;lt;https:&#x2F;&#x2F;opensource.org&#x2F;licenses&#x2F;MIT&amp;gt;.&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; Install mpv and dependencies&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Installing mpv and dependents (yt-dlp and ffmpeg) ...&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop bucket add extras
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop install extras&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;&#x2F;&lt;&#x2F;span&gt;mpv
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop bucket add main
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop install main&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;&#x2F;&lt;&#x2F;span&gt;yt&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;dlp
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop install main&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;&#x2F;&lt;&#x2F;span&gt;ffmpeg
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Done&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; Locate mpv installation and config folders&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;mpvDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;scoop prefix mpv&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;.Trim&lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;configDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;mpvDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;portable_config&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;configDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;scripts&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptOptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;configDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;script-opts&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Config path: &lt;span class=&quot;z-constant z-character z-escape z-powershell&quot;&gt;`&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;configDir&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-character z-escape z-powershell&quot;&gt;`&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;New-Item&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;ItemType Directory &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Force &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Path &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;configDir&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-other z-powershell&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptsDir&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-other z-powershell&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptOptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-other z-powershell&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Out-Null&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; Install uosc&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Installing uosc ...&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;uoscZip&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-variable z-drive z-powershell&quot;&gt;env:&lt;&#x2F;span&gt;TEMP&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;uosc.zip&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Invoke-WebRequest&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Uri &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;github.com&#x2F;tomasklaen&#x2F;uosc&#x2F;releases&#x2F;latest&#x2F;download&#x2F;uosc.zip&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;OutFile &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;uoscZip&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Expand-Archive&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Path &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;uoscZip&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;DestinationPath &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;configDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Force
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Remove-Item&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Force &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;uoscZip&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Invoke-WebRequest&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Uri &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;github.com&#x2F;tomasklaen&#x2F;uosc&#x2F;releases&#x2F;latest&#x2F;download&#x2F;uosc.conf&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;OutFile &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptOptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;uosc.conf&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Done&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; Create mpv.conf&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Creating mpv.conf ...&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;mpvConf&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;configDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;mpv.conf&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-keyword z-control z-powershell&quot;&gt;if&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-logical z-powershell&quot;&gt;-not&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Test-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;mpvConf&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-braces z-begin z-powershell&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;@&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;# uosc provides seeking &amp;amp; volume indicators (via flash-timeline and flash-volume commands)
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;# if you decide to use them, you don&amp;#39;t need osd-bar
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;osd-bar=no
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;# uosc will draw its own window controls and border if you disable window border
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;border=yes
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;window-dragging=no
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;# If the UI feels sluggish&#x2F;slow while playing video, you can remedy this a bit
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;# video-sync=display-resample
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-heredoc z-powershell&quot;&gt;&amp;quot;@&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-other z-powershell&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Set-Content&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Encoding UTF8 &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;mpvConf&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-meta z-scriptblock z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-braces z-end z-powershell&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Done&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; Install thumbfast&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Installing thumbfast ...&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Invoke-WebRequest&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Uri &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;po5&#x2F;thumbfast&#x2F;refs&#x2F;heads&#x2F;master&#x2F;thumbfast.lua&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;OutFile &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;thumbfast.lua&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Invoke-WebRequest&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Uri &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;po5&#x2F;thumbfast&#x2F;refs&#x2F;heads&#x2F;master&#x2F;thumbfast.conf&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;OutFile &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptOptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;thumbfast.conf&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Done&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; Install pointer-event&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Installing pointer-event ...&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Invoke-WebRequest&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Uri &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;christoph-heinrich&#x2F;mpv-pointer-event&#x2F;refs&#x2F;heads&#x2F;master&#x2F;pointer-event.lua&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;OutFile &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;pointer-event.lua&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Done&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; Install touch-gestures&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Installing touch-gestures ...&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Invoke-WebRequest&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Uri &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;christoph-heinrich&#x2F;mpv-touch-gestures&#x2F;refs&#x2F;heads&#x2F;master&#x2F;touch-gestures.lua&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;OutFile &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;touch-gestures.lua&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Invoke-WebRequest&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Uri &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;christoph-heinrich&#x2F;mpv-touch-gestures&#x2F;refs&#x2F;heads&#x2F;master&#x2F;touch-gestures.conf&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;OutFile &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptOptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;touch-gestures.conf&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Invoke-WebRequest&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;Uri &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;christoph-heinrich&#x2F;mpv-touch-gestures&#x2F;refs&#x2F;heads&#x2F;master&#x2F;pointer-event.conf&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;OutFile &lt;span class=&quot;z-punctuation z-section z-group z-begin z-powershell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-interpolated z-simple z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Join-Path&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;scriptOptsDir&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;pointer-event.conf&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-powershell&quot;&gt;)&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Done&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-support z-function z-powershell&quot;&gt;Write-Host&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;mpv + uosc + gesture environment is ready!&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;ForegroundColor Green
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;商周 - 網路溫度計 DailyView：&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.businessweekly.com.tw&#x2F;focus&#x2F;blog&#x2F;3018096&quot;&gt;Netflix小編稱1.5倍速追劇，為什麼被炎上？&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+      <item>
+          <title>把任務放進佇列！用 Pueue 排隊指令</title>
+          <pubDate>Wed, 28 May 2025 04:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/command-line-guide/pueue-introduction/</link>
+          <guid>https://undecv.github.io/blog/posts/command-line-guide/pueue-introduction/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/command-line-guide/pueue-introduction/">&lt;blockquote&gt;
+&lt;p&gt;本文適用 Pueue v4.0.0 (截稿時 2025-05)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;有時我們會需要執行一拖拉庫需要漫長時間、需要大量系統資源的指令，
+例如巨量資料的計算、機器學習，或是更常用的檔案壓縮、影片轉檔。
+一旦執行下去就得等到海枯石爛，是要看著他們執行根本就是一種煎熬。
+同時執行會佔用過多的系統資源，不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。
+這時候就會希望它們放進佇列（Queue），能夠自動排隊執行，還能動態調整佇列順序、暫停、取消⋯⋯有這種工具嗎？&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;佇列（ㄓㄨˋ ㄌㄧㄝˋ，zhù liè）。讀錯請重修國小國文。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;我們的需求：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;希望指令在一個先進先出佇列中排隊，同時有壹個或多個指令執行；&lt;&#x2F;li&gt;
+&lt;li&gt;佇列可以按需調整，新增、刪除、調整順序，甚至中止當前正在執行的任務。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Linux 上我們有 GNU Parallel 和 task-spooler，
+本站之前也有 &lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;wsl-tsp&#x2F;&quot;&gt;文章&lt;&#x2F;a&gt; 介紹過如何在 Windows &#x2F; WSL 的環境下玩 task-spooler。
+但是現在，&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Nukesor&#x2F;pueue&quot;&gt;Nukesor&#x2F;pueue&lt;&#x2F;a&gt; 讓我們不僅是 Linux，終於也可以在&lt;strong&gt;原生&lt;&#x2F;strong&gt; Windows 上也能把指令放進佇列！&lt;&#x2F;p&gt;
+&lt;p&gt;Pueue 是 Rust 寫的工具，可以用 Rust 的 Cargo 工具安裝，
+但 Cargo 實際上是載源代碼下來編譯，還得安裝編譯器，好像不是那麼適合終端用戶。
+所以這裡建議通過 Package Manager 安裝，&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Nukesor&#x2F;pueue?tab=readme-ov-file#installation&quot;&gt;官方文檔&lt;&#x2F;a&gt; 列出了支援的軟體套件管理器，
+支援多種平台，沒有的話……沒有的話再從 Cargo 安裝吧。&lt;&#x2F;p&gt;
+&lt;p&gt;Windows 的話可以用 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;scoop.sh&#x2F;&quot;&gt;Scoop&lt;&#x2F;a&gt; 安裝，其用法可以參考本站文章 &lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;command-line-guide&#x2F;windows-package-managers&#x2F;&quot;&gt;Windows 的軟體管理系統&lt;&#x2F;a&gt;：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;shell&quot; class=&quot;language-shell z-code&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;scoop install pueue
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Pueue 是「伺服器—客戶端」架構，安裝之後使用前需要先把伺服器開起來。
+我們可以以「服務（services）」的方式啟用伺服器一勞永逸：&lt;&#x2F;p&gt;
+&lt;p&gt;在 Linux 上可以參考&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Nukesor&#x2F;pueue&#x2F;wiki&#x2F;Get-started#systemd&quot;&gt;官方文檔&lt;&#x2F;a&gt;，在 Windows 上：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;shell&quot; class=&quot;language-shell z-code&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;pueued service install
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;pueued service start
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;接下來就可以使用它了，這裡列出一些基本的用法：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 看看程式怎麼用&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue help
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 增加一個「睡五秒」任務&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue add &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;sleep 5&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt;&amp;gt; New task added (id 0).  # 增加成功返回任務 ID&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 暫停、開始 `default` 預設佇列&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue pause
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue start
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 停止運行中的 id=0 任務&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue kill &lt;span class=&quot;z-constant z-numeric z-integer z-powershell&quot;&gt;0&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 移除已停止的 id=0 任務&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue remove &lt;span class=&quot;z-constant z-numeric z-integer z-powershell&quot;&gt;0&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 甚至，可以有不止一個佇列：&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 增加叫做 &amp;quot;compress&amp;quot; 的組&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue group add &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;compress&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 列出當前所有的組&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue group
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 暫停 &amp;quot;compress&amp;quot; 組&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue pause &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;group &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;compress&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 刪除 &amp;quot;compress&amp;quot; 組&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue group delete &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;compress&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 整一個 PowerShell 限定的花活&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue add &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Get-ChildItem&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 顯示上一個指令做了什麼&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue log
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 列出目前所有佇列中的任務，兩個指令一樣，但我勸你把話說清楚&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue status
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;pueue
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</description>
+      </item>
+      <item>
+          <title>重灌軟體自動化！Windows 的軟體管理系統</title>
+          <pubDate>Wed, 28 May 2025 02:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/</link>
+          <guid>https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/">&lt;p&gt;現如今重灌電腦已經不是什麼困難的事情。
+而重灌電腦最麻煩的就是灌回那些常用的軟體。
+傳統上 Windows 要重灌軟體，通常是這樣的步驟：打開瀏覽器、搜尋軟體官方網站、找到載點下載安裝包、安裝一直按下一步，然後重複一百萬遍……
+真的好想讓電腦變成自己的形狀。&lt;&#x2F;p&gt;
+&lt;p&gt;在 Linux 上有各種軟體套件管理系統（Package Manager）來幫你管理軟體：
+例如 Debian 的 &lt;code&gt;apt&lt;&#x2F;code&gt;、或者 Fedora 的 &lt;code&gt;dnf&lt;&#x2F;code&gt;，一個指令就可以幫你從軟體倉庫載軟體下來自動安裝。
+甚至有 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.chezmoi.io&#x2F;&quot;&gt;chezmoi&lt;&#x2F;a&gt; 之類的軟體幫你管理設定檔案，
+可以從零開始直接安裝軟體到拷貝設定檔案「一鍵裝機」一條龍，直接變成你最熟悉的形狀。&lt;&#x2F;p&gt;
+&lt;p&gt;好在 Windows 上也有了這類套件管理系統，最有名的莫過於 Winget、Scoop、Chocolatey。&lt;&#x2F;p&gt;
+&lt;p&gt;Scoop、Chocolatey 不是原生的，而 Winget 也不是很久遠也就 2021 年才誕生的，
+但這種軟體套件管理器其實非常依賴他們社群的活躍更新，軟體的管理，包括新增和更新基本上只能依靠他們不大的社群用愛發電，否則就會發生軟體更新了但是在管理器中只能找到舊版本。&lt;&#x2F;p&gt;
+&lt;p&gt;所以這些套件管理器讓我總感覺好用又不太好用，讓我想著等著社群壯大再說。但 Winget 作為內建於 Windows 的封弊者一般的存在，雖然年輕但好像已經被廣泛的支援。目前已經涵蓋了絕大部分我用的軟體，現在我需要手動下載的軟體屈指可數。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;live-example&quot;&gt;Live Example&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;用 Edge 載其他瀏覽器是不是一種 NTR？&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;舉例一個非常實在的例子，重灌作業系統之後第一件事就是重灌瀏覽器，
+通常我們需要打開 Edge -&amp;gt; 用 Bing 搜尋你要的瀏覽器 -&amp;gt; 找到對應的載點 -&amp;gt; 等下載 -&amp;gt; 手動安裝。
+現在只需要打開終端機然後貼上這一列指令：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 從 MS Store 安裝 Mozilla Firefox 並且簽訂魔法少女契約&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Mozilla Firefox&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;s &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;msstore&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;source&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;package&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 從 winget 預設倉庫安裝 Google Chrome&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;id &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Google.Chrome&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;這樣，重灌作業系統的時候就再也不需要用 Edge 來載其他瀏覽器了。
+&lt;del&gt;Edge 再也不會因為被戴綠帽子而傷心落淚。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;winget&quot;&gt;Winget&lt;&#x2F;h2&gt;
+&lt;p&gt;首先是 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-tw&#x2F;windows&#x2F;package-manager&#x2F;winget&#x2F;&quot;&gt;Winget&lt;&#x2F;a&gt;，由 Microsoft 官方不榮譽&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;出品，&lt;strong&gt;作業系統內建&lt;&#x2F;strong&gt;，相容 Microsoft Store，開源，開放軟體倉庫。&lt;&#x2F;p&gt;
+&lt;p&gt;（截稿時）Winget 的官方倉庫&lt;strong&gt;不接受&lt;&#x2F;strong&gt;只能手動安裝的應用程式。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 搜尋軟體&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget search &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 安裝軟體&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; [推薦] 從 MS Store 安裝軟體並且簽訂魔法少女契約&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;source &lt;span class=&quot;z-string z-quoted z-double z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;msstore&lt;span class=&quot;z-punctuation z-definition z-string z-end z-powershell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;source&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;package&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; [推薦] 指定 ID 不容易裝錯&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget install &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;id &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE_ID&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; [極其危險] 更新軟體並且簽訂魔法少女契約&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget upgrade &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;all &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;package&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;accept&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;source&lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;agreements
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;&lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 刪除軟體&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;winget uninstall &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;scoop&quot;&gt;Scoop&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;scoop.sh&#x2F;&quot;&gt;Scoop&lt;&#x2F;a&gt; 精通指令列工具，也能裝一些常見的軟體。
+它可以有自己的獨立安裝路徑（&lt;code&gt;~&#x2F;scoop&#x2F;&lt;&#x2F;code&gt;），不依賴系統（登錄檔、環境變數），
+好處是可以不需要作業系統管理員權限（UAC-free），也就是人們常說的「綠色軟體」，不會動到系統層級設定「污染」環境。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop install neovim
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop update &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;*&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;scoop uninstall python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;chocolatey&quot;&gt;Chocolatey&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chocolatey.org&#x2F;&quot;&gt;Chocolatey&lt;&#x2F;a&gt; 雖然看上去有些笨重，但若有一些複雜的安裝流程就可以靠它。甚至是字型也可以！&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;choco install &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;choco upgrade &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;choco uninstall &lt;span class=&quot;z-variable z-other z-readwrite z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-powershell&quot;&gt;$&lt;&#x2F;span&gt;PACKAGE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;而，Scoop 和 Chocolatey 不是作業系統內建，但他們都有指令化的安裝方式。
+由於安裝方式因地制宜，這裡就不贅述，可以參考他們的官方網站和文檔。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;versus&quot;&gt;Versus&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR: 他們的差異&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;安裝程式的本質是把程式的執行檔、依賴庫、設定檔、捷徑、登錄檔等放到他們該去的地方。安裝檔正是在做這些事情。&lt;&#x2F;p&gt;
+&lt;p&gt;Winget 本質是「安裝包管理器（Installer Manager）」，就是自動幫你載安裝包下來安裝。
+但，有時候就不喜歡安裝包的行為，一個是安裝檔行為不可控，可能偷渡一些設定、GUI 介面也難以自動化。&lt;&#x2F;p&gt;
+&lt;p&gt;「軟體套件管理器（Package Manager）」則傾向管理軟體檔案與設定過程的全流程。
+所以 Chocolatey 把安裝軟體的過程用 Script 改寫，透明且靈活。&lt;&#x2F;p&gt;
+&lt;p&gt;更是有 Scoop，將軟體放在自己肚子裡，安裝軟體甚至可以不需要管理員權限。
+因為不會修改到作業系統相關的內容例如說登錄檔，也就是說不會「污染」作業系統的環境。
+（當然安裝 GUI 程式或是普通的安裝到系統 Scoop 也是可以做。）&lt;&#x2F;p&gt;
+&lt;p&gt;現在就可以把常用的軟體安裝寫成 Shell Script，
+在重灌之後直接執行，就可以一鍵完成原本要花幾百年才能完成的重灌軟體的工作！&lt;&#x2F;p&gt;
+&lt;p&gt;Reference:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ScoopInstaller&#x2F;Scoop&#x2F;discussions&#x2F;4777#discussioncomment-2295777&quot;&gt;ScoopInstaller&#x2F;Scoop#4777#2295777&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ScoopInstaller&#x2F;Scoop&#x2F;discussions&#x2F;4777#discussioncomment-2296112&quot;&gt;ScoopInstaller&#x2F;Scoop#4777#2296112&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Windows_Package_Manager#History&quot;&gt;Windows Package Manager 的黑歷史&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+      <item>
+          <title>檔案壓縮的概論與實務</title>
+          <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/file-compression/</link>
+          <guid>https://undecv.github.io/blog/posts/file-compression/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/file-compression/">&lt;!-- # 檔案壓縮的概論與實務 --&gt;
+&lt;p&gt;&lt;del&gt;硬碟空間就像〇〇，擠一擠還是有的。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;本站有文章介紹過圖片檔案的壓縮格式。
+本文將注重於通用檔案壓縮，
+也就是 ZIP、7Z、RAR 該怎麼玩。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gai-lun&quot;&gt;概論&lt;&#x2F;h2&gt;
+&lt;p&gt;壓縮技術就是用時間換取空間。&lt;&#x2F;p&gt;
+&lt;p&gt;就跟我們把一堆雜物打包到一起，既節省空間，也便於攜帶和收藏。
+電腦也是一樣，把檔案壓縮成壓縮檔，節省存儲空間，也便於傳輸和存儲。&lt;&#x2F;p&gt;
+&lt;p&gt;舉一個非常不恰當的例，壓縮就像把牛奶製成奶粉，便於運輸和儲藏。而我們通常不直接吸奶粉，而解壓縮就像沖泡奶粉還原成牛奶。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，各種形式壓縮檔通常我們是無法直接使用的，軟體會在我們知道和不知道的情況下還原始的形式。&lt;&#x2F;p&gt;
+&lt;p&gt;除了常見的檔案壓縮，其實圖片、音樂、影片等媒體檔案的壓制也是一種壓縮。對於多媒體檔案，壓縮／解壓縮也通常稱為編碼／解碼。&lt;&#x2F;p&gt;
+&lt;p&gt;本文會提及多媒體壓縮，但專注於解釋通用的檔案壓縮。&lt;&#x2F;p&gt;
+&lt;p&gt;從 ZIP 到 RAR5，從 RMVB 到 AV1，壓縮格式千百種，新的演算法和格式還在被發明出來，是因為壓縮演算法的發展，還有對應不同的需求。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ya-suo-dang-de-quan-heng&quot;&gt;壓縮檔的權衡&lt;&#x2F;h3&gt;
+&lt;p&gt;壓縮技術也是一種工程學，是權衡的藝術。&lt;&#x2F;p&gt;
+&lt;p&gt;壓縮技術需要考量很多方面，就像在點技能樹一樣，需要在各個方面做出權衡。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;shi-jian-v-s-rong-liang&quot;&gt;時間 v.s. 容量&lt;&#x2F;h4&gt;
+&lt;p&gt;其中一點是壓縮和解壓縮的速度和效率，
+壓縮減少了多少容量被稱之為壓縮率，
+通常的，壓縮速度越慢，檔案越小，解壓縮速度越慢，反之亦然。&lt;&#x2F;p&gt;
+&lt;p&gt;例如一個影片，若是解壓縮（解碼）速度比影片播放速度還慢，那影片就會卡得不能看。
+而這是通用檔案壓縮容忍的壓縮解壓縮時間就比較寬裕了，會更注重於壓縮率上。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;song-san-v-s-gu-shi-ya-suo&quot;&gt;鬆散 v.s. 固實壓縮&lt;&#x2F;h4&gt;
+&lt;p&gt;固實壓縮是通用檔案壓縮的一個技術，一次壓縮一定量的資料而不是一個檔案。
+這一定量的資料被稱為一個區塊。他的好處是所有多個小檔案被分入一個區塊的時候會（大幅）提高壓縮率（壓縮檔更小）。&lt;&#x2F;p&gt;
+&lt;p&gt;但有些時候，我們只需要壓縮檔用的一兩三個檔案，這個需求便是隨機存取。
+固實壓縮若要解壓縮區塊中其中一個檔案，就必須解壓縮整個區塊，這讓隨機存取變成災難。&lt;&#x2F;p&gt;
+&lt;p&gt;所以若覺得以後要常常在不解壓縮整個檔案的情況下打開其中的某個檔案，就不要使用固實壓縮，反之亦然。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;you-sun-v-s-wu-sun-ya-suo&quot;&gt;有損 v.s. 無損壓縮&lt;&#x2F;h4&gt;
+&lt;p&gt;顧名思義有損壓縮後的檔案就再也不能變成原本的形狀，但可以在損失細節之下讓檔案更小；無損壓縮則保留所有細節，可以完全恢復。
+無損壓縮就是壓縮會不會降低原始內容品質，有損壓縮多用於多媒體壓縮，而通用檔案壓縮都是無損壓縮。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;mei-ti-dang-an-zai-ya-suo&quot;&gt;媒體檔案再壓縮&lt;&#x2F;h4&gt;
+&lt;p&gt;現代流通的媒體格式，多已經被有損或無損壓縮的非常極限了，那還有必要對媒體檔案再進行壓縮嗎？&lt;&#x2F;p&gt;
+&lt;p&gt;壓縮媒體檔案的其中一個目的，是在可接受期間內被解碼，檔案盡可能的小的同時保留最多資訊（所有細節）。&lt;&#x2F;p&gt;
+&lt;p&gt;所以這使得通用檔案壓縮仍能再壓縮媒體檔案。雖然再壓縮的空間可能極小，但擠擠總還是有的。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;lian-xu-du-xie-he-sui-ji-du-xie&quot;&gt;連續讀寫和隨機讀寫&lt;&#x2F;h4&gt;
+&lt;p&gt;請注意，這裡的 連續、隨機讀寫 不是前文所述的 鬆散、固實壓縮：雖異曲同工但不盡相同。&lt;&#x2F;p&gt;
+&lt;p&gt;壓縮軟體一大好處便是整合小檔案：如果你有看過硬碟跑分，應該可以發現硬碟的隨機讀寫效能遠小於連續讀寫效能，
+而對一拖拉庫的散裝小檔案通常就是隨機讀寫，而對其進行檔案壓縮會改善這個問題。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;ya-suo-ya-suo-dang-ya-suo-dang-qian-tao-tao-wa&quot;&gt;壓縮壓縮檔（壓縮檔嵌套，套娃）&lt;&#x2F;h4&gt;
+&lt;p&gt;壓縮壓縮檔，這種方法應該沒有什麼學名，也就是把壓縮檔再壓縮一次，也就是俗稱的套娃。&lt;&#x2F;p&gt;
+&lt;p&gt;一般來說，檔案壓縮有「儲存」和「傳輸」兩個目的，「儲存」需要減少大小的高壓縮率，而「傳輸」會需要加密和分卷。&lt;&#x2F;p&gt;
+&lt;p&gt;通常這些套娃壓縮檔的外層，是為了混淆識別，以及便於傳輸的加密和分卷。&lt;&#x2F;p&gt;
+&lt;p&gt;我會建議「儲存」壓縮後再進行「傳輸」壓縮的套娃壓縮法。在這種情景下「傳輸」壓縮甚至不需要壓縮，僅加密。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;chang-jian-wen-ti&quot;&gt;常見問題&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;dang-ming-guo-chang&quot;&gt;檔名過長&lt;&#x2F;h4&gt;
+&lt;p&gt;收納的過程便是再包裝：盡量扁平化資料夾，說人話就是減少資料夾一層包一層，以及使用儘量短的檔名。&lt;&#x2F;p&gt;
+&lt;p&gt;這不僅會使得壓縮檔看上去更簡潔，甚至可以提高壓縮率使得壓縮檔更小：在 ZIP 中，沒有資料夾的概念，每個檔案都會記錄路徑，即資料夾和檔名，所以資料夾中的每個檔案都會重複記錄一次資料夾名。&lt;&#x2F;p&gt;
+&lt;p&gt;通常作業系統（檔案系統）會對檔案的全路徑長度做限制，太長的路徑會造成解壓縮失敗。例如，你在解壓縮的時候，在某個資料夾裡解壓縮失敗，但是在某個槽下直接解壓縮卻成功即是這種問題。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;dang-ming-luan-ma&quot;&gt;檔名亂碼&lt;&#x2F;h4&gt;
+&lt;p&gt;有時候下載到的壓縮檔案，內容的檔名是一堆亂碼，這是由於早期的作業系統和壓縮軟體，並沒有考慮到當今的社會和網路如此的全球化，所以遇到不同語系的壓縮檔案就會亂碼。&lt;&#x2F;p&gt;
+&lt;p&gt;正統的解決方式是修改作業系統的預設編碼；但我們也可以使用例如 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;tw.bandisoft.com&#x2F;bandizip&#x2F;&quot;&gt;Bandizip&lt;&#x2F;a&gt; 之類有修改編碼功能的壓縮軟體。&lt;&#x2F;p&gt;
+&lt;p&gt;詳細的文字編碼問題有點複雜，有機會再撰文贅述。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dang-an-lei-xing&quot;&gt;檔案類型&lt;&#x2F;h3&gt;
+&lt;p&gt;常見的壓縮檔類型有以下幾種：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;ZIP：可能是現在流通最廣的壓縮檔格式，有夠用的功能和廣泛軟體的支援。&lt;&#x2F;li&gt;
+&lt;li&gt;7Z：開源壓縮檔的代表，原生於 7-Zip，以高效率著稱。&lt;&#x2F;li&gt;
+&lt;li&gt;RAR：商業壓縮檔的代表，原生於 WinRAR，有著豐富的功能。&lt;&#x2F;li&gt;
+&lt;li&gt;TAR.GZ：Linux 上的代表，分為打包而不壓縮的 TAR 和只能壓縮一個檔案的 GZ。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;順帶一提，壓縮軟體 &lt;em&gt;不等於&lt;&#x2F;em&gt; 壓縮檔案格式 &lt;em&gt;不等於&lt;&#x2F;em&gt; 壓縮演算法，
+但大家一般不會去修改預設的檔案格式和演算法，有機會再撰文贅述。&lt;&#x2F;p&gt;
+&lt;p&gt;不同的方法各有優劣，與各種應用場景的相性也不同，也是本文希望探討的地方。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;shi-wu&quot;&gt;實務&lt;&#x2F;h2&gt;
+&lt;p&gt;本文的指令使用 7-Zip 軟體。請見 7-Zip 的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;7-zip.opensource.jp&#x2F;chm&#x2F;cmdline&#x2F;index.htm&quot;&gt;指令說明檔&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;分卷 &lt;code&gt;-v4g&lt;&#x2F;code&gt;：若內容很大很大，例如一些遊戲，就可以進行分卷，分卷也便於儲存和在網路上傳輸，雖然硬碟的單文件上限很難碰到，但很多網路空間均有檔案大小上限，可以以此決定分卷大小；就算沒有超過上限，相比之下，分卷上傳也能顯著降低下載、上傳失敗時起肖的程度。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;固實 &lt;code&gt;-ms=on&lt;&#x2F;code&gt;：固實壓縮的概念是 將多個檔案變成一塊 而不是 以單一檔案為單位 進行壓縮。7Z 和 RAR 均可支援，ZIP 沒有。好處是在某些情境下可以增加壓縮率使得檔案更小。壞處是喪失了隨機存取的特性，使得在取用單一檔案的時候連同附近的其他檔案也會需要一起被解壓縮，這會浪費時間和算力。所以需要按需啟用。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;格式 &lt;code&gt;-t7z&lt;&#x2F;code&gt;：通常認為，7Z 格式比 ZIP 格式壓縮率更好（更小）；但 ZIP 有超廣泛的支援；而 RAR 格式具有獨到的恢復功能，可以在網路傳輸中使用，若出現壞檔可以試試運氣修復看看，但 RAR 是專有格式，僅能使用 WinRAR 壓縮。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;編碼 &lt;code&gt;-mcu=on&lt;&#x2F;code&gt;：ZIP 的文字編碼限制寬鬆，需要強制使用 Unicode 才能保證在不同語系的作業系統上可以正常使用。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;shi-yong-chang-jing&quot;&gt;使用場景&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;tong-ren-zhi-man-hua-za-zhi-cg-tu-bao&quot;&gt;同人誌、漫畫、雜誌、CG、圖包&lt;&#x2F;h4&gt;
+&lt;p&gt;ZIP 格式、最大壓縮率、萬國碼：&lt;code&gt;-tzip -mx=9 -mcu=on&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;這類資源大多是一拖拉庫的有序或無序圖片，而 ZIP 壓縮是被廣泛支援的幾乎事實標準，諸多的漫畫閱讀器均可直接讀取壓縮檔而不需要解壓縮，非固實壓縮也使得可以隨機存取，實現快速跳轉頁面。建議在資料夾中修改檔名為位數適當的前置〇的流水號。再次提醒盡量扁平化資料夾，以及需要注意 ZIP 在文字編碼上的問題。&lt;&#x2F;p&gt;
+&lt;p&gt;CB* 格式的本質就是壓縮檔，甚至內容結構都沒有規範（各閱讀器不同），例如 CBZ 就是 ZIP、CB7 就是 7Z、CBR 就是 RAR。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;dian-zi-shu&quot;&gt;電子書&lt;&#x2F;h4&gt;
+&lt;p&gt;DOCX, EPUB, ... 也是一種 ZIP：&lt;code&gt;-tzip -mx=9 -mcu=on&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;（跑題）使用 EPUB 格式可以像紙質書一樣讓電子書圖文並茂並且有豐富的排版，相比於 DOCX 的繁雜和 PDF 的臃腫死板，EPUB 可以讓讀者用他們自己舒服和習慣的字形字色背景閱讀。製作 EPUB 也需要有 HTML、CSS 的知識。EPUB 的本質是安排好的 ZIP，所以可以提高壓縮率直接再壓縮 EPUB 檔，而不需要再套一層其他壓縮格式。&lt;&#x2F;p&gt;
+&lt;p&gt;據我實驗所知，一些 EPUB 壓縮軟體並沒有使用最高壓縮率，特定情況下可以通過再壓縮節省空間。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;you-xi-cheng-shi-bei-fen-dang&quot;&gt;遊戲、程式、備份檔&lt;&#x2F;h4&gt;
+&lt;p&gt;7Z 格式、最大壓縮率、固實壓縮：&lt;code&gt;-t7z -mx=9 -ms=on&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;7Z 相比於 ZIP 有更好的壓縮率，而遊戲、程式必須全部解壓縮展開後才可執行，故不存在需要在壓縮檔內隨機存取的情況，遊戲、程式內通常也富含小檔案，固實壓縮在這個情景下可以有較好的表現。請注意 7Z 格式預設固實壓縮模式是啟用的。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;yin-le-ying-pian-dong-hua-dian-ying&quot;&gt;音樂、影片、動畫、電影&lt;&#x2F;h4&gt;
+&lt;p&gt;7Z 格式、最大壓縮率、鬆散壓縮：&lt;code&gt;-t7z -mx=9 -ms=off&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;音樂、影片等本是經過高度壓縮的檔案格式，不同的檔案格式緊密程度不同，通常再用檔案壓縮效益不大，甚至可以不需要再以檔案壓縮。若不著急或這電腦有多餘算力，或是就是要扣那幾啪的空間，當然可以選擇最高的壓縮率。而取消固實壓縮模式因為在這個情景下作用不大（甚至可能是反效果），還可以帶來隨機存取的好處，讓你在讀取其中某個檔案的時候不需要浪費時間和算力讀取其他檔案，尤其是影片每個可能都是 GiB 等級的大檔案，這個優勢會尤其明顯。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;ya-suo-ya-suo-dang-tao-wa&quot;&gt;壓縮壓縮檔（套娃）&lt;&#x2F;h4&gt;
+&lt;p&gt;7Z／RAR 格式、無壓縮、分卷、萬國碼：&lt;code&gt;-t7z -mx=0 -v4g&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;上述多種型別內容的混合，先分門別類的壓縮後，再以一個無壓縮率的壓縮檔打包，同時可以做加密和分卷的動作。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>BtrVol 音量控制軟體</title>
+          <pubDate>Sun, 16 Jul 2023 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/btrvol-intro/</link>
+          <guid>https://undecv.github.io/blog/posts/btrvol-intro/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/btrvol-intro/">&lt;p&gt;&lt;del&gt;夢裡看片今日實現。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BtrVol 專案 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;BtrVol&quot;&gt;首頁&lt;&#x2F;a&gt;、&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;BtrVol&#x2F;blob&#x2F;main&#x2F;readme.zh.md&quot;&gt;中文說明&lt;&#x2F;a&gt;、&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;BtrVol&#x2F;releases&quot;&gt;下載&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;網路確是讓人成癮的毒藥。&lt;&#x2F;p&gt;
+&lt;p&gt;在這個連上廁所都手機不離手的時代，
+大家都無時不刻在吸食這些賽博鴉片，
+新聞、社群、影片、遊戲，
+人們已經忘卻了如何放空，
+甚至是睡前那片刻的寧靜…&lt;&#x2F;p&gt;
+&lt;p&gt;是以，
+為了在入睡之際也能沉迷 YouTube，
+我寫了 BtrVol，一個聲音控制軟體，
+能夠隨著時間提升、降低音量。
+音量控制是通過精心設計的弦波函數達成的，
+相較於直線的調整更加輕柔、順滑。&lt;&#x2F;p&gt;
+&lt;p&gt;臨睡之際，
+點開不用動腦的 Minecraft 影片，
+讓音量先緩後急的慢慢下降，
+讓思緒漸漸從影片中抽離，
+也讓入睡後再無打擾。&lt;&#x2F;p&gt;
+&lt;p&gt;醒來之後，
+生怕 YouTube 自動播放到了世界的哪個陰暗的角落，
+原來是訂閱的 VTuber 的直播記錄檔，
+果然還是懂自己的演算法最對味。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>桌面搜尋概論，以及 CLaunch 中文化</title>
+          <pubDate>Thu, 22 Jun 2023 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/desktop-search-and-claunch-zh-tw/</link>
+          <guid>https://undecv.github.io/blog/posts/desktop-search-and-claunch-zh-tw/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/desktop-search-and-claunch-zh-tw/">&lt;!-- # CLaunch 中文化 --&gt;
+&lt;!-- &gt; 我把 CLaunch 中文化了。 --&gt;
+&lt;p&gt;當我升級到 Windows 11 後，我的期待本是拿麼大，
+但更新帶來的諸多變化如半成品一般。
+最主要的痛點在於開始選單，
+無法收納的圖示還有莫名其妙的建議欄位 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;而 Windows 10 的開始選單，承襲 Windows 8 的 Metro 設計，
+雖然有 Metro 看板一般的好看，卻沒有其一般的可靠，
+甚至每次打開開始選單的時候，同一個圖示都會在不一樣的位置，
+亦少有軟體支援它的圖示樣式。&lt;&#x2F;p&gt;
+&lt;p&gt;我的桌子很亂，但我的桌布很清爽。
+把桌布上的圖示收納整理到只剩下資源回收筒，
+繁雜的檔案都眼不見為淨 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。
+再搭配 Wallpaper Engine，讓電腦變成數位音樂相框。&lt;&#x2F;p&gt;
+&lt;p&gt;為了收納那些進入程式的捷徑圖示，
+我曾經習慣於使用的啟動器 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.launchy.net&#x2F;&quot;&gt;Launchy&lt;&#x2F;a&gt;，
+隨著時間的流逝，早就停止更新，我便開始尋求替代的選項。
+現在的啟動器選擇越來越多，功能也越來越多。
+每個人對啟動器的使用習慣都大不相同，種類也十人十色。
+這便是那些對工具和生產力如痴如醉的工程師大顯身手的地方。&lt;&#x2F;p&gt;
+&lt;p&gt;桌面搜尋（Desktop search），或者叫啟動器（Launcher），
+目的在於優雅且快速的存取電腦本機之內想要的功能、軟體、檔案，
+它可以讓你忘記開始選單、桌面圖示、甚至是檔案總管，
+再也不用在裡面翻箱倒櫃。&lt;&#x2F;p&gt;
+&lt;p&gt;我大致將啟動器分成搜尋類和圖示類，
+搜尋類可以通過打字快速找到想要的功能或者檔案，
+讓桌面環境的使用融合進控制檯指令一般的便利。
+圖示類就像超市的貨架，
+讓“我能做什麼”和“我該怎麼做”的構思一覽無遺。
+對我的而言兩個功能都不可或缺。
+但作為強迫症和潔癖的晚期患者，
+甚至連搜尋結果都希望由自己控制。&lt;&#x2F;p&gt;
+&lt;figure style=&quot;text-align: center;&quot;&gt;
+&lt;img src=&quot;.&#x2F;images&#x2F;ueli.png&quot; alt=&quot;ueli Screens Shot&quot; title=&quot;ueli Screens Shot&quot;&gt;
+&lt;figcaption&gt;ueli，搜尋類啟動器&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;figure style=&quot;text-align: center;&quot;&gt;
+&lt;img src=&quot;.&#x2F;images&#x2F;CLaunch.png&quot; alt=&quot;CLaunch Screens Shot&quot; title=&quot;CLaunch Screens Shot&quot;&gt;
+&lt;figcaption&gt;CLaunch with 角丸 ダーク Skin by &lt;a href=&quot;http:&#x2F;&#x2F;shirosai.web.fc2.com&#x2F;claunch&#x2F;&quot;&gt;Koji&lt;&#x2F;a&gt;，圖示類啟動器&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;畢竟是要經常拿出來甚至是釘選在桌布上的工具，
+外觀也是一大重要的功能。
+我喜歡 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.rainmeter.net&#x2F;&quot;&gt;Rainmeter&lt;&#x2F;a&gt;，
+喜歡花費大把大把的時間在 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.deviantart.com&#x2F;&quot;&gt;DeviantArt&lt;&#x2F;a&gt; 尋找各種面板，
+就是要讓喜歡的東西變成自己的形狀。
+在那個網路尚未變質的純樸年代，
+像是 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;ssp.shillest.net&#x2F;&quot;&gt;伺か&lt;&#x2F;a&gt; 在桌布上放一個可以與你對話的角色，
+又像是 Winamp &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-3-1&quot;&gt;&lt;a href=&quot;#fn-3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 的軟體突破了視窗的局限，
+替換各種花俏的外觀，在各種功能豐富的面板間排列組合。
+曾幾何時，軟體開發已經被網頁化的 Electron 佔去了……
+當代的設計喜歡簡潔乾淨的平面化，
+對外觀的客製化甚至有黑暗模式都是奢望。
+已經少有軟體支援能打中宅宅的少女心的完整客製化外觀支援。&lt;&#x2F;p&gt;
+&lt;figure style=&quot;text-align: center;&quot;&gt;
+&lt;img src=&quot;.&#x2F;images&#x2F;Rainmeter_Dark-Glass.png&quot; alt=&quot;Rainmeter with Dark Glass Screens Shot&quot; title=&quot;Rainmeter with Dark Glass Screens Shot&quot;&gt;
+&lt;figcaption&gt;Rainmeter with &lt;a href=&quot;https:&#x2F;&#x2F;www.deviantart.com&#x2F;satyajit00&#x2F;art&#x2F;Dark-Glass-v2-0-489000220&quot;&gt;Dark Glass v2.0&lt;&#x2F;a&gt; by satyajit00 @ DeviantArt&lt;br&#x2F;&gt;與正文無關，但真的很好看&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;CLaunch 是圖示類的啟動器。
+上個世紀的軟體，竟然開發至今，完全相容最新的作業系統。
+秉承者日系軟體的小巧精緻，功能卻非常豐富。
+生產效率類的工具都需要習慣，而豐富的功能往往讓人難以入手，
+但它確是可以開箱即用的超低門檻、超高上限。
+在網路上也能找到很多愛好者創作的外觀，可以變成喜歡的樣子。
+它的功能和使用方式網路上有很多，我也不多贅述。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;前往：&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;hp.vector.co.jp&#x2F;authors&#x2F;VA018351&#x2F;en&#x2F;claunch.html&quot;&gt;CLaunch 官方網站&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;我迫不及待的和那些被 M$ 半吊子更新困擾的朋友們分享，
+但卻沒有正體中文的支援。
+懷著對 CLaunch 的敬意和熱情，我決定製作一個中文模組。&lt;&#x2F;p&gt;
+&lt;p&gt;這是我第一次將軟體中文化，
+一個一個單字去查&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;terms.naer.edu.tw&#x2F;&quot;&gt;教育部的翻譯&lt;&#x2F;a&gt;，
+才發現好多軟體的翻譯雖然接地氣但不正統，要怎麼翻還有點迷茫呢。&lt;&#x2F;p&gt;
+&lt;p&gt;好在 CLaunch 對多語言的完整支援，翻譯快速且順利的完成了。
+也希望更多人可以用到這些從未老去的軟體。&lt;&#x2F;p&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;新版的 Windows 11 22H2 更新已經改進開始選單，
+添加圖示收納和可調整已釘選（Pinned）和建議欄位（Recommended）的比例，
+但其客製化程度仍有限。 &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;我知道有隱藏圖示的方法和工具，但這不是自己騙自己嗎... &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;但 Winamp 也改版了... &lt;a href=&quot;#fr-3-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+      <item>
+          <title>［封存］推薦的 Windows 應用軟體列表</title>
+          <pubDate>Wed, 26 Jul 2017 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/">&lt;p&gt;推薦一些 Windows 平台下的軟體， 適合日常以及非日常使用。&lt;br &#x2F;&gt;
+並不一定每一款軟體你都需要或適合你，也未必是大眾的選擇；&lt;br &#x2F;&gt;
+&lt;del&gt;但是那些無時無刻不在彈廣告的辣雞軟件一定不會是你的選擇。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;!-- # List of Windows Application Software --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;裝機必備的實用軟體大合集！&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Version 5.3.1 (2023-06-29): 更新和修正了部分內容。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Copyright © 2023 undecV.&lt;br &#x2F;&gt;
+&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.creativecommons.org&#x2F;l&#x2F;by-nc-sa&#x2F;4.0&#x2F;88x31.png&quot; alt=&quot;Creative Commons License&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+This work is licensed under a &lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;&quot;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;gai-lun&quot;&gt;概論&lt;&#x2F;h2&gt;
+&lt;p&gt;提示，本文討論的範圍是 應用軟體，不包括例如 Google Docs, Spotify, Telegram 之類的 SaaS 網頁應用和服務。&lt;&#x2F;p&gt;
+&lt;p&gt;文章其中的一些軟體，我可能不常用，沒有追著最新版更新，甚至時下可能還沒有安裝，但我一定都有用過、體驗過。&lt;&#x2F;p&gt;
+&lt;p&gt;也請注意，這裡的選擇標準非常的... 主觀。（不是排名，不分先後）&lt;br &#x2F;&gt;
+以下是粗略的選擇的標準：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;確實能夠解決問題，且有效的解決問題；&lt;&#x2F;li&gt;
+&lt;li&gt;沒有騷擾性質的廣告；&lt;&#x2F;li&gt;
+&lt;li&gt;界面端莊優雅，易於使用。&lt;&#x2F;li&gt;
+&lt;li&gt;FOSS，即是 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E8%87%AA%E7%94%B1%E8%BD%AF%E4%BB%B6&quot;&gt;自由軟體（Free Software）&lt;&#x2F;a&gt; 以及 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6&quot;&gt;開放原始碼軟體（Open Source Software，OSS）&lt;&#x2F;a&gt;，這裡的 Free 表示「自由（libre）」而不是「免費（gratis）」；開放原始碼軟體保留一部分權利並允許用戶學習、修改、增進提高這款軟體的品質。自由軟體更加的開放，可以不受限制地自由使用、複製、研究、修改和分發。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;di-san-ban-geng-xin-de-fei-hua&quot;&gt;第三版更新的廢話&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;由於篇幅刪除了「瀏覽器插件」章節：瀏覽器的 插件、UserScript、UserStyles 能大幅增益網路使用體驗，以後有機會我會再撰文介紹。&lt;&#x2F;li&gt;
+&lt;li&gt;刪除了「防毒軟體」章節：免費的防毒軟體體驗確實差&lt;del&gt;（其實付費也是）&lt;&#x2F;del&gt;，如果你使用的是正版 Windows 作業系統，自帶原生的 Windows Security 就可以滿足需求。電腦的安全更需要的是建立安全意識，並且保持良好的網路使用習慣，不要看網路上的野路子教學一頓風騷操作說關就關防火牆和防毒軟體之類的。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;這份列表從大學的一個突發奇想到現在已四年有餘，感謝各位的捧場，&lt;br &#x2F;&gt;
+你們與我的討論也讓我感受到了編寫這份列表的價值。&lt;br &#x2F;&gt;
+希望能對各位有所幫助，在完成電腦上繁雜工作的時候可以感到舒適和效率：）&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;biao-ji&quot;&gt;標記&lt;&#x2F;h2&gt;
+&lt;p&gt;本文的標記可能並不完全或有誤，甚至隨着時間的流逝而與現時不符，所以&lt;strong&gt;僅供參考&lt;&#x2F;strong&gt;，若發現有漏標或錯標，又或是你有更好的軟體選擇，歡迎在這個 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;undecV_Tutorial&#x2F;issues&quot;&gt;Repo&lt;&#x2F;a&gt; 提出修改建議：）&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;沒有標記的，一般來說都是&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%85%8D%E8%B2%BB%E8%BB%9F%E9%AB%94&quot;&gt;免費軟體（Freeware）&lt;&#x2F;a&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt;：FOSS，自由軟體（Free Software）和開放原始碼軟體（Open Source Software，OSS）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;&#x2F;code&gt;：&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%95%86%E4%B8%9A%E8%BD%AF%E4%BB%B6&quot;&gt;商業軟體（Commercial Software）&lt;&#x2F;a&gt;，一般來說，要錢買的。但有免費版本的不標示。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;tui-jian-ruan-ti-lie-biao&quot;&gt;推薦軟體列表&lt;&#x2F;h2&gt;
+&lt;h3&gt;Web Browser - 網路瀏覽器&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.mozilla.org&#x2F;zh-TW&#x2F;firefox&#x2F;all&#x2F;&quot;&gt;&lt;strong&gt;Mozilla Firefox&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 讓你的心智與網路一樣自由開闊。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.google.com.tw&#x2F;chrome&#x2F;browser&#x2F;desktop&#x2F;index.html&quot;&gt;&lt;strong&gt;Google Chrome&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 無比簡易、安全又快速的瀏覽器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;zh-tw&#x2F;edge&#x2F;download&quot;&gt;&lt;strong&gt;Microsoft Edge&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 基於 Chromium，內建豐富功能，以及搭載AI的次世代搜尋。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Internet - 網路&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;&#x2F;ul&gt;&lt;h4&gt;Download - 下載&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;aria2.github.io&#x2F;&quot;&gt;&lt;strong&gt;aria2&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 多協議命令行下載器，功能強大，高學習成本；但是，用會了就不會再考慮其他下載器了。(&lt;a href=&quot;https:&#x2F;&#x2F;www.appinn.com&#x2F;aria2-in-windows-setup&#x2F;&quot;&gt;小众软件&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.qbittorrent.org&#x2F;&quot;&gt;&lt;strong&gt;qBittorrent&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 自由的 BitTorrent 客戶端，擁有可訂製的種子搜尋功能。(&lt;a href=&quot;https:&#x2F;&#x2F;portableapps.com&#x2F;apps&#x2F;internet&#x2F;qbittorrent_portable&quot;&gt;PortableApps&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;43640207&#x2F;answer&#x2F;202058150&quot;&gt;知乎&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Email - 電子郵件&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.mozilla.org&#x2F;en-US&#x2F;thunderbird&#x2F;all&#x2F;&quot;&gt;&lt;strong&gt;Mozilla Thunderbird&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 與 Firefox 師出同門 Mozilla，老牌、自由的電郵軟體。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Remote Access - 遠端&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Genymobile&#x2F;scrcpy&quot;&gt;&lt;strong&gt;scrcpy&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: Android -&gt; Windows 熒幕投影。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;localsend.org&#x2F;&quot;&gt;&lt;strong&gt;LocalSend&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 零配置、可靠的區域網路下跨平臺檔案分享。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.android.com&#x2F;better-together&#x2F;nearby-share-app&#x2F;&quot;&gt;&lt;strong&gt;Nearby Share Beta for Windows&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: Android 原生跨平臺檔案分享。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;winscp.net&#x2F;eng&#x2F;index.php&quot;&gt;&lt;strong&gt;WinSCP&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 遠端存儲（SFTP）客戶端。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;cyberduck.io&#x2F;&quot;&gt;&lt;strong&gt;Cyberduck&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 遠端存儲客戶端，WinSCP 之前不支援新版 SSH 的時候找的替代。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.chiark.greenend.org.uk&#x2F;~sgtatham&#x2F;putty&#x2F;&quot;&gt;&lt;strong&gt;PuTTY&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 經典的 SSH 客戶端。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;remotedesktop.google.com&#x2F;&quot;&gt;&lt;strong&gt;Chrome Remote Desktop&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: Google 出品，免費、快速、簡單的遠端桌面。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.teamviewer.com&#x2F;zhtw&#x2F;&quot;&gt;&lt;strong&gt;TeamViewer&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 老牌遠端桌面。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Multimedia - 多媒體&lt;&#x2F;h3&gt;
+&lt;h4&gt;Audio - 音訊&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.foobar2000.org&#x2F;&quot;&gt;&lt;strong&gt;foobar2000&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 音樂播放器，專業強大，需要調教。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.aimp.ru&#x2F;&quot;&gt;&lt;strong&gt;AIMP&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 類 Winamp，來自戰鬥民族的高顏值音樂播放器，支持換外觀。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.crintsoft.com&#x2F;&quot;&gt;&lt;strong&gt;MiniLyrics&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 為多種播放器自動下載並顯示歌詞。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.audacityteam.org&#x2F;&quot;&gt;&lt;strong&gt;Audacity&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 錄音，音訊剪輯、處理。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Video - 視訊&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;www.codecguide.com&#x2F;&quot;&gt;&lt;strong&gt;K-Lite Codec Pack&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 播放器和編解碼器的軟體合集，專業、設定多、功能強大。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.videolan.org&#x2F;vlc&#x2F;&quot;&gt;&lt;strong&gt;VLC media player&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 支持多格式的跨平臺播放器，支持串流，支持換外觀。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;maruko.appinn.me&#x2F;&quot;&gt;&lt;strong&gt;小丸工具箱&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 簡單易用的壓制工具。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;avidemux.org&#x2F;&quot;&gt;&lt;strong&gt;Avidemux&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 簡單的影片處理剪輯。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;obsproject.com&#x2F;&quot;&gt;&lt;strong&gt;Open Broadcaster Software (OBS)&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 實況、直播串流、錄屏。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;mkvtoolnix.download&#x2F;index.html&quot;&gt;&lt;strong&gt;MKVToolNix&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: MKV 打包解包工具。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;www.aegisub.org&#x2F;&quot;&gt;&lt;strong&gt;Aegisub&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 字幕時間軸。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Image - 圖像&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;nomacs.org&#x2F;&quot;&gt;&lt;strong&gt;nomacs&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 輕量級圖片瀏覽器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;imageglass.org&#x2F;&quot;&gt;&lt;strong&gt;ImageGlass&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 輕量級圖片瀏覽器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.irfanview.com&#x2F;&quot;&gt;&lt;strong&gt;IrfanView&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 快速小巧且功能強大的圖片瀏覽器，不僅僅是看圖。(&lt;a href=&quot;https:&#x2F;&#x2F;xbeta.info&#x2F;use-irfanview.htm&quot;&gt;善用佳软&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;blog.bahraniapps.com&#x2F;gifcam&#x2F;&quot;&gt;&lt;strong&gt;GifCam&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: GIF 錄屏，動圖生成。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;getsharex.com&#x2F;&quot;&gt;&lt;strong&gt;ShareX&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 截圖、分享、貼圖，功能強大。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;flameshot.org&#x2F;&quot;&gt;&lt;strong&gt;Flameshot&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 小巧的截圖工具。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Comic Reader - 漫畫閱讀&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;bitbucket.org&#x2F;neelabo&#x2F;neeview&#x2F;wiki&#x2F;Home&quot;&gt;&lt;strong&gt;NeeView&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 漫畫閱讀器，觸控熒幕友善。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.yacreader.com&#x2F;&quot;&gt;&lt;strong&gt;YACReader&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 漫畫閱讀、管理器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Sumatra PDF&lt;&#x2F;strong&gt;: 也可以看漫畫，觸屏友好，見 Office &#x2F; PDF 章節。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Calibre&lt;&#x2F;strong&gt;: 也可以看漫畫，見 Office &#x2F; EPUB 章節。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Creation - 創作&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;www.adobe.com&#x2F;&quot;&gt;&lt;strong&gt;Adobe 全家桶&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: [&lt;code&gt;Family&lt;&#x2F;code&gt;] 不二的選擇。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.blender.org&#x2F;&quot;&gt;&lt;strong&gt;Blender&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 著名 3D 創作軟體，還能剪影片。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.gimp.org&#x2F;&quot;&gt;&lt;strong&gt;GIMP&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 點陣圖編輯軟體，自由軟體界的 Photoshop。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;inkscape.org&#x2F;en&#x2F;&quot;&gt;&lt;strong&gt;Inkscape&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 矢量圖編輯軟體，自由軟體界的 Ai 或 CorelDRAW。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;krita.org&#x2F;en&#x2F;&quot;&gt;&lt;strong&gt;Krita&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: KDE 家族的繪圖軟體，自由軟體界的 SAI（？）。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Embellish and Easy Access - 美化和便捷使用&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;macrodeck.org&#x2F;&quot;&gt;&lt;strong&gt;Macro Deck&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 讓任何觸控設備變成巨集鍵盤。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ssp.shillest.net&#x2F;&quot;&gt;&lt;strong&gt;SSP&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 偽春菜（伺か）引擎。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.rainmeter.net&#x2F;&quot;&gt;&lt;strong&gt;Rainmeter&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 桌面小部件，系統美化的必備。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;qttabbar.wikidot.com&#x2F;&quot;&gt;&lt;strong&gt;QTTabBar&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 為檔案總管添加標籤頁功能。(&lt;a href=&quot;https:&#x2F;&#x2F;www.appinn.com&#x2F;qt-tabbar&#x2F;&quot;&gt;小众软件&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;carnackeys.com&#x2F;&quot;&gt;&lt;strong&gt;Carnac&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 在屏幕上顯示鍵盤輸入。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;store.steampowered.com&#x2F;app&#x2F;431960&#x2F;Wallpaper_Engine&#x2F;&quot;&gt;&lt;strong&gt;Wallpaper Engine&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: &lt;del&gt;整個桌布都是我的播放器，&lt;&#x2F;del&gt;可高度客製化的動態桌布。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Files - 檔案處理&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;syncthing.net&#x2F;&quot;&gt;&lt;strong&gt;Syncthing&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 自建置檔案同步。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;files.community&#x2F;&quot;&gt;&lt;strong&gt;Files&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 現代的檔案總管。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;git-scm.com&#x2F;&quot;&gt;&lt;strong&gt;Git&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 分佈式版本管理。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.uderzo.it&#x2F;main_products&#x2F;space_sniffer&#x2F;index.html&quot;&gt;&lt;strong&gt;SpaceSniffer&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 以「矩形式樹狀結構繪圖法」檢視硬碟佔用空間分佈。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;winmerge.org&#x2F;&quot;&gt;&lt;strong&gt;WinMerge&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 資料夾比較、同步。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;dupeguru.voltaicideas.net&#x2F;&quot;&gt;&lt;strong&gt;dupeGuru&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 尋找重複檔案。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;&lt;h4&gt;Compression - 壓縮&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;www.7-zip.org&#x2F;&quot;&gt;&lt;strong&gt;7-Zip&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 7z 格式原生，高壓縮率。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;www.peazip.org&#x2F;&quot;&gt;&lt;strong&gt;PeaZip&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 多格式支持。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.bandisoft.com&#x2F;bandizip&#x2F;&quot;&gt;&lt;strong&gt;Bandizip&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 多格式支持，方便的文字編碼轉換；v7 新版本免費添加廣告，&lt;del&gt;（可以退回 v6 版本或課金享受&lt;&#x2F;del&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;www.rarlab.com&#x2F;download.htm&quot;&gt;&lt;strong&gt;WinRAR&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: RAR 格式原生，可添加恢復用冗餘。&lt;del&gt;（其實不要錢也能用）&lt;&#x2F;del&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Desktop Search - 桌面搜尋&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.voidtools.com&#x2F;&quot;&gt;&lt;strong&gt;Everything&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 超高速文件搜尋。(&lt;a href=&quot;https:&#x2F;&#x2F;www.appinn.com&#x2F;tag&#x2F;everything&#x2F;&quot;&gt;小众软件&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;ul&gt;&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;stnkl&#x2F;EverythingToolbar&quot;&gt;&lt;strong&gt;EverythingToolbar&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 把 Everything 放到工作列上。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;www.launchy.net&#x2F;&quot;&gt;&lt;strong&gt;Launchy&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 搜尋式啟動器，停止更新多年。(&lt;a href=&quot;https:&#x2F;&#x2F;www.appinn.com&#x2F;launchy&#x2F;&quot;&gt;小众软件&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;ueli.app&quot;&gt;&lt;strong&gt;ueli&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 搜尋式啟動器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;hp.vector.co.jp&#x2F;authors&#x2F;VA018351&#x2F;en&#x2F;claunch.html&quot;&gt;&lt;strong&gt;CLaunch&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 圖標式啟動器。(&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;posts&#x2F;CLaunchZHTW.html#CLaunchZHTW&quot;&gt;本站&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Security - 安全&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;eraser.heidi.ie&#x2F;&quot;&gt;&lt;strong&gt;Eraser&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: FBI等級徹底地擦除檔案，幾乎無法被恢復。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.veracrypt.fr&#x2F;&quot;&gt;&lt;strong&gt;VeraCrypt&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: TrueCrypt 傳承者，磁碟＼卷＼虛擬卷加密。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;gpg4win.org&#x2F;&quot;&gt;&lt;strong&gt;Gpg4win&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 用公＼私密鑰驗證、加密檔案和郵件。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.virtualbox.org&#x2F;&quot;&gt;&lt;strong&gt;VirtualBox&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 虛擬機器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;keepassxc.org&#x2F;&quot;&gt;&lt;strong&gt;KeePassXC&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 密碼管理器。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Office - 辦公室＼文書處理&lt;&#x2F;h3&gt;
+&lt;h4&gt;PDF - 可攜式文件格式&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;get.adobe.com&#x2F;tw&#x2F;reader&#x2F;&quot;&gt;&lt;strong&gt;Adobe Acrobat Reader DC&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 原生 PDF 閱讀器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.sumatrapdfreader.org&#x2F;free-pdf-reader.html&quot;&gt;&lt;strong&gt;Sumatra PDF&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 小巧快速的 PDF、電子書、漫畫閱讀器，觸屏友好。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Database - 資料庫&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;mementodatabase.com&#x2F;&quot;&gt;&lt;strong&gt;Memento Database&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 強大易用的資料庫管理應用，配合 Android 版食用風味更加。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Office suite - 辦公室套件&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.libreoffice.org&#x2F;&quot;&gt;&lt;strong&gt;LibreOffice&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 自由軟體界的 M$ Office。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;www.openoffice.org&#x2F;&quot;&gt;&lt;strong&gt;OpenOffice.org&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 自由軟體界的 M$ Office。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Mind Map - 心智圖＼思維導圖&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;freeplane.sourceforge.net&#x2F;&quot;&gt;&lt;strong&gt;Freeplane&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 心智圖繪製軟體。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Notes, Knowledge Base - 筆記＼知識庫&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;simplenote.com&#x2F;&quot;&gt;&lt;strong&gt;Simplenote&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: Wordpress 出品，跨平臺同步。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;zadam&#x2F;trilium&quot;&gt;&lt;strong&gt;Trilium Notes&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 強大的知識庫，自建置（Self-Host）同步。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;joplinapp.org&#x2F;&quot;&gt;&lt;strong&gt;Joplin&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 自建置（Self-Host）跨平臺同步。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;logseq.com&#x2F;&quot;&gt;&lt;strong&gt;Logseq&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 大綱式知識庫。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;obsidian.md&#x2F;&quot;&gt;&lt;strong&gt;Obsidian&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 使用 Markdown 的知識庫。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;strlen.com&#x2F;treesheets&#x2F;&quot;&gt;&lt;strong&gt;TreeSheets&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 自由格式的資料整理，表格、心智圖、大綱，功能強大。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;microsoft-365&#x2F;onenote&#x2F;digital-note-taking-app&quot;&gt;&lt;strong&gt;Microsoft OneNote&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: Surface 上只能用它。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;EPUB&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;calibre-ebook.com&#x2F;&quot;&gt;&lt;strong&gt;Calibre&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 電子書書櫃、EPUB、漫畫閱讀器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;sigil-ebook.com&#x2F;&quot;&gt;&lt;strong&gt;Sigil&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: EPUB 編輯器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;komga.org&#x2F;&quot;&gt;&lt;strong&gt;Komga&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 自建置漫畫圖書館。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Text editor - 文本编辑器&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;notepad-plus-plus.org&#x2F;zh&#x2F;&quot;&gt;&lt;strong&gt;Notepad++&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 純文字＼程式碼編輯器，代替記事本，從此再也不怕亂碼。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;code.visualstudio.com&#x2F;&quot;&gt;&lt;strong&gt;Visual Studio Code&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: Microsoft 出品，Visual Studio 系列，純文字＼程式碼編輯器，強大的擴展性，假裝是編輯器的 IDE。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Clipboard Manager - 剪貼板管理器&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;hluk.github.io&#x2F;CopyQ&#x2F;&quot;&gt;&lt;strong&gt;CopyQ&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 強大的剪貼板管理器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;ditto-cp.sourceforge.io&#x2F;&quot;&gt;&lt;strong&gt;Ditto&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 小巧的剪貼板管理器。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Languages - 語言&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;http:&#x2F;&#x2F;rime.im&#x2F;&quot;&gt;&lt;strong&gt;RIME&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 擊響中文之韻。中文輸入法引擎，支持注音、拼音、五筆等各種常見和不常見的輸入法，專業強大、跨平臺、自由度極高、可高度定製、校難上手。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;xupefei&#x2F;Locale-Emulator&#x2F;releases&quot;&gt;&lt;strong&gt;Locale-Emulator&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 轉區工具。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Misc Utilities Application - 應用工具&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;zint.org.uk&#x2F;&quot;&gt;&lt;strong&gt;Zint&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 條碼生成器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;devtoys.app&#x2F;&quot;&gt;&lt;strong&gt;DevToys&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 程式工程師的瑞士刀，編碼轉換、跳脫字串、圖片轉換等。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;autohotkey.com&#x2F;&quot;&gt;&lt;strong&gt;AutoHotkey&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 強大的自動化工具，需要一點寫手稿語言能力。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;cheatengine.org&#x2F;index.php&quot;&gt;&lt;strong&gt;Cheat Engine&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 通用遊戲記憶體修改器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;p&#x2F;eartrumpet&#x2F;9nblggh516xp&quot;&gt;&lt;strong&gt;EarTrumpet&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 給軟體指定聲音設備、控制音量，需要 Win10 1803 以上。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;kdeconnect.kde.org&#x2F;&quot;&gt;&lt;strong&gt;KDE Connect&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: KDE 家族，連接電腦和手機，同步通知、傳檔案、遙控器、簡報筆...。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;download&#x2F;details.aspx?id=35460&quot;&gt;&lt;strong&gt;Microsoft Garage Mouse without Borders&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 無縫在多台的電腦上分享切換一套鍵鼠。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;docs.microsoft.com&#x2F;en-us&#x2F;windows&#x2F;powertoys&#x2F;&quot;&gt;&lt;strong&gt;Microsoft PowerToys&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: Windows 官方出品，更靈活的視窗佈局、圖片改大小、批量改檔名等一大堆實用功能。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Splode&#x2F;pomotroid&#x2F;releases&quot;&gt;&lt;strong&gt;Pomotroid&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 簡潔、可換外觀的番茄工作法計時器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.moo0.com&#x2F;&quot;&gt;&lt;strong&gt;Moo0 家族&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: [&lt;code&gt;Family&lt;&#x2F;code&gt;] 45 款小巧實用的工具合集，好看易用。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.xiles.net&#x2F;&quot;&gt;&lt;strong&gt;xiles 家族&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: [&lt;code&gt;Family&lt;&#x2F;code&gt;] 簡單、精心設計和易於使用的軟體。&lt;&#x2F;li&gt;
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;nexusfile&lt;&#x2F;strong&gt;: 檔案總管。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;nexusfont&lt;&#x2F;strong&gt;: 字形瀏覽器。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;nexusimage&lt;&#x2F;strong&gt;: 圖片瀏覽器。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;&lt;&#x2F;ul&gt;
+&lt;h3&gt;System Utilities - 系統工具&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;crystalmark.info&#x2F;en&#x2F;software&#x2F;&quot;&gt;&lt;strong&gt;Crystal Disk&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: [&lt;code&gt;Family&lt;&#x2F;code&gt;] 可愛的水晶雫幫你監測硬碟狀態。&lt;&#x2F;li&gt;
+&lt;ul&gt;&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;CrystalDiskInfo&lt;&#x2F;strong&gt;: 硬碟狀態監測。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;CrystalDiskMark&lt;&#x2F;strong&gt;: 硬碟讀寫測速。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;&lt;&#x2F;ul&gt;
+&lt;h3&gt;Package Manager - 程式管家&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;store.steampowered.com&#x2F;&quot;&gt;&lt;strong&gt;Steam&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 數位發行平台，遊戲、軟體、影片、音樂...&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;portableapps.com&#x2F;&quot;&gt;&lt;strong&gt;PortableApps.com&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 便攜軟體，使得軟體不依賴電腦。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;chocolatey.org&#x2F;&quot;&gt;&lt;strong&gt;Chocolatey&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;: 軟體包管理器，Windows 的 apt 或 yum。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;!--
+Flags filter: [&#x27;Abandon&#x27;, &#x27;Pro&#x27;, &#x27;Old&#x27;, &#x27;Discontinued&#x27;]
+Count: {filter: 34, folders: 29, elements: 108}
+--&gt;
+&lt;h2 id=&quot;ru-he-xun-zhao-shi-yong-you-xiu-ruan-ti&quot;&gt;如何尋找實用優秀軟體&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;zen-mo-zhao&quot;&gt;怎麼找？&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;電腦的軟體的強大，不在於能做到多少事情，而是一件事情能做得多好。&lt;&#x2F;li&gt;
+&lt;li&gt;應用軟體應該旨在幫助用戶完成工作，提高效率。 &lt;del&gt;而不是讓用戶的電腦成為廣告投放機。&lt;&#x2F;del&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;遠離流氓軟件，享受健康生活。&lt;&#x2F;li&gt;
+&lt;li&gt;一些很棒的軟體功能非常強大，但是學習門檻較高，或是需要經過調教，&lt;del&gt;甚至可能需要老司機帶路，&lt;&#x2F;del&gt;但是學會了就能夠享受它們的便利了。&lt;&#x2F;li&gt;
+&lt;li&gt;不要小看網頁瀏覽器的附加元件＼擴充套件，他們能夠極大地提高體驗和便利。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;qu-na-li-zhao&quot;&gt;去哪裡找？&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;看緣分（這是真...&lt;&#x2F;li&gt;
+&lt;li&gt;維基百科：根據你想要的功能搜尋，特別是一些列表和比較的頁面，標題通常像是「List of ...」或「Comparison of ...」。&lt;&#x2F;li&gt;
+&lt;li&gt;尋找現有軟體的替代品：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;alternativeto.net&#x2F;&quot;&gt;AlternativeTo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;相關的部落格＼網站：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;www.appinn.com&#x2F;&quot;&gt;小众软件&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;www.azofreeware.com&#x2F;&quot;&gt;阿榮福利味&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;free.com.tw&#x2F;&quot;&gt;免費資源網路社群&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;pcrookie.com&#x2F;&quot;&gt;軟體玩家&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;www.playpcesor.com&#x2F;&quot;&gt;電腦玩物&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;xbeta.info&#x2F;&quot;&gt;善用佳软&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;...&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;release-notes&quot;&gt;Release Notes&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;5.3.1 (2023-06-29): 更新和修正了部分內容。&lt;&#x2F;li&gt;
+&lt;li&gt;5.3.0 (2023-06-18): 更新和修正了一拖拉庫內容。&lt;&#x2F;li&gt;
+&lt;li&gt;5.1.0 (2021-01-06): 第五版更新。更新和修正了部分內容；程式碼演進，模板更新；軟體資訊由 YAML 格式儲存和整理，再由 Python 和 Jinja2 渲染而成。&lt;&#x2F;li&gt;
+&lt;li&gt;5.0.0 (2020-12-13): 第五版更新。更新和修正了部分內容；程式碼重寫，文章生成基於 Python、jinja2 和 YAML。&lt;&#x2F;li&gt;
+&lt;li&gt;3.0.1 (2020-07-24): 第三版更新。更新和修正了部分內容；原始資料重新結構；程式碼重寫。&lt;&#x2F;li&gt;
+&lt;li&gt;2.1.2 (2019-04-15): 更新和修正了部分內容。&lt;&#x2F;li&gt;
+&lt;li&gt;2.1.1 (2019-01-31): 更新和修正了部分內容。&lt;&#x2F;li&gt;
+&lt;li&gt;2.1.0 (2019-01-16): 更新和修正了部分內容；合併一些瑣碎的分類；獨立出 &lt;code&gt;Licenses&lt;&#x2F;code&gt; 標記；程式碼更新。&lt;&#x2F;li&gt;
+&lt;li&gt;2.0.0 (2018-08-18): 第二版更新。更新和修正了部分內容；增加了更詳細的標記；修正了不兼容的排版；程式碼更新。&lt;&#x2F;li&gt;
+&lt;li&gt;1.4.1 (2018-03-24): 更新和修正了部分內容。&lt;&#x2F;li&gt;
+&lt;li&gt;1.4.0 (2018-03-01): 更新和修正了部分內容；文章生成基於 Python 和 YAML。&lt;&#x2F;li&gt;
+&lt;li&gt;1.3.1 (2018-02-07): 修正了不兼容的排版。&lt;&#x2F;li&gt;
+&lt;li&gt;1.3.0 (2018-02-06): 修正了不兼容的排版。&lt;&#x2F;li&gt;
+&lt;li&gt;1.2.4 (2017-12-30)&lt;&#x2F;li&gt;
+&lt;li&gt;1.2.3 (2017-12-18)&lt;&#x2F;li&gt;
+&lt;li&gt;1.2.2 (2017-12-02)&lt;&#x2F;li&gt;
+&lt;li&gt;1.2.1 (2017-11-30)&lt;&#x2F;li&gt;
+&lt;li&gt;1.2.0 (2017-08-21)&lt;&#x2F;li&gt;
+&lt;li&gt;1.1.0 (2017-07-26)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

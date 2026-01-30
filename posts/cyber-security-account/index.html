@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 你也可以知道的賽博安全指南 - 帳密篇</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="&lt;del&gt;偵測到您的賬戶有異常登錄記錄，請儘速處理。&lt;&#x2F;del&gt;" />
+        <meta property="og:description" content="&lt;del&gt;偵測到您的賬戶有異常登錄記錄，請儘速處理。&lt;&#x2F;del&gt;" />
+
+    
+
+    <meta property="og:title" content="你也可以知道的賽博安全指南 - 帳密篇" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;cyber-security-account&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            你也可以知道的賽博安全指南 - 帳密篇
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/cyber-security-account/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2023-06-29"><span class='separator' aria-hidden='true'>•</span>2023-06-29</time></li><li title="2035 words"><span class='separator' aria-hidden='true'>•</span>11 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/cyber-security/">Cyber Security</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2023-06-29">Updated on 2023-06-29</time></li>
+        </ul>
+            <p class="p-summary" hidden>&lt;del&gt;偵測到您的賬戶有異常登錄記錄，請儘速處理。&lt;&#x2F;del&gt;</p><section class="e-content body"><!-- # 你也可以知道的賽博安全指南 - 帳密篇 -->
+<p><del>偵測到您的賬戶有異常登錄記錄，請儘速處理。</del></p>
+<h2 id="na-ge-wang-ba-dan-hai-ke-a">哪個王八蛋駭客啊</h2>
+<p>我不是總統也不是百萬 YouTuber，為什麼有人想要偷我的賬戶？</p>
+<p>有一些王八蛋駭客可以拿你的電腦當成網路攻擊的跳板；
+通過你的賬戶向你周圍的家人、朋友投送詐欺資訊；
+甚至勒索、盜取你的銀行賬戶，
+這些都是有利可圖的。</p>
+<p>而網路安全也是一種工程學，駭入也是講究成本的，
+一般人不是會是高價值目標，
+所以通常駭客不會花很大心力去駭入一個普通人的賬戶，
+通常這些駭入行動都是由駭客編寫的精妙程式執行的。
+而提高駭入的成本，也許就能讓駭客放棄駭入你的賬戶。</p>
+<p>通常，安全性和便利性是一個權衡，越安全也就越麻煩，
+甚至，一些過時的古早設計既麻煩還不安全。
+資訊安全已是現代網路的一門大學問，
+而現代的工具在設計時，則是同時考慮了安全性和便利性。</p>
+<h2 id="mi-ma-ti-shi-wen-ti-jiu-shi-yi-ge-chao-ji-bai-chi-she-ji">密碼提示問題就是一個超級白痴設計</h2>
+<p>通常在註冊賬戶的時候，
+系統會要求你選擇幾個問題回答，
+例如你出生的城市、寵物的名字...
+但你是考試都考的幾罷昏的好學生，
+你會很認真的回答這些問題，
+但認真回答這些問題反而會讓你的賬戶安全形同虛設，
+因為所有的答案都可以從你的 Twitter、Facebook 之類的社群平臺中找到，
+這被稱作社交工程（Social Engineering）。</p>
+<p>至於亂填的答案，當我要找回密碼的時候，
+我怎麼會記得當時胡扯了什麼答案，
+於是三個問題就變成了三組（弱）密碼，
+但我就是因為忘記密碼才會用到它們不是嗎...</p>
+<h2 id="mi-ma-na-mo-duo-na-mo-chang">密碼拿麼多、拿麼長</h2>
+<p>例如 Google <sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup>、Yahoo <sup class="footnote-reference" id="fr-2-1"><a href="#fn-2">2</a></sup> 在你註冊賬戶的時候都指導你設計密碼的策略。</p>
+<p>一個優秀的密碼要十幾位包含數字大小寫字母符號還要好記又難猜，
+想出一個密碼比晚餐吃什麼還要困難。</p>
+<p>但是駭客甚至不需要去猜你的密碼，
+它只要攻擊一個網站的帳密資料庫，
+就可以知道成千上「有用的」密碼。</p>
+<p><a class="external" href="https://monitor.firefox.com/">Firefox Monitor</a> 提供一個服務，
+幫你檢查、追蹤你的賬戶是否是洩漏事件的受害者。</p>
+<p>這就也為什麼要在不同的網站也要使用不同的密碼，
+否則只要知道了一組密碼，
+就可以在所有那些共用密碼的網站上登錄。</p>
+<p>那，密碼拿麼多、拿麼長，我怎麼可能記得住？</p>
+<h2 id="wan-fa-gui-yi-yi-gui-he-chu">萬法歸一，一歸何處？</h2>
+<p>記住密碼的方式，可以做成記憶土司吃掉，也可以拿小本本記下來，
+但現代人有現代人的解決方式。</p>
+<p>密碼管理器可以幫你記住帳密，
+現代的瀏覽器例如 Firefox 和 Chrome 都有密碼管理器的功能，
+會幫你記住不同網站登錄的賬戶密碼，就可以一鍵登錄。
+省去了記憶的部分，就使得在註冊一些網站的時候可以使用亂數密碼。</p>
+<p>很明顯的，密碼管理器用得好是萬法歸一，用不好就是<strong>單點故障</strong>。
+只要誰取得了你瀏覽器的使用權限，
+甚至取得了 Firefox、Google 賬戶，
+也就得到了你所有的的密碼。</p>
+<p>記得設定主密碼（Primary Password）使得密碼管理器更加安全，
+在每次存取密碼管理器的時候都需要輸入主密碼，
+這樣只要記得主密碼就可以存取全部網站。
+但是即使 Firefox、Google 賬戶被盜也偷不走所有密碼，
+當然，主密碼的安全就變得至關重要。</p>
+<p>也有其他提供密碼管理器的服務，如 LastPass、1Password，
+使用之前就要評估他們信譽和安全性；
+當然還有免費、開源的本地端的密碼管理器軟體，例如 KeePass，以及它的變種 <a class="external" href="https://keepassxc.org/">KeePassXC</a>。</p>
+<p>例如，KeePass 會把密碼存儲成一個加密的檔案，就像密碼的保險箱，
+就是有宵小偷走了保險箱，也幾乎不可能打開它。
+當然保險箱丟了密碼也就都不見了，所以備份也是很重要的。
+KeePass 也可以拿來存儲一些像是金鑰之類的資訊，
+甚至是身份證、護照影印件之類的重要內容。</p>
+<p>當然，拿小本本記下來是物理上的安全。
+像是一些丟掉就找不回賬戶的恢復金鑰（Recovery Code），
+印出來藏好也是真的安心。</p>
+<h2 id="ru-guo-yi-ci-bu-gou-an-quan-na-jiu-liang-ci">如果一次不夠安全，那就兩次</h2>
+<p>現代的網路安全已經認為只有密碼是不夠安全的，
+很多的網站已經強制要求用戶啟用二階段驗證。
+顧名思義，二階段驗證（Two-step authentication）就是在登錄之後再進行一次驗證。</p>
+<p>二階段驗證用於確認在操作的人是賬戶擁有者本尊，
+所以設定二階段驗證能大大提高安全性。</p>
+<p>二階段驗證有很多種類，
+例如指紋、手機、附近信任的藍牙設備都可以作為二階段驗證的工具，
+當然還有最常見的 OTP (One-Time Password) 是基於時間的一次性密碼：
+每隔幾秒就會刷新的數字。</p>
+<p>使用 OTP 不需要特殊的工具，只需要 OTP 產生器。
+例如 <a class="external" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Google Authenticator</a> 的 Android 應用程式。</p>
+<p>當然，使用二階段驗證時，記得保護、備份好恢復金鑰。</p>
+<h2 id="yue-wei-xian-de-di-fang-yue-an-quan">越危險的地方越安全</h2>
+<p>上面的方法讓你的風險集中到了幾個地方，
+像是 Forefox、Google、Microsoft 賬戶，
+儲存二階段驗證的設備，
+還有密碼管理器的檔案和主密碼。
+好處是你只要花更少的心力維護更多的賬戶，
+但是也要花更多的力氣去維護這些重要的地方，
+例如設定專用的、更強的密碼。</p>
+<p>老生常談的基本的網路安全概念，
+就像醫生要你保持健康的生活一樣置若罔聞。
+保護資安還有太多太多地方要注意，例如說：
+不要在不安全的地方（例如公司、學校、影印店等公用電腦）登錄賬戶。
+不要在不信任的設備（例如公用電腦）上接入手機、隨身碟等存儲裝置。
+也不要把手機插在奇怪的地方（例如共用充電器）。
+不要連結陌生的 Wi-Fi，使用 VPN（虛擬私人網路）等。</p>
+<h2 id="ben-mi-ma-ni-hai-wo-hao-diu-lian">笨密碼，你害我好丟臉</h2>
+<p>無密碼的時代或許是我們的未來，
+許多科技公司和資安專家越來越希望減少和消滅密碼。</p>
+<ul>
+<li>你已經在用的「使用 Google 帳戶登入」就是開放授權（OAuth），
+讓你用一個賬戶就可以在各個網站上暢通無阻。</li>
+<li>你也許已經在用的指紋掃描、面部識別、視網膜掃描等生物識別，
+刑事偵查正式走進千家萬戶。</li>
+<li>Windows 11 強制要求的 TPM 2.0 也是其中一環，
+驗證資訊會安全地存儲在這特殊設計的安全晶片上。</li>
+<li>更多的安全裝置例如智能卡或隨身碟一樣的金鑰，
+有著電影一般的儀式感。</li>
+</ul>
+<p>然而，目前這些技術都還需要進一步的發展和普及。
+也並不存在絕對安全的方法。</p>
+<p>也許那一天，電腦比你還知道你是你。</p>
+<footer class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p>Google: <a class="external" href="https://support.google.com/accounts/answer/32040?hl=zh-Hant">設定高強度密碼並強化帳戶安全性</a> <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="fn-2">
+<p>Yahoo: <a class="external" href="https://tw.help.yahoo.com/kb/sln3012.html">建立高安全性密碼的秘訣</a> <a href="#fr-2-1">↩</a></p>
+</li>
+</ol>
+</footer>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">［封存］推薦的 Windows 應用軟體列表</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/desktop-search-and-claunch-zh-tw/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">桌面搜尋概論，以及 CLaunch 中文化</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/cyber-security-account/#na-ge-wang-ba-dan-hai-ke-a">哪個王八蛋駭客啊</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/cyber-security-account/#mi-ma-ti-shi-wen-ti-jiu-shi-yi-ge-chao-ji-bai-chi-she-ji">密碼提示問題就是一個超級白痴設計</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/cyber-security-account/#mi-ma-na-mo-duo-na-mo-chang">密碼拿麼多、拿麼長</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/cyber-security-account/#wan-fa-gui-yi-yi-gui-he-chu">萬法歸一，一歸何處？</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/cyber-security-account/#ru-guo-yi-ci-bu-gou-an-quan-na-jiu-liang-ci">如果一次不夠安全，那就兩次</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/cyber-security-account/#yue-wei-xian-de-di-fang-yue-an-quan">越危險的地方越安全</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/cyber-security-account/#ben-mi-ma-ni-hai-wo-hao-diu-lian">笨密碼，你害我好丟臉</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Wi-Fi</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/wi-fi/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 03 Apr 2020 01:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Raspberry Pi 4B 搭建 NAS 第二話：網路篇</title>
+          <pubDate>Fri, 03 Apr 2020 01:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/rpi4b-nas-ep2/</link>
+          <guid>https://undecv.github.io/blog/posts/rpi4b-nas-ep2/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/rpi4b-nas-ep2/">&lt;p&gt;&lt;del&gt;究竟讀寫速度會卡在 USB 還是 SMB 呢？rPi4B NAS 翻車最終話！\滑稽。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;供電的問題解決了，SMB 網路芳鄰也成功搭建了起來，那接下來就是喜聞樂見的測速時間了。&lt;&#x2F;p&gt;
+&lt;p&gt;注意，以下使用的單位，小寫 &lt;code&gt;b&lt;&#x2F;code&gt; 是 &lt;code&gt;bits&lt;&#x2F;code&gt;，大寫 &lt;code&gt;B&lt;&#x2F;code&gt; 是 &lt;code&gt;Bytes&lt;&#x2F;code&gt;，&lt;code&gt;8 bit = 1 Byte&lt;&#x2F;code&gt;，全部使用十進位的 &lt;code&gt;1 MB = 1,000,000 Bytes&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;依據 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;（WD 紅碟的 Spec），壹個典型的 2.5吋、5400RPM 的硬碟，144MB&#x2F;s，根據可愛的 Shizuku &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 測試我的行動硬碟，結果差不多。&lt;&#x2F;p&gt;
+&lt;p&gt;USB 3.0 的理論速度是 5Gb&#x2F;s，大約是 625MB&#x2F;s &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-1&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;；根據 rPi 官方的說法 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-5-1&quot;&gt;&lt;a href=&quot;#fn-5&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 和基準測試 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-1&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 有約 343MB&#x2F;s，所以 USB 在機械硬碟的速度下不會成為瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;同樣的，根據 Spec 和官方的測速 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-2&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，Ethernet 可以有幾乎真正的 GbE 的 1Gb&#x2F;s 的速度，當然要達到真正的 GbE 需要交換機、路由器、網路線、以及其他終端裝置支援。指令 ethtool eth0 可以檢視當前的連線頻寬（理想速度），然而，即使是按照理想的 1Gb&#x2F;s 的速度計算，GbE 也僅有 125Mb&#x2F;s。
+在全程使用 GbE 的情景下，這速度會是瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;而 Wi-Fi 就更慘了，還是根據官方測速 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-3&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，在 5GHz 之下僅有 114Mb&#x2F;s（約 14MB&#x2F;s）的實際速度。指令 iwconfig 可以檢視當前的連線頻寬（理想速度）。沒錯，明明是 Wi-Fi 5 卻連 4 都不如\滑稽。
+在 rPi4B 使用 Wi-Fi 的情況下，這速度會是瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;但是吼，話雖這麼說，不要忘記了，rPi4B 再怎麼說也只要一兩張小學生的 Low Cost 裝置，你還想怎樣（錘。&lt;&#x2F;p&gt;
+&lt;p&gt;可以使用 iperf3 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-3-1&quot;&gt;&lt;a href=&quot;#fn-3&quot;&gt;6&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 進行網路的實際速度的測試。
+可以使用可愛的 Shizuku &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-2&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 對本地和遠端的硬碟做讀寫速度測試。&lt;&#x2F;p&gt;
+&lt;p&gt;而，一般家用無線路由器，甚至終端裝置（電腦、手機）的 Wi-Fi 速度亦有可能成為瓶頸，例如一個標稱 AC1200 的家用無線路由器 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-7-1&quot;&gt;&lt;a href=&quot;#fn-7&quot;&gt;7&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，在 Wi-Fi 5（即 802.11ac）的 5GHz 之下的理論速度是 867Mb&#x2F;s（約 108MB&#x2F;s），而 Wi-Fi 的實際速度是非常看臉的，會收到距離、角度、障礙物、雜訊、姿勢、走位等諸多因素的影響。
+在 rPi4B 使用 GbE，而終端裝置使用 Wi-Fi 卻吃不到 GbE 以上速度的時候，這速度會是瓶頸。&lt;&#x2F;p&gt;
+&lt;p&gt;而官方討論區中所述的問題，很幸運的我沒有遇到。大概是說，NTFS 在 Linux 上效能不佳，可以使用原生的 ext4 檔案系統 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-8-1&quot;&gt;&lt;a href=&quot;#fn-8&quot;&gt;8&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，以及行動硬碟的相容問題 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-9-1&quot;&gt;&lt;a href=&quot;#fn-9&quot;&gt;9&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;總結，在假設路由器、網路線等其他裝置都支援 GbE，無線網路 AC1200 的情況下：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;直接的硬碟讀寫速度：144MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;li&gt;rPi4B、電腦都使用有線網路：瓶頸會是有線網路 GbE，125MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;li&gt;rPi4B 使用有線網路，電腦使用無線網路：瓶頸會是無線網路，108MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;li&gt;rPi4B 使用無線網路：瓶頸會是 rPi4B 的無線網路，14MB&#x2F;s；&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;在家拉光纖指日可待。&lt;&#x2F;p&gt;
+&lt;p&gt;*[rPi]: Raspberry Pi
+*[rPi4B]: Raspberry Pi 4B
+*[GbE]: Gigabit Ethernet&lt;&#x2F;p&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;products.wdc.com&#x2F;library&#x2F;SpecSheet&#x2F;ENG&#x2F;2879-800002.pdf&quot;&gt;WD Red NAS Hard Drives (PDF)&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;Crystal Dew World： &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;crystalmark.info&#x2F;en&#x2F;software&#x2F;crystaldiskmark&#x2F;&quot;&gt;CrystalDiskMark&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-2&quot;&gt;↩2&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;USB&quot;&gt;USB&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-4-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-5&quot;&gt;
+&lt;p&gt;Raspberry Pi Documentation: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;documentation&#x2F;hardware&#x2F;raspberrypi&#x2F;usb&#x2F;README.md&quot;&gt;USB&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-5-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-6&quot;&gt;
+&lt;p&gt;The MagPi magazine: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;magpi.raspberrypi.org&#x2F;articles&#x2F;raspberry-pi-4-specs-benchmarks&quot;&gt;Raspberry Pi 4 specs and benchmarks&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-1&quot;&gt;↩&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-2&quot;&gt;↩2&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-3&quot;&gt;↩3&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Iperf&quot;&gt;Iperf&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-3-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-7&quot;&gt;
+&lt;p&gt;MikroTik Routers and Wireless: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;hap_ac2&quot;&gt;hAP ac²&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-7-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-8&quot;&gt;
+&lt;p&gt;Raspberry Pi Forums: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;forums&#x2F;viewtopic.php?f=91&amp;amp;t=243962&quot;&gt;Slow samba transfer speed on RPi4 to a usb 3.0 drive (10,4mb&#x2F;s)&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-8-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-9&quot;&gt;
+&lt;p&gt;Raspberry Pi Forums: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.raspberrypi.org&#x2F;forums&#x2F;viewtopic.php?p=1501426&quot;&gt;STICKY: If you have a Raspberry Pi 4 and are getting bad speeds transferring data to&#x2F;from USB3.0 SSDs, read this&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-9-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+    </channel>
+</rss>

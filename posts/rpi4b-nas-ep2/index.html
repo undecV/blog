@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • Raspberry Pi 4B 搭建 NAS 第二話：網路篇</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="Raspberry Pi 4B NAS Episode 2 (Network)&lt;br &#x2F;&gt;&lt;del&gt;究竟讀寫速度會卡在 USB 還是 SMB 呢？rPi4B NAS 翻車最終話！。&lt;&#x2F;del&gt;" />
+        <meta property="og:description" content="Raspberry Pi 4B NAS Episode 2 (Network)&lt;br &#x2F;&gt;&lt;del&gt;究竟讀寫速度會卡在 USB 還是 SMB 呢？rPi4B NAS 翻車最終話！。&lt;&#x2F;del&gt;" />
+
+    
+
+    <meta property="og:title" content="Raspberry Pi 4B 搭建 NAS 第二話：網路篇" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;rpi4b-nas-ep2&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            Raspberry Pi 4B 搭建 NAS 第二話：網路篇
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/rpi4b-nas-ep2/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2020-04-03T01:00:00"><span class='separator' aria-hidden='true'>•</span>2020-04-03</time></li><li title="933 words"><span class='separator' aria-hidden='true'>•</span>5 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/raspberry-pi/">Raspberry Pi</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/nas/">NAS</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/hdd/">HDD</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/ethernet/">Ethernet</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/wi-fi/">Wi-Fi</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2020-04-03T01:00:00">Updated on 2020-04-03</time></li>
+        </ul>
+            <p class="p-summary" hidden>Raspberry Pi 4B NAS Episode 2 (Network)&lt;br &#x2F;&gt;&lt;del&gt;究竟讀寫速度會卡在 USB 還是 SMB 呢？rPi4B NAS 翻車最終話！。&lt;&#x2F;del&gt;</p><section class="e-content body"><p><del>究竟讀寫速度會卡在 USB 還是 SMB 呢？rPi4B NAS 翻車最終話！\滑稽。</del></p>
+<p>供電的問題解決了，SMB 網路芳鄰也成功搭建了起來，那接下來就是喜聞樂見的測速時間了。</p>
+<p>注意，以下使用的單位，小寫 <code>b</code> 是 <code>bits</code>，大寫 <code>B</code> 是 <code>Bytes</code>，<code>8 bit = 1 Byte</code>，全部使用十進位的 <code>1 MB = 1,000,000 Bytes</code>。</p>
+<p>依據 <sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup>（WD 紅碟的 Spec），壹個典型的 2.5吋、5400RPM 的硬碟，144MB/s，根據可愛的 Shizuku <sup class="footnote-reference" id="fr-2-1"><a href="#fn-2">2</a></sup> 測試我的行動硬碟，結果差不多。</p>
+<p>USB 3.0 的理論速度是 5Gb/s，大約是 625MB/s <sup class="footnote-reference" id="fr-4-1"><a href="#fn-4">3</a></sup>；根據 rPi 官方的說法 <sup class="footnote-reference" id="fr-5-1"><a href="#fn-5">4</a></sup> 和基準測試 <sup class="footnote-reference" id="fr-6-1"><a href="#fn-6">5</a></sup> 有約 343MB/s，所以 USB 在機械硬碟的速度下不會成為瓶頸。</p>
+<p>同樣的，根據 Spec 和官方的測速 <sup class="footnote-reference" id="fr-6-2"><a href="#fn-6">5</a></sup>，Ethernet 可以有幾乎真正的 GbE 的 1Gb/s 的速度，當然要達到真正的 GbE 需要交換機、路由器、網路線、以及其他終端裝置支援。指令 ethtool eth0 可以檢視當前的連線頻寬（理想速度），然而，即使是按照理想的 1Gb/s 的速度計算，GbE 也僅有 125Mb/s。
+在全程使用 GbE 的情景下，這速度會是瓶頸。</p>
+<p>而 Wi-Fi 就更慘了，還是根據官方測速 <sup class="footnote-reference" id="fr-6-3"><a href="#fn-6">5</a></sup>，在 5GHz 之下僅有 114Mb/s（約 14MB/s）的實際速度。指令 iwconfig 可以檢視當前的連線頻寬（理想速度）。沒錯，明明是 Wi-Fi 5 卻連 4 都不如\滑稽。
+在 rPi4B 使用 Wi-Fi 的情況下，這速度會是瓶頸。</p>
+<p>但是吼，話雖這麼說，不要忘記了，rPi4B 再怎麼說也只要一兩張小學生的 Low Cost 裝置，你還想怎樣（錘。</p>
+<p>可以使用 iperf3 <sup class="footnote-reference" id="fr-3-1"><a href="#fn-3">6</a></sup> 進行網路的實際速度的測試。
+可以使用可愛的 Shizuku <sup class="footnote-reference" id="fr-2-2"><a href="#fn-2">2</a></sup> 對本地和遠端的硬碟做讀寫速度測試。</p>
+<p>而，一般家用無線路由器，甚至終端裝置（電腦、手機）的 Wi-Fi 速度亦有可能成為瓶頸，例如一個標稱 AC1200 的家用無線路由器 <sup class="footnote-reference" id="fr-7-1"><a href="#fn-7">7</a></sup>，在 Wi-Fi 5（即 802.11ac）的 5GHz 之下的理論速度是 867Mb/s（約 108MB/s），而 Wi-Fi 的實際速度是非常看臉的，會收到距離、角度、障礙物、雜訊、姿勢、走位等諸多因素的影響。
+在 rPi4B 使用 GbE，而終端裝置使用 Wi-Fi 卻吃不到 GbE 以上速度的時候，這速度會是瓶頸。</p>
+<p>而官方討論區中所述的問題，很幸運的我沒有遇到。大概是說，NTFS 在 Linux 上效能不佳，可以使用原生的 ext4 檔案系統 <sup class="footnote-reference" id="fr-8-1"><a href="#fn-8">8</a></sup>，以及行動硬碟的相容問題 <sup class="footnote-reference" id="fr-9-1"><a href="#fn-9">9</a></sup>。</p>
+<p>總結，在假設路由器、網路線等其他裝置都支援 GbE，無線網路 AC1200 的情況下：</p>
+<ul>
+<li>直接的硬碟讀寫速度：144MB/s；</li>
+<li>rPi4B、電腦都使用有線網路：瓶頸會是有線網路 GbE，125MB/s；</li>
+<li>rPi4B 使用有線網路，電腦使用無線網路：瓶頸會是無線網路，108MB/s；</li>
+<li>rPi4B 使用無線網路：瓶頸會是 rPi4B 的無線網路，14MB/s；</li>
+</ul>
+<p>在家拉光纖指日可待。</p>
+<p>*[rPi]: Raspberry Pi
+*[rPi4B]: Raspberry Pi 4B
+*[GbE]: Gigabit Ethernet</p>
+<footer class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p><a class="external" href="http://products.wdc.com/library/SpecSheet/ENG/2879-800002.pdf">WD Red NAS Hard Drives (PDF)</a> <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="fn-2">
+<p>Crystal Dew World： <a class="external" href="https://crystalmark.info/en/software/crystaldiskmark/">CrystalDiskMark</a> <a href="#fr-2-1">↩</a> <a href="#fr-2-2">↩2</a></p>
+</li>
+<li id="fn-4">
+<p>Wikipedia: <a class="external" href="https://en.wikipedia.org/wiki/USB">USB</a> <a href="#fr-4-1">↩</a></p>
+</li>
+<li id="fn-5">
+<p>Raspberry Pi Documentation: <a class="external" href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/usb/README.md">USB</a> <a href="#fr-5-1">↩</a></p>
+</li>
+<li id="fn-6">
+<p>The MagPi magazine: <a class="external" href="https://magpi.raspberrypi.org/articles/raspberry-pi-4-specs-benchmarks">Raspberry Pi 4 specs and benchmarks</a> <a href="#fr-6-1">↩</a> <a href="#fr-6-2">↩2</a> <a href="#fr-6-3">↩3</a></p>
+</li>
+<li id="fn-3">
+<p>Wikipedia: <a class="external" href="https://en.wikipedia.org/wiki/Iperf">Iperf</a> <a href="#fr-3-1">↩</a></p>
+</li>
+<li id="fn-7">
+<p>MikroTik Routers and Wireless: <a class="external" href="https://mikrotik.com/product/hap_ac2">hAP ac²</a> <a href="#fr-7-1">↩</a></p>
+</li>
+<li id="fn-8">
+<p>Raspberry Pi Forums: <a class="external" href="https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=243962">Slow samba transfer speed on RPi4 to a usb 3.0 drive (10,4mb/s)</a> <a href="#fr-8-1">↩</a></p>
+</li>
+<li id="fn-9">
+<p>Raspberry Pi Forums: <a class="external" href="https://www.raspberrypi.org/forums/viewtopic.php?p=1501426">STICKY: If you have a Raspberry Pi 4 and are getting bad speeds transferring data to/from USB3.0 SSDs, read this</a> <a href="#fr-9-1">↩</a></p>
+</li>
+</ol>
+</footer>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">［封存］把檔案壓縮影片轉檔任務放進佇列！用 WSL Task Spooler 排隊 Windows 的指令</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/rpi4b-nas-ep1/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">Raspberry Pi 4B 搭建 NAS 第一話：外接硬碟和 USB 篇</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

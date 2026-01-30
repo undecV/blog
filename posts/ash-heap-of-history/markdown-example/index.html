@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • ［封存］精簡版 Markdown 語法</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="[Archived] Markdown Example&lt;br &#x2F;&gt;&lt;del&gt;連猴子都能懂的 Markdown 教學&lt;&#x2F;del&gt;" />
+        <meta property="og:description" content="[Archived] Markdown Example&lt;br &#x2F;&gt;&lt;del&gt;連猴子都能懂的 Markdown 教學&lt;&#x2F;del&gt;" />
+
+    
+
+    <meta property="og:title" content="［封存］精簡版 Markdown 語法" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;markdown-example&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            ［封存］精簡版 Markdown 語法
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2017-03-01"><span class='separator' aria-hidden='true'>•</span>2017-03-01</time></li><li title="461 words"><span class='separator' aria-hidden='true'>•</span>3 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/markdown/">Markdown</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2017-03-01">Updated on 2017-03-01</time></li>
+        </ul>
+            <p class="p-summary" hidden>[Archived] Markdown Example&lt;br &#x2F;&gt;&lt;del&gt;連猴子都能懂的 Markdown 教學&lt;&#x2F;del&gt;</p><section class="e-content body">
+    <section class="series-page-intro">
+                <p>這篇文章出土自 <a href="https://undecv.github.io/blog/posts/ash-heap-of-history/" aria_label="歷史的垃圾堆">歷史的垃圾堆</a> 系列，僅供考古，不供參考。</p>
+
+            </section>
+<blockquote>
+<p>Apache HTTP server - Part 番外之一</p>
+</blockquote>
+<p>Q: 如何快速生成作業要求的 HTML 網頁？<br />
+<del>連猴子都能懂的 Markdown 教學</del></p>
+<blockquote>
+<p>This work by me is marked <a class="external" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>.</p>
+</blockquote>
+<hr />
+<blockquote>
+<p><strong>Markdown</strong> 是一種<a class="external" href="https://zh.wikipedia.org/wiki/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80">輕量級標記式語言</a>，
+創始人為<a class="external" href="https://zh.wikipedia.org/wiki/%E7%B4%84%E7%BF%B0%C2%B7%E6%A0%BC%E9%AD%AF%E4%BC%AF">約翰·格魯伯</a>（John Gruber）。
+它允許人們「使用易讀易寫的純文字格式編寫檔案，然後轉換成有效的<a class="external" href="https://zh.wikipedia.org/wiki/XHTML">XHTML</a>
+（或者<a class="external" href="https://zh.wikipedia.org/wiki/HTML">HTML</a>）檔案」。
+-- Wikipedia (<a class="external" href="https://zh.wikipedia.org/zh-tw/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC">CC BY-SA 3.0</a>)</p>
+</blockquote>
+<p>Markdown 的檔案擴展名為<code>.md</code> 。</p>
+<p>光是這個介紹就很符合作業要求啊，可是我經常拿來轉換成 PDF 就是了ww。</p>
+<blockquote>
+<p>**注意！**並不是所有的 Markdown 編輯器或閱讀器都能完整的包括下述的功能，在不同的編輯器和 CSS Theme 下，顯示的結果可能略有不同。</p>
+</blockquote>
+<hr />
+<ul>
+<li><h3 id="biao-ti">標題</h3>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-heading z-1 z-markdown"><span class="z-punctuation z-definition z-heading z-begin z-markdown">#</span> </span><span class="z-markup z-heading z-1 z-markdown"><span class="z-entity z-name z-section z-markdown">一級標題</span><span class="z-meta z-whitespace z-newline z-markdown">
+</span></span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-heading z-2 z-markdown"><span class="z-punctuation z-definition z-heading z-begin z-markdown">##</span> </span><span class="z-markup z-heading z-2 z-markdown"><span class="z-entity z-name z-section z-markdown">二級標題</span><span class="z-meta z-whitespace z-newline z-markdown">
+</span></span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-heading z-markdown"><span class="z-punctuation z-definition z-heading z-begin z-markdown">###</span> </span><span class="z-markup z-heading z-markdown"><span class="z-entity z-name z-section z-markdown">三級標題</span><span class="z-meta z-whitespace z-newline z-markdown">
+</span></span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-heading z-markdown"><span class="z-punctuation z-definition z-heading z-begin z-markdown">####</span> </span><span class="z-markup z-heading z-markdown"><span class="z-entity z-name z-section z-markdown">四級標題</span><span class="z-meta z-whitespace z-newline z-markdown">
+</span></span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-heading z-markdown"><span class="z-punctuation z-definition z-heading z-begin z-markdown">#####</span> </span><span class="z-markup z-heading z-markdown"><span class="z-entity z-name z-section z-markdown">五級標題</span><span class="z-meta z-whitespace z-newline z-markdown">
+</span></span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-heading z-markdown"><span class="z-punctuation z-definition z-heading z-begin z-markdown">######</span> </span><span class="z-markup z-heading z-markdown"><span class="z-entity z-name z-section z-markdown">六級標題</span><span class="z-meta z-whitespace z-newline z-markdown">
+</span></span></span></span></code></pre>
+<ul>
+<li>演示：
+<ul>
+<li><h1 id="yi-ji-biao-ti">一級標題</h1>
+</li>
+<li><h2 id="er-ji-biao-ti">二級標題</h2>
+</li>
+<li><h3 id="san-ji-biao-ti">三級標題</h3>
+</li>
+<li><h4 id="si-ji-biao-ti">四級標題</h4>
+</li>
+<li><h5 id="wu-ji-biao-ti">五級標題</h5>
+</li>
+<li><h6 id="liu-ji-biao-ti">六級標題</h6>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="duan-luo">段落</h3>
+<ul>
+<li>空行分割段落。</li>
+</ul>
+</li>
+<li><h3 id="lie-biao">列表</h3>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-markup z-list z-unnumbered z-bullet z-markdown"><span class="z-punctuation z-definition z-list_item z-markdown">-</span></span><span class="z-markup z-list z-unnumbered z-markdown"> <span class="z-meta z-paragraph z-list z-markdown">其一
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-markup z-list z-unnumbered z-markdown"><span class="z-meta z-paragraph z-list z-markdown"></span></span><span class="z-markup z-list z-unnumbered z-bullet z-markdown"><span class="z-punctuation z-definition z-list_item z-markdown">-</span></span><span class="z-markup z-list z-unnumbered z-markdown"><span class="z-meta z-paragraph z-list z-markdown"> 其一
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-markup z-list z-unnumbered z-markdown"><span class="z-meta z-paragraph z-list z-markdown"></span></span><span class="z-markup z-list z-unnumbered z-bullet z-markdown"><span class="z-punctuation z-definition z-list_item z-markdown">-</span></span><span class="z-markup z-list z-unnumbered z-markdown"><span class="z-meta z-paragraph z-list z-markdown"> 其一
+</span></span></span></code></pre>
+<ul>
+<li>演示：
+<ul>
+<li>其一</li>
+<li>其一</li>
+<li>其一</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="you-xu-lie-biao">有序列表</h3>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-markup z-list z-numbered z-bullet z-markdown">1<span class="z-punctuation z-definition z-list_item z-markdown">.</span></span><span class="z-markup z-list z-numbered z-markdown"> <span class="z-meta z-paragraph z-list z-markdown">其一
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-markup z-list z-numbered z-markdown"><span class="z-meta z-paragraph z-list z-markdown"></span></span><span class="z-markup z-list z-numbered z-bullet z-markdown">2<span class="z-punctuation z-definition z-list_item z-markdown">.</span></span><span class="z-markup z-list z-numbered z-markdown"><span class="z-meta z-paragraph z-list z-markdown"> 其二
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-markup z-list z-numbered z-markdown"><span class="z-meta z-paragraph z-list z-markdown"></span></span><span class="z-markup z-list z-numbered z-bullet z-markdown">3<span class="z-punctuation z-definition z-list_item z-markdown">.</span></span><span class="z-markup z-list z-numbered z-markdown"><span class="z-meta z-paragraph z-list z-markdown"> 其三
+</span></span></span></code></pre>
+<ul>
+<li>演示：
+<ol>
+<li>其一</li>
+<li>其二</li>
+<li>其三</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h3 id="lian-jie-lian-jie-yin-yong-tu-pian">鏈接、鏈接引用、圖片</h3>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"><span class="z-meta z-link z-inline z-markdown"><span class="z-punctuation z-definition z-link z-begin z-markdown">[</span></span><span class="z-meta z-link z-inline z-description z-markdown">Markdown - 維基百科，自由的百科全書</span><span class="z-meta z-link z-inline z-markdown"><span class="z-punctuation z-definition z-link z-end z-markdown">]</span></span><span class="z-meta z-link z-inline z-markdown"><span class="z-punctuation z-definition z-metadata z-begin z-markdown">(</span></span><span class="z-meta z-link z-inline z-markdown"><span class="z-markup z-underline z-link z-markdown">https://zh.wikipedia.org/wiki/Markdown</span><span class="z-punctuation z-definition z-metadata z-end z-markdown">)</span></span>
+</span></span></code></pre>
+<ul>
+<li>演示：
+<ul>
+<li><a class="external" href="https://zh.wikipedia.org/wiki/Markdown">Markdown - 維基百科，自由的百科全書</a></li>
+</ul>
+</li>
+</ul>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"><span class="z-meta z-link z-reference z-markdown"><span class="z-punctuation z-definition z-link z-begin z-markdown">[</span></span><span class="z-meta z-link z-reference z-description z-markdown">文字</span><span class="z-meta z-link z-reference z-markdown"><span class="z-punctuation z-definition z-link z-end z-markdown">]</span></span><span class="z-meta z-link z-reference z-markdown"><span class="z-punctuation z-definition z-constant z-begin z-markdown">[</span><span class="z-constant z-other z-reference z-link z-markdown">標籤</span><span class="z-punctuation z-definition z-constant z-end z-markdown">]</span></span>
+</span></span></code></pre>
+<ul>
+<li>演示：
+<ul>
+<li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/%E5%9C%B0%E5%9D%80" title="標題">文字</a></li>
+</ul>
+</li>
+</ul>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-link z-reference z-def z-markdown"><span class="z-punctuation z-definition z-constant z-begin z-markdown">[</span><span class="z-entity z-name z-reference z-link z-markdown">標籤</span><span class="z-punctuation z-definition z-constant z-end z-markdown">]</span><span class="z-punctuation z-separator z-key-value z-markdown">:</span> <span class="z-markup z-underline z-link z-markdown">地址</span><span class="z-string z-other z-link z-description z-title z-markdown"> <span class="z-punctuation z-definition z-string z-begin z-markdown">&quot;</span>標題<span class="z-punctuation z-definition z-string z-end z-markdown">&quot;</span></span>
+</span></span></code></pre>
+<ul>
+<li>演示：
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"><span class="z-meta z-image z-inline z-markdown"><span class="z-punctuation z-definition z-image z-begin z-markdown">![</span></span><span class="z-meta z-image z-inline z-description z-markdown">當圖片無法顯示時顯示這段文字</span><span class="z-meta z-image z-inline z-markdown"><span class="z-punctuation z-definition z-image z-end z-markdown">]</span></span><span class="z-meta z-image z-inline z-markdown"><span class="z-punctuation z-definition z-metadata z-begin z-markdown">(</span></span><span class="z-meta z-image z-inline z-markdown"><span class="z-markup z-underline z-link z-image z-markdown">pic.png</span><span class="z-punctuation z-definition z-metadata z-end z-markdown">)</span></span>
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown">[pic]: pic.png
+</span></span></code></pre>
+<ul>
+<li>演示：
+<ul>
+<li>![當圖片無法顯示時顯示這段文字][pic.png]</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown">文字<span class="z-meta z-link z-reference z-footnote z-markdown-extra"><span class="z-punctuation z-definition z-link z-begin z-markdown">[^</span><span class="z-meta z-link z-reference z-literal z-footnote-id z-markdown">1</span><span class="z-punctuation z-definition z-link z-end z-markdown">]</span></span>
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"><span class="z-meta z-link z-reference z-footnote z-markdown-extra"><span class="z-punctuation z-definition z-link z-begin z-markdown">[^</span><span class="z-meta z-link z-reference z-literal z-footnote-id z-markdown">1</span><span class="z-punctuation z-definition z-link z-end z-markdown">]</span></span>: 註腳
+</span></span></code></pre>
+<ul>
+<li>演示：
+<ul>
+<li>文字<sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup></li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="qiang-diao">強調</h3>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"><span class="z-markup z-italic z-markdown"><span class="z-punctuation z-definition z-italic z-begin z-markdown">*</span>強調<span class="z-punctuation z-definition z-italic z-end z-markdown">*</span></span> <span class="z-markup z-italic z-markdown"><span class="z-punctuation z-definition z-italic z-begin z-markdown">_</span>強調<span class="z-punctuation z-definition z-italic z-end z-markdown">_</span></span>
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"><span class="z-markup z-bold z-markdown"><span class="z-punctuation z-definition z-bold z-begin z-markdown">**</span>加重強調<span class="z-punctuation z-definition z-bold z-end z-markdown">**</span></span> <span class="z-markup z-bold z-markdown"><span class="z-punctuation z-definition z-bold z-begin z-markdown">__</span>加重強調<span class="z-punctuation z-definition z-bold z-end z-markdown">__</span></span>
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"><span class="z-meta z-tag z-inline z-any z-html"><span class="z-punctuation z-definition z-tag z-begin z-html">&lt;</span><span class="z-entity z-name z-tag z-inline z-any z-html">u</span><span class="z-punctuation z-definition z-tag z-end z-html">&gt;</span></span>底線<span class="z-meta z-tag z-inline z-any z-html"><span class="z-punctuation z-definition z-tag z-begin z-html">&lt;/</span><span class="z-entity z-name z-tag z-inline z-any z-html">u</span><span class="z-punctuation z-definition z-tag z-end z-html">&gt;</span></span>
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"><span class="z-markup z-raw z-inline z-markdown"><span class="z-punctuation z-definition z-raw z-begin z-markdown">`</span>程式<span class="z-punctuation z-definition z-raw z-end z-markdown">`</span></span>
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"><span class="z-markup z-strikethrough z-markdown-gfm"><span class="z-punctuation z-definition z-strikethrough z-begin z-markdown">~~</span>刪除<span class="z-punctuation z-definition z-strikethrough z-end z-markdown">~~</span></span>
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown"></span><span class="z-meta z-disable-markdown"><span class="z-comment z-block z-html"><span class="z-punctuation z-definition z-comment z-begin z-html">&lt;!--</span>注釋<span class="z-punctuation z-definition z-comment z-end z-html">--&gt;</span></span></span><span class="z-meta z-disable-markdown">
+</span></span></code></pre>
+<ul>
+<li>演示：
+<ul>
+<li><em>強調</em> <em>強調</em></li>
+<li><strong>加重強調</strong> <strong>加重強調</strong></li>
+<li><u>底線</u></li>
+<li><code>程式</code></li>
+<li><del>刪除</del></li>
+<li><!--注釋-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="shu-xue">數學</h3>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown">$1+1 = 2$
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown">
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown">$$
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown">2+2 = 4
+</span></span><span class="z-text z-html z-markdown"><span class="z-meta z-paragraph z-markdown">$$
+</span></span></code></pre>
+<ul>
+<li>演示：
+<ul>
+<li>$1+1 = 2$</li>
+<li>$$
+2+2 = 4
+$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="biao-ge">表格</h3>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-meta z-table z-header z-markdown-gfm"><span class="z-punctuation z-separator z-table-cell z-markdown">|</span> T1   <span class="z-punctuation z-separator z-table-cell z-markdown">|</span>  T2  <span class="z-punctuation z-separator z-table-cell z-markdown">|</span>   T3 <span class="z-punctuation z-separator z-table-cell z-markdown">|</span>
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-meta z-table z-header-separator z-markdown-gfm"><span class="z-punctuation z-separator z-table-cell z-markdown">|</span> <span class="z-punctuation z-definition z-table-cell-alignment z-markdown">:</span><span class="z-punctuation z-section z-table-header z-markdown">---</span> <span class="z-punctuation z-separator z-table-cell z-markdown">|</span> <span class="z-punctuation z-definition z-table-cell-alignment z-markdown">:</span><span class="z-punctuation z-section z-table-header z-markdown">--</span><span class="z-punctuation z-definition z-table-cell-alignment z-markdown">:</span> <span class="z-punctuation z-separator z-table-cell z-markdown">|</span> <span class="z-punctuation z-section z-table-header z-markdown">---</span><span class="z-punctuation z-definition z-table-cell-alignment z-markdown">:</span> <span class="z-punctuation z-separator z-table-cell z-markdown">|</span>
+</span><span class="z-meta z-table z-markdown-gfm"></span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-meta z-table z-markdown-gfm"><span class="z-punctuation z-separator z-table-cell z-markdown">|</span> C1R1 <span class="z-punctuation z-separator z-table-cell z-markdown">|</span> C2R1 <span class="z-punctuation z-separator z-table-cell z-markdown">|</span> C3R1 <span class="z-punctuation z-separator z-table-cell z-markdown">|</span>
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-meta z-table z-markdown-gfm"><span class="z-punctuation z-separator z-table-cell z-markdown">|</span> C2R1 <span class="z-punctuation z-separator z-table-cell z-markdown">|</span> C2R2 <span class="z-punctuation z-separator z-table-cell z-markdown">|</span> C3R2 <span class="z-punctuation z-separator z-table-cell z-markdown">|</span>
+</span></span></span></code></pre>
+<ul>
+<li>演示：<table><thead><tr><th style="text-align: left">T1</th><th style="text-align: center">T2</th><th style="text-align: right">T3</th></tr></thead><tbody>
+<tr><td style="text-align: left">C1R1</td><td style="text-align: center">C2R1</td><td style="text-align: right">C3R1</td></tr>
+<tr><td style="text-align: left">C2R1</td><td style="text-align: center">C2R2</td><td style="text-align: right">C3R2</td></tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><h3 id="can-zhao">參照</h3>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-quote z-markdown"><span class="z-punctuation z-definition z-blockquote z-markdown">&gt;</span> 參照
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-quote z-markdown"></span></span>
+</span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-quote z-markdown"><span class="z-punctuation z-definition z-blockquote z-markdown">&gt;</span> 第一層
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-quote z-markdown"></span><span class="z-markup z-quote z-markdown"><span class="z-punctuation z-definition z-blockquote z-markdown">&gt;</span> 
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-quote z-markdown"></span><span class="z-markup z-quote z-markdown"><span class="z-punctuation z-definition z-blockquote z-markdown">&gt;</span> <span class="z-markup z-quote z-markdown"><span class="z-punctuation z-definition z-blockquote z-markdown">&gt;</span> 第二層
+</span></span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-quote z-markdown"><span class="z-markup z-quote z-markdown"></span></span><span class="z-markup z-quote z-markdown"><span class="z-punctuation z-definition z-blockquote z-markdown">&gt;</span> 
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-markup z-quote z-markdown"></span><span class="z-markup z-quote z-markdown"><span class="z-punctuation z-definition z-blockquote z-markdown">&gt;</span> 第一層
+</span></span></span></code></pre>
+</li>
+<li>
+<p>演示：</p>
+<blockquote>
+<p>參照</p>
+</blockquote>
+<blockquote>
+<p>第一層</p>
+<blockquote>
+<p>第二層</p>
+</blockquote>
+<p>第一層</p>
+</blockquote>
+</li>
+<li><h3 id="fen-ge-xian">分割線</h3>
+<pre data-lang="markdown" class="language-markdown z-code"><code class="language-markdown" data-lang="markdown"><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-meta z-separator z-thematic-break z-markdown"><span class="z-punctuation z-definition z-thematic-break z-markdown">---</span>
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-meta z-separator z-thematic-break z-markdown"><span class="z-punctuation z-definition z-thematic-break z-markdown">***</span>
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-meta z-separator z-thematic-break z-markdown"><span class="z-punctuation z-definition z-thematic-break z-markdown">-----</span>
+</span></span></span><span class="z-text z-html z-markdown"><span class="z-meta z-block-level z-markdown"><span class="z-meta z-separator z-thematic-break z-markdown"><span class="z-punctuation z-definition z-thematic-break z-markdown">*****</span>
+</span></span></span></code></pre>
+<ul>
+<li>演示：
+<hr />
+<ul>
+<li>
+<hr />
+</li>
+</ul>
+<hr />
+<ul>
+<li>
+<hr />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="cheng-shi-ma">程式碼</h3>
+<blockquote>
+<p>使用三個反引號 <code>```</code> 。</p>
+</blockquote>
+<ul>
+<li>演示：<pre data-lang="c++" class="language-c++ z-code"><code class="language-c++" data-lang="c++"><span class="z-source z-c++"><span class="z-meta z-preprocessor z-include z-c++"><span class="z-keyword z-control z-import z-include z-c++">#include</span> <span class="z-string z-quoted z-other z-lt-gt z-include z-c++"><span class="z-punctuation z-definition z-string z-begin z-c++">&lt;</span>iostream<span class="z-punctuation z-definition z-string z-end z-c++">&gt;</span></span>
+</span></span><span class="z-source z-c++"><span class="z-keyword z-control z-c++">using</span> <span class="z-keyword z-control z-c++">namespace</span> std<span class="z-punctuation z-terminator z-c++">;</span>
+</span><span class="z-source z-c++"><span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c++"><span class="z-meta z-toc-list z-full-identifier z-c++"><span class="z-entity z-name z-function z-c++">main</span></span></span><span class="z-meta z-function z-parameters z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function z-parameters z-c++"><span class="z-meta z-group z-c++"><span class="z-storage z-type z-c">int</span> <span class="z-variable z-parameter z-c++">argc</span><span class="z-punctuation z-separator z-c++">,</span> <span class="z-storage z-type z-c">char</span> <span class="z-keyword z-operator z-c">*</span><span class="z-variable z-parameter z-c++">argv</span><span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span><span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span></span></span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">    <span class="z-meta z-function-call z-c++"><span class="z-support z-function z-C99 z-c">printf</span><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>Hello World!<span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">    <span class="z-meta z-function-call z-c++"><span class="z-support z-function z-C99 z-c">system</span><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>pause<span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">    <span class="z-keyword z-control z-flow z-return z-c++">return</span> <span class="z-constant z-numeric z-integer z-decimal z-c++">0</span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"></span></span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-end z-c++">}</span></span></span>
+</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>See Also:</p>
+<ul>
+<li>Wikipedia: <a class="external" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a></li>
+<li>GitBook 中文解說: <a class="external" href="https://wastemobile.gitbooks.io/gitbook-chinese/content/format/markdown.html">Markdown</a></li>
+</ul>
+<footer class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p>註腳 <a href="#fr-1-1">↩</a></p>
+</li>
+</ol>
+</footer>
+
+    <section class="series-page-outro">
+                <p>感謝你閱讀 <a href="https://undecv.github.io/blog/posts/ash-heap-of-history/" aria_label="歷史的垃圾堆">歷史的垃圾堆</a> 系列的這篇文物。再次提醒：<strong>DO NOT TRY IT AT HOME!</strong></p>
+
+            </section>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/git-without-command/git-without-command-ep1/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">［封存］不用指令也可以使用 Git - GitHub Desktop 客戶端</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-2/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">［封存］Apache 伺服器簡易教程 - 添加內容篇</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#biao-ti">標題</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#yi-ji-biao-ti">一級標題</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#er-ji-biao-ti">二級標題</a>
+                                        
+                                            <ul>
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#san-ji-biao-ti">三級標題</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#duan-luo">段落</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#lie-biao">列表</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#you-xu-lie-biao">有序列表</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#lian-jie-lian-jie-yin-yong-tu-pian">鏈接、鏈接引用、圖片</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#qiang-diao">強調</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#shu-xue">數學</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#biao-ge">表格</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#can-zhao">參照</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#fen-ge-xian">分割線</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/markdown-example/#cheng-shi-ma">程式碼</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                            </ul>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

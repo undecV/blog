@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Linux</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/linux/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 28 May 2025 03:00:00 +0000</lastBuildDate>
+      <item>
+          <title>打通 Windows 和 Linux 的傳送魔法陣！在 Shell 之間反覆橫跳</title>
+          <pubDate>Wed, 28 May 2025 03:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/</link>
+          <guid>https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/">&lt;p&gt;通常，要做一件事情是可以在一個 Shell 裡面完成的。
+但，CMD 和 PowerShell 目前還是各有千秋，
+以及 Windows Subsystem Linux (WSL) 使得可以使用 Linux 中的程式，
+這使得我們不得不在這些 Shell 裡面反复橫跳。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;nested-shell-scripting&quot;&gt;Nested Shell Scripting&lt;&#x2F;h2&gt;
+&lt;p&gt;上文說過，Shell 不過是一個程式，本質上只是能執行程式的直譯器，而 Shell 可以呼叫程式，
+因此只要能呼叫，Shell 就能嵌套執行另一個 Shell 的程式碼。所以 Shell 之間可以互通有無。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;del&gt;這根本就是指令界的人〇〇蚣！&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;由於 Windows 11 預設的 Windows Terminal 預設的是 PowerShell，在懶得切換 Shell 的前提下，我最經常做的就是檢查檔案的散列值：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell z-code&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;wsl sha256sum &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;c SHA256SUMS
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;回顧一下指令的構成，指令按空格分割，第一個是執行的程式，而後所有的部分作為「參數」丟給程式。
+這個指令的意思是，執行 &lt;code&gt;wsl&lt;&#x2F;code&gt; 並且把 &lt;code&gt;sha256sum -c SHA256SUMS&lt;&#x2F;code&gt; 作為參數丟給它。然後 &lt;code&gt;wsl&lt;&#x2F;code&gt; 會打開預設的 WSL 並且把這些參數作為指令執行，就是打開 &lt;code&gt;sha256sum&lt;&#x2F;code&gt; 計算散列值程式，並且把 &lt;code&gt;-c SHA256SUMS&lt;&#x2F;code&gt; 作為參數丟給它，讓程式知道要做的是「比對檔案 &lt;code&gt;SHA256SUMS&lt;&#x2F;code&gt; 中的散列值的一致性」。&lt;&#x2F;p&gt;
+&lt;p&gt;當然，執行這個指令前提是你已經調教好了一個能用的 WSL。
+並且遇到了 Linux 和 WIndows 跨平臺的時候，還得記得解決 BOM 和 換行符 的問題。&lt;&#x2F;p&gt;
+&lt;p&gt;以及「跳脫字元」和「引號定義」，這在一個 Shell 中不成大問題，但跨 Shell 的時候傳遞參數，由於不同的 Shell 有不同的跳脫字元和引號定義，在傳遞的時候整條鏈路都必須要做處理，甚至需要多次「跳脫跳脫字元」，這個根本就是連老手都會翻車的地獄試煉，必須要精通整條鏈路上所有 Shell 的行為，尤其是跳脫規則與參數傳遞邏輯。&lt;&#x2F;p&gt;
+&lt;p&gt;如此如此這般這般，就打通了 Windows 和 Linux 兩個世界線的傳送魔法陣。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;more-command-line-tools&quot;&gt;More Command-line Tools&lt;&#x2F;h2&gt;
+&lt;p&gt;我們常用的那些指令列工具，像是 &lt;code&gt;ls&lt;&#x2F;code&gt;、&lt;code&gt;cat&lt;&#x2F;code&gt;、&lt;code&gt;grep&lt;&#x2F;code&gt;、&lt;code&gt;top&lt;&#x2F;code&gt;，可能都是幾個世紀前的產物了。不過現在 Rust-lang、Go-lang 等新語言的流行，使得很多指令列工具被挖出來砍掉重寫，也讓這些老工具煥發第二春。
+例如說 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;sharkdp&#x2F;bat&quot;&gt;sharkdp&#x2F;bat&lt;&#x2F;a&gt; 升級了 &lt;code&gt;cat&lt;&#x2F;code&gt; 印出文字檔；
+又例如說 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ogham&#x2F;exa&quot;&gt;ogham&#x2F;exa&lt;&#x2F;a&gt; 升級了 &lt;code&gt;ls&lt;&#x2F;code&gt; 印出資料夾中的內容；
+再例如說 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;BurntSushi&#x2F;ripgrep&#x2F;tree&#x2F;master&quot;&gt;BurntSushi&#x2F;ripgrep&lt;&#x2F;a&gt; 升級了 &lt;code&gt;grep&lt;&#x2F;code&gt; 搜尋工具；
+這也順便帶來的另一個好處，他們在重寫的時候，有可能順便考慮一下跨平臺：這使得以前一些 Linux 獨佔的工具有機會在 Windows 中原生的使用。
+甚至許多這些重寫的工具也都已經登上 Scoop 或 Winget，直接安裝即可使用，無痛邁入新世代。&lt;&#x2F;p&gt;
+&lt;p&gt;所以在遇事不決 WSL 之前，不妨先搜尋一下需要的工具或功能是不是已經有偉人寫好了。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>［封存］把檔案壓縮影片轉檔任務放進佇列！用 WSL Task Spooler 排隊 Windows 的指令</title>
+          <pubDate>Mon, 12 Apr 2021 01:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/">&lt;blockquote&gt;
+&lt;p&gt;🛑（2025-05）現在我更推薦使用新的工具軟體 Pueue 達成同樣的任務，請見本站的介紹文：&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;command-line-guide&#x2F;pueue-introduction&#x2F;&quot;&gt;把指令放進佇列！用 Pueue 排隊指令&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;有時候需要執行一些時間長、需要大量系統資源的指令，例如巨量資料的計算、機器學習，或是更常用的檔案壓縮、影片轉檔。希望這些高負載的指令可以被順序執行而不是同時執行，同時執行會佔用過多的系統資源，不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。&lt;&#x2F;p&gt;
+&lt;p&gt;Linux 上有一個滿足這個需求的工具 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;vicerveza.homeunix.net&#x2F;~viric&#x2F;soft&#x2F;ts&#x2F;&quot;&gt;Task Spooler&lt;&#x2F;a&gt; (tsp)，Windows 上我沒有找到理想的替代品，但是，Windows 有 WSL。&lt;&#x2F;p&gt;
+&lt;p&gt;Task Spooler 可以：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;希望指令在一個先進先出佇列中排隊，同時有壹個或多個指令執行；&lt;&#x2F;li&gt;
+&lt;li&gt;佇列可以按需調整，新增、刪除、調整順序，甚至中止當前正在執行的任務。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;這篇文章將 Linux 中的 Task Spooler 透過 WSL 中與 Windows 的批次檔聯動，並演示了排隊 7-Zip 的多個任務。後面的章節會簡要提及 WSL 1 啓動的步驟。&lt;&#x2F;p&gt;
+&lt;p&gt;作業環境：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 10&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.7-zip.org&#x2F;&quot;&gt;7-Zip&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;WSL 1&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;xin-zeng-huan-jing-bian-shu&quot;&gt;新增環境變數&lt;&#x2F;h2&gt;
+&lt;p&gt;在指令中，若是需要使用自己安裝的程式需要指定路徑，若想要直接呼叫程式就需要把程式的路徑新增到環境變數。&lt;&#x2F;p&gt;
+&lt;p&gt;假設 7-Zip 安裝在 &lt;code&gt;C:\Program Files\7-Zip&lt;&#x2F;code&gt;，在 PowerShell 指令會需要呼叫 「&lt;code&gt;&amp;amp; &quot;C:\Program Files\7-Zip\7z.exe&quot;&lt;&#x2F;code&gt;」，若將安裝的路徑新增到環境變數之後，只需要呼叫「&lt;code&gt;7z&lt;&#x2F;code&gt;」即可。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;搜尋 &quot;Edit the system enviroment varibles&quot;，點選 &quot;Enviroment Varibles...&quot;；&lt;&#x2F;li&gt;
+&lt;li&gt;在 &quot;System varibles&quot; 中，找到並點選環境變數 &lt;code&gt;Path&lt;&#x2F;code&gt;，點選 &quot;Edit...&quot;；&lt;&#x2F;li&gt;
+&lt;li&gt;點選 &quot;New&quot; 並填入軟體的安裝路徑，例如 &lt;code&gt;C:\Program Files\7-Zip\&lt;&#x2F;code&gt;，點選 &quot;OK&quot;。&lt;&#x2F;li&gt;
+&lt;li&gt;生效會需要重新開機。（但是後面也會有需要重新開機的步驟所以可以先等等）&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;7-zip-zhi-ling-yu-pi-ci-dang&quot;&gt;7-Zip 指令與批次檔&lt;&#x2F;h2&gt;
+&lt;p&gt;Windows 版本的 7-Zip 原生支援指令行模式，&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;sevenzip.osdn.jp&#x2F;chm&#x2F;cmdline&#x2F;index.htm&quot;&gt;User&#x27;s Guide&lt;&#x2F;a&gt; 說明了詳細的用法。例如下面的指令將 &lt;code&gt;D:\src&lt;&#x2F;code&gt; 以 7z 的格式壓縮到 &lt;code&gt;D:\dst.7z&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cmd&quot; class=&quot;language-cmd z-code&quot;&gt;&lt;code class=&quot;language-cmd&quot; data-lang=&quot;cmd&quot;&gt;&lt;span class=&quot;z-source z-dosbatch&quot;&gt;7z a -t7z &lt;span class=&quot;z-string z-quoted z-double z-dosbatch&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\dst.7z&lt;span class=&quot;z-punctuation z-definition z-string z-end z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-dosbatch&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\src&lt;span class=&quot;z-punctuation z-definition z-string z-end z-dosbatch&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;一個小小的訣竅可以節省壓縮檔案的步驟，創立一個 Batch 批次檔手稿程式，新增一個 txt 文字檔，並將副檔名改成 &lt;code&gt;.bat&lt;&#x2F;code&gt; 即可，例如 &lt;code&gt;zipit.bat&lt;&#x2F;code&gt;，編輯內容並存檔：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;7z a -tzip &amp;quot;%~1.zip&amp;quot; &amp;quot;%~1&amp;quot; -mx=9 -mcu=on
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;@PAUSE
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在檔案總管中，拖動 &lt;em&gt;&lt;strong&gt;一個&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; 檔案或者資料夾到這個 BAT 檔案的圖示上，
+便會在同個地方把這個檔案或者資料夾以 ZIP 格式壓縮，並且指定最高壓縮比（最小檔案大小、最長壓縮時間），並且最重要的指定以 Unicode 編碼檔名。這個手稿程式在後面的範例會再次用到。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wsl-an-zhuang&quot;&gt;WSL 安裝&lt;&#x2F;h2&gt;
+&lt;p&gt;M$ 秉承著打不贏就加入他們的精神，
+聯合一眾 Friends 做出了曠古未聞空前絕後驚世駭俗的 Windows Subsystem for Linux (WSL)，
+WSL 可以讓 Windows 執行 Linux 的程式，並且可以串接 Windows 的指令。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;在開始功能表中搜尋 &quot;Turn Windows features on or off&quot;，開啟 &quot;Windows Subsystem for Linux&quot;，在安裝完成後會需要重新開機。&lt;&#x2F;li&gt;
+&lt;li&gt;在 &quot;Microsoft Store&quot; 中，搜尋 &quot;WSL&quot; 即可找到諸如 Debian、Ubuntu、SUSE、Kali 各發行版，如果你是 Linux 新手，可以試試好上手的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;store&#x2F;productId&#x2F;9NBLGGH4MSV6&quot;&gt;Ubuntu&lt;&#x2F;a&gt;，後面也會拿這個舉例。&lt;&#x2F;li&gt;
+&lt;li&gt;開始選單會出現安裝後的 Ubuntu，初次使用會需要設定 UNIX 使用者名稱和密碼。這些都不會影響到原本的作業系統，忘記密碼也可以透過特殊手段重設。當你看到 &lt;code&gt;使用者名稱@電腦名:~$&lt;&#x2F;code&gt; 的時候，到此你的 WSL 的設定就完成了。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;進行 WSL 的更新，執行需要輸入剛剛設定的 UNIX 密碼：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get update&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-and z-shell&quot;&gt;&amp;amp;&amp;amp;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get upgrade&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;task-spooler&quot;&gt;Task Spooler&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR：Task Spooler 的絕妙的設計，是 伺服器＼客戶端，使用者使用 tsp 指令創立任務時，會創立一個客戶端，到後臺等待伺服器的通知後執行，完成後回報給伺服器，伺服器再通知下一個客戶端的指令執行，伺服器負責發號施令而不會執行指令。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;在 WSL 中下載安裝 Task Spooler：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get install task-spooler&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Task Spooler 的指令是 &lt;code&gt;tsp&lt;&#x2F;code&gt;，列出一些基本用法：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;V          &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 檢查版本&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;h          &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 印出說明&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; sleep 5     &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 新增指令 `sleep 5` 到任務佇列，返回的數字是任務的 ID&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp             &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 印出任務列表&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;c&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;id&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;      &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 小寫 c，檢查指定任務的輸出，&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;                &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;     替換 $id 為什麼任務 ID，不指定的話會印出最後一個&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;S&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;num&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;     &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 大寫 S，指定同時執行任務的數量，&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;                &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;     替換 $num 為數量，不指定的話會印出當前的設定&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tsp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;C          &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 大寫 C，清除已經完成的任務&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;我們也可以專門開一個終端機，使用 &lt;code&gt;watch&lt;&#x2F;code&gt; 指令來實時監視 Task Spooler 的任務列表：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;watch&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;n&lt;&#x2F;span&gt; 0.1 tsp&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;wsl-chuan-jie-zhi-ling&quot;&gt;WSL 串接指令&lt;&#x2F;h2&gt;
+&lt;p&gt;Windows 的 Batch \ PowerShell 與 WSL 之間可以 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-tw&#x2F;windows&#x2F;wsl&#x2F;interop&quot;&gt;互相串接指令&lt;&#x2F;a&gt; ，在 Batch \ PowerShell 中串接 WSL 的指令：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;PowerShell&quot; class=&quot;language-PowerShell z-code&quot;&gt;&lt;code class=&quot;language-PowerShell&quot; data-lang=&quot;PowerShell&quot;&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;wsl ls &lt;span class=&quot;z-keyword z-operator z-assignment z-powershell&quot;&gt;-&lt;&#x2F;span&gt;la  &lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 執行 WSL 端的 ls 指令列出當前路徑下所有檔案和資料夾等內容&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-powershell&quot;&gt;wsl tsp     &lt;span class=&quot;z-comment z-line z-powershell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;#&lt;&#x2F;span&gt; 執行 WSL 端的 Task Spooler，印出任務列表&lt;span class=&quot;z-punctuation z-definition z-comment z-powershell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在 WSL 中也可以呼叫 Windows 端的工具軟體，參數會原樣傳遞：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;7z.exe&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;t7z&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\dst.7z&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;D:\src&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;  &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 執行 Windows 端的 7-Zip&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注意，若 WSL 安裝過移植版的「p7zip」，指令 &lt;code&gt;7z&lt;&#x2F;code&gt; 會是指「p7zip」而不是 Windows 版的「7z.exe」。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zai-pi-ci-dang-zhong-shi-yong-task-spooler&quot;&gt;在批次檔中使用 Task Spooler&lt;&#x2F;h2&gt;
+&lt;p&gt;創立一個 Batch 批次檔手稿程式，實現在檔案總管中點開就可以監視 Task Spooler 的任務列表。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;wsl watch -n 0.1 tsp
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;編輯或者複製之前範例的批次檔手稿程式 &lt;code&gt;zipit.bat&lt;&#x2F;code&gt;，與上面的例子作用是相同的，只是將指令託管到 Task Spooler 的佇列中：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;batch&quot; class=&quot;language-batch z-code&quot;&gt;&lt;code class=&quot;language-batch&quot; data-lang=&quot;batch&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;wsl tsp -f &amp;quot;7z.exe&amp;quot; a -tzip &amp;quot;%~1.zip&amp;quot; &amp;quot;%~1&amp;quot; -mx=9 -mcu=on
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在檔案總管中，拖動 &lt;em&gt;&lt;strong&gt;一個&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; 檔案或者資料夾到這個 BAT 檔案的圖示上，
+便會在同個地方把這個檔案或者資料夾以 ZIP 格式壓縮，並且指定最高壓縮比和指定以 Unicode 編碼檔名。&lt;&#x2F;p&gt;
+&lt;p&gt;這個指令，會彈出一個終端機視窗，會返回一個數字這個任務的 ID，任務完成後視窗會自動關閉。&lt;&#x2F;p&gt;
+&lt;p&gt;在監視 Task Spooler 的任務列表的終端機中，就會出現當前任務的狀態。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR：參數 &lt;code&gt;-f&lt;&#x2F;code&gt; 會阻止客戶端把指令 Fork 到背景等待執行。在我的測試中，若不加這個參數會導致加入佇列後直接執行的任務卡住，導致任務無法完成，也就沒辦法繼續執行後面的任務。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</description>
+      </item>
+      <item>
+          <title>［封存］Apache 伺服器簡易教程 - 添加內容篇</title>
+          <pubDate>Tue, 07 Feb 2017 02:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-2/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-2/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-2/">&lt;p&gt;&lt;del&gt;你聽說過安 ... 啊不對，自由軟體嗎？&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;在上一個簡易教程當中，我們已經架設好了 &lt;strong&gt;Apache&lt;&#x2F;strong&gt; 網頁伺服器。
+這一節將介紹怎麼將你的純手工手製初回生產限定非轉基因限量版網頁放進你的網頁伺服器當中。&lt;&#x2F;p&gt;
+&lt;p&gt;在開始之前，先複習一下「URL」的內容，如果你並不清楚「URL」是什麼，請時空穿越到上課的時候認真聽講。&lt;&#x2F;p&gt;
+&lt;p&gt;當我們在網頁瀏覽器中輸入地址 &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 時，其實我們訪問的較爲完整的 URL 是 &lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;index.html&lt;&#x2F;code&gt; ，其意義大概是：使用 &lt;code&gt;HTTP&lt;&#x2F;code&gt; 協定連接到 &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 伺服器的 &lt;code&gt;Port 80&lt;&#x2F;code&gt; ，取得 &lt;code&gt;index.html&lt;&#x2F;code&gt; 資源。&lt;&#x2F;p&gt;
+&lt;p&gt;爲什麼你只輸入了主機的 IP 位址就可訪問了呢，當然是因爲你的瀏覽器和網頁伺服器英明神武，知道你根本就懶得打那麼多字，而且也 &lt;em&gt;猜到&lt;&#x2F;em&gt; 你是想訪問這個主機的網頁，其他的部分幫你自動生成了：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;index.html&lt;&#x2F;code&gt; 文件是被當成該路徑的 &lt;strong&gt;主頁&lt;&#x2F;strong&gt; ，所以被省略 ；&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;:80&lt;&#x2F;code&gt; 是因爲 &lt;code&gt;HTTP&lt;&#x2F;code&gt; 協定通常使用 &lt;code&gt;Port 80&lt;&#x2F;code&gt; ，所以被省略；&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;http:&#x2F;&#x2F;&lt;&#x2F;code&gt; 是瀏覽器 &lt;em&gt;猜到&lt;&#x2F;em&gt; （你使用網頁瀏覽器不看網頁是做什麼呢w）你是想訪問這個主機的網頁，所以幫你自動補全了，當然現代的瀏覽器也可能會支持其他的協定，例如 FTP。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;那麼， &lt;code&gt;index.html&lt;&#x2F;code&gt; 在哪裏？就在 &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&lt;&#x2F;code&gt; 路徑下，這裏就是 &lt;strong&gt;網頁伺服器存取的預設路徑&lt;&#x2F;strong&gt; （當然也可以修改，在 Apache 的設定中）。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，把自己的網頁內容放到這個路徑下，就可以被訪問了不是嗎。
+（溫馨提示，若是你的網頁引用了其他的資源（例如圖片文件）也要一起放進來喔。）&lt;&#x2F;p&gt;
+&lt;p&gt;恩，好像很有道理，那麼就來試試看...～&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-2&#x2F;.&#x2F;images&#x2F;ERROR_01.png&quot; alt=&quot;ERROR_01&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;嗯...放不進去...～當然錯誤提示很明顯的，是 &lt;strong&gt;操作權限&lt;&#x2F;strong&gt; 的問題，請自尋解答w。&lt;&#x2F;p&gt;
+&lt;p&gt;接下來就是訪問我們的頁面，我們想要做的是：使用 &lt;code&gt;HTTP&lt;&#x2F;code&gt; 協定連接到 &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 伺服器的 &lt;code&gt;Port 80&lt;&#x2F;code&gt; ，取得 &lt;code&gt;EXPLOSION.html&lt;&#x2F;code&gt; 資源。所以，實際上較爲完整的 URL 是：&lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;EXPLOSION.html&lt;&#x2F;code&gt; 所以，你只要在瀏覽器中輸入：&lt;code&gt;127.0.0.1&#x2F;EXPLOSION.html&lt;&#x2F;code&gt;  即可。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-2&#x2F;.&#x2F;images&#x2F;EXAMPLE_01.png&quot; alt=&quot;EXAMPLE_01&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;然後我們用其他的主機試試看：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-2&#x2F;.&#x2F;images&#x2F;EXAMPLE_02.png&quot; alt=&quot;EXAMPLE_02&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;成功了誒...～&lt;&#x2F;p&gt;
+&lt;p&gt;還有另一種情況，若是我們將自己的網頁放入一個資料夾中呢？
+我們將自己的網頁放在 &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&#x2F;MY_PAGE&lt;&#x2F;code&gt; 中，那麼，我們想要做的就是：使用 &lt;code&gt;HTTP&lt;&#x2F;code&gt; 協定連接到 &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 伺服器的 &lt;code&gt;Port 80&lt;&#x2F;code&gt; ，取得 &lt;strong&gt;路徑 &lt;code&gt;&#x2F;MY_PAGE&lt;&#x2F;code&gt; 下&lt;&#x2F;strong&gt; 的 &lt;code&gt;EXPLOSION.html&lt;&#x2F;code&gt; 資源。較爲完整的 URL 是：&lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;MY_PAGE&#x2F;EXPLOSION.html&lt;&#x2F;code&gt; ，其路徑 &lt;code&gt;&#x2F;MY_PAGE&lt;&#x2F;code&gt; 是相對于 &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&lt;&#x2F;code&gt; 路徑下，例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;MY_PAGE&#x2F;EXPLOSION.html&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&#x2F;MY_PAGE&#x2F;EXPLOSION.html&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;EXPLOSION.html&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;&#x2F;var&#x2F;www&#x2F;html&#x2F;EXPLOSION.html&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;這樣我們的網頁也部署完成了。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;ul&gt;
+&lt;li&gt;Environment:
+&lt;ul&gt;
+&lt;li&gt;Windows 10&lt;&#x2F;li&gt;
+&lt;li&gt;with VirtualBox 5.1.10&lt;&#x2F;li&gt;
+&lt;li&gt;Lubuntu 16.10&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;See also:
+&lt;ul&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Uniform_Resource_Locator&quot;&gt;Uniform Resource Locator&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;鳥哥的 Linux 私房菜: &lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;linux.vbird.org&#x2F;linux_server&#x2F;0360apache.php&quot;&gt;WWW 伺服器 Apache&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Release Notes:
+&lt;ul&gt;
+&lt;li&gt;2.1 Update (20170207):
+&lt;ul&gt;
+&lt;li&gt;修改標題，啊現在你知道你點開的是什麼了吧。&lt;&#x2F;li&gt;
+&lt;li&gt;修改文件目錄。&lt;&#x2F;li&gt;
+&lt;li&gt;授權的鏈接的 &lt;code&gt;HTML&lt;&#x2F;code&gt; 使用 &lt;code&gt;Markdown&lt;&#x2F;code&gt; 改寫。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;2.0 Update (20170128):
+&lt;ul&gt;
+&lt;li&gt;變更授權：&lt;code&gt;Creative Commons License&lt;&#x2F;code&gt; 。&lt;&#x2F;li&gt;
+&lt;li&gt;艾瑪我連梗都會打錯我的鍵盤真是業障重啊。&lt;&#x2F;li&gt;
+&lt;li&gt;細節修正。&lt;&#x2F;li&gt;
+&lt;li&gt;內容整合。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>［封存］Apache 伺服器簡易教程 - 安裝篇</title>
+          <pubDate>Tue, 07 Feb 2017 01:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-1/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-1/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-1/">&lt;p&gt;&lt;del&gt;你可能已經成爲自由軟體的受害者w&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;廢話不說，小考太多...&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Apache&lt;&#x2F;strong&gt; 是一個開放原始碼的網頁伺服器軟體，是最流行的 Web 伺服器軟體之一。
+如果你想要架設一個網站，「LAMP」系列 &lt;strong&gt;自由軟體&lt;&#x2F;strong&gt; 會是你不錯的選擇：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux，作業系統（Operating System）&lt;&#x2F;li&gt;
+&lt;li&gt;Apache，網頁伺服器（Web server）&lt;&#x2F;li&gt;
+&lt;li&gt;MySQL，資料庫（Database）&lt;&#x2F;li&gt;
+&lt;li&gt;PHP，手稿語言（Scripting language）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;因爲你只是要完成作業而且我也沒空打那麼多字，那麼接下來就是，
+簡易的 Apache HTTP Server 搭建方法：&lt;&#x2F;p&gt;
+&lt;p&gt;以下指令適用 Ubuntu 系列作業系統。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;如果你還沒或者太久沒執行過這兩行的話：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get update&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get upgrade&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ps. 如果你不知道這兩行在做什麼：&lt;br &#x2F;&gt;
+Ask Ubuntu: command line - &lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;askubuntu.com&#x2F;questions&#x2F;222348&#x2F;what-does-sudo-apt-get-update-do&quot;&gt;What does &quot;sudo apt-get update&quot; do?&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;安裝 Apache HTTP Server。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get install apache2&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;如果成功的話...那麼恭喜你，你的 Apache 可能已經部署完成。&lt;&#x2F;p&gt;
+&lt;p&gt;那麼問題來了，我怎麼看到我的網頁呢？&lt;&#x2F;p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;打開你的瀏覽器（Web browser），輸入&lt;code&gt;localhost&lt;&#x2F;code&gt; 或者&lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; 。
+如果看到了 &lt;strong&gt;測試頁面&lt;&#x2F;strong&gt; ，那麼恭喜你，你的 Apache 已經部署完成。（如圖）
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-1&#x2F;.&#x2F;images&#x2F;APACHE_TEST_PAGE.png&quot; alt=&quot;APACHE_TEST_PAGE&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;那麼問題又來了，我怎麼在原本的作業系統，或是同一網路下的主機（例如連到同一個路由器的另一台電腦）看到我的網頁呢？&lt;&#x2F;p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;設定你的虛擬機的網路：（如圖）
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-1&#x2F;.&#x2F;images&#x2F;NET_SETTING.PNG&quot; alt=&quot;NET_SETTING&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;打開你的瀏覽器，輸入你虛擬機的 IP 位址。
+如果不知道虛擬機的 IP 位址，請使用指令 &lt;code&gt;ifconfig&lt;&#x2F;code&gt; 。
+如果看到了測試頁面，那麼恭喜你，你虛擬機的網路設置完成。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;hr &#x2F;&gt;
+&lt;ul&gt;
+&lt;li&gt;Environment:
+&lt;ul&gt;
+&lt;li&gt;Windows 10&lt;&#x2F;li&gt;
+&lt;li&gt;with VirtualBox 5.1.10&lt;&#x2F;li&gt;
+&lt;li&gt;Lubuntu 16.10&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;See also:
+&lt;ul&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Apache_HTTP_Server&quot;&gt;Apache HTTP Server&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;LAMP_(software_bundle)&quot;&gt;LAMP (software bundle)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Release Notes:
+&lt;ul&gt;
+&lt;li&gt;2.1 Update (20170207):
+&lt;ul&gt;
+&lt;li&gt;修改標題，啊現在你知道你點開的是什麼了吧。&lt;&#x2F;li&gt;
+&lt;li&gt;修改檔案目錄。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;2.0 Update (20170128):
+&lt;ul&gt;
+&lt;li&gt;變更授權：&lt;code&gt;Creative Commons License&lt;&#x2F;code&gt; 。&lt;&#x2F;li&gt;
+&lt;li&gt;細節修正。&lt;&#x2F;li&gt;
+&lt;li&gt;內容整合。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>［封存］超高速的 VirtualBox + Lubuntu 安裝方法</title>
+          <pubDate>Tue, 07 Feb 2017 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/lubuntu-virtualbox/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/lubuntu-virtualbox/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/lubuntu-virtualbox/">&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;給臨時抱佛腳的同學，還有電腦性能在虛擬機中跑 Ubuntu 比較慢的同學。
+跑安裝全過程加碼字一個小時多，實際上你不需要一邊碼字一邊安裝還是很快的。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Lubuntu&lt;&#x2F;strong&gt; 是 &lt;strong&gt;Ubuntu&lt;&#x2F;strong&gt; 的一個分支，屬於 &lt;strong&gt;輕量級的 Linux 發行版&lt;&#x2F;strong&gt; （對比 Ubuntu 家的 ISO 體積就知道了），需要的硬體需要不那麼高，即使在老舊和低性能的電腦上也可以順暢運行（當然在高性能的電腦的也會更快）。界面上有點像 Windows 和 樹莓派 的 Raspbain，操作上不會有那麼強的違和感。&lt;&#x2F;p&gt;
+&lt;p&gt;Ubuntu 家族安裝 &lt;code&gt;iso&lt;&#x2F;code&gt; 文件對比。
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;LUBUNTU_03.png&quot; alt=&quot;LUBUNTU_03&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Lubuntu 桌面環境。
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;LUBUNTU_02.png&quot; alt=&quot;LUBUNTU_02&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;這是在 &lt;code&gt;Windows&lt;&#x2F;code&gt; 下操作的。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;根據你電腦的位元（32 或 64）下載作業系統和 VirtualBox：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;lubuntu.net&#x2F;&quot;&gt;lubuntu&lt;&#x2F;a&gt;: lightweight, fast, easier
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P01.png&quot; alt=&quot;P01&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Oracle VM VirtualBox: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.virtualbox.org&#x2F;wiki&#x2F;Downloads&quot;&gt;Downloads&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P02.png&quot; alt=&quot;P02&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;安裝 VisualBox：略。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;建立虛擬機：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;左上角的 &lt;code&gt;New&lt;&#x2F;code&gt; ，填入 &lt;code&gt;Name&lt;&#x2F;code&gt; ，選擇 &lt;code&gt;Type&lt;&#x2F;code&gt; 和 &lt;code&gt;Version&lt;&#x2F;code&gt; 。
+&lt;blockquote&gt;
+&lt;p&gt;提示：在 &lt;code&gt;Name&lt;&#x2F;code&gt; 輸入 &lt;code&gt;Ubuntu&lt;&#x2F;code&gt; 相關的字串下面會自動選擇。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P03.png&quot; alt=&quot;P03&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;設定記憶體：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;根據你電腦的情況給虛擬機設定記憶體（RAM，拉姆，雷姆的姐姐）大小。
+&lt;blockquote&gt;
+&lt;p&gt;8GB 的 RAM 給 2048 MB 差不多，不要太小，也不要太大。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P04.png&quot; alt=&quot;P04&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;建立虛擬硬碟：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;選擇立即建立新硬碟（ &lt;code&gt;Create a virtual hard disk now&lt;&#x2F;code&gt; ）。&lt;&#x2F;li&gt;
+&lt;li&gt;選擇硬碟類型， &lt;code&gt;VDI&lt;&#x2F;code&gt; 。&lt;&#x2F;li&gt;
+&lt;li&gt;動態配置大小（ &lt;code&gt;Dynamically allocated&lt;&#x2F;code&gt; ）。&lt;&#x2F;li&gt;
+&lt;li&gt;設定硬碟大小，一般向 30GB 左右，根據自己的需求而定。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P05.png&quot; alt=&quot;P05&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P06.png&quot; alt=&quot;P06&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P07.png&quot; alt=&quot;P07&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P08.png&quot; alt=&quot;P08&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;設定 &lt;code&gt;Setting&lt;&#x2F;code&gt; ，對系統優化。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Display -&amp;gt; Screen -&amp;gt; Video Memory：最大。&lt;&#x2F;li&gt;
+&lt;li&gt;Display -&amp;gt; Screen -&amp;gt; Enable 3D Acceleration：勾選。&lt;&#x2F;li&gt;
+&lt;li&gt;Storage：掛載安裝 CD。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P09.png&quot; alt=&quot;P09&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P10.png&quot; alt=&quot;P10&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;開機 &lt;code&gt;Start&lt;&#x2F;code&gt; 。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P11.png&quot; alt=&quot;P11&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;安裝系統：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;選擇語言：你讀得懂的。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P12.png&quot; alt=&quot;P12&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;選擇：安裝 &lt;code&gt;lubuntu&lt;&#x2F;code&gt; （ &lt;code&gt;Install Lubuntu&lt;&#x2F;code&gt; ）。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P13.png&quot; alt=&quot;P13&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;還是選擇語言：你讀得懂的。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P14.png&quot; alt=&quot;P14&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;安裝準備：
+&lt;blockquote&gt;
+&lt;p&gt;建議全勾選，自己看下面的解釋，下同。
+按 &lt;code&gt;Continue&lt;&#x2F;code&gt; 之後會停住一段時間，正常，等它跑完。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P15.png&quot; alt=&quot;P15&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;硬碟選項：
+&lt;blockquote&gt;
+&lt;p&gt;根據需要調整，一般默認就好。
+按 &lt;code&gt;Continue&lt;&#x2F;code&gt; 之後會停住一段時間，正常，等它跑完。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P16.png&quot; alt=&quot;P16&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;地區選項：
+&lt;blockquote&gt;
+&lt;p&gt;根據需要調整。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P17.png&quot; alt=&quot;P17&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;鍵盤選項：
+&lt;blockquote&gt;
+&lt;p&gt;根據需要調整。
+按鈕 &lt;code&gt;Continue&lt;&#x2F;code&gt; 可能因爲熒幕不夠大沒顯示出來，就移動一下視窗。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P18.png&quot; alt=&quot;P18&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;賬戶選項：
+&lt;blockquote&gt;
+&lt;p&gt;根據需要填寫。
+勾選 &lt;code&gt;Log in automatically&lt;&#x2F;code&gt; 可以每次登錄時不要輸入密碼。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P19.png&quot; alt=&quot;P19&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;等它安裝：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;等好等滿。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P20.png&quot; alt=&quot;P20&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;裝完了，重新開機：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P21.png&quot; alt=&quot;P21&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;然後，然後它就成功了：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P22.png&quot; alt=&quot;P22&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;最後， &lt;strong&gt;溫馨提示&lt;&#x2F;strong&gt; ，記得設定快照：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;各位在玩虛擬機的時候記得建立快照（Snapshots），爆炸了之後可以用這個東西恢復搶救回來。
+EXPLOOOOOOOOOOPSION!!!&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P23.png&quot; alt=&quot;P23&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;Snapshots.jpg&quot; alt=&quot;Snapshots&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;hr &#x2F;&gt;
+&lt;ul&gt;
+&lt;li&gt;Environment:
+&lt;ul&gt;
+&lt;li&gt;Windows 10&lt;&#x2F;li&gt;
+&lt;li&gt;with VirtualBox 5.1.10&lt;&#x2F;li&gt;
+&lt;li&gt;Lubuntu 16.10&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Release Notes:
+&lt;ul&gt;
+&lt;li&gt;2.1 Update (20170207):
+&lt;ul&gt;
+&lt;li&gt;修改文件目錄。&lt;&#x2F;li&gt;
+&lt;li&gt;授權的鏈接的 &lt;code&gt;HTML&lt;&#x2F;code&gt; 使用 &lt;code&gt;Markdown&lt;&#x2F;code&gt; 改寫。&lt;&#x2F;li&gt;
+&lt;li&gt;細節修正。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;2.0 Update (20170128):
+&lt;ul&gt;
+&lt;li&gt;變更授權：&lt;code&gt;Creative Commons License&lt;&#x2F;code&gt; 。&lt;&#x2F;li&gt;
+&lt;li&gt;新增一個捏它。&lt;&#x2F;li&gt;
+&lt;li&gt;細節修正。&lt;&#x2F;li&gt;
+&lt;li&gt;內容整合。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

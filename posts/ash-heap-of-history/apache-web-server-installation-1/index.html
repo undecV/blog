@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • ［封存］Apache 伺服器簡易教程 - 安裝篇</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="[Archived] Apache HTTP server - Part 1" />
+        <meta property="og:description" content="[Archived] Apache HTTP server - Part 1" />
+
+    
+
+    <meta property="og:title" content="［封存］Apache 伺服器簡易教程 - 安裝篇" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;apache-web-server-installation-1&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            ［封存］Apache 伺服器簡易教程 - 安裝篇
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-1/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2017-02-07T01:00:00"><span class='separator' aria-hidden='true'>•</span>2017-02-07</time></li><li title="523 words"><span class='separator' aria-hidden='true'>•</span>3 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/linux/">Linux</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/apache/">Apache</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/web-server/">Web Server</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2017-02-07T01:00:00">Updated on 2017-02-07</time></li>
+        </ul>
+            <p class="p-summary" hidden>[Archived] Apache HTTP server - Part 1</p><section class="e-content body">
+    <section class="series-page-intro">
+                <p>這篇文章出土自 <a href="https://undecv.github.io/blog/posts/ash-heap-of-history/" aria_label="歷史的垃圾堆">歷史的垃圾堆</a> 系列，僅供考古，不供參考。</p>
+
+            </section>
+<p><del>你可能已經成爲自由軟體的受害者w</del></p>
+<blockquote>
+<p>This work © 2017 by undecV is licensed under <a class="external" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+</blockquote>
+<p>廢話不說，小考太多...</p>
+<p><strong>Apache</strong> 是一個開放原始碼的網頁伺服器軟體，是最流行的 Web 伺服器軟體之一。
+如果你想要架設一個網站，「LAMP」系列 <strong>自由軟體</strong> 會是你不錯的選擇：</p>
+<ul>
+<li>Linux，作業系統（Operating System）</li>
+<li>Apache，網頁伺服器（Web server）</li>
+<li>MySQL，資料庫（Database）</li>
+<li>PHP，手稿語言（Scripting language）</li>
+</ul>
+<p>因爲你只是要完成作業而且我也沒空打那麼多字，那麼接下來就是，
+簡易的 Apache HTTP Server 搭建方法：</p>
+<p>以下指令適用 Ubuntu 系列作業系統。</p>
+<ol>
+<li>
+<p>如果你還沒或者太久沒執行過這兩行的話：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> apt-get update</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> apt-get upgrade</span>
+</span></code></pre>
+<blockquote>
+<p>Ps. 如果你不知道這兩行在做什麼：<br />
+Ask Ubuntu: command line - <a class="external" href="http://askubuntu.com/questions/222348/what-does-sudo-apt-get-update-do">What does "sudo apt-get update" do?</a></p>
+</blockquote>
+</li>
+<li>
+<p>安裝 Apache HTTP Server。</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> apt-get install apache2</span>
+</span></code></pre>
+</li>
+</ol>
+<p>如果成功的話...那麼恭喜你，你的 Apache 可能已經部署完成。</p>
+<p>那麼問題來了，我怎麼看到我的網頁呢？</p>
+<ol start="3">
+<li>打開你的瀏覽器（Web browser），輸入<code>localhost</code> 或者<code>127.0.0.1</code> 。
+如果看到了 <strong>測試頁面</strong> ，那麼恭喜你，你的 Apache 已經部署完成。（如圖）
+<img src="https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-1/./images/APACHE_TEST_PAGE.png" alt="APACHE_TEST_PAGE" /></li>
+</ol>
+<p>那麼問題又來了，我怎麼在原本的作業系統，或是同一網路下的主機（例如連到同一個路由器的另一台電腦）看到我的網頁呢？</p>
+<ol start="4">
+<li>
+<p>設定你的虛擬機的網路：（如圖）
+<img src="https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-1/./images/NET_SETTING.PNG" alt="NET_SETTING" /></p>
+</li>
+<li>
+<p>打開你的瀏覽器，輸入你虛擬機的 IP 位址。
+如果不知道虛擬機的 IP 位址，請使用指令 <code>ifconfig</code> 。
+如果看到了測試頁面，那麼恭喜你，你虛擬機的網路設置完成。</p>
+</li>
+</ol>
+<hr />
+<ul>
+<li>Environment:
+<ul>
+<li>Windows 10</li>
+<li>with VirtualBox 5.1.10</li>
+<li>Lubuntu 16.10</li>
+</ul>
+</li>
+<li>See also:
+<ul>
+<li>Wikipedia: <a class="external" href="https://en.wikipedia.org/wiki/Apache_HTTP_Server">Apache HTTP Server</a></li>
+<li>Wikipedia: <a class="external" href="https://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP (software bundle)</a></li>
+</ul>
+</li>
+<li>Release Notes:
+<ul>
+<li>2.1 Update (20170207):
+<ul>
+<li>修改標題，啊現在你知道你點開的是什麼了吧。</li>
+<li>修改檔案目錄。</li>
+</ul>
+</li>
+<li>2.0 Update (20170128):
+<ul>
+<li>變更授權：<code>Creative Commons License</code> 。</li>
+<li>細節修正。</li>
+<li>內容整合。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    <section class="series-page-outro">
+                <p>感謝你閱讀 <a href="https://undecv.github.io/blog/posts/ash-heap-of-history/" aria_label="歷史的垃圾堆">歷史的垃圾堆</a> 系列的這篇文物。再次提醒：<strong>DO NOT TRY IT AT HOME!</strong></p>
+
+            </section>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/apache-web-server-installation-2/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">［封存］Apache 伺服器簡易教程 - 添加內容篇</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/ash-heap-of-history/lubuntu-virtualbox/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">［封存］超高速的 VirtualBox + Lubuntu 安裝方法</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

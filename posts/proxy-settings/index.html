@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 如何在不同環境下設定 Proxy 代理伺服器</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="Proxy Settings" />
+        <meta property="og:description" content="Proxy Settings" />
+
+    
+
+    <meta property="og:title" content="如何在不同環境下設定 Proxy 代理伺服器" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;proxy-settings&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            如何在不同環境下設定 Proxy 代理伺服器
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/proxy-settings/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2018-05-20"><span class='separator' aria-hidden='true'>•</span>2018-05-20</time></li><li title="1142 words"><span class='separator' aria-hidden='true'>•</span>6 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/proxy/">Proxy</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/tutorial/">Tutorial</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/computer-concept/">Computer Concept</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2018-07-09">Updated on 2018-07-09</time></li>
+        </ul>
+            <p class="p-summary" hidden>Proxy Settings</p><section class="e-content body"><blockquote>
+<p>This work © 2017 by undecV is licensed under <a class="external" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+</blockquote>
+<h2 id="dai-li">代理</h2>
+<p>代理（Proxy）是一種網絡服務，允許兩個通訊方之間進行非直接的連線。</p>
+<p>例如：A 與 B 之間需要進行通訊，但是無法（或者不想）建立直接的連線；A 與 P、B 與 P 之間能進行正常的通訊，那麼，藉由 P，可在 A 與 B 之間建立通訊的通道。在這當中 P 就是 代理伺服器（Proxy Server）。</p>
+<pre data-lang="plain" class="language-plain z-code"><code class="language-plain" data-lang="plain"><span class="z-text z-plain">+----------+      |防|                       +----------+
+</span><span class="z-text z-plain">|          | &lt;--- |火| ----- 無法鏈接 -----&gt; |          |
+</span><span class="z-text z-plain">| 你的電腦 |      |牆|      +----------+     | 目標網站 |
+</span><span class="z-text z-plain">|          | &lt;------------&gt; |          | &lt;-&gt; |          |
+</span><span class="z-text z-plain">+----------+   沒有被牆的   | 遠程電腦 |     +----------+
+</span><span class="z-text z-plain">  /______\                  |          |       /______\
+</span><span class="z-text z-plain">                            +----------+
+</span><span class="z-text z-plain">                              /______\
+</span></code></pre>
+<p>代理伺服器可以是閘道器、路由器，也可是一臺電腦或者虛擬機，也可是你電腦中的軟體；代理伺服器亦可不止一個。</p>
+<h2 id="ben-di-dai-li">本地代理</h2>
+<p><strong>本地代理</strong>，是代理的一種應用方式，將網絡連線轉送到本地的地址，通常用於將網絡連線轉到一些網路工具軟體中。</p>
+<p>本地代理通常使用本機地址（<code>localhost</code>, <code>127.0.0.1</code>, <code>[::1]</code>）。</p>
+<h2 id="tong-xun-xie-ding">通訊協定</h2>
+<p>代理所使用的通訊協定通常是 HTTP 和 SOCKS，SOCKS 常用的有版本 4 和 5 所以經常被簡寫成 SOCKS4 和 SOCKS5。</p>
+<p>不同的協定之間不能互通，甚至 SOCKS4 和 SOCKS5 之間也不能互通，設定時請注意差別。</p>
+<p>通常情況下，建議優先選擇 SOCKS 5 協定。</p>
+<p>參考：
+<a class="external" href="https://zh.wikipedia.org/zh-tw/SOCKS">SOCKS - 維基百科，自由的百科全書</a></p>
+<h2 id="she-ding">設定</h2>
+<blockquote>
+<p><strong>請注意！在下面的截圖中，一些設定的内容請根據實際情況填寫。</strong></p>
+</blockquote>
+<p>在設定過程中，必要填寫代理伺服器的 <strong>Address（地址）</strong> 和 <strong>Port（端口）</strong>，選擇填寫的有轉發規則。</p>
+<ul>
+<li>如果你的代理伺服器設定在遠端，那麼需要填寫的通常是遠端電腦伺服器的地址和端口。</li>
+<li>如果你的代理伺服器設定在電腦上（代理軟體），那麼需要填寫的通常是本機地址和軟體指定的端口。</li>
+</ul>
+<h3 id="windows-10">Windows 10</h3>
+<p>Windows 10 的設定（<code>Settings</code>）中提供了代理的選項。在系統中設定代理的好處是不需要爲每一個軟體都配置代理，也使得不支持設定代理的軟體也能夠使用代理。</p>
+<p>Windows 10 的代理 <strong>默認</strong> 使用的是 <strong>HTTP 協定</strong>。</p>
+<p>Step 1: 打開代理的設定頁面，你有兩種方法打開它：</p>
+<ul>
+<li>在開始菜單 <code>Start menu</code> 中搜尋代理 <code>Proxy</code> 進入系統設置 <code>Setings</code>。</li>
+<li>或是：<code>Start menu</code> → <code>Setings</code> → <code>Network &amp; Internet</code> → <code>Proxy</code> → <code>Manual proxy setup</code></li>
+</ul>
+<p>接下來：</p>
+<ol>
+<li>打開 <code>Use a proxy server</code>；</li>
+<li>填入 Address（地址） 和 Port（端口）；</li>
+<li>通常地，打開 <code>Don't use the proxy server for local (internet) address</code>（不要將代理用於本地地址）選項。</li>
+</ol>
+<p>如果需要設定 <strong>除了 HTTP 之外的協定</strong>（例如 SOCKS）或 <strong>多種代理協定</strong>，可以在 Address（地址）處以下列格式填寫， Port（端口）無需填寫：</p>
+<pre data-lang="plain" class="language-plain z-code"><code class="language-plain" data-lang="plain"><span class="z-text z-plain">http=&lt;ADDRESS&gt;:&lt;PORT&gt;;https=&lt;ADDRESS&gt;:&lt;PORT&gt;;socks=&lt;ADDRESS&gt;:&lt;PORT&gt;
+</span></code></pre>
+<p>例如：</p>
+<pre data-lang="plain" class="language-plain z-code"><code class="language-plain" data-lang="plain"><span class="z-text z-plain">http=127.0.0.1:9487;https=127.0.0.1:9487;socks=127.0.0.1:9487
+</span></code></pre>
+<pre data-lang="plain" class="language-plain z-code"><code class="language-plain" data-lang="plain"><span class="z-text z-plain">socks=127.0.0.1:9487
+</span></code></pre>
+<p><img src="https://undecv.github.io/blog/posts/proxy-settings/./images/Win10_Proxy_E.png" alt="Win10_Proxy" /></p>
+<h3 id="wang-ye-liu-lan-qi-web-browser">網頁瀏覽器 - Web Browser</h3>
+<p>瀏覽器的代理設定，使用這個方法將代理只應用於瀏覽器。通常的，在瀏覽器的設定頁面中就可以設定代理。使用瀏覽器内置的代理設定簡單，不必安裝額外的插件或軟體；但是更推薦使用瀏覽器的插件（Add-ons, or Extensions），他們更加便利和功能强大，插件方法的設定見下一節。</p>
+<p>瀏覽器內置的設定，例如：</p>
+<p>Firefox:
+<code>Menu button</code> → <code>Options</code> → <code>Geneal</code> → <code>Network proxy</code> → <code>Settings...</code> → <code>Manual proxy configuration</code></p>
+<p>Chrome:
+<code>Menu button</code> → <code>Settings</code> → <code>Advabced</code> → <code>System</code> → <code>Open proxy settings</code> → (System setting)</p>
+<p>Vivaldi:
+<code>Menu button</code> → <code>Tools</code> → <code>Settings</code> → <code>Network</code> → <code>Proxies</code> → <code>Proxy Settings</code> → (System setting)</p>
+<p>以 <a class="external" href="https://www.mozilla.org/zh-TW/firefox/all/">Mozilla Firefox</a> 57+ 為例：</p>
+<p><img src="https://undecv.github.io/blog/posts/proxy-settings/./images/Firefox_Proxy_1_E.png" alt="Firefox_Proxy_1" />
+<img src="https://undecv.github.io/blog/posts/proxy-settings/./images/Firefox_Proxy_2.png" alt="Firefox_Proxy_2" /></p>
+<p>其他的瀏覽器設定大致相同。</p>
+<h3 id="wang-ye-liu-lan-qi-cha-jian-web-browser-add-ons-extensions">網頁瀏覽器插件 - Web Browser Add-ons / Extensions</h3>
+<p>插件的下載地址：</p>
+<ul>
+<li><a class="external" href="https://getfoxyproxy.org/">FoxyProxy Standard</a>
+<ul>
+<li><a class="external" href="https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/">Firefox Add-ons</a></li>
+<li><a class="external" href="https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp">Chrome Extensions</a></li>
+</ul>
+</li>
+<li><a class="external" href="https://github.com/FelisCatus/SwitchyOmega">Proxy SwitchyOmega</a>
+<ul>
+<li><a class="external" href="https://addons.mozilla.org/en-US/firefox/addon/switchyomega/">Firefox Add-ons</a></li>
+<li><a class="external" href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif">Chrome Extensions</a></li>
+</ul>
+</li>
+</ul>
+<p>將插件下載並安裝到瀏覽器后，點擊插件的圖標並進入插件的設定頁面並進行設定，在開關、切換、修改代理設定也只需要通過點擊插件的圖標即可。</p>
+<p>以 FoxyProxy Standard 為例：</p>
+<p><img src="https://undecv.github.io/blog/posts/proxy-settings/./images/FoxyProxy_1_E.png" alt="FoxyProxy_1" />
+<img src="https://undecv.github.io/blog/posts/proxy-settings/./images/FoxyProxy_2.png" alt="FoxyProxy_2" />
+<img src="https://undecv.github.io/blog/posts/proxy-settings/./images/FoxyProxy_3_E.png" alt="FoxyProxy_3" /></p>
+<h3 id="qi-ta-ruan-ti-zhong-de-she-ding">其他軟體中的設定</h3>
+<p>通常的，一些需要網絡連線的應用軟體會提供代理伺服器的設定，若無，可以使用系統代理的方法解決。</p>
+<p>以下載器 <a class="external" href="https://www.freedownloadmanager.org">Free Download Manager</a> 爲例：</p>
+<p><img src="https://undecv.github.io/blog/posts/proxy-settings/./images/FDM_1_E.png" alt="FDM_1" /></p>
+<p>通常的，代理的設定在軟體設定界面的網路設定分頁／分類中。</p>
+<hr />
+<p>Release Notes:</p>
+<ul>
+<li>3.0 Release (20180709).</li>
+<li>2.0 Release (20180520).</li>
+<li>1.0 Release (20180210).</li>
+</ul>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/bittorrent-intro/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">BitTorrent 從入門到出門</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/graphics-file-formats/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">數位影像檔案格式</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/proxy-settings/#dai-li">代理</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/proxy-settings/#ben-di-dai-li">本地代理</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/proxy-settings/#tong-xun-xie-ding">通訊協定</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/proxy-settings/#she-ding">設定</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/proxy-settings/#windows-10">Windows 10</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/proxy-settings/#wang-ye-liu-lan-qi-web-browser">網頁瀏覽器 - Web Browser</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/proxy-settings/#wang-ye-liu-lan-qi-cha-jian-web-browser-add-ons-extensions">網頁瀏覽器插件 - Web Browser Add-ons &#x2F; Extensions</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/proxy-settings/#qi-ta-ruan-ti-zhong-de-she-ding">其他軟體中的設定</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

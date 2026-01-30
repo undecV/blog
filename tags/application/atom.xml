@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;undecv.github.io&#x2F;blog</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>Application</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー - Application</title>
+    <link href="https://undecv.github.io/blog/tags/application/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog/tags/application/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-07-11T00:00:00+00:00</updated><id>https://undecv.github.io/blog/tags/application/atom.xml</id><entry xml:lang="en">
+        <title>全能型影片播放器 mpv 被迫支援觸控螢幕辛酸畫面流出</title>
+        <published>2025-07-11T00:00:00+00:00</published>
+        <updated>2025-07-11T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/</id>
+        <summary type="html">觸控螢幕上最好的影片播放器，竟然是不支援觸控的播放器？本篇介紹如何用開源如開掛的播放器 mpv，透過社群腳本與設定打造支援手勢操作、預覽縮圖與現代化介面的極致體驗。並提供一鍵安裝懶人包，讓 mpv 擁有媲美手機播放器的直覺觸控操作體驗！</summary>
+        </entry><entry xml:lang="en">
+        <title>Android 生態的平行宇宙：F-Droid</title>
+        <published>2025-07-06T00:00:00+00:00</published>
+        <updated>2025-07-06T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/recommended-applications/f-droid/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/recommended-applications/f-droid/</id>
+        <summary type="html">有些 App 超好用，但在 Google Play 根本找不到。
+無論是強大還是小巧、實用甚至免費、無廣告的應用都在這裡。
+來看看我介紹開源應用和他們的產地。
+</summary>
+        </entry><entry xml:lang="en">
+        <title>純粹而不簡單的看天氣 Breezy Weather</title>
+        <published>2025-06-30T22:00:00+00:00</published>
+        <updated>2025-06-30T22:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/recommended-applications/breezy-weather/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/recommended-applications/breezy-weather/</id>
+        <summary type="html">好看、免費、流暢、沒有廣告、資訊全面、功能豐富，最好是會這麼好的應用啦。但我都不看天氣的，我看世間冷暖。</summary>
+        </entry><entry xml:lang="en">
+        <title>Android 上的本地漫畫閱讀器推薦：Kuro Reader</title>
+        <published>2025-06-30T15:00:00+00:00</published>
+        <updated>2025-06-30T15:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/recommended-applications/kuro-reader/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/recommended-applications/kuro-reader/</id>
+        <summary type="html">電腦裡面開了一家漫畫圖書館，怎麼辦？急，在線等。這裏有一款介面現代且流暢、支援壓縮檔、可以直接讀取本地網路的無廣告漫畫閱讀器。</summary>
+        </entry><entry xml:lang="en">
+        <title>［封存］推薦的 Windows 應用軟體列表</title>
+        <published>2017-07-26T00:00:00+00:00</published>
+        <updated>2023-06-29T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/</id>
+        <summary type="html">List of Windows Application Software&lt;br &#x2F;&gt;&lt;del&gt;裝機必備的實用軟體大合集！&lt;&#x2F;del&gt;</summary>
+        </entry>
+</feed>

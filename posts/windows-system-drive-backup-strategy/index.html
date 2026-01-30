@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • Windows 系統槽備份不完全指北</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="系統槽可以說是系統的頭腦，而備份它卻讓人摸不著頭腦。秉承著整槽端走，也不能漏掉一個存檔的原則，這篇文章帶你看看系統槽裡面那些陰暗潮濕的角落。" />
+        <meta property="og:description" content="系統槽可以說是系統的頭腦，而備份它卻讓人摸不著頭腦。秉承著整槽端走，也不能漏掉一個存檔的原則，這篇文章帶你看看系統槽裡面那些陰暗潮濕的角落。" />
+
+    
+
+    <meta property="og:title" content="Windows 系統槽備份不完全指北" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;windows-system-drive-backup-strategy&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            Windows 系統槽備份不完全指北
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2025-06-08"><span class='separator' aria-hidden='true'>•</span>2025-06-08</time></li><li title="3112 words"><span class='separator' aria-hidden='true'>•</span>16 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/windows/">Windows</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/backup/">Backup</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/file-system/">File System</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/computer-concept/">Computer Concept</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2025-06-15">Updated on 2025-06-15</time></li>
+        </ul>
+            <p class="p-summary" hidden>系統槽可以說是系統的頭腦，而備份它卻讓人摸不著頭腦。秉承著整槽端走，也不能漏掉一個存檔的原則，這篇文章帶你看看系統槽裡面那些陰暗潮濕的角落。</p><section class="e-content body"><!-- Windows 系統槽備份不完全指北 -->
+<!-- Backup Strategy for the Windows System Drive -->
+<!-- > 整槽端走，也不能漏掉一個存檔 -->
+<p>重灌系統最痛苦的往往不是重灌系統這個事情本身，而是之前的備份，以及之後的恢復。</p>
+<p><code>C:/</code> 是 Windows 的系統槽，可以說是系統的頭腦，而備份它卻讓人摸不著頭腦。而備份就像搬家，
+若是東西都有被合理的收納，那整理起來必定是會輕鬆很多。</p>
+<p>但話是那麼的輕鬆講，事實卻並沒有那麼簡單，軟體的設定、遊戲的存檔、預設的資料夾、……，不同的軟體有不同的想法，
+這導致我們要備份的資料四散在各處，尤其是系統槽，就像海底撈針。</p>
+<p>雖說有著 3 2 1 備份原則，即 3 份存檔、2 個載具、1 份異地，這方案雖然萬全，但這麼高成本且麻煩的方案一定沒有人會照做對吧？
+但是備份仍然是必要的，因為你不知道硬碟什麼時候會掛掉，等掛掉的時候就來不及了……</p>
+<h2 id="zhu-yuan-zheng-die-duan-zou-du-bu-neng-fang-guo-yi-ge">寧願整碟端走，都不能放過一個</h2>
+<p>可總有一天是要備份的，但無論是重灌系統還是遷移硬碟，一洗下去就資料全無，不會再有反悔的機會。
+所以備份的時候還是得耐下心來，我的建議是：要秉承著「寧願整碟端走，都不能放過一個」的原則。
+畢竟資料無價，雖然容量不大，但可能是幾千小時的遊戲存檔、幾百年前的老照片、國中二年寫的日記、……都是一些青澀的回憶呀。</p>
+<p>所以，我推薦在手動備份的時候「全部掃過一遍，去掉不要的」地毯式掃蕩，而不是一個個去找要備份的東西精準打擊，
+因為這樣很容易有漏網之魚。多拷貝了東西雖然會佔用硬碟空間，但未來還有機會可以刪掉，少拷貝了東西可是找不回來的。
+而且有些設定放在隱藏的資料夾中，在檔案總管中打開「顯示隱藏的資料夾」，不能放過任何一個陰暗潮溼的角落。</p>
+<h2 id="cheng-shi-zhi-jie-zhuang-zai-xi-tong-cao">程式直接裝在系統槽</h2>
+<p>我推薦「程式直接安裝在系統槽」裡面。在遠古時代的達人們不推薦那是由於硬碟的容量受限，
+以及機械硬碟還有防止碎片化的問題所以需要分卷。但是大人時代變了，儲空間容量已經降價到不是那麼貴了。
+固態硬碟（SSD）的普及不僅提速也使得碎片化不再是問題。所以硬碟的分卷現在基本上已經只是使用習慣上的選擇。
+而且那些需要安裝的軟體在重灌作業系統之後還得重裝，不如一起洗掉算了。</p>
+<p>當然遊戲的話，現在都有起動器（Launcher）也就是大家所熟知的 Steam、Battle.net 等平臺，所以遊戲本體可以放在別的地方，
+或是一起備份帶走，不然之後還再用小水管網路載回幾百 GB 的內容。</p>
+<p>其中值得一提的是，Steam 的遊戲預設的存放資料夾通常和 Steam 本體放在一起，這可以在 Steam 的設定中檢視，例如，
+Steam 預設安裝在 <code>C:\Program Files (x86)\Steam</code> 資料夾，他的遊戲就會放在 <code>C:\Program Files (x86)\Steam\steamapps</code>。</p>
+<h2 id="quan-jia-jiu-shi-ni-jia">全家就是你家</h2>
+<p>另外，我也推薦平常就保持一個整理的習慣，不要把自己的東西散佈到系統槽中的其他地方。</p>
+<p>談到自己的東西要放在哪裡，就不得不提到用戶資料夾：<code>C:/Users/&lt;你的名字&gt;</code> 是系統預設的用戶資料夾，
+用戶就是你，你是電腦的用戶。相當於 Linux 的 <code>/home/&lt;你的名字&gt;</code>。為什麼會這麼設計，是因為其實電腦是可以多人運動的。
+通常這個資料夾會有個愛稱，Linux 上是 <code>~</code>，而 Windows 上是 <code>%USERPROFILE%</code>，
+可以直接把這串字貼到檔案總管的地址欄，它會自動跳轉過去。</p>
+<p>這個資料夾裡面通常裡面存著所有「用戶級的設定」和「用戶的資料」，
+包括但不限於 Desktop（桌布）、Documents（檔案）、Downloads（下載）、Music（音樂）、Pictures（圖片）、Videos（影片）。
+這些特殊的資料夾不止有花里胡哨的圖示，還有做特殊的機制。</p>
+<p>無論是軟體的設定、遊戲的存檔、預設的存檔位置都在這個資料夾，OneDrive 也是推薦備份這個資料夾。
+其實 Windows 的本意就是『這是你「家」，你的個人資料都請放這裡』。</p>
+<p>但是，正是因為軟體的設定等東西也都預設放進這裡，一打開這個資料夾不能說是七零八落，只能說是亂七八糟，
+設定資料夾和檔案四散各處，還不能移走，移走程式就讀不到設定了，我才不想承認他是我家。
+其實 Windows 有給這些設定檔案找個好去處就是 <code>%APPDATA%</code>，但有些程式就是很有自己的想法。
+<del>其實在 Linux 上也是這樣的，並且更慘，因為沒有規範🤷。</del></p>
+<h3 id="wei-shen-mo-dotfiles">為什麼 Dotfiles？</h3>
+<p>當你在收拾家資料夾的時候，你一定會看到一拖拉庫 <code>.</code> 句點開頭的檔案和資料夾，
+他們通稱 dotfiles，Linux 系軟體的遺毒，都是一些設定檔和存檔。</p>
+<p>很久很久以前，
+Windows 是沒辦法用通常辦法建立 <code>.</code> 開頭的檔案（只能用指令），
+會提示沒有檔名（只有副檔名）。</p>
+<p>當時的大家對檔名都是很保守的，
+盡量保持得檔名加兩三四個字的副檔名。
+直到當今檔案種類眾多，
+大家都深受三個字的副檔名所苦，
+直到當今開發者放飛自我，不再限制字數，
+甚至不止一個副檔名，比 HTC 的下巴都多。</p>
+<p>在隔壁，Linux 是用 <code>.</code> 開頭的檔名作為隱藏檔案的標記，
+而隱藏檔案在 Windows 需要在檔案描述子中才能設定，
+所以這個 <code>.</code> 在 Windows 下不會隱藏檔案。</p>
+<p>最常見的，這些 <code>.</code> 開頭的檔案作為用戶設定檔（直接）放在你的家資料夾下，這很醜，非常醜，異常醜。
+但由於向下相容的歷史因素，這很難改。
+這些檔案本該去 <code>%APPDATA%</code>，但很顯然軟體工程師們總是很有自己的想法。</p>
+<p>直到那一天，
+Windows 擁抱了 Linux。
+Linux 和 Windows 的家資料夾終於殊途同歸然後同歸於盡，
+WSL 帶領著一眾 dotfiles 給 Windows 的家資料夾瘋狂洗板。
+原本就污穢不堪的家資料夾更不堪入目了。</p>
+<h2 id="yu-she-zi-liao-jia-shuo-ming">預設資料夾說明</h2>
+<blockquote>
+<p>請注意！下面的資料夾的說明僅適用於 Windows 11 24H2，
+其內容的準確性可能隨著時間而改變。</p>
+</blockquote>
+<blockquote>
+<p>也請注意！下面的策略是我的主觀評價，「僅供參考」，請以實際情況為準。</p>
+</blockquote>
+<p>接下來，我會列出「系統槽」中每個資料夾的用意，假設你的系統槽是 <code>C:\</code><sup>[0]</sup>。
+因為基於「全面掃蕩」的原則，我建議是全部過目一遍。
+但知道了資料夾的用意之後有些資料夾就不需要點進去看了，可以看情況備份或者不備份裡面的內容。
+我沒列出來的，可能是自己或是其他軟體設定的，也請點進去看看。</p>
+<table><thead><tr><th style="text-align: left">Path</th><th style="text-align: left">Description</th><th style="text-align: center">Strategy</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>C:\inetpub</code></td><td style="text-align: left">網頁伺服器服務（IIS）的資料夾，通常不會出現。</td><td style="text-align: center">🟨按需備份<sup>[1]</sup></td></tr>
+<tr><td style="text-align: left"><code>C:\OneDriveTemp</code></td><td style="text-align: left">網路硬碟 OneDrive 暫存資料夾。（隱藏）</td><td style="text-align: center">🟩無需備份</td></tr>
+<tr><td style="text-align: left"><code>C:\PerfLogs</code></td><td style="text-align: left">用於系統效能監控。</td><td style="text-align: center">🟩無需備份</td></tr>
+<tr><td style="text-align: left"><code>C:\Program Files</code></td><td style="text-align: left">〔重要〕預設安裝 32-bit 應用程式的資料夾。</td><td style="text-align: center">🟨按需備份</td></tr>
+<tr><td style="text-align: left"><code>C:\Program Files (x86)</code></td><td style="text-align: left">〔重要〕預設安裝 64-bit 應用程式的資料夾。</td><td style="text-align: center">🟨按需備份</td></tr>
+<tr><td style="text-align: left"><code>C:\ProgramData</code></td><td style="text-align: left">〔重要〕全域應用程式資料，例如設定檔等。（隱藏）</td><td style="text-align: center">🟨按需備份</td></tr>
+<tr><td style="text-align: left"><code>C:\Users</code></td><td style="text-align: left">各個使用者的家。</td><td style="text-align: center">-</td></tr>
+<tr><td style="text-align: left"><code>C:\Users\Default</code></td><td style="text-align: left">新帳號範本資料夾，建新帳號時，會複製這裡的內容過去。</td><td style="text-align: center">🟩無需備份</td></tr>
+<tr><td style="text-align: left"><code>C:\Users\Public</code></td><td style="text-align: left">所有使用者共享的公共資料儲存區。</td><td style="text-align: center">🟨按需備份<sup>[2]</sup></td></tr>
+<tr><td style="text-align: left"><code>C:\Users\&lt;你的名字&gt;</code><br />愛稱：<code>%USERPROFILE%</code></td><td style="text-align: left">〔非常重要〕你的家，若著急可以直接把這個整碗端走。</td><td style="text-align: center">🟥必須備份</td></tr>
+<tr><td style="text-align: left"><code>C:\Windows</code></td><td style="text-align: left">系統核心與系統檔案所在。</td><td style="text-align: center">🟩無需備份</td></tr>
+</tbody></table>
+<ul>
+<li>[0]: 如果你會修改系統槽符號，你應該也不用看本文浪費時間了吧？</li>
+<li>[1]: 如果你會用到網頁伺服器，你應該也不用看本文浪費時間了吧？</li>
+<li>[2]: 單用戶應該不會有人把東西放這吧？</li>
+</ul>
+<p>其中，有些很有自己的想法的軟體，會把設定檔、存檔等一起放在 <code>Program Files</code> 資料夾裡面（這不是標準實作），
+所以備份的時候還是建議掃過一遍。再次提醒，Steam 等平臺的遊戲也在裡面。</p>
+<p>接下來，我會列出「用戶資料夾」中每個重要資料夾的用意，
+我會直接使用 <code>%USERPROFILE%</code> 替代掉前面 <code>C:\Users\&lt;你的名字&gt;</code> 的部分，這也可以讓你直接貼到檔案總管的地址欄就可以直接訪問。</p>
+<table><thead><tr><th style="text-align: left">Path</th><th style="text-align: left">Description</th><th style="text-align: center">Strategy</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>%USERPROFILE%\AppData</code></td><td style="text-align: left">程式的資料。（隱藏）</td><td style="text-align: center">-</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\AppData\Local</code><br />愛稱：<code>%LOCALAPPDATA%</code></td><td style="text-align: left">〔重要〕本機專用資料，如快取、暫存、重下載可恢復內容。</td><td style="text-align: center">🟨按需備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\AppData\LocalLow</code></td><td style="text-align: left">限低權限執行的程式儲存區。</td><td style="text-align: center">🟨按需備份<sup>[3]</sup></td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\AppData\Roaming</code><br />愛稱：<code>%APPDATA%</code></td><td style="text-align: left">〔非常重要〕會跟隨帳號漫遊的設定。</td><td style="text-align: center">🟨按需備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Contacts</code></td><td style="text-align: left">存放聯絡人資訊。</td><td style="text-align: center">🟨按需備份<sup>[4]</sup></td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\CrossDevice</code></td><td style="text-align: left">微軟的「跨裝置體驗」服務資料夾。</td><td style="text-align: center">🟩無需備份<sup>[5]</sup></td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Desktop</code></td><td style="text-align: left">〔非常重要〕桌布上的所有東西。</td><td style="text-align: center">🟥必須備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Documents</code></td><td style="text-align: left">〔非常重要〕存放所有用戶檔案，預設的存檔位置。</td><td style="text-align: center">🟥必須備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Documents\My Games</code></td><td style="text-align: left">〔非常重要〕約定俗成的遊戲存檔資料夾</td><td style="text-align: center">🟥必須備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Downloads</code></td><td style="text-align: left">〔重要〕存放下載來的檔案，預設的下載位置。</td><td style="text-align: center">🟥必須備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Favorites</code></td><td style="text-align: left">存放 Internet Explorer（IE） 的書籤。</td><td style="text-align: center">🟨按需備份<sup>[4]</sup></td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Links</code></td><td style="text-align: left">曾經的快速存取列。</td><td style="text-align: center">🟨按需備份<sup>[4]</sup></td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Music</code></td><td style="text-align: left">〔非常重要〕存放音樂，甚至錄音檔。</td><td style="text-align: center">🟥必須備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\OneDrive</code></td><td style="text-align: left">OneDrive 同步用。</td><td style="text-align: center">🟩已經備份<sup>[6]</sup></td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Pictures</code></td><td style="text-align: left">〔非常重要〕存放圖片，包括截圖等。</td><td style="text-align: center">🟥必須備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Saved Games</code></td><td style="text-align: left">〔非常重要〕存放遊戲存檔。</td><td style="text-align: center">🟥必須備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Searches</code></td><td style="text-align: left">儲存搜尋條件（Saved Searches）的資料夾。</td><td style="text-align: center">🟨按需備份<sup>[4]</sup></td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Videos</code></td><td style="text-align: left">〔非常重要〕存放影片，包括錄影等。</td><td style="text-align: center">🟥必須備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\NTUSER.DAT</code></td><td style="text-align: left">檔案，使用者註冊檔（不要動，會造成帳號損壞）。</td><td style="text-align: center">🟩不要備份</td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left">以下是一些非預設的內容</td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\.config</code></td><td style="text-align: left">一些白目的軟體的設定檔案和存檔資料夾。</td><td style="text-align: center">🟨按需備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\&lt;軟體名稱&gt;</code></td><td style="text-align: left">一些白目的軟體的設定檔案和存檔資料夾。</td><td style="text-align: center">🟨按需備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Documents\&lt;軟體名稱&gt;</code></td><td style="text-align: left">一些白目的軟體的設定檔案和存檔資料夾。</td><td style="text-align: center">🟨按需備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\scoop</code></td><td style="text-align: left">軟體套件管理系統 Scoop 預設安裝資料夾，可能有設定檔案。</td><td style="text-align: center">🟨按需備份</td></tr>
+<tr><td style="text-align: left"><code>%USERPROFILE%\Sync</code></td><td style="text-align: left">同步工具 Syncthing 預設的用戶同步資料夾。</td><td style="text-align: center">🟩不要備份<sup>[5]</sup></td></tr>
+</tbody></table>
+<ul>
+<li>[3]: 通常沒什麼要備份。</li>
+<li>[4]: 應該沒什麼人用吧？</li>
+<li>[5]: 通常個資料夾的內容在你的另一臺設備上。</li>
+<li>[6]: 通常個資料夾已經被 OneDrive 同步了。</li>
+</ul>
+<p>其中，資料夾 <code>%USERPROFILE%\AppData</code> 是「程式的資料」，原意是放一些程式的設定檔，
+但裡面的東西多到根本就是在你家開了一家 Costco 一樣，是因為有些很有自己想法的軟體例如 Chrome 就會把自己裝到裡面，是為了規避管理員權限（UAC）。</p>
+<p>再次強調，「沒有列出的資料夾和檔案也都請掃過一遍」。
+如果還是忘了哪些檔案，那我也只能借用某知名遊戲製作人田中氏的話說，『不要太在乎得失，你要去享受這個過程』。</p>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/domain-for-intranet/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">如何為內網服務設定自訂網域與 HTTPS：保留 TLD、ACME 證書與本地 DNS 的實踐</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">打破指令和圖形界面的次元壁！用捷徑圖示執行指令</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/#zhu-yuan-zheng-die-duan-zou-du-bu-neng-fang-guo-yi-ge">寧願整碟端走，都不能放過一個</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/#cheng-shi-zhi-jie-zhuang-zai-xi-tong-cao">程式直接裝在系統槽</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/#quan-jia-jiu-shi-ni-jia">全家就是你家</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/#wei-shen-mo-dotfiles">為什麼 Dotfiles？</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/#yu-she-zi-liao-jia-shuo-ming">預設資料夾說明</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

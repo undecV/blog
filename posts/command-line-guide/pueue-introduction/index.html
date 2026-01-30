@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 把任務放進佇列！用 Pueue 排隊指令</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="有時我們會需要執行一拖拉庫需要漫長時間而繁重的操作。一旦執行下去就得等到海枯石爛。同時執行不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。這時候就會希望它們放進佇列，能夠自動排隊執行，還能動態調整佇列順序、暫停、取消⋯⋯有這種工具嗎？" />
+        <meta property="og:description" content="有時我們會需要執行一拖拉庫需要漫長時間而繁重的操作。一旦執行下去就得等到海枯石爛。同時執行不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。這時候就會希望它們放進佇列，能夠自動排隊執行，還能動態調整佇列順序、暫停、取消⋯⋯有這種工具嗎？" />
+
+    
+
+    <meta property="og:title" content="把任務放進佇列！用 Pueue 排隊指令" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;command-line-guide&#x2F;pueue-introduction&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            把任務放進佇列！用 Pueue 排隊指令
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/command-line-guide/pueue-introduction/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2025-05-28T04:00:00"><span class='separator' aria-hidden='true'>•</span>2025-05-28</time></li><li title="597 words"><span class='separator' aria-hidden='true'>•</span>3 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/command-line/">Command Line</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/cli/">CLI</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/tutorial/">Tutorial</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/task-queuing/">Task Queuing</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/software/">Software</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2025-05-28T04:00:00">Updated on 2025-05-28</time></li>
+        </ul>
+            <p class="p-summary" hidden>有時我們會需要執行一拖拉庫需要漫長時間而繁重的操作。一旦執行下去就得等到海枯石爛。同時執行不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。這時候就會希望它們放進佇列，能夠自動排隊執行，還能動態調整佇列順序、暫停、取消⋯⋯有這種工具嗎？</p><section class="e-content body">
+    <section class="series-page-intro">
+                <p>這篇文章來自 <a href="https://undecv.github.io/blog/posts/command-line-guide/" aria_label="命令列從入門到出門">命令列從入門到出門</a> 系列。</p>
+
+            </section>
+<blockquote>
+<p>本文適用 Pueue v4.0.0 (截稿時 2025-05)</p>
+</blockquote>
+<p>有時我們會需要執行一拖拉庫需要漫長時間、需要大量系統資源的指令，
+例如巨量資料的計算、機器學習，或是更常用的檔案壓縮、影片轉檔。
+一旦執行下去就得等到海枯石爛，是要看著他們執行根本就是一種煎熬。
+同時執行會佔用過多的系統資源，不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。
+這時候就會希望它們放進佇列（Queue），能夠自動排隊執行，還能動態調整佇列順序、暫停、取消⋯⋯有這種工具嗎？</p>
+<blockquote>
+<p>佇列（ㄓㄨˋ ㄌㄧㄝˋ，zhù liè）。讀錯請重修國小國文。</p>
+</blockquote>
+<p>我們的需求：</p>
+<ul>
+<li>希望指令在一個先進先出佇列中排隊，同時有壹個或多個指令執行；</li>
+<li>佇列可以按需調整，新增、刪除、調整順序，甚至中止當前正在執行的任務。</li>
+</ul>
+<p>Linux 上我們有 GNU Parallel 和 task-spooler，
+本站之前也有 <a href="https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/">文章</a> 介紹過如何在 Windows / WSL 的環境下玩 task-spooler。
+但是現在，<a class="external" href="https://github.com/Nukesor/pueue">Nukesor/pueue</a> 讓我們不僅是 Linux，終於也可以在<strong>原生</strong> Windows 上也能把指令放進佇列！</p>
+<p>Pueue 是 Rust 寫的工具，可以用 Rust 的 Cargo 工具安裝，
+但 Cargo 實際上是載源代碼下來編譯，還得安裝編譯器，好像不是那麼適合終端用戶。
+所以這裡建議通過 Package Manager 安裝，<a class="external" href="https://github.com/Nukesor/pueue?tab=readme-ov-file#installation">官方文檔</a> 列出了支援的軟體套件管理器，
+支援多種平台，沒有的話……沒有的話再從 Cargo 安裝吧。</p>
+<p>Windows 的話可以用 <a class="external" href="https://scoop.sh/">Scoop</a> 安裝，其用法可以參考本站文章 <a href="https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/">Windows 的軟體管理系統</a>：</p>
+<pre data-lang="shell" class="language-shell z-code"><code class="language-shell" data-lang="shell"><span class="z-text z-plain">scoop install pueue
+</span></code></pre>
+<p>Pueue 是「伺服器—客戶端」架構，安裝之後使用前需要先把伺服器開起來。
+我們可以以「服務（services）」的方式啟用伺服器一勞永逸：</p>
+<p>在 Linux 上可以參考<a class="external" href="https://github.com/Nukesor/pueue/wiki/Get-started#systemd">官方文檔</a>，在 Windows 上：</p>
+<pre data-lang="shell" class="language-shell z-code"><code class="language-shell" data-lang="shell"><span class="z-text z-plain">pueued service install
+</span><span class="z-text z-plain">pueued service start
+</span></code></pre>
+<p>接下來就可以使用它了，這裡列出一些基本的用法：</p>
+<pre data-lang="powershell" class="language-powershell z-code"><code class="language-powershell" data-lang="powershell"><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 看看程式怎麼用<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue help
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 增加一個「睡五秒」任務<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue add <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>sleep 5<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span>&gt; New task added (id 0).  # 增加成功返回任務 ID<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 暫停、開始 `default` 預設佇列<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue pause
+</span><span class="z-source z-powershell">pueue start
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 停止運行中的 id=0 任務<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue kill <span class="z-constant z-numeric z-integer z-powershell">0</span>
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 移除已停止的 id=0 任務<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue remove <span class="z-constant z-numeric z-integer z-powershell">0</span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 甚至，可以有不止一個佇列：<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 增加叫做 &quot;compress&quot; 的組<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue group add <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>compress<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 列出當前所有的組<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue group
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 暫停 &quot;compress&quot; 組<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue pause <span class="z-keyword z-operator z-assignment z-powershell">-</span><span class="z-keyword z-operator z-assignment z-powershell">-</span>group <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>compress<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 刪除 &quot;compress&quot; 組<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue group delete <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>compress<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell">
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 整一個 PowerShell 限定的花活<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue add <span class="z-string z-quoted z-double z-powershell"><span class="z-punctuation z-definition z-string z-begin z-powershell">&quot;</span>Get-ChildItem<span class="z-punctuation z-definition z-string z-end z-powershell">&quot;</span></span>
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 顯示上一個指令做了什麼<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue log
+</span><span class="z-source z-powershell"><span class="z-comment z-line z-powershell"><span class="z-punctuation z-definition z-comment z-powershell">#</span> 列出目前所有佇列中的任務，兩個指令一樣，但我勸你把話說清楚<span class="z-punctuation z-definition z-comment z-powershell">
+</span></span></span><span class="z-source z-powershell">pueue status
+</span><span class="z-source z-powershell">pueue
+</span></code></pre>
+
+    
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">命令列從入門到出門</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">打通 Windows 和 Linux 的傳送魔法陣！在 Shell 之間反覆橫跳</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

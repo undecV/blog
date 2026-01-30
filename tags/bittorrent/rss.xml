@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - BitTorrent</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/bittorrent/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>BitTorrent 從入門到出門</title>
+          <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/bittorrent-intro/</link>
+          <guid>https://undecv.github.io/blog/posts/bittorrent-intro/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/bittorrent-intro/">&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;BitTorrent 協定&lt;&#x2F;strong&gt; 俗稱 &lt;code&gt;BT下載&lt;&#x2F;code&gt;、&lt;code&gt;種子下載&lt;&#x2F;code&gt;，常見的形態還有 &lt;code&gt;Magnet（磁力鏈接）&lt;&#x2F;code&gt;，是現代主流的網路檔案分享方式之一。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gai-lun&quot;&gt;概論&lt;&#x2F;h2&gt;
+&lt;p&gt;Bit 譯作「比特」是電腦數據的基本單位，Torrent 意爲「激流」。BitTorrent 通常可以指本文所述的 &lt;strong&gt;開放的 BitTorrent 協定&lt;&#x2F;strong&gt; 或是 BitTorrent 官方客戶端，以及 BitTorrent 公司。&lt;&#x2F;p&gt;
+&lt;p&gt;相比於 BitTorrent，傳統的中心化檔案下載模式，通常是一個伺服器（發布者）分發給所有客戶端（下載者），客戶端越多，下載速率被平分，也就越慢；一旦伺服器端故障，檔案便不再可下載。&lt;&#x2F;p&gt;
+&lt;p&gt;而 BitTorrent 是一種基於端對端（Peer-to-Peer, P2P）的傳輸協定。不同於傳統的下載方式，BitTorrent 同時下載的客戶端越多，速度越快；並且在特定情況下，檔案發布者退出也不會導致檔案無法下載。&lt;&#x2F;p&gt;
+&lt;p&gt;這麼神奇的功效得益於「我為人人，人人為我」的精神：每個 &lt;strong&gt;下載者&lt;&#x2F;strong&gt; 同時也是 &lt;strong&gt;分享者&lt;&#x2F;strong&gt;，不僅 &lt;strong&gt;發布者&lt;&#x2F;strong&gt; 會傳給下載者，每個下載者將自己已經取得的部分「分享」給還未取得這部分的其他下載者，其他下載者也他們已經載好但是你還沒有的部分「分享」給你。這樣的傳輸方式可以加快傳輸的速度、減輕發布者伺服器負擔，甚至當下載者們有了檔案的每個部分，發布者退出網路也不會影響檔案的分享。&lt;&#x2F;p&gt;
+&lt;p&gt;當你想要使用 BitTorrent 下載檔案時，你會先取得一個 &lt;strong&gt;種子文件&lt;&#x2F;strong&gt;，裏頭記載着 &lt;strong&gt;追蹤伺服器&lt;&#x2F;strong&gt; 以及檔案的資訊，追蹤伺服器根據這些檔案的資訊帶你找到發佈者、分享者、下載者這些 Friends。其中，&lt;strong&gt;DHT 網路&lt;&#x2F;strong&gt; 可以當成是由參與的用戶組成的分散式追蹤伺服器。&lt;&#x2F;p&gt;
+&lt;p&gt;也可以使用 &lt;strong&gt;磁力鏈接&lt;&#x2F;strong&gt;，看上去就像一個特殊的網址，它包含了你要載的檔案的資訊。如果沒有或是你不想用種子文件，客戶端可以直接根據磁力鏈接找到你要的檔案和 Friends。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;jiao-se&quot;&gt;角色&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;檔案（File）&lt;&#x2F;strong&gt; 被分割成一個個小 &lt;strong&gt;塊（Pieces）&lt;&#x2F;strong&gt;，檔案資料以 塊 為單元被分享。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;下載者&lt;&#x2F;strong&gt; 或稱之 &lt;strong&gt;節點（Peers）&lt;&#x2F;strong&gt; 是想要檔案的人。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;分享者&lt;&#x2F;strong&gt; 或稱之 &lt;strong&gt;種子（Seeds）&lt;&#x2F;strong&gt; 是任何分享檔案的人。不只是 &lt;strong&gt;發布者&lt;&#x2F;strong&gt;，當下載者開始分享它已經取得的部分，他們也會變成種子。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;客戶端（Client）&lt;&#x2F;strong&gt; 也就是你執行 BitTorrent 下載的軟體。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;種子文件（Torrent file, &lt;code&gt;*.torrent&lt;&#x2F;code&gt;）&lt;&#x2F;strong&gt; 記載了追蹤伺服器以及你要載的一個或一堆檔案的資訊。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;磁力鏈接（Magnet）&lt;&#x2F;strong&gt; 像特殊的網址，它包含了你要載的檔案的資訊。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;追蹤伺服器（Tracker）&lt;&#x2F;strong&gt; 根據你提供的種子文件裡面的檔案資訊，帶你找到 Friends。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;DHT&lt;&#x2F;strong&gt; 譯作 &lt;strong&gt;分散式哈希表&lt;&#x2F;strong&gt; 可以想象成是特殊的分散式的追蹤伺服器。它由參與的用戶組成網路，將資訊以分布的方式存儲在每個客戶端之中。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;zhong-zi-yu-ke-yong-xing&quot;&gt;種子與可用性&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 檔案的可見性來自種子們的分享，所以當檔案的種子們 &lt;strong&gt;沒有完整的檔案&lt;&#x2F;strong&gt; 又甚至根本沒有種子了，下載就會 &lt;strong&gt;無法完成&lt;&#x2F;strong&gt;，直到有更多片段或完整檔案的種子們再次上線。&lt;&#x2F;p&gt;
+&lt;p&gt;打開 &lt;strong&gt;使用 DHT 網路&lt;&#x2F;strong&gt; 選項 或 &lt;strong&gt;手動添加追蹤伺服器&lt;&#x2F;strong&gt;（後文會提到）可能可以搶救一下。&lt;&#x2F;p&gt;
+&lt;p&gt;客戶端中的詳細任務訊息會給出當前分享網路是否有完整的檔案的 &lt;strong&gt;可用性（Availability）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，BitTorrent 的檔案下載具有時效性，走過路過不要錯過，也請記得分享：）&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xi-xie&quot;&gt;吸血&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 的活力來源於「分享」的精神，只下載不分享的「吸血」行爲招人唾棄，會嚴重破壞 BitTorrent 的社會環境。
+也請不要使用諸如 &lt;em&gt;迅雷&lt;&#x2F;em&gt; 等吸血下載工具，現在的主流下載客戶端會對吸血行爲有保護機制。
+一些追蹤伺服器也許會追蹤分享率和分享時間。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cao-zuo&quot;&gt;操作&lt;&#x2F;h2&gt;
+&lt;p&gt;實際操作比上面的理論（？簡單多了，就像傳統下載，將下載地址導入到下載工具（客戶端），只是導入的東西變成了 &lt;strong&gt;種子文件&lt;&#x2F;strong&gt; 或 &lt;strong&gt;磁力鏈接&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ke-hu-duan&quot;&gt;客戶端&lt;&#x2F;h3&gt;
+&lt;p&gt;一些 BitTorrent 專用客戶端，例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.qbittorrent.org&#x2F;&quot;&gt;qBittorrent&lt;&#x2F;a&gt;: &lt;code&gt;自由軟體&lt;&#x2F;code&gt; 第三方客戶端，可訂製的種子搜尋功能。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;請注意！據 ghacks.net 悉（Dec 9, 2019），uTorrent 官方客戶端被多家包括 ESET-NOD32 以及 Microsoft 在內的防毒軟體標記爲惡意軟體（Malware）。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;以及一些多協定的下載工具，例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;aria2.github.io&#x2F;&quot;&gt;aria2&lt;&#x2F;a&gt;: &lt;code&gt;自由軟體&lt;&#x2F;code&gt; 多協議命令行下載工具，功能強大需要調教。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;she-ding-ke-hu-duan&quot;&gt;設定客戶端&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 客戶端就像一般下載工具，除了那些都有的例如代理、下載速度限制、最大活躍下載任務、下載位置等設定，例舉一些 BitTorrent 特有的設定：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;上傳速度限制：分享的速度限制；&lt;&#x2F;li&gt;
+&lt;li&gt;分享率：當分享的資料量達到檔案的 N 倍後結束任務；&lt;&#x2F;li&gt;
+&lt;li&gt;分享時間：當分享的時間超過 T 時間後結束任務；&lt;&#x2F;li&gt;
+&lt;li&gt;啓用 DHT 網路；&lt;&#x2F;li&gt;
+&lt;li&gt;...&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;shou-dong-tian-jia-zhui-zong-si-fu-qi-ke-xuan-bu-zou&quot;&gt;手動添加追蹤伺服器（可選步驟）&lt;&#x2F;h3&gt;
+&lt;p&gt;除了種子文件中提供的追蹤伺服器，你也可以將追蹤伺服器預置在客戶端中。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Github · &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ngosang&#x2F;trackerslist&quot;&gt;ngosang&#x2F;trackerslist&lt;&#x2F;a&gt;: Updated list of public BitTorrent trackers（&lt;strong&gt;⚠ 未測試&lt;&#x2F;strong&gt;）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;lai-yuan&quot;&gt;來源&lt;&#x2F;h3&gt;
+&lt;p&gt;一些自由軟體爲了減輕其分發的成本，會使用 BitTorrent 做爲取得的方式。
+也有一些種子文件的彙集網站。&lt;&#x2F;p&gt;
+&lt;p&gt;你會取得一個 &lt;code&gt;*.torrent&lt;&#x2F;code&gt; 的 &lt;strong&gt;種子文件&lt;&#x2F;strong&gt;，或是在 &lt;code&gt;🧲&lt;&#x2F;code&gt; 磁鐵圖標 附近找到像這樣的 &lt;strong&gt;磁力鏈接&lt;&#x2F;strong&gt;：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;URI&quot; class=&quot;language-URI z-code&quot;&gt;&lt;code class=&quot;language-URI&quot; data-lang=&quot;URI&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;magnet:?xt=urn:btih:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;將他們導入到你選擇的客戶端中就可以開始下載。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wen-xin-ti-shi&quot;&gt;溫馨提示&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;liu-liang-jing-gao&quot;&gt;流量警告&lt;&#x2F;h3&gt;
+&lt;p&gt;通常的，運營商統計的數據流量包括了下載和上傳（分享）的流量。在使用計量型方案請謹慎使用。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shen-fen-bao-lu-jing-gao&quot;&gt;身份暴露警告&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 的設計沒有考量匿名性，當你下載任何檔案的時候，你此時的 IP 地址 會被所有參與下載的 Friends 看到。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hai-zei-ban-jing-gao&quot;&gt;海賊版警告&lt;&#x2F;h3&gt;
+&lt;p&gt;去中心化的設計 BitTorrent 可以減輕發布者的負擔，但是也爲海賊版提供了平臺。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;支持和購買正版才能夠讓美好的創作永續！&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;feng-suo-jing-gao&quot;&gt;封鎖警告&lt;&#x2F;h3&gt;
+&lt;p&gt;由於以上全部或部分的問題，一些網絡會封鎖＼禁止 BitTorrent 協定，例如學術網路或公司企業網路。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;reference&quot;&gt;REFERENCE&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;BitTorrent_(protocol)&quot;&gt;BitTorrent&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Magnet_URI_scheme&quot;&gt;Magnet URI scheme&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Quora: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.quora.com&#x2F;How-do-BitTorrent-magnet-links-work&#x2F;answer&#x2F;Stanislav-Shalunov&quot;&gt;Stanislav Shalunov&#x27;s answer to How do BitTorrent magnet links work?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Stack overflow: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;28601408&quot;&gt;What exactly is the info_Hash in a torrent file&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

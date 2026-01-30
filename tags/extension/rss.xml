@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Extension</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/extension/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 11 May 2022 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>YouTubeあるある - 瀏覽器多視窗</title>
+          <pubDate>Wed, 11 May 2022 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/youtube-tips/youtube-popup-video/</link>
+          <guid>https://undecv.github.io/blog/posts/youtube-tips/youtube-popup-video/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/youtube-tips/youtube-popup-video/">&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;DD必知必會101&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;瀏覽器多視窗是現代瀏覽器的基本技能，只要把標籤頁拖動到隨意位置就可以很容易的創立新視窗，平鋪這些視窗就可以在一個螢幕上同時看多個頁面，這功能讓工作和摸魚都變得高效。瀏覽器完整的視窗有功能豐富的工具列，但是對於一個只播放影片的視窗來說這些工具列就顯得多餘，希望有辦法可以有專門視窗可以關閉工具列，只顯示內容。&lt;&#x2F;p&gt;
+&lt;p&gt;Firefox 內建的畫中畫（Picture-in-picture）功能就可以讓影片逃出頁面，成為一個獨立的小視窗，甚至沒有標題欄。在設定中打開選項後，在播放中的影片右邊會出現一個小泡泡，點下去就可以打開畫中畫視窗。這已經可以滿足很多使用情況的需求，但是沒有辦法在這個小視窗中調整音量、畫面、播放速度等選項，還是需要回到原本的頁面。&lt;&#x2F;p&gt;
+&lt;p&gt;免費、開源的擴充套件 &lt;em&gt;&lt;strong&gt;YouTube Popout Player&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt;（&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;youtube-popout-player&#x2F;&quot;&gt;Firefox Add-on&lt;&#x2F;a&gt;, &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;youtube-popout-player&#x2F;kmfikkopdhmbdbkndkamabamlkkgkpod&quot;&gt;Chrome Extension&lt;&#x2F;a&gt;）可以利用跳出式視窗（pop-up window）實現全視窗的影片播放，相較畫中畫模式，跳出式視窗一樣沒有多餘的工具列，但有一個醜醜的標題欄；利用 YouTube 的嵌入式播放器，調整音量、畫面、播放速度等選項一應俱全。在影片連結上右鍵可以在不進入影片頁面就打開跳出式視窗。啟用擴充套件之後，在影片右下角的全螢幕按鈕的左邊會多出一個按鈕，完全融入了 Youtube 播放器的介面設計。&lt;&#x2F;p&gt;
+&lt;p&gt;極少數時候，一些創作者會設定影片禁止使用嵌入式播放器，這個方法就失效了。&lt;&#x2F;p&gt;
+&lt;p&gt;免費、開源的擴充套件 &lt;em&gt;&lt;strong&gt;Popup window&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt;（&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;popup-window&#x2F;&quot;&gt;Firefox Add-on&lt;&#x2F;a&gt;, &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;popup-window&#x2F;nnlippelgfbglbhiccffmnmlnhmbjjpe&quot;&gt;Chrome Extension&lt;&#x2F;a&gt;）可以讓任何的網頁放入跳出式視窗，與繁體簡體中文轉換工具 新同文堂 師出同門。Twitch 自帶的跳出式視窗會有一個地址欄，但如果使用 Popup window 搭配劇院模式就又可以實現乾淨的視窗。&lt;&#x2F;p&gt;
+&lt;p&gt;同個家族的免費、開源的擴充套件 &lt;em&gt;&lt;strong&gt;Popup Video&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt;（&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;popup-video-webextension&#x2F;&quot;&gt;Firefox Add-on&lt;&#x2F;a&gt;）與上面介紹的 YouTube Popout Player 功能相近，但啟用的按鈕沒有融入介面設計，在導覽頁和播放器右上角會有出現一個白色的按鈕。&lt;&#x2F;p&gt;
+&lt;p&gt;免費、專有的擴充套件 &lt;em&gt;&lt;strong&gt;Enhancer for YouTube™&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt;（&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;enhancer-for-youtube&#x2F;&quot;&gt;Firefox Add-on&lt;&#x2F;a&gt;, &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;enhancer-for-youtube&#x2F;ponfpcnoihfmfllpaingbgckeeldkhle&quot;&gt;Chrome Extension&lt;&#x2F;a&gt;） 功能豐富，也帶有跳出式視窗的功能，可以看看專文介紹：&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;youtube-tips&#x2F;youtube-enhancer-for-youtube&#x2F;&quot;&gt;YouTubeあるある - 戲院級的觀影體驗！擴充套件 Enhancer for YouTube™&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;免費、專有的擴充套件 &lt;em&gt;&lt;strong&gt;Video Popup Tool&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt;（&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;popup-tool&#x2F;&quot;&gt;Firefox Add-on&lt;&#x2F;a&gt;）可以讓其他網站的 HTML5 播放器也能利用跳出式視窗，例如學習教學平臺上的線上課程。&lt;&#x2F;p&gt;
+&lt;p&gt;跳出式視窗沒有辦法用滑鼠拖到螢幕邊緣進行 Snap 視窗分割，可以搭配 &lt;em&gt;&lt;strong&gt;PowerToys&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt;（&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-tw&#x2F;windows&#x2F;powertoys&#x2F;install&quot;&gt;官方網站&lt;&#x2F;a&gt;）的 FancyZones 功能，甚至可以預設好視窗的大小，做到沒有黑邊的 DD。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;youtube-tips&#x2F;youtube-popup-video&#x2F;.&#x2F;images&#x2F;YouTube_Popup_Video.png&quot; alt=&quot;大型DD現場&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>YouTubeあるある - 戲院級的觀影體驗！擴充套件 Enhancer for YouTube</title>
+          <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/youtube-tips/youtube-enhancer-for-youtube/</link>
+          <guid>https://undecv.github.io/blog/posts/youtube-tips/youtube-enhancer-for-youtube/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/youtube-tips/youtube-enhancer-for-youtube/">&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;巨幅銀幕、人體工學&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Enhancer for YouTube™ 是一個免費、專有擴充套件（&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;enhancer-for-youtube&#x2F;&quot;&gt;Firefox Add-on&lt;&#x2F;a&gt;, &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;enhancer-for-youtube&#x2F;ponfpcnoihfmfllpaingbgckeeldkhle&quot;&gt;Chrome Extension&lt;&#x2F;a&gt;），它為 YouTube 播放器添加了超多實用的功能，
+功能超多到以至於很難介紹，也很難介紹完，
+是 YouTube 增強系的擴充套件的集大成之作，就像瑞士刀。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;聲音拉到最大都聽不清，就可以開啟&lt;strong&gt;音量增強&lt;&#x2F;strong&gt;的功能；&lt;&#x2F;li&gt;
+&lt;li&gt;畫面看不清楚，可以用&lt;strong&gt;影片濾鏡&lt;&#x2F;strong&gt;調整亮度、對比、飽和度...&lt;&#x2F;li&gt;
+&lt;li&gt;影片太慢心太急，1.25 太慢、1.5 跟不上，可以精密的到以 0.05 為步進 &lt;strong&gt;調整播放速度&lt;&#x2F;strong&gt;；&lt;&#x2F;li&gt;
+&lt;li&gt;畫面太小，全熒幕又不方便，可以&lt;strong&gt;鎖定劇院模式&lt;&#x2F;strong&gt;；&lt;&#x2F;li&gt;
+&lt;li&gt;劇院模式畫面留邊還是太小，&lt;strong&gt;放大播放器&lt;&#x2F;strong&gt;撐滿整個視窗；&lt;&#x2F;li&gt;
+&lt;li&gt;想要DD多開視窗，或是摸魚想要有影片陪伴，可以把影片放進&lt;strong&gt;彈出視窗&lt;&#x2F;strong&gt;；&lt;&#x2F;li&gt;
+&lt;li&gt;遇到喜歡的音樂可以開啟洗腦&lt;strong&gt;循環播放&lt;&#x2F;strong&gt;；&lt;&#x2F;li&gt;
+&lt;li&gt;界面看膩了，可以&lt;strong&gt;客製外觀主題&lt;&#x2F;strong&gt;，就像買了一臺新電視；&lt;&#x2F;li&gt;
+&lt;li&gt;看影片資訊、聊天留言時候迷你播放器畫面上，視聽不中斷；&lt;&#x2F;li&gt;
+&lt;li&gt;隱藏卡片、留言區、聊天室、推薦影片，甚至有可以添加排除名單的&lt;strong&gt;擋廣告&lt;&#x2F;strong&gt;。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;更多的播放控制工具，都可以通過小按鈕快速開關，預設會在播放器下方添加一個工具列，也可以融入播放器的控制列。&lt;&#x2F;p&gt;
+&lt;p&gt;還有一些沒有介紹到的功能，推薦載來玩玩看。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;youtube-tips&#x2F;youtube-enhancer-for-youtube&#x2F;.&#x2F;images&#x2F;BeforeAfter.png&quot; alt=&quot;Before_After&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>YouTubeあるある - 鎖定高畫質</title>
+          <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/youtube-tips/youtube-high-definition/</link>
+          <guid>https://undecv.github.io/blog/posts/youtube-tips/youtube-high-definition/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/youtube-tips/youtube-high-definition/">&lt;!-- # YouTube 鎖定高畫質 --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;你手機可以看 4K？&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;最近的 YouTube 出於奇怪的理由，調降了預設的影片畫質 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，
+甚至修改了畫質設定 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，用策略替代原本的解析度選項，
+無法鎖定最高畫質，很難自動選擇到 1080p 甚至 720p，
+若想看 1080p 或更高畫質會需要在每個影片切換，
+這迷惑行為造成了視聽者的困擾。&lt;&#x2F;p&gt;
+&lt;p&gt;電腦端若使用 Firefox 瀏覽器，
+可以安裝擴充套件「YouTube High Definition」(GPL-3.0) &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-3-1&quot;&gt;&lt;a href=&quot;#fn-3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，
+在擴充套件中可以選定預設的影片畫質，甚至播放速率、音量等設定。&lt;&#x2F;p&gt;
+&lt;p&gt;Android 的 YouTube APP 無法度，
+可以切換到 Firefox 瀏覽器 Android 版。
+使用瀏覽器看 YouTube 有很多優勢，
+除了雙擊影片左右邊快進倒退等熟悉便利的操作依然可用，
+還可以實現課金用戶才有的後臺播放，
+亦可以使用同樣的瀏覽器擴充套件 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-1&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 實現鎖定高畫質的功能，
+在 Beta 版的 Firefox 甚至支援畫中畫模式（影片全熒幕後切換其他的 App），
+更甚至可以實現擋廣告（但當擋廣告會影響創作者收益所以不推薦）。
+缺憾是在看 16:9 標準比例的影片的時候，還無法放大填充到超長的全熒幕上。&lt;&#x2F;p&gt;
+&lt;p&gt;若覺得每次都要點開瀏覽器再找到 YouTube 非常麻煩，
+可以將 YouTube 添加到桌面，
+進入 YoutTube 首頁後，在工具列點開「⋮」選單，選擇「添加到桌面」選項，
+編輯名字後即可在桌面添加捷徑。&lt;&#x2F;p&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;https:&#x2F;&#x2F;www.engadget.com&#x2F;2020-03-24-youtube-standard-definition-default-worldwide-coronavirus-covid-19.html &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;https:&#x2F;&#x2F;www.engadget.com&#x2F;youtube-picture-quality-settings-mobile-apps-ios-android-155400433.html &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;youtube-high-definition&#x2F; &lt;a href=&quot;#fr-3-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;android&#x2F;addon&#x2F;youtube-high-definition&#x2F; &lt;a href=&quot;#fr-4-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+      <item>
+          <title>YouTubeあるある - 我不想再看短影片</title>
+          <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/youtube-tips/youtube-never-shorts/</link>
+          <guid>https://undecv.github.io/blog/posts/youtube-tips/youtube-never-shorts/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/youtube-tips/youtube-never-shorts/">&lt;!-- # No More YouTube Shorts --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;抖〇一響，父母白養&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;短影片像是癌症擴散一般風靡了各大影音平臺，
+但是短影片極度簡化的播放器功能缺失甚至沒有調整進度的功能，
+好在通過轉換網址，YouTube 一般播放器也可以播放短影片的。&lt;&#x2F;p&gt;
+&lt;p&gt;短影片播放器的網址：&lt;code&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;&amp;lt;VIDEO_ID&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;br&gt;
+一般的播放器的網址：&lt;code&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=&amp;lt;VIDEO_ID&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;通過 REDIRECTOR 免費、開源擴充套件（&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;redirector&#x2F;&quot;&gt;Firefox Add-on&lt;&#x2F;a&gt;, &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;redirector&#x2F;ocgpenflpmgnfapjedencafcfakcekcd&quot;&gt;Chrome Extension&lt;&#x2F;a&gt;），
+可以自動把短影片的地址轉換到一般的播放器。&lt;&#x2F;p&gt;
+&lt;p&gt;把下面這段資料存成文字檔，在 REDIRECTOR 擴充套件中導入（Import），啟用之後便會自動把短影片轉址到一般的播放器。&lt;&#x2F;p&gt;
+&lt;p&gt;最後，好孩子不要去找範例網址XD&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;json&quot; class=&quot;language-json z-code&quot;&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-mapping z-begin z-json&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;    &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;createdBy&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Redirector v3.5.3&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;    &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;createdAt&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;2022-05-09T15:03:30.599Z&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;    &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;redirects&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-sequence z-begin z-json&quot;&gt;[&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;        &lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-mapping z-begin z-json&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;description&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;No More YouTube Shorts&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;exampleUrl&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;z4Wl0asydDA&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;exampleResult&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=z4Wl0asydDA&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;error&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-constant z-language z-json&quot;&gt;null&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;includePattern&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;*&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;excludePattern&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;patternDesc&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;redirectUrl&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=$1&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;patternType&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;W&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;processMatches&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;noProcessing&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;disabled&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-constant z-language z-json&quot;&gt;false&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;grouped&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-constant z-language z-json&quot;&gt;false&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;            &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;appliesTo&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-sequence z-begin z-json&quot;&gt;[&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;main_frame&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;sub_frame&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;stylesheet&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;script&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;image&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;imageset&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;object&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;xmlhttprequest&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;history&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;                &lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;other&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;            &lt;span class=&quot;z-punctuation z-section z-sequence z-end z-json&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;        &lt;span class=&quot;z-punctuation z-section z-mapping z-end z-json&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;    &lt;span class=&quot;z-punctuation z-section z-sequence z-end z-json&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-mapping z-end z-json&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</description>
+      </item>
+      <item>
+          <title>YouTubeあるある - 在電腦上看電視：YouTube on TV 網頁版</title>
+          <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/youtube-tips/youtube-on-tv/</link>
+          <guid>https://undecv.github.io/blog/posts/youtube-tips/youtube-on-tv/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/youtube-tips/youtube-on-tv/">&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;誰還有在看電視？&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;為什麼要在電腦上看 TV 版呢，
+因為可以讓手機當作遙控器，
+選擇想要看的影片、建立播放列表，
+當然也可以直接在手機上控制播放：
+進度、字幕、音量、速度、畫質，
+手機和電腦甚至不需要在同一個網路，
+讓螢幕變成電視，選一個舒服的姿勢，
+解放滑鼠和鍵盤。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;tv&quot;&gt;YouTube on TV 網頁版&lt;&#x2F;a&gt; 預設情況下網頁版是不讓進入的，
+需要 YouTube Smart TV 免費、開源的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;youtube-for-tv&#x2F;&quot;&gt;Firefox 擴充套件&lt;&#x2F;a&gt; ，
+或者是 Chrome 類似的擴充套件（未測試，關鍵字搜尋 YouTube TV），
+就可以成功進入 YouTube on TV 網頁版了。&lt;&#x2F;p&gt;
+&lt;p&gt;接著就是手機和TV版的連結：
+手機的 YouTube 的 App，
+右上角有「Chromecast」圖示，
+點開會有「投放到」選單。
+電腦上進入 YouTube on TV 的設定，
+找到「連結電視和手機」，
+按照上面簡單的步驟進行連結。&lt;&#x2F;p&gt;
+&lt;p&gt;若在同一個網路下，
+可以使用「透過 Wi-Fi 連結」，
+基本上不需要設定，
+手機上的「投放到」選單中就會出現選項。&lt;&#x2F;p&gt;
+&lt;p&gt;若在不同的網絡，
+可以使用「透過電視代碼連結」，
+手機的「投放到」選單中
+選擇「透過電視代碼連結」，
+輸入 TV版 的電視代碼，
+通常是12位數字的形式。&lt;&#x2F;p&gt;
+&lt;p&gt;連結完成後再次點開「Chromecast」圖示，
+會有操控電視版的語音搜尋和遙控器的選項，
+讓手機可以化身成電視版的遙控器。&lt;&#x2F;p&gt;
+&lt;p&gt;之後就可以在手機中選擇想要看的影片，
+回味看電視的樂趣了。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>推薦的瀏覽器擴充套件列表</title>
+          <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-browser-extensions-legacy/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-browser-extensions-legacy/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-browser-extensions-legacy/">&lt;!-- # Awesome List of Brower Add-ons &#x2F; Extensions --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;什麼？您在用 IE？&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Version 0.8.0 (2021-05-10): 更新和修正了部分內容。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Copyright © undecV.&lt;br &#x2F;&gt;
+&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.creativecommons.org&#x2F;l&#x2F;by-nc-sa&#x2F;4.0&#x2F;88x31.png&quot; alt=&quot;Creative Commons License&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+This work is licensed under a &lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;&quot;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;gai-lun&quot;&gt;概論&lt;&#x2F;h2&gt;
+&lt;p&gt;提示，本文討論的範圍是 瀏覽器擴充套件；
+並且不太包括一些 SaaS 網頁應用和服務所附帶的擴充套件。&lt;&#x2F;p&gt;
+&lt;p&gt;同樣地，文章其中的一些擴充套件，我可能不常用，甚至時下可能還沒有安裝，但我一定都有用過、體驗過。&lt;&#x2F;p&gt;
+&lt;p&gt;也請注意，這裡的選擇標準非常的... 主觀。（不是排名，不分先後）&lt;br &#x2F;&gt;
+以下是粗略的選擇的標準：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;確實能夠解決問題，且有效的解決問題；&lt;&#x2F;li&gt;
+&lt;li&gt;沒有騷擾性質的廣告；&lt;&#x2F;li&gt;
+&lt;li&gt;界面端莊優雅，易於使用。&lt;&#x2F;li&gt;
+&lt;li&gt;FOSS，即是 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E8%87%AA%E7%94%B1%E8%BD%AF%E4%BB%B6&quot;&gt;自由軟體（Free Software）&lt;&#x2F;a&gt; 以及 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6&quot;&gt;開放原始碼軟體（Open Source Software，OSS）&lt;&#x2F;a&gt;，這裡的 Free 表示「自由（libre）」而不是「免費（gratis）」；開放原始碼軟體保留一部分權利並允許用戶學習、修改、增進提高這款軟體的品質。自由軟體更加的開放，可以不受限制地自由使用、複製、研究、修改和分發。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;biao-ji&quot;&gt;標記&lt;&#x2F;h2&gt;
+&lt;p&gt;本文的標記可能並不完全或有誤，甚至隨着時間的流逝而與現時不符，所以&lt;strong&gt;僅供參考&lt;&#x2F;strong&gt;，若發現有漏標或錯標，又或是你有更好的軟體選擇，歡迎在這個 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;undecV_Tutorial&#x2F;issues&quot;&gt;Repo&lt;&#x2F;a&gt; 提出修改建議：）&lt;&#x2F;p&gt;
+&lt;p&gt;許可協議：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;沒有標記的，一般來說都是&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%85%8D%E8%B2%BB%E8%BB%9F%E9%AB%94&quot;&gt;免費軟體（Freeware）&lt;&#x2F;a&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt;：FOSS，自由軟體（Free Software）和開放原始碼軟體（Open Source Software，OSS）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;&#x2F;code&gt;：&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%95%86%E4%B8%9A%E8%BD%AF%E4%BB%B6&quot;&gt;商業軟體（Commercial Software）&lt;&#x2F;a&gt;，一般來說，要錢買的。但有免費版本的不標示。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;以及標籤：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;By Firefox&lt;&#x2F;code&gt;：Mozilla Firefox 官方出品&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;AMO Recommended&lt;&#x2F;code&gt;：Firefox 擴充套件站推薦&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;Tor Included&lt;&#x2F;code&gt;：Tor 瀏覽器內置&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;tui-jian-ruan-ti-lie-biao&quot;&gt;推薦軟體列表&lt;&#x2F;h2&gt;
+&lt;h3&gt;By Firefox - Mozilla Firefox 官方出品&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Firefox Color&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;firefox-color&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;color.firefox.com&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mozilla&#x2F;FirefoxColor&#x2F;&quot;&gt;GitHub&lt;&#x2F;a&gt;) 快速客製化 Firefox 瀏覽器的外觀。 [&lt;code&gt;# By Firefox&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Firefox Multi-Account Containers&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;multi-account-containers&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mozilla&#x2F;multi-account-containers&#x2F;&quot;&gt;GitHub&lt;&#x2F;a&gt;) 多重賬戶登錄（Cookies 隔離）。 [&lt;code&gt;# By Firefox&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Facebook Container&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;facebook-container&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mozilla&#x2F;contain-facebook&quot;&gt;GitHub&lt;&#x2F;a&gt;) 隔離 Facebook，阻擋 Facebook 的追蹤器以保護隱私。 [&lt;code&gt;# By Firefox&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Android - 行動端&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Google Search Fixer&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;android&#x2F;addon&#x2F;google-search-fixer&#x2F;&quot;&gt;Android Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;wisniewskit&#x2F;google-search-fixer&quot;&gt;GitHub&lt;&#x2F;a&gt;) 改善 Google 搜尋在 Firefox Android 上的體驗。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Tabs - 分頁增強&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Undo Close Tab&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;undoclosetabbutton&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;M-Reimer&#x2F;undoclosetab&quot;&gt;GitHub&lt;&#x2F;a&gt;) 再次打開最近關閉的分頁。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Tree Style Tab&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;tree-style-tab&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;piro.sakura.ne.jp&#x2F;xul&#x2F;_treestyletab.html.en&quot;&gt;Home Page&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;piroor&#x2F;treestyletab&quot;&gt;GitHub&lt;&#x2F;a&gt;) 以樹狀的形式列出開啟的分頁。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;FoxyTab&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;foxytab&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) 增加超多分頁相關便利的操作。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;SingleFile&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;single-file&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gildas-lormeau&#x2F;SingleFile&quot;&gt;GitHub&lt;&#x2F;a&gt;) 將網頁存檔為單一個可完全離線閱讀的 HTML 檔。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Popup window&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;popup-window&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ettoolong&#x2F;PopupWindow&quot;&gt;GitHub&lt;&#x2F;a&gt;) 用沒有工具列的簡潔的彈出式視窗打開分頁。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;OneTab&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;onetab&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;www.one-tab.com&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) 快速按組收納分頁到列表。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Tabliss&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;onetab&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;tabliss.io&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;joelshepherd&#x2F;tabliss&#x2F;&quot;&gt;GitHub&lt;&#x2F;a&gt;) 好看、可客製化的新分頁。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Open in Sidebar&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;open-link-in-sidebar&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) 在側邊欄打開頁面。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Sidebery&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;sidebery&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) 側邊欄的多功能分頁管理。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Tab Session Manager&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;tab-session-manager&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) 自動儲存恢復同步視窗分頁。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Ad Blocker &amp; Privacy - 擋廣告和隱私保護&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;HTTPS Everywhere&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;https-everywhere&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;android&#x2F;addon&#x2F;https-everywhere&#x2F;&quot;&gt;Android Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;www.eff.org&#x2F;https-everywhere&quot;&gt;Home Page&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;EFForg&#x2F;https-everywhere&quot;&gt;GitHub&lt;&#x2F;a&gt;) 電子前哨基金會出品，優先使用更安全的 HTTPS 協定代替不安全的 HTTP 瀏覽網頁。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;, &lt;code&gt;# EFF&lt;&#x2F;code&gt;, &lt;code&gt;# Tor Included&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Privacy Badger&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;privacy-badger17&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;android&#x2F;addon&#x2F;privacy-badger17&#x2F;&quot;&gt;Android Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;privacybadger.org&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) 電子前哨基金會出品，阻擋追蹤器。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;, &lt;code&gt;# EFF&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;uBlock Origin&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;ublock-origin&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;android&#x2F;addon&#x2F;ublock-origin&#x2F;&quot;&gt;Android Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;zh-tw&#x2F;UBlock_Origin&quot;&gt;Wikipedia&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gorhill&#x2F;uBlock&quot;&gt;GitHub&lt;&#x2F;a&gt;) 擋廣告。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Google Enhancement - Google 增強&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;uBlacklist&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;ublacklist&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;iorate.github.io&#x2F;ublacklist&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) 封鎖指定搜尋結果。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;To Google Translate&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;to-google-translate&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;itsecurityco&#x2F;to-google-translate&quot;&gt;GitHub&lt;&#x2F;a&gt;) 快速使用 Google 翻譯。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Google search link fix&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;google-search-link-fix&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;palant&#x2F;searchlinkfix&quot;&gt;GitHub&lt;&#x2F;a&gt;) 取消 Google 搜尋結果的重新导向。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;YouTube Video and Audio Downloader&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;youtube_downloader_webx&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;technologyto.com&#x2F;extractor.html&quot;&gt;Home Page&lt;&#x2F;a&gt;) 下載 YouTube 的影片。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;YouTube Popout Player&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;youtube-popout-player&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;rthaut.github.io&#x2F;YouTubePopoutPlayer&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) 用沒有工具列的簡潔的彈出式視窗打開 YouTube 影片。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Content Farm Terminator&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;content-farm-terminator&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;danny0838&#x2F;content-farm-terminator&quot;&gt;GitHub&lt;&#x2F;a&gt;) 標示並封鎖內容農場。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;YouTube High Definition&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;firefox&#x2F;addon&#x2F;youtube-high-definition&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;android&#x2F;addon&#x2F;youtube-high-definition&#x2F;&quot;&gt;Android Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;danny0838&#x2F;content-farm-terminator&quot;&gt;GitHub&lt;&#x2F;a&gt;) YouTube 鎖定高畫質、播放速率、音量等設定。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] (&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;posts&#x2F;YouTubeHighDefinition.html#YouTubeHighDefinition&quot;&gt;本站相關文章&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;UserScript &amp; UserStyle - 油猴腳本和客製外觀&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Greasemonkey&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;greasemonkey&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;www.greasespot.net&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) UserScript 油猴腳本。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Tampermonkey&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;tampermonkey&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;www.tampermonkey.net&#x2F;&quot;&gt;GitHub&lt;&#x2F;a&gt;) UserScript 油猴腳本。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Stylus&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;styl-us&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;add0n.com&#x2F;stylus.html&quot;&gt;GitHub&lt;&#x2F;a&gt;) UserStyle 客製外觀。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Theme &amp; Style - 主題和外觀&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Dark Reader&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;darkreader&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;android&#x2F;addon&#x2F;darkreader&#x2F;&quot;&gt;Android Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;darkreader.org&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;darkreader&#x2F;darkreader&quot;&gt;GitHub&lt;&#x2F;a&gt;) 為每個網頁開啟夜間＼黑暗模式。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Web Service - 服務&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Steam Database&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;steam-database&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;steamdb.info&#x2F;extension&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SteamDatabase&#x2F;BrowserExtension&quot;&gt;GitHub&lt;&#x2F;a&gt;) Steam 歷史價格個其他資訊。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Pushbullet&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;pushbullet&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;www.pushbullet.com&#x2F;apps&quot;&gt;Home Page&lt;&#x2F;a&gt;) 傳送分頁、訊息、或任何東西到手機或是其他設備。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Privacy Pass&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;privacy-pass&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;privacypass.github.io&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) 快速通過 Cloudflare 和 hCaptcha 的人機驗證。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Octotree&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;octotree&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;www.octotree.io&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) 以樹的方式展示 GitHub 的 Repo 的檔案。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Copy and Paste - 拷貝和粘貼&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Copy URL To Clipboard&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;url2clipboard&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;asamuzaK&#x2F;url2clipboard&quot;&gt;GitHub&lt;&#x2F;a&gt;) 以各種格式拷貝鏈接。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Copy as Markdown&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;copy-as-markdown&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;yorkxin&#x2F;copy-as-markdown&quot;&gt;GitHub&lt;&#x2F;a&gt;) 以 Markdown 格式拷貝鏈接、分頁、圖片。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Copy PlainText&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;copy-plaintext&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) 以無格式拷貝文字。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Absolute Enable Right Click &amp; Copy&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;absolute-enable-right-click&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;greasyfork.org&#x2F;en&#x2F;scripts&#x2F;23772-absolute-enable-right-click-copy&quot;&gt;GreasyFork&lt;&#x2F;a&gt;) 強制啟用滑鼠右鍵選單和拷貝功能。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Browser Configuration - 瀏覽器設定&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Bookmark Dupes&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;bookmark-dupes&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;vaeth&#x2F;bookmarkdupes&#x2F;&quot;&gt;GitHub&lt;&#x2F;a&gt;) 尋找和清理重複書籤。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Cookie Quick Manager&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;cookie-quick-manager&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ysard&#x2F;cookie-quick-manager&quot;&gt;GitHub&lt;&#x2F;a&gt;) 編輯 Cookies。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;FoxyProxy Standard&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;foxyproxy-standard&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;getfoxyproxy.org&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;foxyproxy&#x2F;firefox-extension&quot;&gt;GitHub&lt;&#x2F;a&gt;) 功能強大的代理設定。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Quick Accept-Language Switcher&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;quick-accept-language-switc&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;callahad&#x2F;quick-accept-language-switcher&quot;&gt;GitHub&lt;&#x2F;a&gt;) 快速切換網頁請求中 Accept-Language。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;User-Agent Switcher&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;user-agent-switcher-revived&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;mybrowseraddon.com&#x2F;useragent-switcher.html&quot;&gt;Home Page&lt;&#x2F;a&gt;) 快速切換網頁請求中 User-Agent。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3&gt;Utilities - 實用工具&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Markdown Here&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;markdown-here&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;markdown-here.com&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;adam-p&#x2F;markdown-here&quot;&gt;GitHub&lt;&#x2F;a&gt;) 用 Markdown 編寫郵件。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Feedbro&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;feedbroreader&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;nodetics.com&#x2F;feedbro&#x2F;&quot;&gt;Home Page&lt;&#x2F;a&gt;) RSS 聚合、閱讀器。 [&lt;code&gt;# AMO Recommended&lt;&#x2F;code&gt;] &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;&#x2F;code&gt; &lt;strong&gt;Aria2 Download Manager Integration&lt;&#x2F;strong&gt;: (&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;aria2-integration&#x2F;&quot;&gt;Add-on&lt;&#x2F;a&gt;) (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;RossWang&#x2F;Aria2-Integration&quot;&gt;GitHub&lt;&#x2F;a&gt;) 用 Aria2 下載檔案。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;!--
+Flags filter: [&#x27;Abandon&#x27;, &#x27;Pro&#x27;, &#x27;Old&#x27;, &#x27;Discontinued&#x27;, &#x27;Disable&#x27;, &#x27;Hide&#x27;]
+Count: {filter: 6, folders: 11, elements: 44}
+--&gt;
+&lt;h2 id=&quot;ru-he-xun-zhao-shi-yong-you-xiu-de-kuo-chong-tao-jian&quot;&gt;如何尋找實用優秀的擴充套件&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;看緣分（這是真...&lt;&#x2F;li&gt;
+&lt;li&gt;擴充套件的來源單一、通常都來自瀏覽器所經營的擴充套件商店。
+擴充套件的安全性也通常有他們的把關，擴充套件商店也會精選出一些口碑良好的擴充套件。
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;&quot;&gt;Add-ons for Firefox&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;category&#x2F;extensions&quot;&gt;Chrome Web Store - Extensions&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;microsoftedge.microsoft.com&#x2F;addons&#x2F;Microsoft-Edge-Extensions-Home&quot;&gt;Microsoft Edge Add-ons&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;推介軟體的部落格＼網站也會推介擴充套件；&lt;&#x2F;li&gt;
+&lt;li&gt;尋找現有擴充套件的替代品：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;alternativeto.net&#x2F;&quot;&gt;AlternativeTo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;release-notes&quot;&gt;Release Notes&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;0.8.0 (2021-05-10): 更新和修正了部分內容。&lt;&#x2F;li&gt;
+&lt;li&gt;0.7.0 (2021-03-04)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 檔案壓縮的概論與實務</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="&lt;del&gt;硬碟空間就像〇〇，擠一擠還是有的。&lt;&#x2F;del&gt;" />
+        <meta property="og:description" content="&lt;del&gt;硬碟空間就像〇〇，擠一擠還是有的。&lt;&#x2F;del&gt;" />
+
+    
+
+    <meta property="og:title" content="檔案壓縮的概論與實務" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-compression&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            檔案壓縮的概論與實務
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/file-compression/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2024-01-23"><span class='separator' aria-hidden='true'>•</span>2024-01-23</time></li><li title="3020 words"><span class='separator' aria-hidden='true'>•</span>16 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/software/">Software</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/file-archive/">File Archive</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/compression/">Compression</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/computer-concept/">Computer Concept</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2024-01-23">Updated on 2024-01-23</time></li>
+        </ul>
+            <p class="p-summary" hidden>&lt;del&gt;硬碟空間就像〇〇，擠一擠還是有的。&lt;&#x2F;del&gt;</p><section class="e-content body"><!-- # 檔案壓縮的概論與實務 -->
+<p><del>硬碟空間就像〇〇，擠一擠還是有的。</del></p>
+<p>本站有文章介紹過圖片檔案的壓縮格式。
+本文將注重於通用檔案壓縮，
+也就是 ZIP、7Z、RAR 該怎麼玩。</p>
+<h2 id="gai-lun">概論</h2>
+<p>壓縮技術就是用時間換取空間。</p>
+<p>就跟我們把一堆雜物打包到一起，既節省空間，也便於攜帶和收藏。
+電腦也是一樣，把檔案壓縮成壓縮檔，節省存儲空間，也便於傳輸和存儲。</p>
+<p>舉一個非常不恰當的例，壓縮就像把牛奶製成奶粉，便於運輸和儲藏。而我們通常不直接吸奶粉，而解壓縮就像沖泡奶粉還原成牛奶。</p>
+<p>所以，各種形式壓縮檔通常我們是無法直接使用的，軟體會在我們知道和不知道的情況下還原始的形式。</p>
+<p>除了常見的檔案壓縮，其實圖片、音樂、影片等媒體檔案的壓制也是一種壓縮。對於多媒體檔案，壓縮／解壓縮也通常稱為編碼／解碼。</p>
+<p>本文會提及多媒體壓縮，但專注於解釋通用的檔案壓縮。</p>
+<p>從 ZIP 到 RAR5，從 RMVB 到 AV1，壓縮格式千百種，新的演算法和格式還在被發明出來，是因為壓縮演算法的發展，還有對應不同的需求。</p>
+<h3 id="ya-suo-dang-de-quan-heng">壓縮檔的權衡</h3>
+<p>壓縮技術也是一種工程學，是權衡的藝術。</p>
+<p>壓縮技術需要考量很多方面，就像在點技能樹一樣，需要在各個方面做出權衡。</p>
+<h4 id="shi-jian-v-s-rong-liang">時間 v.s. 容量</h4>
+<p>其中一點是壓縮和解壓縮的速度和效率，
+壓縮減少了多少容量被稱之為壓縮率，
+通常的，壓縮速度越慢，檔案越小，解壓縮速度越慢，反之亦然。</p>
+<p>例如一個影片，若是解壓縮（解碼）速度比影片播放速度還慢，那影片就會卡得不能看。
+而這是通用檔案壓縮容忍的壓縮解壓縮時間就比較寬裕了，會更注重於壓縮率上。</p>
+<h4 id="song-san-v-s-gu-shi-ya-suo">鬆散 v.s. 固實壓縮</h4>
+<p>固實壓縮是通用檔案壓縮的一個技術，一次壓縮一定量的資料而不是一個檔案。
+這一定量的資料被稱為一個區塊。他的好處是所有多個小檔案被分入一個區塊的時候會（大幅）提高壓縮率（壓縮檔更小）。</p>
+<p>但有些時候，我們只需要壓縮檔用的一兩三個檔案，這個需求便是隨機存取。
+固實壓縮若要解壓縮區塊中其中一個檔案，就必須解壓縮整個區塊，這讓隨機存取變成災難。</p>
+<p>所以若覺得以後要常常在不解壓縮整個檔案的情況下打開其中的某個檔案，就不要使用固實壓縮，反之亦然。</p>
+<h4 id="you-sun-v-s-wu-sun-ya-suo">有損 v.s. 無損壓縮</h4>
+<p>顧名思義有損壓縮後的檔案就再也不能變成原本的形狀，但可以在損失細節之下讓檔案更小；無損壓縮則保留所有細節，可以完全恢復。
+無損壓縮就是壓縮會不會降低原始內容品質，有損壓縮多用於多媒體壓縮，而通用檔案壓縮都是無損壓縮。</p>
+<h4 id="mei-ti-dang-an-zai-ya-suo">媒體檔案再壓縮</h4>
+<p>現代流通的媒體格式，多已經被有損或無損壓縮的非常極限了，那還有必要對媒體檔案再進行壓縮嗎？</p>
+<p>壓縮媒體檔案的其中一個目的，是在可接受期間內被解碼，檔案盡可能的小的同時保留最多資訊（所有細節）。</p>
+<p>所以這使得通用檔案壓縮仍能再壓縮媒體檔案。雖然再壓縮的空間可能極小，但擠擠總還是有的。</p>
+<h4 id="lian-xu-du-xie-he-sui-ji-du-xie">連續讀寫和隨機讀寫</h4>
+<p>請注意，這裡的 連續、隨機讀寫 不是前文所述的 鬆散、固實壓縮：雖異曲同工但不盡相同。</p>
+<p>壓縮軟體一大好處便是整合小檔案：如果你有看過硬碟跑分，應該可以發現硬碟的隨機讀寫效能遠小於連續讀寫效能，
+而對一拖拉庫的散裝小檔案通常就是隨機讀寫，而對其進行檔案壓縮會改善這個問題。</p>
+<h4 id="ya-suo-ya-suo-dang-ya-suo-dang-qian-tao-tao-wa">壓縮壓縮檔（壓縮檔嵌套，套娃）</h4>
+<p>壓縮壓縮檔，這種方法應該沒有什麼學名，也就是把壓縮檔再壓縮一次，也就是俗稱的套娃。</p>
+<p>一般來說，檔案壓縮有「儲存」和「傳輸」兩個目的，「儲存」需要減少大小的高壓縮率，而「傳輸」會需要加密和分卷。</p>
+<p>通常這些套娃壓縮檔的外層，是為了混淆識別，以及便於傳輸的加密和分卷。</p>
+<p>我會建議「儲存」壓縮後再進行「傳輸」壓縮的套娃壓縮法。在這種情景下「傳輸」壓縮甚至不需要壓縮，僅加密。</p>
+<h3 id="chang-jian-wen-ti">常見問題</h3>
+<h4 id="dang-ming-guo-chang">檔名過長</h4>
+<p>收納的過程便是再包裝：盡量扁平化資料夾，說人話就是減少資料夾一層包一層，以及使用儘量短的檔名。</p>
+<p>這不僅會使得壓縮檔看上去更簡潔，甚至可以提高壓縮率使得壓縮檔更小：在 ZIP 中，沒有資料夾的概念，每個檔案都會記錄路徑，即資料夾和檔名，所以資料夾中的每個檔案都會重複記錄一次資料夾名。</p>
+<p>通常作業系統（檔案系統）會對檔案的全路徑長度做限制，太長的路徑會造成解壓縮失敗。例如，你在解壓縮的時候，在某個資料夾裡解壓縮失敗，但是在某個槽下直接解壓縮卻成功即是這種問題。</p>
+<h4 id="dang-ming-luan-ma">檔名亂碼</h4>
+<p>有時候下載到的壓縮檔案，內容的檔名是一堆亂碼，這是由於早期的作業系統和壓縮軟體，並沒有考慮到當今的社會和網路如此的全球化，所以遇到不同語系的壓縮檔案就會亂碼。</p>
+<p>正統的解決方式是修改作業系統的預設編碼；但我們也可以使用例如 <a class="external" href="https://tw.bandisoft.com/bandizip/">Bandizip</a> 之類有修改編碼功能的壓縮軟體。</p>
+<p>詳細的文字編碼問題有點複雜，有機會再撰文贅述。</p>
+<h3 id="dang-an-lei-xing">檔案類型</h3>
+<p>常見的壓縮檔類型有以下幾種：</p>
+<ul>
+<li>ZIP：可能是現在流通最廣的壓縮檔格式，有夠用的功能和廣泛軟體的支援。</li>
+<li>7Z：開源壓縮檔的代表，原生於 7-Zip，以高效率著稱。</li>
+<li>RAR：商業壓縮檔的代表，原生於 WinRAR，有著豐富的功能。</li>
+<li>TAR.GZ：Linux 上的代表，分為打包而不壓縮的 TAR 和只能壓縮一個檔案的 GZ。</li>
+</ul>
+<p>順帶一提，壓縮軟體 <em>不等於</em> 壓縮檔案格式 <em>不等於</em> 壓縮演算法，
+但大家一般不會去修改預設的檔案格式和演算法，有機會再撰文贅述。</p>
+<p>不同的方法各有優劣，與各種應用場景的相性也不同，也是本文希望探討的地方。</p>
+<h2 id="shi-wu">實務</h2>
+<p>本文的指令使用 7-Zip 軟體。請見 7-Zip 的 <a class="external" href="https://7-zip.opensource.jp/chm/cmdline/index.htm">指令說明檔</a>。</p>
+<ul>
+<li>
+<p>分卷 <code>-v4g</code>：若內容很大很大，例如一些遊戲，就可以進行分卷，分卷也便於儲存和在網路上傳輸，雖然硬碟的單文件上限很難碰到，但很多網路空間均有檔案大小上限，可以以此決定分卷大小；就算沒有超過上限，相比之下，分卷上傳也能顯著降低下載、上傳失敗時起肖的程度。</p>
+</li>
+<li>
+<p>固實 <code>-ms=on</code>：固實壓縮的概念是 將多個檔案變成一塊 而不是 以單一檔案為單位 進行壓縮。7Z 和 RAR 均可支援，ZIP 沒有。好處是在某些情境下可以增加壓縮率使得檔案更小。壞處是喪失了隨機存取的特性，使得在取用單一檔案的時候連同附近的其他檔案也會需要一起被解壓縮，這會浪費時間和算力。所以需要按需啟用。</p>
+</li>
+<li>
+<p>格式 <code>-t7z</code>：通常認為，7Z 格式比 ZIP 格式壓縮率更好（更小）；但 ZIP 有超廣泛的支援；而 RAR 格式具有獨到的恢復功能，可以在網路傳輸中使用，若出現壞檔可以試試運氣修復看看，但 RAR 是專有格式，僅能使用 WinRAR 壓縮。</p>
+</li>
+<li>
+<p>編碼 <code>-mcu=on</code>：ZIP 的文字編碼限制寬鬆，需要強制使用 Unicode 才能保證在不同語系的作業系統上可以正常使用。</p>
+</li>
+</ul>
+<h3 id="shi-yong-chang-jing">使用場景</h3>
+<h4 id="tong-ren-zhi-man-hua-za-zhi-cg-tu-bao">同人誌、漫畫、雜誌、CG、圖包</h4>
+<p>ZIP 格式、最大壓縮率、萬國碼：<code>-tzip -mx=9 -mcu=on</code>。</p>
+<p>這類資源大多是一拖拉庫的有序或無序圖片，而 ZIP 壓縮是被廣泛支援的幾乎事實標準，諸多的漫畫閱讀器均可直接讀取壓縮檔而不需要解壓縮，非固實壓縮也使得可以隨機存取，實現快速跳轉頁面。建議在資料夾中修改檔名為位數適當的前置〇的流水號。再次提醒盡量扁平化資料夾，以及需要注意 ZIP 在文字編碼上的問題。</p>
+<p>CB* 格式的本質就是壓縮檔，甚至內容結構都沒有規範（各閱讀器不同），例如 CBZ 就是 ZIP、CB7 就是 7Z、CBR 就是 RAR。</p>
+<h4 id="dian-zi-shu">電子書</h4>
+<p>DOCX, EPUB, ... 也是一種 ZIP：<code>-tzip -mx=9 -mcu=on</code>。</p>
+<p>（跑題）使用 EPUB 格式可以像紙質書一樣讓電子書圖文並茂並且有豐富的排版，相比於 DOCX 的繁雜和 PDF 的臃腫死板，EPUB 可以讓讀者用他們自己舒服和習慣的字形字色背景閱讀。製作 EPUB 也需要有 HTML、CSS 的知識。EPUB 的本質是安排好的 ZIP，所以可以提高壓縮率直接再壓縮 EPUB 檔，而不需要再套一層其他壓縮格式。</p>
+<p>據我實驗所知，一些 EPUB 壓縮軟體並沒有使用最高壓縮率，特定情況下可以通過再壓縮節省空間。</p>
+<h4 id="you-xi-cheng-shi-bei-fen-dang">遊戲、程式、備份檔</h4>
+<p>7Z 格式、最大壓縮率、固實壓縮：<code>-t7z -mx=9 -ms=on</code>。</p>
+<p>7Z 相比於 ZIP 有更好的壓縮率，而遊戲、程式必須全部解壓縮展開後才可執行，故不存在需要在壓縮檔內隨機存取的情況，遊戲、程式內通常也富含小檔案，固實壓縮在這個情景下可以有較好的表現。請注意 7Z 格式預設固實壓縮模式是啟用的。</p>
+<h4 id="yin-le-ying-pian-dong-hua-dian-ying">音樂、影片、動畫、電影</h4>
+<p>7Z 格式、最大壓縮率、鬆散壓縮：<code>-t7z -mx=9 -ms=off</code>。</p>
+<p>音樂、影片等本是經過高度壓縮的檔案格式，不同的檔案格式緊密程度不同，通常再用檔案壓縮效益不大，甚至可以不需要再以檔案壓縮。若不著急或這電腦有多餘算力，或是就是要扣那幾啪的空間，當然可以選擇最高的壓縮率。而取消固實壓縮模式因為在這個情景下作用不大（甚至可能是反效果），還可以帶來隨機存取的好處，讓你在讀取其中某個檔案的時候不需要浪費時間和算力讀取其他檔案，尤其是影片每個可能都是 GiB 等級的大檔案，這個優勢會尤其明顯。</p>
+<h4 id="ya-suo-ya-suo-dang-tao-wa">壓縮壓縮檔（套娃）</h4>
+<p>7Z／RAR 格式、無壓縮、分卷、萬國碼：<code>-t7z -mx=0 -v4g</code>。</p>
+<p>上述多種型別內容的混合，先分門別類的壓縮後，再以一個無壓縮率的壓縮檔打包，同時可以做加密和分卷的動作。</p>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/clicker-remote-control/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">簡報筆變成電腦遙控器？！Surface Pen 也可以支援 Google Slides！</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/btrvol-intro/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">BtrVol 音量控制軟體</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/file-compression/#gai-lun">概論</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/file-compression/#ya-suo-dang-de-quan-heng">壓縮檔的權衡</a>
+                                        
+                                            <ul>
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#shi-jian-v-s-rong-liang">時間 v.s. 容量</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#song-san-v-s-gu-shi-ya-suo">鬆散 v.s. 固實壓縮</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#you-sun-v-s-wu-sun-ya-suo">有損 v.s. 無損壓縮</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#mei-ti-dang-an-zai-ya-suo">媒體檔案再壓縮</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#lian-xu-du-xie-he-sui-ji-du-xie">連續讀寫和隨機讀寫</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#ya-suo-ya-suo-dang-ya-suo-dang-qian-tao-tao-wa">壓縮壓縮檔（壓縮檔嵌套，套娃）</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                            </ul>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/file-compression/#chang-jian-wen-ti">常見問題</a>
+                                        
+                                            <ul>
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#dang-ming-guo-chang">檔名過長</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#dang-ming-luan-ma">檔名亂碼</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                            </ul>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/file-compression/#dang-an-lei-xing">檔案類型</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/file-compression/#shi-wu">實務</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/file-compression/#shi-yong-chang-jing">使用場景</a>
+                                        
+                                            <ul>
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#tong-ren-zhi-man-hua-za-zhi-cg-tu-bao">同人誌、漫畫、雜誌、CG、圖包</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#dian-zi-shu">電子書</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#you-xi-cheng-shi-bei-fen-dang">遊戲、程式、備份檔</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#yin-le-ying-pian-dong-hua-dian-ying">音樂、影片、動畫、電影</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://undecv.github.io/blog/posts/file-compression/#ya-suo-ya-suo-dang-tao-wa">壓縮壓縮檔（套娃）</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                            </ul>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

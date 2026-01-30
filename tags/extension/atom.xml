@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;undecv.github.io&#x2F;blog</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>Extension</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー - Extension</title>
+    <link href="https://undecv.github.io/blog/tags/extension/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog/tags/extension/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2022-05-11T00:00:00+00:00</updated><id>https://undecv.github.io/blog/tags/extension/atom.xml</id><entry xml:lang="en">
+        <title>YouTubeあるある - 瀏覽器多視窗</title>
+        <published>2022-05-11T00:00:00+00:00</published>
+        <updated>2022-05-11T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube-tips/youtube-popup-video/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube-tips/youtube-popup-video/</id>
+        <summary type="html">&lt;del&gt;DD必知必會101&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="en">
+        <title>YouTubeあるある - 戲院級的觀影體驗！擴充套件 Enhancer for YouTube</title>
+        <published>2022-05-10T00:00:00+00:00</published>
+        <updated>2022-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube-tips/youtube-enhancer-for-youtube/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube-tips/youtube-enhancer-for-youtube/</id>
+        <summary type="html">&lt;del&gt;巨幅銀幕、人體工學&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="en">
+        <title>YouTubeあるある - 鎖定高畫質</title>
+        <published>2022-05-10T00:00:00+00:00</published>
+        <updated>2022-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube-tips/youtube-high-definition/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube-tips/youtube-high-definition/</id>
+        <summary type="html">&lt;del&gt;你手機可以看 4K？&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="en">
+        <title>YouTubeあるある - 我不想再看短影片</title>
+        <published>2022-05-10T00:00:00+00:00</published>
+        <updated>2022-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube-tips/youtube-never-shorts/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube-tips/youtube-never-shorts/</id>
+        <summary type="html">&lt;del&gt;抖〇一響，父母白養&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="en">
+        <title>YouTubeあるある - 在電腦上看電視：YouTube on TV 網頁版</title>
+        <published>2022-05-10T00:00:00+00:00</published>
+        <updated>2022-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/youtube-tips/youtube-on-tv/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/youtube-tips/youtube-on-tv/</id>
+        <summary type="html">&lt;del&gt;誰還有在看電視？&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="en">
+        <title>推薦的瀏覽器擴充套件列表</title>
+        <published>2021-05-10T00:00:00+00:00</published>
+        <updated>2021-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-browser-extensions-legacy/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-browser-extensions-legacy/</id>
+        <summary type="html">Awesome List of Brower Add-ons &#x2F; Extensions</summary>
+        </entry>
+</feed>

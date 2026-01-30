@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 桌面搜尋概論，以及 CLaunch 中文化</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="我把 CLaunch 中文化了。" />
+        <meta property="og:description" content="我把 CLaunch 中文化了。" />
+
+    
+
+    <meta property="og:title" content="桌面搜尋概論，以及 CLaunch 中文化" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;desktop-search-and-claunch-zh-tw&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            桌面搜尋概論，以及 CLaunch 中文化
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/desktop-search-and-claunch-zh-tw/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2023-06-22"><span class='separator' aria-hidden='true'>•</span>2023-06-22</time></li><li title="1299 words"><span class='separator' aria-hidden='true'>•</span>7 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/dogfooding/">Dogfooding</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/desktop-search/">Desktop search</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/launcher/">Launcher</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/software/">Software</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/translation/">Translation</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2023-06-22">Updated on 2023-06-22</time></li>
+        </ul>
+            <p class="p-summary" hidden>我把 CLaunch 中文化了。</p><section class="e-content body"><!-- # CLaunch 中文化 -->
+<!-- > 我把 CLaunch 中文化了。 -->
+<p>當我升級到 Windows 11 後，我的期待本是拿麼大，
+但更新帶來的諸多變化如半成品一般。
+最主要的痛點在於開始選單，
+無法收納的圖示還有莫名其妙的建議欄位 <sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup>。</p>
+<p>而 Windows 10 的開始選單，承襲 Windows 8 的 Metro 設計，
+雖然有 Metro 看板一般的好看，卻沒有其一般的可靠，
+甚至每次打開開始選單的時候，同一個圖示都會在不一樣的位置，
+亦少有軟體支援它的圖示樣式。</p>
+<p>我的桌子很亂，但我的桌布很清爽。
+把桌布上的圖示收納整理到只剩下資源回收筒，
+繁雜的檔案都眼不見為淨 <sup class="footnote-reference" id="fr-2-1"><a href="#fn-2">2</a></sup>。
+再搭配 Wallpaper Engine，讓電腦變成數位音樂相框。</p>
+<p>為了收納那些進入程式的捷徑圖示，
+我曾經習慣於使用的啟動器 <a class="external" href="https://www.launchy.net/">Launchy</a>，
+隨著時間的流逝，早就停止更新，我便開始尋求替代的選項。
+現在的啟動器選擇越來越多，功能也越來越多。
+每個人對啟動器的使用習慣都大不相同，種類也十人十色。
+這便是那些對工具和生產力如痴如醉的工程師大顯身手的地方。</p>
+<p>桌面搜尋（Desktop search），或者叫啟動器（Launcher），
+目的在於優雅且快速的存取電腦本機之內想要的功能、軟體、檔案，
+它可以讓你忘記開始選單、桌面圖示、甚至是檔案總管，
+再也不用在裡面翻箱倒櫃。</p>
+<p>我大致將啟動器分成搜尋類和圖示類，
+搜尋類可以通過打字快速找到想要的功能或者檔案，
+讓桌面環境的使用融合進控制檯指令一般的便利。
+圖示類就像超市的貨架，
+讓“我能做什麼”和“我該怎麼做”的構思一覽無遺。
+對我的而言兩個功能都不可或缺。
+但作為強迫症和潔癖的晚期患者，
+甚至連搜尋結果都希望由自己控制。</p>
+<figure style="text-align: center;">
+<img src="./images/ueli.png" alt="ueli Screens Shot" title="ueli Screens Shot">
+<figcaption>ueli，搜尋類啟動器</figcaption>
+</figure>
+<figure style="text-align: center;">
+<img src="./images/CLaunch.png" alt="CLaunch Screens Shot" title="CLaunch Screens Shot">
+<figcaption>CLaunch with 角丸 ダーク Skin by <a href="http://shirosai.web.fc2.com/claunch/">Koji</a>，圖示類啟動器</figcaption>
+</figure>
+<p>畢竟是要經常拿出來甚至是釘選在桌布上的工具，
+外觀也是一大重要的功能。
+我喜歡 <a class="external" href="https://www.rainmeter.net/">Rainmeter</a>，
+喜歡花費大把大把的時間在 <a class="external" href="https://www.deviantart.com/">DeviantArt</a> 尋找各種面板，
+就是要讓喜歡的東西變成自己的形狀。
+在那個網路尚未變質的純樸年代，
+像是 <a class="external" href="https://ssp.shillest.net/">伺か</a> 在桌布上放一個可以與你對話的角色，
+又像是 Winamp <sup class="footnote-reference" id="fr-3-1"><a href="#fn-3">3</a></sup> 的軟體突破了視窗的局限，
+替換各種花俏的外觀，在各種功能豐富的面板間排列組合。
+曾幾何時，軟體開發已經被網頁化的 Electron 佔去了……
+當代的設計喜歡簡潔乾淨的平面化，
+對外觀的客製化甚至有黑暗模式都是奢望。
+已經少有軟體支援能打中宅宅的少女心的完整客製化外觀支援。</p>
+<figure style="text-align: center;">
+<img src="./images/Rainmeter_Dark-Glass.png" alt="Rainmeter with Dark Glass Screens Shot" title="Rainmeter with Dark Glass Screens Shot">
+<figcaption>Rainmeter with <a href="https://www.deviantart.com/satyajit00/art/Dark-Glass-v2-0-489000220">Dark Glass v2.0</a> by satyajit00 @ DeviantArt<br/>與正文無關，但真的很好看</figcaption>
+</figure>
+<p>CLaunch 是圖示類的啟動器。
+上個世紀的軟體，竟然開發至今，完全相容最新的作業系統。
+秉承者日系軟體的小巧精緻，功能卻非常豐富。
+生產效率類的工具都需要習慣，而豐富的功能往往讓人難以入手，
+但它確是可以開箱即用的超低門檻、超高上限。
+在網路上也能找到很多愛好者創作的外觀，可以變成喜歡的樣子。
+它的功能和使用方式網路上有很多，我也不多贅述。</p>
+<blockquote>
+<p>前往：<a class="external" href="https://hp.vector.co.jp/authors/VA018351/en/claunch.html">CLaunch 官方網站</a>。</p>
+</blockquote>
+<p>我迫不及待的和那些被 M$ 半吊子更新困擾的朋友們分享，
+但卻沒有正體中文的支援。
+懷著對 CLaunch 的敬意和熱情，我決定製作一個中文模組。</p>
+<p>這是我第一次將軟體中文化，
+一個一個單字去查<a class="external" href="https://terms.naer.edu.tw/">教育部的翻譯</a>，
+才發現好多軟體的翻譯雖然接地氣但不正統，要怎麼翻還有點迷茫呢。</p>
+<p>好在 CLaunch 對多語言的完整支援，翻譯快速且順利的完成了。
+也希望更多人可以用到這些從未老去的軟體。</p>
+<footer class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p>新版的 Windows 11 22H2 更新已經改進開始選單，
+添加圖示收納和可調整已釘選（Pinned）和建議欄位（Recommended）的比例，
+但其客製化程度仍有限。 <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="fn-2">
+<p>我知道有隱藏圖示的方法和工具，但這不是自己騙自己嗎... <a href="#fr-2-1">↩</a></p>
+</li>
+<li id="fn-3">
+<p>但 Winamp 也改版了... <a href="#fr-3-1">↩</a></p>
+</li>
+</ol>
+</footer>
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/cyber-security-account/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">你也可以知道的賽博安全指南 - 帳密篇</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/youtube-tips/youtube-popup-video/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">YouTubeあるある - 瀏覽器多視窗</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 命令列從入門到出門</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=3716ab3457d2dd050b3c" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="不同於拖拉推拽煎炒烹炸的直覺而精緻操作的圖形界面，指令已經成為了只有在駭客或者工程師修電腦的時候才會出現的魔法詠唱般的存在，但這篇文章介紹命令列的基本概念，帶你寫出年輕人的第一條指令。" />
+        <meta property="og:description" content="不同於拖拉推拽煎炒烹炸的直覺而精緻操作的圖形界面，指令已經成為了只有在駭客或者工程師修電腦的時候才會出現的魔法詠唱般的存在，但這篇文章介紹命令列的基本概念，帶你寫出年輕人的第一條指令。" />
+
+    
+
+    <meta property="og:title" content="命令列從入門到出門" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;command-line-guide&#x2F;command-line-intro&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+    
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            命令列從入門到出門
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2025-05-28T01:00:00"><span class='separator' aria-hidden='true'>•</span>2025-05-28</time></li><li title="1559 words"><span class='separator' aria-hidden='true'>•</span>8 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/command-line/">Command Line</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/cli/">CLI</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/tutorial/">Tutorial</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/computer-concept/">Computer Concept</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2025-05-29T01:00:00">Updated on 2025-05-29</time></li>
+        </ul>
+            <p class="p-summary" hidden>不同於拖拉推拽煎炒烹炸的直覺而精緻操作的圖形界面，指令已經成為了只有在駭客或者工程師修電腦的時候才會出現的魔法詠唱般的存在，但這篇文章介紹命令列的基本概念，帶你寫出年輕人的第一條指令。</p><section class="e-content body">
+    <section class="series-page-intro">
+                <p>這篇文章來自 <a href="https://undecv.github.io/blog/posts/command-line-guide/" aria_label="命令列從入門到出門">命令列從入門到出門</a> 系列。</p>
+
+            </section>
+<p>我們使用電腦的方式大致分為兩種，
+一個是圖形用戶界面（GUI），就是大家耳熟能詳簡易直觀的視窗、圖形、按鈕、選單⋯
+圖形用戶界面的普及，讓我們使用電腦的方式改頭換面。
+拖拉推拽煎炒烹炸的直覺而精緻操作使得使用電腦的門檻大大降低。</p>
+<p>但在那很久很久以前，人與電腦之間的交互只能依靠的是黑底白字的命令列界面（CLI）完成。
+命令列既然是上古遺物，但原理簡單，反而容易理解。
+其實指令就像和電腦對話，打字告訴電腦做什麼，電腦做完了回報或者不回報給你，只是要說電腦聽得懂的語言。</p>
+<p>很久很久以後的今天，對於一般的使用者而言，
+指令已經成為了只有在駭客或者工程師修電腦的時候才會出現的魔法詠唱般的存在，
+大概現在只會搓玻璃的小朋友們可能已經很難想像那個人均駭客帝國的時代了。</p>
+<p>實際上，命令列界面相關的程式仍是電腦中重要的一部分，甚至他們的推陳出新都從未停止過。
+如上文所言，指令其實不是什麼艱澀難懂的東西，只是需要一點學習門檻，以及億點點🤏的腦汁。</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<h3 id="terminology">Terminology</h3>
+<p>在這裡先簡短的介紹一下專有名詞，很久很久以前，電腦還是衣櫃那麼大的時代，要對電腦做操作，
+要通過電腦身上的主控台（Console），大概就像電箱上的配電盤，後來電腦科學家們發現，
+要用電腦得站在電腦前面有點累的腰疼，也不方便多人運動，於是就把控制裝置拉出來，就是終端機（Terminal），
+而上古世紀還沒有螢幕的時候，大家用的是電傳打字機（Typewriter, TTY）。
+而時至今日，我們所熟知的螢幕鍵盤替代了機械的打字機，
+卻仍在用黑底白字模擬當年的終端機（Terminal Emulator），述說著那個年代的技術。</p>
+<h3 id="shell">Shell</h3>
+<p>作業系統的「內核 Kernel」負責運作，用戶通過「殼層 Shell」與之交互。
+這個「殼層」其實就是一個特殊的軟體，一種指令直譯器（Command Interpreter），一台電腦上可以同時有多種多樣好幾個。
+例如 Windows 下傳統的 CMD 和新血 PowerShell，Linux 下的 Bash 和 Zsh；
+圖形界面的也可以叫 Shell，例如 Windows Shell 包括大家熟悉的 <code>explorer.exe</code>，
+Linux 下的 Gnome、KDE、XFCE … 但是我們這裡先講命令列。</p>
+<p>不同的 Shell 的指令有不同的寫法，就像不同的程式語言一樣，
+但指令基本上在做的事情都是存取系統資源和呼叫程式或 Scripts。</p>
+<h3 id="command-line">Command line</h3>
+<p>命令列其實非常好理解，主要就是「教哪個程式怎麼做事」，指令的各個部分用空格隔開，
+通常包括做什麼（程式），對誰做（輸入），怎麼做（參數）。
+舉個最最簡單的例子：<code>cp a.txt b.txt</code> 就是複製 （<code>cp</code>）檔案 <code>a.txt</code> 到 <code>b.txt</code>。
+是不是簡單又暴力呢。
+在這裡，<code>cp</code> 是「目標程式或者指令」，而後所有的東西都是「參數（Arguments）」。
+這套邏輯在各大平台幾乎都是一樣的。</p>
+<blockquote>
+<p>⚠️ 玩弄指令有風險，使用前請詳閱以下說明</p>
+</blockquote>
+<p>再舉個更簡單的例子：<code>rm /*</code> 就是刪除（<code>rm</code>）電腦中的所有檔案（<code>/*</code>），這聽起來很恐怖對吧，
+這指令只和我們常用的清除當前資料夾下所有檔案 <code>rm ./*</code> 只有一點點的距離。而指令一旦執行更是往往回頭無岸，
+這也是為什麼沒事不要輕易的教純真的用戶使用指令，
+所以各位在使用命令列的時候必須完全理解自己輸入或者拷貝來的指令甚至於每一個符號，以免追悔莫及。</p>
+<h3 id="get-help">Get-Help</h3>
+<p>搞懂一個指令是非常重要的，而不懂的時候就要「尋求幫助」。</p>
+<p>PowerShell 的<a class="external" href="https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/02-help-system?view=powershell-7.5">官方文檔</a>說過『專家並不總是知道答案，但他們知道如何找出答案。』</p>
+<p>Shell 作為人與電腦的中介，甚至在古代是唯一的中介，通常自備使用說明書，
+在 Linux 上有手冊頁（manual pages）可以通過指令例如 <code>man ls</code> 查詢幫助文檔，
+在 Windows 的 PowerShell 中，也有查詢指令說明和資訊的工具，
+<code>Get-Help</code>、<code>Get-Command</code>、和 <code>Get-Member</code> 被稱為「三個核心 cmdlet」，可見他們對幫助文檔的重視。</p>
+<p>命令列軟體通常也會有選項可以印出他的用法，包括參數的含義，例如 <code>7z.exe --help</code>。</p>
+<p>還是搞不懂的話，那，還有 Google 搜尋。</p>
+<p>搞懂了指令之後我們就可以開始寫指令了，但一列指令可能不那麼的能體現出指令的優勢，
+複製檔案的 Ctrl + C、Ctrl + V 肯定比敲一列又臭又長的指令快得多，那什麼為什麼還需要用指令？
+因為指令其實就是一列的文字，而文字可以做的操作就多得多了，可以很方便複製貼上修改，可以被重複、組合、排程、自動化。</p>
+<h3 id="shell-script">Shell Script</h3>
+<p>假設遇到的這樣的問題：改一百萬個檔名、壓縮一百萬和檔案。
+或者更進階一些：按照日期分類一百萬張照片。
+又例如說、自動備份、批量上傳、資料清洗、……</p>
+<p>這種簡單而重複的作業，GUI 程式可能少有對應的工具，而 Shell script 正是其絕佳的解決方案！
+Windows 的遠古 shell script 叫做 Batch 即是批次處理的意思。</p>
+<p>把一坨指令放在一起執行的正是 Shell Scripts。
+還可以善用變數、迴圈和判斷加以智能。
+這時候您會發現您的電腦長大了會自己做事了。</p>
+<p>有了這些基礎知識，接下來就會介紹一些進階的使用技巧。</p>
+
+    
+
+        </section>
+                
+                
+                    
+                        
+                        
+                        
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div><a href="https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">打破指令和圖形界面的次元壁！用捷徑圖示執行指令</p></div>
+                <div><a href="https://undecv.github.io/blog/posts/command-line-guide/pueue-introduction/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">把任務放進佇列！用 Pueue 排隊指令</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/#preliminaries">Preliminaries</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/#terminology">Terminology</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/#shell">Shell</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/#command-line">Command line</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/#get-help">Get-Help</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://undecv.github.io/blog/posts/command-line-guide/command-line-intro/#shell-script">Shell Script</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script><script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>
