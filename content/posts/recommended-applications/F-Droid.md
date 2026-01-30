@@ -68,7 +68,7 @@ Droid-ify 以簡單易用的設計和輕量化特性著稱，而 Neo Store 則�
 而為什麼我說 F-Droid 是 Android 生態的平行宇宙？因為一些極為優秀的應用只通過 F-Droid 發布，並且還沒有在 Google Play 裡面上架。
 包括 [專文介紹][Post_Breezy_Weather] 過的「[Breezy Weather][]」，強大的終端機模擬器「[Termux][]」、在分享照片時過濾掉隱私資訊的「[Imagepipe][]」、還有臨時讓螢幕長亮一段時間的「[Coffee][]」⋯⋯ 這些無論是強大還是小巧、實用甚至免費、無廣告的應用讓我根本欲罷不能，所以我說在手機裡面裝一個 F-Droid 絕對是穩賺不賠，值得一試。
 
-[Post_Breezy_Weather]: @/posts/awesome-applications/Breezy_Weather.md
+[Post_Breezy_Weather]: @/posts/recommended-applications/Breezy_Weather.md
 [Breezy Weather]: https://github.com/breezy-weather/breezy-weather
 [Termux]: https://termux.com/
 [Imagepipe]: https://codeberg.org/Starfish/Imagepipe

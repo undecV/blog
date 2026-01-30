@@ -3,9 +3,9 @@ title: "推薦的瀏覽器擴充套件列表"
 description: "Awesome List of Brower Add-ons / Extensions"
 date: 2021-05-10
 updated: 2021-05-10
-slug: "awesome-addons"
+slug: "recommended-browser-extensions-legacy"
 taxonomies:
-  tags: [zh_TW, Awesome list, Firefox, Add-on, Extension]
+  tags: [zh_TW, Firefox, Add-on, Extension]
 ---
 
 <!-- # Awesome List of Brower Add-ons / Extensions -->

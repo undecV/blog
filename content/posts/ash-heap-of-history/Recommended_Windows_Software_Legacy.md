@@ -3,9 +3,9 @@ title: "［封存］推薦的 Windows 應用軟體列表"
 description: "List of Windows Application Software<br /><del>裝機必備的實用軟體大合集！</del>"
 date: 2017-07-26
 updated: 2023-06-29
-slug: "awesome-windows-softwares-legacy"
+slug: "recommended-windows-softwares-legacy"
 taxonomies:
-  tags: [zh_TW, Awesome list, Windows, Software, Application]
+  tags: [zh_TW, Windows, Software, Application]
 ---
 
 推薦一些 Windows 平台下的軟體， 適合日常以及非日常使用。<br />
