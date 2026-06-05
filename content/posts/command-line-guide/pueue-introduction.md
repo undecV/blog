@@ -25,10 +25,10 @@ taxonomies:
 - 佇列可以按需調整，新增、刪除、調整順序，甚至中止當前正在執行的任務。
 
 Linux 上我們有 GNU Parallel 和 task-spooler，
-本站之前也有 [文章][WSL_Task_Spooler_Work_With_Batch_Script.md] 介紹過如何在 Windows / WSL 的環境下玩 task-spooler。
+本站之前也有 [文章][wsl-tsp.md] 介紹過如何在 Windows / WSL 的環境下玩 task-spooler。
 但是現在，[Nukesor/pueue][] 讓我們不僅是 Linux，終於也可以在**原生** Windows 上也能把指令放進佇列！
 
-[WSL_Task_Spooler_Work_With_Batch_Script.md]: @/posts/ash-heap-of-history/WSL_Task_Spooler_Work_With_Batch_Script.md
+[wsl-tsp.md]: @/posts/ash-heap-of-history/wsl-tsp.md
 [Nukesor/pueue]: https://github.com/Nukesor/pueue
 
 Pueue 是 Rust 寫的工具，可以用 Rust 的 Cargo 工具安裝，
@@ -38,7 +38,7 @@ Pueue 是 Rust 寫的工具，可以用 Rust 的 Cargo 工具安裝，
 
 Windows 的話可以用 [Scoop](https://scoop.sh/) 安裝，其用法可以參考本站文章 [Windows 的軟體管理系統][]：
 
-[Windows 的軟體管理系統]: @/posts/command-line-guide/Windows_Package_Managers.md
+[Windows 的軟體管理系統]: @/posts/command-line-guide/windows-package-managers.md
 
 ```shell
 scoop install pueue

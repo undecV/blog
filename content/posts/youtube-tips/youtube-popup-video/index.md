@@ -22,7 +22,7 @@ Firefox 內建的畫中畫（Picture-in-picture）功能就可以讓影片逃出
 
 同個家族的免費、開源的擴充套件 ***Popup Video***（[Firefox Add-on][Popup Video Firefox]）與上面介紹的 YouTube Popout Player 功能相近，但啟用的按鈕沒有融入介面設計，在導覽頁和播放器右上角會有出現一個白色的按鈕。
 
-免費、專有的擴充套件 ***Enhancer for YouTube™***（[Firefox Add-on][Enhancer for YouTube Firefox], [Chrome Extension][Enhancer for YouTube Chrome]） 功能豐富，也帶有跳出式視窗的功能，可以看看專文介紹：[YouTubeあるある - 戲院級的觀影體驗！擴充套件 Enhancer for YouTube™](@/posts/youtube-tips/YouTube_Enhancer_for_YouTube/index.md)
+免費、專有的擴充套件 ***Enhancer for YouTube™***（[Firefox Add-on][Enhancer for YouTube Firefox], [Chrome Extension][Enhancer for YouTube Chrome]） 功能豐富，也帶有跳出式視窗的功能，可以看看專文介紹：[YouTubeあるある - 戲院級的觀影體驗！擴充套件 Enhancer for YouTube™](@/posts/youtube-tips/youtube-enhancer-for-youtube/index.md)
 
 免費、專有的擴充套件 ***Video Popup Tool***（[Firefox Add-on][Video Popup Tool Firefox]）可以讓其他網站的 HTML5 播放器也能利用跳出式視窗，例如學習教學平臺上的線上課程。
 

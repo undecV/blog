@@ -31,11 +31,11 @@ GitHub Desktop 客戶端篇。
 - 下載並安裝 [**GitHub Desktop**](https://desktop.github.com/)。（我略！
 
 - 當然可以先跟着軟體自帶的教學（Tutorial），瞭解 Git 在這個軟體上的基本操作。
-  - ![Options](./images_ep1/P_00.png)
+  - ![Options](./images-ep1/P_00.png)
 
 - 設定 GitHub Desktop：
   - 右上角的 `齒輪`，然後選擇 `Options...`。
-    - ![Options](./images_ep1/P_01.png)
+    - ![Options](./images-ep1/P_01.png)
 
   - 設定項目：
     1. Accounts：你的 GitHub 賬戶，點擊 `Add account` 登錄，若你還沒註冊賬戶，可以到 [GitHub](https://github.com/) 註冊一個。
@@ -47,26 +47,26 @@ GitHub Desktop 客戶端篇。
        - 使用 Windows 8 及更早版本的童鞋（電腦里沒有 `PowerShell`），推薦選擇 `CMD`；
     6. Privacy：隱私，是否希望將匿名的使用資料提交給軟體的製造者來改進他們的產品，你爽就好。
     - 請務必要設定上述被標記 **`※`** 的項目。
-    - ![Options](./images_ep1/P_02.png)
+    - ![Options](./images-ep1/P_02.png)
 
 這樣，你的 GitHub Desktop 就設定完了，那麼，該如何操作 Git 呢？
 
 - 創立一個本地的版本庫：
-  - ![Options](./images_ep1/P_03.png)
+  - ![Options](./images-ep1/P_03.png)
 - 在上圖的資料夾中，做出更動，例如添加、刪除或修改文件，設立資料夾，就跟一般情況下使用資源管理器一樣。
   > **注意！** 圖中的 `.git` 文件夾記載著你的版本訊息，請勿刪除，否則會使 Git 無法正常工作。
-  - ![Options](./images_ep1/P_04.png)
+  - ![Options](./images-ep1/P_04.png)
 - 更動結束后，回到 GitHub Desktop 中，選擇 `Change` 頁面，可以在下面看到你此次的更動，在左邊勾選你所需要提交的更動，並且在下方填寫本次更動的提要（必須）然後選擇提交。
-  - ![Options](./images_ep1/P_05.png)
+  - ![Options](./images-ep1/P_05.png)
 - 此時，你的版本庫的樹枝上就會多出一個**空心的圓**，空心的圓表示尚未**同步**，同步后，提交成功后，就會變成**實心的圓**。
-  - ![Options](./images_ep1/P_06.png)
+  - ![Options](./images-ep1/P_06.png)
 - 點擊同步，就完成了此次的提交。
 
 最後，你已經完成了 GitHub Desktop 的設定，也了解的最基本的 Git 操作在 GitHub Desktop 下如何完成。那麼，下一步就是：
 
 - 不用指令也可以使用 Git 系列之
-  - [GitHub Desktop + GitHub 篇](@/posts/ash-heap-of-history/git-without-command/Git_Without_Command_3.md)
-  - [GitHub Desktop + Bitbucket 篇](@/posts/ash-heap-of-history/git-without-command/Git_Without_Command_2.md)
+  - [GitHub Desktop + GitHub 篇](@/posts/ash-heap-of-history/git-without-command/git-without-command-ep3.md)
+  - [GitHub Desktop + Bitbucket 篇](@/posts/ash-heap-of-history/git-without-command/git-without-command-ep2.md)
 
 See also:
 

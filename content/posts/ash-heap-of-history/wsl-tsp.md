@@ -9,7 +9,7 @@ taxonomies:
   tags: [zh_TW, Command Line, CLI, WSL, Windows, Linux, Task Queuing, File Archive]
 ---
 
-> 🛑（2025-05）現在我更推薦使用新的工具軟體 Pueue 達成同樣的任務，請見本站的介紹文：[把指令放進佇列！用 Pueue 排隊指令](@/posts/command-line-guide/Pueue_Introduction.md)。
+> 🛑（2025-05）現在我更推薦使用新的工具軟體 Pueue 達成同樣的任務，請見本站的介紹文：[把指令放進佇列！用 Pueue 排隊指令](@/posts/command-line-guide/pueue-introduction.md)。
 
 有時候需要執行一些時間長、需要大量系統資源的指令，例如巨量資料的計算、機器學習，或是更常用的檔案壓縮、影片轉檔。希望這些高負載的指令可以被順序執行而不是同時執行，同時執行會佔用過多的系統資源，不僅互相拖慢速度，也影響到其他程式的流暢執行，大幅降低了摸魚體驗。
 

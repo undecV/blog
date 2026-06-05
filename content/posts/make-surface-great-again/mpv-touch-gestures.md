@@ -20,7 +20,7 @@ taxonomies:
 
 但在 Windows 上，作為一個桌面端的作業系統，其平台的影片播放器多是為了桌面而設計，少有支援觸控。 ~~畢竟除了 Surface 也沒幾台 Windows 設備支援觸控螢幕，~~ 更不要說桌面系統支援觸控是千古難題（想看我吐槽可以看看[上篇文章][make_surface_great_again]）。
 
-[make_surface_great_again]: @/posts/make-surface-great-again/Make_Surface_Great_Again.md
+[make_surface_great_again]: @/posts/make-surface-great-again/make-surface-great-again-intro.md
 
 電腦是這樣的，手機的影片播放器只要全身心的支援觸控螢幕，拖拉推拽，煎炒烹炸就可以，可電腦要考慮的事情就很多了。
 
