@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;undecv.github.io&#x2F;blog</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>SMB</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー - SMB</title>
+    <link href="https://undecv.github.io/blog/tags/smb/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog/tags/smb/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-06-30T15:00:00+00:00</updated><id>https://undecv.github.io/blog/tags/smb/atom.xml</id><entry xml:lang="en">
+        <title>Android 上的本地漫畫閱讀器推薦：Kuro Reader</title>
+        <published>2025-06-30T15:00:00+00:00</published>
+        <updated>2025-06-30T15:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/recommended-applications/kuro-reader/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/recommended-applications/kuro-reader/</id>
+        <summary type="html">電腦裡面開了一家漫畫圖書館，怎麼辦？急，在線等。這裏有一款介面現代且流暢、支援壓縮檔、可以直接讀取本地網路的無廣告漫畫閱讀器。</summary>
+        </entry>
+</feed>

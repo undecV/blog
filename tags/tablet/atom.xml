@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;undecv.github.io&#x2F;blog</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>Tablet</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー - Tablet</title>
+    <link href="https://undecv.github.io/blog/tags/tablet/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog/tags/tablet/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-07-11T00:00:00+00:00</updated><id>https://undecv.github.io/blog/tags/tablet/atom.xml</id><entry xml:lang="en">
+        <title>全能型影片播放器 mpv 被迫支援觸控螢幕辛酸畫面流出</title>
+        <published>2025-07-11T00:00:00+00:00</published>
+        <updated>2025-07-11T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/</id>
+        <summary type="html">觸控螢幕上最好的影片播放器，竟然是不支援觸控的播放器？本篇介紹如何用開源如開掛的播放器 mpv，透過社群腳本與設定打造支援手勢操作、預覽縮圖與現代化介面的極致體驗。並提供一鍵安裝懶人包，讓 mpv 擁有媲美手機播放器的直覺觸控操作體驗！</summary>
+        </entry><entry xml:lang="en">
+        <title>讓 Surface 再次偉大：觸手友善的電腦和作業系統</title>
+        <published>2025-07-10T00:00:00+00:00</published>
+        <updated>2025-07-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/make-surface-great-again/make-surface-great-again-intro/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/make-surface-great-again/make-surface-great-again-intro/</id>
+        <summary type="html">也許是除了 Surface 誰也想不到 Windows 會支援觸控螢幕吧，罄竹難書的觸控體驗與刺繡般的操作，卻是一個生不逢時的硬體奇才。相比 Android 的做一半辦公應用和 iPad OS 的大手機，Windows 平板依然無可替代——尤其是它就是根本天生的 Galgame 播放器（？）。</summary>
+        </entry>
+</feed>

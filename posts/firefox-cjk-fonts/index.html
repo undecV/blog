@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self' https://umami.d.poi48.xyz;script-src 'self' https://umami.d.poi48.xyz 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://undecv.github.io/blog">
+
+    
+    <title>
+キャンディージャー • 如何讓 Firefox 不要再用新細明體</title>
+
+    
+    
+        <link rel="icon" type="image/png" href="https://undecv.github.io/blog/favicon.32.png"/>
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="キャンディージャー - Atom Feed" href="https://undecv.github.io/blog/atom.xml">
+                
+            
+                
+                    <link rel="alternate" type="application/rss+xml" title="キャンディージャー - RSS Feed" href="https://undecv.github.io/blog/rss.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://undecv.github.io/blog/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    
+        <link rel="stylesheet" href="https://undecv.github.io/blog/main.css?h=045c365e19a4d50a64bb" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/css/custom.css?h=1e2fa6957df82e1f9bb9" />
+        <link rel="stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="令和 8 年了，Firefox 的中文字型還是有點懷舊；本文記錄如何在 Windows 上用 Noto CJK 和 user.js 修改 Firefox 的中文預設字型。" />
+        <meta property="og:description" content="令和 8 年了，Firefox 的中文字型還是有點懷舊；本文記錄如何在 Windows 上用 Noto CJK 和 user.js 修改 Firefox 的中文預設字型。" />
+
+    
+
+    <meta property="og:title" content="如何讓 Firefox 不要再用新細明體" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;firefox-cjk-fonts&#x2F;" /><meta property="og:site_name" content="キャンディージャー">
+        <noscript><link rel="stylesheet" href="https://undecv.github.io/blog/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://undecv.github.io/blog/js/initializeTheme.min.js"></script>
+        <script defer src="https://undecv.github.io/blog/js/themeSwitcher.min.js"></script>
+
+
+
+
+    <script async defer
+    
+        data-website-id="d6047041-a412-4ec6-863b-c5f31d16e678"
+        src="https://umami.d.poi48.xyz/script.js"
+    
+    >
+    </script>
+
+
+<meta name="fediverse:creator" content="@undecv@g0v.social" />
+    
+</head>
+
+
+<body>
+    <a href="#main-content" id="skip-link">Skip to content</a>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://undecv.github.io/blog/">キャンディージャー</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/posts/">Posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/archive/">Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/tags/">Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://undecv.github.io/blog/projects/">Projects
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content" id="main-content">
+
+        
+        
+
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            如何讓 Firefox 不要再用新細明體
+        </h1>
+        <a class="u-url u-uid" href="https://undecv.github.io/blog/posts/firefox-cjk-fonts/"></a>
+
+        <ul class="meta"><li>By <span class="p-author">undecV</span></li><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog" class="u-url " title="undecV">undecV</a>
+</span>
+<li><time class="dt-published" datetime="2026-06-05"><span class='separator' aria-hidden='true'>•</span>2026-06-05</time></li><li title="1314 words"><span class='separator' aria-hidden='true'>•</span>7 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/zh-tw/">zh_TW</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/firefox/">Firefox</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/font/">Font</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://undecv.github.io/blog/tags/web/">Web</a></li></ul><ul class="meta last-updated"><li><time class="dt-updated" datetime="2026-06-05">Updated on 2026-06-05</time></li>
+        </ul>
+            <p class="p-summary" hidden>令和 8 年了，Firefox 的中文字型還是有點懷舊；本文記錄如何在 Windows 上用 Noto CJK 和 user.js 修改 Firefox 的中文預設字型。</p><section class="e-content body"><p><del>沒錯，在下正是高傲的 Firefox 自適應用戶。</del></p>
+<blockquote>
+<p><del><em>此處應有新細明體笑話。</em></del></p>
+</blockquote>
+<p>2026 年了，Firefox 還是把中文字型 fallback 到新細明體……</p>
+<p>Windows 的中文字型支援真的是夠用而已，Windows 11 的現況是，無襯線（Sans-serif）的黑體字是適合現代螢幕的「微軟正黑」，但是襯線（Serif）的明體字還是「新細明體」。我們暫且不說設計語言一致性這種高貴的事情，這兩個字型就是排版在一起都能讓人感受到時代的碰撞。</p>
+<p>但這也怪不得誰，畢竟 CJK 字型要處理的漢字量動輒成千上萬，還有不同書寫系統的字形差異，所以現代、完整、好看的中文字型選擇少之又少，這是電腦科學界的千古難題……直到 Google 和 Adobe 推出了 Noto CJK / Source Han 系列。</p>
+<p>Windows 10 / 11 在 2025 年也內建了 Noto Sans / Serif TC 等 CJK 區域字型 <sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup>，這可真是德政！Chrome 甚至搶先一步調整了預設 fallback：如果系統上有 Noto CJK / Noto TC 這類字型，就優先使用它們 <sup class="footnote-reference" id="fr-2-1"><a href="#fn-2">2</a></sup>，真不愧是親爹。但 Firefox 卻……是相當的保守了。所以我們需要修改 Firefox 的設定，讓 Firefox 用上 Noto 字型。</p>
+<p>但在修改之前，我們不得不提及一下 Noto CJK 系列字型的基本知識。Noto CJK 分為兩個家族的三套字型：</p>
+<ul>
+<li><code>Noto Sans CJK</code>: 無襯線的黑體字；</li>
+<li><code>Noto Sans Mono CJK</code>: 無襯線的黑體字，但是等寬；</li>
+<li><code>Noto Serif CJK</code>: 有襯線的明體字。</li>
+</ul>
+<p>按照發行方式，以正體中文的 <code>TC</code> 為例，分為：</p>
+<ul>
+<li>通常版：<code>Noto Sans CJK TC</code>；</li>
+<li>區域限定子集（region-specific subset）：<code>Noto Sans TC</code>。</li>
+</ul>
+<p>區域限定子集少了 <code>CJK</code> 標記。「區域限定子集」檔案只包含特定區域常用的字形與字元集合，因此檔案較小，系統載入和瀏覽器處理上也比較輕量。Mono 等寬字型 <strong>沒有</strong> 區域限定子集。</p>
+<p>Windows 秉持著「做事只做半套」的核心理念，內建的主要是「區域限定子集」，所以若我們希望使用 Noto Sans Mono CJK 等寬字型，還得自己再安裝一下「通常版」。</p>
+<blockquote>
+<p>如果沒有打算修改 Mono 字型，可以跳過這個步驟。</p>
+</blockquote>
+<p>安裝的方式我推薦使用 <a class="external" href="https://scoop.sh/">Scoop</a> 套件管理器，雖然是命令列，但是最簡單。</p>
+<p>首先按照官方說明安裝好 Scoop，然後打開命令列輸入：</p>
+<pre data-lang="powershell" class="language-powershell "><code class="language-powershell" data-lang="powershell"># 添加 `nerd-fonts` 倉庫，但裡面不止有 Nerd fonts
+scoop bucket add nerd-fonts
+# 安裝 Noto Sans CJK，包括 Mono
+scoop install nerd-fonts&#x2F;Noto-CJK-Mega-OTC
+# 安裝 Noto Serif CJK
+scoop install nerd-fonts&#x2F;Noto-Serif-CJK-Super-OTC
+</code></pre>
+<p>這樣字型就安裝好了。通常安裝字型不需要重開電腦，只需要重開要用到新字型的軟體即可。</p>
+<p>接下來是修改 Firefox，正常的修改方式是 <code>Settings</code> → <code>Fonts</code> → <code>Advanced...</code> 裡面修改。
+但是非常麻煩，不僅步驟繁雜，如果你又常常在大東亞共榮圈的各個網站裡面反覆橫跳，要改的就不是一個語系，而是五個書寫系統。</p>
+<p>所以我們用特殊的方法修改，一次設定五個書寫系統。</p>
+<blockquote>
+<p>警告：修改 <code>about:config</code> 有風險，請在「安全、理智、自願」的基礎上進行。</p>
+</blockquote>
+<p>我們在 Firefox 的 Profile 資料夾下建立 <code>user.js</code> 檔案，這個檔案會在 Firefox 每次啟動的時候「注入」設定。</p>
+<blockquote>
+<p>這裡的「注入」比較像「每次啟動時把設定寫進 Firefox 的偏好設定資料庫」。所以 <code>user.js</code> 刪掉之後，已經寫進去的設定不會自動還原；只是 Firefox 之後不會再被 <code>user.js</code> 強制覆寫。不刪的話，每次 Firefox 啟動都會「注入」一次，讓設定與 <code>user.js</code> 檔案內相同。</p>
+</blockquote>
+<details open>
+<summary>如果安裝了 Mono 字型的設定</summary>
+<pre data-lang="javascript" data-name="user.js" class="language-javascript "><code class="language-javascript" data-lang="javascript" data-name="user.js">user_pref(&quot;font.name.sans-serif.zh-TW&quot;, &quot;Noto Sans TC&quot;);
+user_pref(&quot;font.name.serif.zh-TW&quot;, &quot;Noto Serif TC&quot;);
+user_pref(&quot;font.name.monospace.zh-TW&quot;, &quot;Noto Sans Mono CJK TC&quot;);
+
+user_pref(&quot;font.name.sans-serif.zh-HK&quot;, &quot;Noto Sans HK&quot;);
+user_pref(&quot;font.name.serif.zh-HK&quot;, &quot;Noto Serif HK&quot;);
+user_pref(&quot;font.name.monospace.zh-HK&quot;, &quot;Noto Sans Mono CJK HK&quot;);
+
+user_pref(&quot;font.name.sans-serif.zh-CN&quot;, &quot;Noto Sans SC&quot;);
+user_pref(&quot;font.name.serif.zh-CN&quot;, &quot;Noto Serif SC&quot;);
+user_pref(&quot;font.name.monospace.zh-CN&quot;, &quot;Noto Sans Mono CJK SC&quot;);
+
+user_pref(&quot;font.name.sans-serif.ja&quot;, &quot;Noto Sans JP&quot;);
+user_pref(&quot;font.name.serif.ja&quot;, &quot;Noto Serif JP&quot;);
+user_pref(&quot;font.name.monospace.ja&quot;, &quot;Noto Sans Mono CJK JP&quot;);
+
+user_pref(&quot;font.name.sans-serif.ko&quot;, &quot;Noto Sans KR&quot;);
+user_pref(&quot;font.name.serif.ko&quot;, &quot;Noto Serif KR&quot;);
+user_pref(&quot;font.name.monospace.ko&quot;, &quot;Noto Sans Mono CJK KR&quot;);
+</code></pre>
+</details>
+<details>
+<summary>如果沒有打算修改 Mono 字型，僅使用預裝的字型的設定</summary>
+<pre data-lang="javascript" data-name="user.js" class="language-javascript "><code class="language-javascript" data-lang="javascript" data-name="user.js">user_pref(&quot;font.name.sans-serif.zh-TW&quot;, &quot;Noto Sans TC&quot;);
+user_pref(&quot;font.name.serif.zh-TW&quot;, &quot;Noto Serif TC&quot;);
+
+user_pref(&quot;font.name.sans-serif.zh-HK&quot;, &quot;Noto Sans HK&quot;);
+user_pref(&quot;font.name.serif.zh-HK&quot;, &quot;Noto Serif HK&quot;);
+
+user_pref(&quot;font.name.sans-serif.zh-CN&quot;, &quot;Noto Sans SC&quot;);
+user_pref(&quot;font.name.serif.zh-CN&quot;, &quot;Noto Serif SC&quot;);
+
+user_pref(&quot;font.name.sans-serif.ja&quot;, &quot;Noto Sans JP&quot;);
+user_pref(&quot;font.name.serif.ja&quot;, &quot;Noto Serif JP&quot;);
+
+user_pref(&quot;font.name.sans-serif.ko&quot;, &quot;Noto Sans KR&quot;);
+user_pref(&quot;font.name.serif.ko&quot;, &quot;Noto Serif KR&quot;);
+</code></pre>
+</details>
+<p>修改之後重開 Firefox，如果系統中確實有安裝字型，那麼應該就可以看到了。</p>
+<p>雖然但是，為什麼 Firefox 看上去（雙關）還是如此守舊？由於我是高傲的 Firefox 自適應用戶，我願意先幫它找理由：瀏覽器的字型選擇不只是美觀問題，還牽涉到歷史包袱、平台 fallback、語言標籤、字型可見性，以及隱私。</p>
+<p>由於 HTML / CSS 的設計，網站可以透過「你有哪些字型」、「某段文字渲染後尺寸是多少」來推測和識別使用者，這就是隱私裡說的「指紋」<sup class="footnote-reference" id="fr-3-1"><a href="#fn-3">3</a></sup>。在較嚴格的隱私模式下，Firefox 會限制網站可見或可用的字型範圍，以降低字型指紋追蹤的風險。不過 Firefox 也知道完全擋掉語言相關字型會直接傷害可讀性，所以對中文、日文、韓文等語言字型仍有例外處理 <sup class="footnote-reference" id="fr-4-1"><a href="#fn-4">4</a></sup>。</p>
+<p>根據我的觀測結果（2026-06），Chrome 除了預設就會優先使用 Noto 之外，對於等寬字即使沒有 Noto CJK Mono，也會做 CJK fallback；Firefox 則需要我們自己幫它一把。</p>
+<footer class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p><a class="external" href="https://zh.wikipedia.org/zh-tw/Microsoft_Windows%E5%AD%97%E5%9E%8B%E5%88%97%E8%A1%A8">Wikipedia: Microsoft Windows字型列表</a> <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="fn-2">
+<p><a class="external" href="https://groups.google.com/a/chromium.org/g/blink-dev/c/t1Mc7oJdNQY">PSA: Windows default CJK fonts changes</a> <a href="#fr-2-1">↩</a></p>
+</li>
+<li id="fn-3">
+<p><a class="external" href="https://www.firefox.com/en-US/features/block-fingerprinting/">Firefox Browser Fingerprinting Protection</a> <a href="#fr-3-1">↩</a></p>
+</li>
+<li id="fn-4">
+<p><a class="external" href="https://support.mozilla.org/en-US/kb/firefox-protection-against-fingerprinting">Firefox’s protection against fingerprinting</a> <a href="#fr-4-1">↩</a></p>
+</li>
+</ol>
+</footer>
+
+        </section>
+                
+                
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class=" article-navigation">
+                <div></div>
+                <div><a href="https://undecv.github.io/blog/posts/recommended-applications/recommended-applications/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">用過都說好的應用推薦</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+    <div id="button-container">
+        
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<link rel="stylesheet" href="https://undecv.github.io/blog/katex.min.css">
+    <script defer src="https://undecv.github.io/blog/js/katex.min.js"></script>
+    <script defer src="https://undecv.github.io/blog/js/mermaid.min.js"></script><span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://undecv.github.io/blog/js/copyCodeToClipboard.min.js"></script>
+
+<script defer src="https://undecv.github.io/blog/js/codeBlockNameLinks.min.js"></script><script defer src="https://undecv.github.io/blog/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://undecv.github.io/blog/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://undecv.github.io/blog/social_icons/rss.svg">
+                        </a>
+                    </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/poi48.xyz">
+                                    <img loading="lazy" alt="Bluesky" title="Bluesky" src="https://undecv.github.io/blog/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/undecV/">
+                                    <img loading="lazy" alt="GitHub" title="GitHub" src="https://undecv.github.io/blog/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://g0v.social/@undecv">
+                                    <img loading="lazy" alt="Mastodon" title="Mastodon" src="https://undecv.github.io/blog/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://orcid.org/0009-0001-8137-5570">
+                                    <img loading="lazy" alt="ORCID" title="ORCID" src="https://undecv.github.io/blog/social_icons/orcid.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://t.me/s/poi0048">
+                                    <img loading="lazy" alt="Telegram" title="Telegram" src="https://undecv.github.io/blog/social_icons/telegram.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+                <small>
+                    <ul>
+                        
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;blog&#x2F;discussions&#x2F;">
+                                Discussions
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    
+                        <li><a class="nav-links no-hover-padding" href="https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;sitemap.xml">
+                                Sitemap
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </small>
+        
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+    
+    
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    <p><p>© 1996-2026 undecV • Unless otherwise noted, the content in this website is all rights reserved.</p>
+</p>
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+
+    
+    
+</body>
+
+</html>

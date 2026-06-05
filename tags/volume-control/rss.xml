@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Volume Control</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/volume-control/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 16 Jul 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>BtrVol 音量控制軟體</title>
+          <pubDate>Sun, 16 Jul 2023 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/btrvol-intro/</link>
+          <guid>https://undecv.github.io/blog/posts/btrvol-intro/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/btrvol-intro/">&lt;p&gt;&lt;del&gt;夢裡看片今日實現。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BtrVol 專案 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;BtrVol&quot;&gt;首頁&lt;&#x2F;a&gt;、&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;BtrVol&#x2F;blob&#x2F;main&#x2F;readme.zh.md&quot;&gt;中文說明&lt;&#x2F;a&gt;、&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;undecV&#x2F;BtrVol&#x2F;releases&quot;&gt;下載&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;網路確是讓人成癮的毒藥。&lt;&#x2F;p&gt;
+&lt;p&gt;在這個連上廁所都手機不離手的時代，
+大家都無時不刻在吸食這些賽博鴉片，
+新聞、社群、影片、遊戲，
+人們已經忘卻了如何放空，
+甚至是睡前那片刻的寧靜…&lt;&#x2F;p&gt;
+&lt;p&gt;是以，
+為了在入睡之際也能沉迷 YouTube，
+我寫了 BtrVol，一個聲音控制軟體，
+能夠隨著時間提升、降低音量。
+音量控制是通過精心設計的弦波函數達成的，
+相較於直線的調整更加輕柔、順滑。&lt;&#x2F;p&gt;
+&lt;p&gt;臨睡之際，
+點開不用動腦的 Minecraft 影片，
+讓音量先緩後急的慢慢下降，
+讓思緒漸漸從影片中抽離，
+也讓入睡後再無打擾。&lt;&#x2F;p&gt;
+&lt;p&gt;醒來之後，
+生怕 YouTube 自動播放到了世界的哪個陰暗的角落，
+原來是訂閱的 VTuber 的直播記錄檔，
+果然還是懂自己的演算法最對味。&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

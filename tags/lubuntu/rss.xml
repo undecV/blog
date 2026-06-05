@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Lubuntu</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/lubuntu/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 07 Feb 2017 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>［封存］超高速的 VirtualBox + Lubuntu 安裝方法</title>
+          <pubDate>Tue, 07 Feb 2017 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/lubuntu-virtualbox/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/lubuntu-virtualbox/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/lubuntu-virtualbox/">&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;給臨時抱佛腳的同學，還有電腦性能在虛擬機中跑 Ubuntu 比較慢的同學。
+跑安裝全過程加碼字一個小時多，實際上你不需要一邊碼字一邊安裝還是很快的。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Lubuntu&lt;&#x2F;strong&gt; 是 &lt;strong&gt;Ubuntu&lt;&#x2F;strong&gt; 的一個分支，屬於 &lt;strong&gt;輕量級的 Linux 發行版&lt;&#x2F;strong&gt; （對比 Ubuntu 家的 ISO 體積就知道了），需要的硬體需要不那麼高，即使在老舊和低性能的電腦上也可以順暢運行（當然在高性能的電腦的也會更快）。界面上有點像 Windows 和 樹莓派 的 Raspbain，操作上不會有那麼強的違和感。&lt;&#x2F;p&gt;
+&lt;p&gt;Ubuntu 家族安裝 &lt;code&gt;iso&lt;&#x2F;code&gt; 文件對比。
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;LUBUNTU_03.png&quot; alt=&quot;LUBUNTU_03&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Lubuntu 桌面環境。
+&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;LUBUNTU_02.png&quot; alt=&quot;LUBUNTU_02&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;這是在 &lt;code&gt;Windows&lt;&#x2F;code&gt; 下操作的。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;根據你電腦的位元（32 或 64）下載作業系統和 VirtualBox：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;lubuntu.net&#x2F;&quot;&gt;lubuntu&lt;&#x2F;a&gt;: lightweight, fast, easier
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P01.png&quot; alt=&quot;P01&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Oracle VM VirtualBox: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.virtualbox.org&#x2F;wiki&#x2F;Downloads&quot;&gt;Downloads&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P02.png&quot; alt=&quot;P02&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;安裝 VisualBox：略。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;建立虛擬機：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;左上角的 &lt;code&gt;New&lt;&#x2F;code&gt; ，填入 &lt;code&gt;Name&lt;&#x2F;code&gt; ，選擇 &lt;code&gt;Type&lt;&#x2F;code&gt; 和 &lt;code&gt;Version&lt;&#x2F;code&gt; 。
+&lt;blockquote&gt;
+&lt;p&gt;提示：在 &lt;code&gt;Name&lt;&#x2F;code&gt; 輸入 &lt;code&gt;Ubuntu&lt;&#x2F;code&gt; 相關的字串下面會自動選擇。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P03.png&quot; alt=&quot;P03&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;設定記憶體：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;根據你電腦的情況給虛擬機設定記憶體（RAM，拉姆，雷姆的姐姐）大小。
+&lt;blockquote&gt;
+&lt;p&gt;8GB 的 RAM 給 2048 MB 差不多，不要太小，也不要太大。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P04.png&quot; alt=&quot;P04&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;建立虛擬硬碟：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;選擇立即建立新硬碟（ &lt;code&gt;Create a virtual hard disk now&lt;&#x2F;code&gt; ）。&lt;&#x2F;li&gt;
+&lt;li&gt;選擇硬碟類型， &lt;code&gt;VDI&lt;&#x2F;code&gt; 。&lt;&#x2F;li&gt;
+&lt;li&gt;動態配置大小（ &lt;code&gt;Dynamically allocated&lt;&#x2F;code&gt; ）。&lt;&#x2F;li&gt;
+&lt;li&gt;設定硬碟大小，一般向 30GB 左右，根據自己的需求而定。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P05.png&quot; alt=&quot;P05&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P06.png&quot; alt=&quot;P06&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P07.png&quot; alt=&quot;P07&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P08.png&quot; alt=&quot;P08&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;設定 &lt;code&gt;Setting&lt;&#x2F;code&gt; ，對系統優化。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Display -&amp;gt; Screen -&amp;gt; Video Memory：最大。&lt;&#x2F;li&gt;
+&lt;li&gt;Display -&amp;gt; Screen -&amp;gt; Enable 3D Acceleration：勾選。&lt;&#x2F;li&gt;
+&lt;li&gt;Storage：掛載安裝 CD。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P09.png&quot; alt=&quot;P09&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P10.png&quot; alt=&quot;P10&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;開機 &lt;code&gt;Start&lt;&#x2F;code&gt; 。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P11.png&quot; alt=&quot;P11&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;安裝系統：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;選擇語言：你讀得懂的。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P12.png&quot; alt=&quot;P12&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;選擇：安裝 &lt;code&gt;lubuntu&lt;&#x2F;code&gt; （ &lt;code&gt;Install Lubuntu&lt;&#x2F;code&gt; ）。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P13.png&quot; alt=&quot;P13&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;還是選擇語言：你讀得懂的。
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P14.png&quot; alt=&quot;P14&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;安裝準備：
+&lt;blockquote&gt;
+&lt;p&gt;建議全勾選，自己看下面的解釋，下同。
+按 &lt;code&gt;Continue&lt;&#x2F;code&gt; 之後會停住一段時間，正常，等它跑完。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P15.png&quot; alt=&quot;P15&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;硬碟選項：
+&lt;blockquote&gt;
+&lt;p&gt;根據需要調整，一般默認就好。
+按 &lt;code&gt;Continue&lt;&#x2F;code&gt; 之後會停住一段時間，正常，等它跑完。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P16.png&quot; alt=&quot;P16&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;地區選項：
+&lt;blockquote&gt;
+&lt;p&gt;根據需要調整。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P17.png&quot; alt=&quot;P17&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;鍵盤選項：
+&lt;blockquote&gt;
+&lt;p&gt;根據需要調整。
+按鈕 &lt;code&gt;Continue&lt;&#x2F;code&gt; 可能因爲熒幕不夠大沒顯示出來，就移動一下視窗。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P18.png&quot; alt=&quot;P18&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;賬戶選項：
+&lt;blockquote&gt;
+&lt;p&gt;根據需要填寫。
+勾選 &lt;code&gt;Log in automatically&lt;&#x2F;code&gt; 可以每次登錄時不要輸入密碼。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P19.png&quot; alt=&quot;P19&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;等它安裝：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;等好等滿。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P20.png&quot; alt=&quot;P20&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;裝完了，重新開機：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P21.png&quot; alt=&quot;P21&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;然後，然後它就成功了：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P22.png&quot; alt=&quot;P22&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;最後， &lt;strong&gt;溫馨提示&lt;&#x2F;strong&gt; ，記得設定快照：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;各位在玩虛擬機的時候記得建立快照（Snapshots），爆炸了之後可以用這個東西恢復搶救回來。
+EXPLOOOOOOOOOOPSION!!!&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;P23.png&quot; alt=&quot;P23&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;img src=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;ash-heap-of-history&#x2F;lubuntu-virtualbox&#x2F;.&#x2F;images&#x2F;Snapshots.jpg&quot; alt=&quot;Snapshots&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;hr &#x2F;&gt;
+&lt;ul&gt;
+&lt;li&gt;Environment:
+&lt;ul&gt;
+&lt;li&gt;Windows 10&lt;&#x2F;li&gt;
+&lt;li&gt;with VirtualBox 5.1.10&lt;&#x2F;li&gt;
+&lt;li&gt;Lubuntu 16.10&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Release Notes:
+&lt;ul&gt;
+&lt;li&gt;2.1 Update (20170207):
+&lt;ul&gt;
+&lt;li&gt;修改文件目錄。&lt;&#x2F;li&gt;
+&lt;li&gt;授權的鏈接的 &lt;code&gt;HTML&lt;&#x2F;code&gt; 使用 &lt;code&gt;Markdown&lt;&#x2F;code&gt; 改寫。&lt;&#x2F;li&gt;
+&lt;li&gt;細節修正。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;2.0 Update (20170128):
+&lt;ul&gt;
+&lt;li&gt;變更授權：&lt;code&gt;Creative Commons License&lt;&#x2F;code&gt; 。&lt;&#x2F;li&gt;
+&lt;li&gt;新增一個捏它。&lt;&#x2F;li&gt;
+&lt;li&gt;細節修正。&lt;&#x2F;li&gt;
+&lt;li&gt;內容整合。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>
