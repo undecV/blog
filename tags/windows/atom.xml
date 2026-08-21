@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;undecv.github.io&#x2F;blog</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>Windows</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー - Windows</title>
+    <link href="https://undecv.github.io/blog/tags/windows/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog/tags/windows/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-12-24T00:00:00+00:00</updated><id>https://undecv.github.io/blog/tags/windows/atom.xml</id><entry xml:lang="en">
+        <title>把電腦變成床頭時鐘：在 Windows 上打造一個低干擾的睡前待機模式</title>
+        <published>2025-12-24T00:00:00+00:00</published>
+        <updated>2025-12-24T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/windows-bedside-display/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/windows-bedside-display/</id>
+        <summary type="html">我不喜歡睡覺時關掉電腦，但夜晚點亮的螢幕就像一顆 disco 球，無時無刻地對外輻射著誘惑與慾望。這篇文章記錄我嘗試在 Windows 上，用腳本一鍵把螢幕、風扇和瀏覽器調整為低干擾狀態，讓待機的電腦變成一件有溫度的傢俱。</summary>
+        </entry><entry xml:lang="en">
+        <title>程式如何接收參數</title>
+        <published>2025-08-01T09:00:00+00:00</published>
+        <updated>2025-08-01T09:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command-line-guide/argument-introduction/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command-line-guide/argument-introduction/</id>
+        <summary type="html">從 Hello World 到能聽懂人話的程式：介紹命令列參數的使用方法，讓程式能根據輸入做不同事情。</summary>
+        </entry><entry xml:lang="en">
+        <title>全能型影片播放器 mpv 被迫支援觸控螢幕辛酸畫面流出</title>
+        <published>2025-07-11T00:00:00+00:00</published>
+        <updated>2025-07-11T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/</id>
+        <summary type="html">觸控螢幕上最好的影片播放器，竟然是不支援觸控的播放器？本篇介紹如何用開源如開掛的播放器 mpv，透過社群腳本與設定打造支援手勢操作、預覽縮圖與現代化介面的極致體驗。並提供一鍵安裝懶人包，讓 mpv 擁有媲美手機播放器的直覺觸控操作體驗！</summary>
+        </entry><entry xml:lang="en">
+        <title>讓 Surface 再次偉大：觸手友善的電腦和作業系統</title>
+        <published>2025-07-10T00:00:00+00:00</published>
+        <updated>2025-07-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/make-surface-great-again/make-surface-great-again-intro/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/make-surface-great-again/make-surface-great-again-intro/</id>
+        <summary type="html">也許是除了 Surface 誰也想不到 Windows 會支援觸控螢幕吧，罄竹難書的觸控體驗與刺繡般的操作，卻是一個生不逢時的硬體奇才。相比 Android 的做一半辦公應用和 iPad OS 的大手機，Windows 平板依然無可替代——尤其是它就是根本天生的 Galgame 播放器（？）。</summary>
+        </entry><entry xml:lang="en">
+        <title>BtrVol</title>
+        <published>2025-07-02T00:00:00+00:00</published>
+        <updated>2025-07-02T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/projects/btrvol/" type="text/html"/>
+        <id>https://undecv.github.io/blog/projects/btrvol/</id>
+        <summary type="html">Adjust the volume gently. </summary>
+        </entry><entry xml:lang="en">
+        <title>Windows 系統槽備份不完全指北</title>
+        <published>2025-06-08T00:00:00+00:00</published>
+        <updated>2025-06-15T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/windows-system-drive-backup-strategy/</id>
+        <summary type="html">系統槽可以說是系統的頭腦，而備份它卻讓人摸不著頭腦。秉承著整槽端走，也不能漏掉一個存檔的原則，這篇文章帶你看看系統槽裡面那些陰暗潮濕的角落。</summary>
+        </entry><entry xml:lang="en">
+        <title>打破指令和圖形界面的次元壁！用捷徑圖示執行指令</title>
+        <published>2025-05-28T05:00:00+00:00</published>
+        <updated>2025-05-29T05:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command-line-guide/windows-icon-portal/</id>
+        <summary type="html">想要把一拖拉庫的檔案丟給某個程式？在指令列尋求UX是否搞錯了什麼？這篇文章用幾行批次指令，把指令列工具偷渡到了圖形界面裡，打破了兩者的界線，開啟指令和圖形界面之間的「傳送門」。</summary>
+        </entry><entry xml:lang="en">
+        <title>打通 Windows 和 Linux 的傳送魔法陣！在 Shell 之間反覆橫跳</title>
+        <published>2025-05-28T03:00:00+00:00</published>
+        <updated>2025-05-28T03:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/command-line-guide/nested-shell-scripting/</id>
+        <summary type="html">通常要做一件事情是可以在一個 Shell 裡面完成的。但無論是使用舊工具或是跨平臺，都使得我們不得不在不同的 Shell 之間反复橫跳。這篇文章介紹的巢狀指令呼叫根本就是指令界的人〇〇蚣！可以在不同 Shell 之間互通有無。</summary>
+        </entry><entry xml:lang="en">
+        <title>Windows 下手動修正 VLC 界面縮放</title>
+        <published>2021-05-10T00:00:00+00:00</published>
+        <updated>2021-05-10T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/vlc-fractional-scaling/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/vlc-fractional-scaling/</id>
+        <summary type="html">Fix VLC UI fractional scaling in Windows.&lt;br &#x2F;&gt;&lt;del&gt;は？Windows 竟然支援高解析度螢幕？&lt;&#x2F;del&gt;</summary>
+        </entry><entry xml:lang="en">
+        <title>［封存］把檔案壓縮影片轉檔任務放進佇列！用 WSL Task Spooler 排隊 Windows 的指令</title>
+        <published>2021-04-12T01:00:00+00:00</published>
+        <updated>2021-04-12T01:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/ash-heap-of-history/wsl-tsp/</id>
+        <summary type="html">[Archived] WSL Task Spooler Work With Batch Script</summary>
+        </entry><entry xml:lang="en">
+        <title>［封存］推薦的 Windows 應用軟體列表</title>
+        <published>2017-07-26T00:00:00+00:00</published>
+        <updated>2023-06-29T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/</id>
+        <summary type="html">List of Windows Application Software&lt;br &#x2F;&gt;&lt;del&gt;裝機必備的實用軟體大合集！&lt;&#x2F;del&gt;</summary>
+        </entry>
+</feed>

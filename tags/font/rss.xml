@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Font</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/font/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 05 Jun 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>如何讓 Firefox 不要再用新細明體</title>
+          <pubDate>Fri, 05 Jun 2026 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/firefox-cjk-fonts/</link>
+          <guid>https://undecv.github.io/blog/posts/firefox-cjk-fonts/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/firefox-cjk-fonts/">&lt;p&gt;&lt;del&gt;沒錯，在下正是高傲的 Firefox 自適應用戶。&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;&lt;em&gt;此處應有新細明體笑話。&lt;&#x2F;em&gt;&lt;&#x2F;del&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;2026 年了，Firefox 還是把中文字型 fallback 到新細明體……&lt;&#x2F;p&gt;
+&lt;p&gt;Windows 的中文字型支援真的是夠用而已，Windows 11 的現況是，無襯線（Sans-serif）的黑體字是適合現代螢幕的「微軟正黑」，但是襯線（Serif）的明體字還是「新細明體」。我們暫且不說設計語言一致性這種高貴的事情，這兩個字型就是排版在一起都能讓人感受到時代的碰撞。&lt;&#x2F;p&gt;
+&lt;p&gt;但這也怪不得誰，畢竟 CJK 字型要處理的漢字量動輒成千上萬，還有不同書寫系統的字形差異，所以現代、完整、好看的中文字型選擇少之又少，這是電腦科學界的千古難題……直到 Google 和 Adobe 推出了 Noto CJK &#x2F; Source Han 系列。&lt;&#x2F;p&gt;
+&lt;p&gt;Windows 10 &#x2F; 11 在 2025 年也內建了 Noto Sans &#x2F; Serif TC 等 CJK 區域字型 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，這可真是德政！Chrome 甚至搶先一步調整了預設 fallback：如果系統上有 Noto CJK &#x2F; Noto TC 這類字型，就優先使用它們 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;，真不愧是親爹。但 Firefox 卻……是相當的保守了。所以我們需要修改 Firefox 的設定，讓 Firefox 用上 Noto 字型。&lt;&#x2F;p&gt;
+&lt;p&gt;但在修改之前，我們不得不提及一下 Noto CJK 系列字型的基本知識。Noto CJK 分為兩個家族的三套字型：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Noto Sans CJK&lt;&#x2F;code&gt;: 無襯線的黑體字；&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;Noto Sans Mono CJK&lt;&#x2F;code&gt;: 無襯線的黑體字，但是等寬；&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;Noto Serif CJK&lt;&#x2F;code&gt;: 有襯線的明體字。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;按照發行方式，以正體中文的 &lt;code&gt;TC&lt;&#x2F;code&gt; 為例，分為：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;通常版：&lt;code&gt;Noto Sans CJK TC&lt;&#x2F;code&gt;；&lt;&#x2F;li&gt;
+&lt;li&gt;區域限定子集（region-specific subset）：&lt;code&gt;Noto Sans TC&lt;&#x2F;code&gt;。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;區域限定子集少了 &lt;code&gt;CJK&lt;&#x2F;code&gt; 標記。「區域限定子集」檔案只包含特定區域常用的字形與字元集合，因此檔案較小，系統載入和瀏覽器處理上也比較輕量。Mono 等寬字型 &lt;strong&gt;沒有&lt;&#x2F;strong&gt; 區域限定子集。&lt;&#x2F;p&gt;
+&lt;p&gt;Windows 秉持著「做事只做半套」的核心理念，內建的主要是「區域限定子集」，所以若我們希望使用 Noto Sans Mono CJK 等寬字型，還得自己再安裝一下「通常版」。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果沒有打算修改 Mono 字型，可以跳過這個步驟。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;安裝的方式我推薦使用 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;scoop.sh&#x2F;&quot;&gt;Scoop&lt;&#x2F;a&gt; 套件管理器，雖然是命令列，但是最簡單。&lt;&#x2F;p&gt;
+&lt;p&gt;首先按照官方說明安裝好 Scoop，然後打開命令列輸入：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; class=&quot;language-powershell &quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;# 添加 `nerd-fonts` 倉庫，但裡面不止有 Nerd fonts
+scoop bucket add nerd-fonts
+# 安裝 Noto Sans CJK，包括 Mono
+scoop install nerd-fonts&amp;#x2F;Noto-CJK-Mega-OTC
+# 安裝 Noto Serif CJK
+scoop install nerd-fonts&amp;#x2F;Noto-Serif-CJK-Super-OTC
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;這樣字型就安裝好了。通常安裝字型不需要重開電腦，只需要重開要用到新字型的軟體即可。&lt;&#x2F;p&gt;
+&lt;p&gt;接下來是修改 Firefox，正常的修改方式是 &lt;code&gt;Settings&lt;&#x2F;code&gt; → &lt;code&gt;Fonts&lt;&#x2F;code&gt; → &lt;code&gt;Advanced...&lt;&#x2F;code&gt; 裡面修改。
+但是非常麻煩，不僅步驟繁雜，如果你又常常在大東亞共榮圈的各個網站裡面反覆橫跳，要改的就不是一個語系，而是五個書寫系統。&lt;&#x2F;p&gt;
+&lt;p&gt;所以我們用特殊的方法修改，一次設定五個書寫系統。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;警告：修改 &lt;code&gt;about:config&lt;&#x2F;code&gt; 有風險，請在「安全、理智、自願」的基礎上進行。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;我們在 Firefox 的 Profile 資料夾下建立 &lt;code&gt;user.js&lt;&#x2F;code&gt; 檔案，這個檔案會在 Firefox 每次啟動的時候「注入」設定。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;這裡的「注入」比較像「每次啟動時把設定寫進 Firefox 的偏好設定資料庫」。所以 &lt;code&gt;user.js&lt;&#x2F;code&gt; 刪掉之後，已經寫進去的設定不會自動還原；只是 Firefox 之後不會再被 &lt;code&gt;user.js&lt;&#x2F;code&gt; 強制覆寫。不刪的話，每次 Firefox 啟動都會「注入」一次，讓設定與 &lt;code&gt;user.js&lt;&#x2F;code&gt; 檔案內相同。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;details open&gt;
+&lt;summary&gt;如果安裝了 Mono 字型的設定&lt;&#x2F;summary&gt;
+&lt;pre data-lang=&quot;javascript&quot; data-name=&quot;user.js&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot; data-name=&quot;user.js&quot;&gt;user_pref(&amp;quot;font.name.sans-serif.zh-TW&amp;quot;, &amp;quot;Noto Sans TC&amp;quot;);
+user_pref(&amp;quot;font.name.serif.zh-TW&amp;quot;, &amp;quot;Noto Serif TC&amp;quot;);
+user_pref(&amp;quot;font.name.monospace.zh-TW&amp;quot;, &amp;quot;Noto Sans Mono CJK TC&amp;quot;);
+
+user_pref(&amp;quot;font.name.sans-serif.zh-HK&amp;quot;, &amp;quot;Noto Sans HK&amp;quot;);
+user_pref(&amp;quot;font.name.serif.zh-HK&amp;quot;, &amp;quot;Noto Serif HK&amp;quot;);
+user_pref(&amp;quot;font.name.monospace.zh-HK&amp;quot;, &amp;quot;Noto Sans Mono CJK HK&amp;quot;);
+
+user_pref(&amp;quot;font.name.sans-serif.zh-CN&amp;quot;, &amp;quot;Noto Sans SC&amp;quot;);
+user_pref(&amp;quot;font.name.serif.zh-CN&amp;quot;, &amp;quot;Noto Serif SC&amp;quot;);
+user_pref(&amp;quot;font.name.monospace.zh-CN&amp;quot;, &amp;quot;Noto Sans Mono CJK SC&amp;quot;);
+
+user_pref(&amp;quot;font.name.sans-serif.ja&amp;quot;, &amp;quot;Noto Sans JP&amp;quot;);
+user_pref(&amp;quot;font.name.serif.ja&amp;quot;, &amp;quot;Noto Serif JP&amp;quot;);
+user_pref(&amp;quot;font.name.monospace.ja&amp;quot;, &amp;quot;Noto Sans Mono CJK JP&amp;quot;);
+
+user_pref(&amp;quot;font.name.sans-serif.ko&amp;quot;, &amp;quot;Noto Sans KR&amp;quot;);
+user_pref(&amp;quot;font.name.serif.ko&amp;quot;, &amp;quot;Noto Serif KR&amp;quot;);
+user_pref(&amp;quot;font.name.monospace.ko&amp;quot;, &amp;quot;Noto Sans Mono CJK KR&amp;quot;);
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;details&gt;
+&lt;details&gt;
+&lt;summary&gt;如果沒有打算修改 Mono 字型，僅使用預裝的字型的設定&lt;&#x2F;summary&gt;
+&lt;pre data-lang=&quot;javascript&quot; data-name=&quot;user.js&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot; data-name=&quot;user.js&quot;&gt;user_pref(&amp;quot;font.name.sans-serif.zh-TW&amp;quot;, &amp;quot;Noto Sans TC&amp;quot;);
+user_pref(&amp;quot;font.name.serif.zh-TW&amp;quot;, &amp;quot;Noto Serif TC&amp;quot;);
+
+user_pref(&amp;quot;font.name.sans-serif.zh-HK&amp;quot;, &amp;quot;Noto Sans HK&amp;quot;);
+user_pref(&amp;quot;font.name.serif.zh-HK&amp;quot;, &amp;quot;Noto Serif HK&amp;quot;);
+
+user_pref(&amp;quot;font.name.sans-serif.zh-CN&amp;quot;, &amp;quot;Noto Sans SC&amp;quot;);
+user_pref(&amp;quot;font.name.serif.zh-CN&amp;quot;, &amp;quot;Noto Serif SC&amp;quot;);
+
+user_pref(&amp;quot;font.name.sans-serif.ja&amp;quot;, &amp;quot;Noto Sans JP&amp;quot;);
+user_pref(&amp;quot;font.name.serif.ja&amp;quot;, &amp;quot;Noto Serif JP&amp;quot;);
+
+user_pref(&amp;quot;font.name.sans-serif.ko&amp;quot;, &amp;quot;Noto Sans KR&amp;quot;);
+user_pref(&amp;quot;font.name.serif.ko&amp;quot;, &amp;quot;Noto Serif KR&amp;quot;);
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;details&gt;
+&lt;p&gt;修改之後重開 Firefox，如果系統中確實有安裝字型，那麼應該就可以看到了。&lt;&#x2F;p&gt;
+&lt;p&gt;雖然但是，為什麼 Firefox 看上去（雙關）還是如此守舊？由於我是高傲的 Firefox 自適應用戶，我願意先幫它找理由：瀏覽器的字型選擇不只是美觀問題，還牽涉到歷史包袱、平台 fallback、語言標籤、字型可見性，以及隱私。&lt;&#x2F;p&gt;
+&lt;p&gt;由於 HTML &#x2F; CSS 的設計，網站可以透過「你有哪些字型」、「某段文字渲染後尺寸是多少」來推測和識別使用者，這就是隱私裡說的「指紋」&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-3-1&quot;&gt;&lt;a href=&quot;#fn-3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。在較嚴格的隱私模式下，Firefox 會限制網站可見或可用的字型範圍，以降低字型指紋追蹤的風險。不過 Firefox 也知道完全擋掉語言相關字型會直接傷害可讀性，所以對中文、日文、韓文等語言字型仍有例外處理 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-1&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;根據我的觀測結果（2026-06），Chrome 除了預設就會優先使用 Noto 之外，對於等寬字即使沒有 Noto CJK Mono，也會做 CJK fallback；Firefox 則需要我們自己幫它一把。&lt;&#x2F;p&gt;
+&lt;footer class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;zh-tw&#x2F;Microsoft_Windows%E5%AD%97%E5%9E%8B%E5%88%97%E8%A1%A8&quot;&gt;Wikipedia: Microsoft Windows字型列表&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;groups.google.com&#x2F;a&#x2F;chromium.org&#x2F;g&#x2F;blink-dev&#x2F;c&#x2F;t1Mc7oJdNQY&quot;&gt;PSA: Windows default CJK fonts changes&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.firefox.com&#x2F;en-US&#x2F;features&#x2F;block-fingerprinting&#x2F;&quot;&gt;Firefox Browser Fingerprinting Protection&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-3-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;support.mozilla.org&#x2F;en-US&#x2F;kb&#x2F;firefox-protection-against-fingerprinting&quot;&gt;Firefox’s protection against fingerprinting&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-4-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;footer&gt;
+</description>
+      </item>
+    </channel>
+</rss>

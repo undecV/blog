@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - File Sharing</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/file-sharing/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>檔案傳輸緒論：手機、電腦傳檔的一百種方式</title>
+          <pubDate>Sat, 25 Jul 2026 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/file-transfer-intro/</link>
+          <guid>https://undecv.github.io/blog/posts/file-transfer-intro/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/file-transfer-intro/">&lt;p&gt;傳一個檔案需要多少網路工程師？七個，因為網路有七層。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tl-dr-chuan-dang-fang-shi-tian-ti-tu&quot;&gt;TL;DR: 傳檔方式天梯圖&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;類型&lt;&#x2F;th&gt;&lt;th&gt;範例&lt;&#x2F;th&gt;&lt;th&gt;可通過外網&lt;&#x2F;th&gt;&lt;th&gt;需要網路知識&lt;&#x2F;th&gt;&lt;th&gt;第三地暫存&lt;&#x2F;th&gt;&lt;th&gt;小檔案&lt;&#x2F;th&gt;&lt;th&gt;大檔案&lt;&#x2F;th&gt;&lt;th&gt;資料夾&lt;&#x2F;th&gt;&lt;th&gt;日常使用推薦&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-comm-software&quot;&gt;通訊軟體&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;LINE、微信&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭐⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-email&quot;&gt;電子郵件&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;Gmail、Outlook&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-temporary-sharing&quot;&gt;臨時分享&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;Send Anywhere&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭐⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-cloud-drive&quot;&gt;雲端硬碟&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;Google Drive&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭐⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-remote-desktop&quot;&gt;遠端桌面&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;RDP、TeamViewer&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;🔺&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-private-cloud&quot;&gt;私有雲&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;NAS、Synology&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;🤯&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🤯⭐⭐⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-self-hosted-file-sharing&quot;&gt;自架檔案分享&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;網站、Zipline&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🤯&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🤯⭐⭐⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-sync-tools&quot;&gt;同步工具&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;Syncthing&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🤯⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-peer-to-peer-distribution&quot;&gt;點對點分發&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;BitTorrent&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🔺&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🤯&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-remote-file-services&quot;&gt;遠端檔案服務&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;FTP、WebDAV、HTTP&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;🔺&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭐⭐⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-network-file-protocols&quot;&gt;網路硬碟協定&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;SMB、NFS&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;🔺&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭐⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-dedicated-tools&quot;&gt;專用工具&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;LocalSend、Snapdrop&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭐⭐⭐⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-nearby-sharing&quot;&gt;隔空投送&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;AirDrop、Quick Share&lt;&#x2F;td&gt;&lt;td&gt;🔺&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭐⭐&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-bluetooth&quot;&gt;藍牙&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;Bluetooth&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;🔺&lt;&#x2F;td&gt;&lt;td&gt;🔻&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;🤬&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-physical-transfer&quot;&gt;實體傳輸&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;傳輸線、隨身碟、記憶卡&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;⭕&lt;&#x2F;td&gt;&lt;td&gt;☠️&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;ul&gt;
+&lt;li&gt;⭕：適合或具備&lt;&#x2F;li&gt;
+&lt;li&gt;🔺：勉強可用&lt;&#x2F;li&gt;
+&lt;li&gt;🔻：有限制或視情況而定&lt;&#x2F;li&gt;
+&lt;li&gt;❌：不適合或不具備&lt;&#x2F;li&gt;
+&lt;li&gt;🤯：適合熟悉網路與伺服器設定者&lt;&#x2F;li&gt;
+&lt;li&gt;🤬：拜託先不要&lt;&#x2F;li&gt;
+&lt;li&gt;☠️：注意安全&lt;&#x2F;li&gt;
+&lt;li&gt;「資料夾傳輸」是指一次傳輸整個資料夾，變成壓縮檔的不算。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;還是霧煞煞？最後有 &lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-simple-summary&quot;&gt;簡單總結&lt;&#x2F;a&gt; ！&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;zen-mo-hui-you-na-mo-duo-chuan-dang-de-fang-fa&quot;&gt;怎麼會有那麼多傳檔的方法？&lt;&#x2F;h2&gt;
+&lt;p&gt;傳個檔案而已，又不是要考 CCNA！&lt;&#x2F;p&gt;
+&lt;p&gt;因為在不同的場景下，有不同的適合傳檔方式！&lt;&#x2F;p&gt;
+&lt;p&gt;試想幾個場景：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;在影印店，要傳檔案給陌生的電腦。&lt;&#x2F;li&gt;
+&lt;li&gt;在辦公室，要傳資料給同僚的電腦。&lt;&#x2F;li&gt;
+&lt;li&gt;在外玩耍，要分享照片給隨行夥伴。&lt;&#x2F;li&gt;
+&lt;li&gt;自己電腦，要備份或傳輸手機檔案。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;在不同的場景下，網路的環境可能不同，傳輸的東西也不一樣，甚至對於檔案安全都有各自考量。所以，同樣是傳檔案，其實可以細分成這種多維度的需求，也就有了這麼多的工具。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dang-an-chu-gui-liao&quot;&gt;檔案出櫃了&lt;&#x2F;h3&gt;
+&lt;p&gt;傳檔方式最大的區別就是「跨網路」，也就是本文說的「外網」和「內網」：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;「外網」只要連到廣域網路，都可以使用。&lt;&#x2F;li&gt;
+&lt;li&gt;「內網」僅在本地網路內傳輸，不需要廣域網路，除了高速和不消耗手機流量，（通常）會有較好的安全性和隱私。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;然而「內網」卻意想不到地有著「較高的技術門檻」！雖然在普羅大眾的印象中，內網說起來也只是「同一個 Wi-Fi」這麼簡單，但是對於不擅長擺弄手邊路由器的一般使用者來說，內網卻可能是「不存在」的：家用路由器通常會把 IP 地址動態分配，手機端的 MAC 地址也可能會隨機跳變……即使歷經千辛萬苦，從名不見經傳的教學裡道聽途說來了 &lt;code&gt;ipconfig&lt;&#x2F;code&gt;，終於翻到了 IP 地址，也有可能因為家用路由器開啟了「設備隔離」之類的設定，最後兩臺設備還是只能面面相覷的同床異夢了。&lt;&#x2F;p&gt;
+&lt;p&gt;至於安全和隱私的部分，在網路安全界有一個「零信任」原則： &lt;strong&gt;只要不是自己控制的部分，都不會相信其安全。&lt;&#x2F;strong&gt; 講道理，印表機上都有存儲裝置，都有能力偷走資料，但安全也是一種工程學，需要衡量風險和成本，而且也不是誰家都有一台事務機，本文為了通俗易懂對這個方面也是點到為止。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;chuan-dang-de-yi-bai-zhong-fang-shi&quot;&gt;傳檔的一百種方式&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;section-comm-software&quot;&gt;通訊軟體&lt;&#x2F;h3&gt;
+&lt;p&gt;（跨網路、第三方暫存、小檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;眾所周知，人與人之間是無法相互理解的，人類就是如此悲哀的生物。既然放棄了人與人之間溝通，那通訊軟體拿來傳檔案也是剛好而已。&lt;&#x2F;p&gt;
+&lt;p&gt;作為無論是工作上生活上手機上電腦上可能都幾乎都是最常打開的 App 沒有之一，而且還是聯絡通訊的工具，大多都有傳檔的功能，例如 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;web.telegram.org&#x2F;&quot;&gt;Telegram&lt;&#x2F;a&gt;、LINE、WhatsApp、Discord，以及中國常見的 QQ 和微信，甚至包含一些社群媒體的私訊，例如 Facebook Messenger。&lt;&#x2F;p&gt;
+&lt;p&gt;作為人與人之間溝通的工具，當然最適合跨網路和朋友分享檔案。一些應用例如 Telegram、LINE 甚至有自說自話自言自語的功能，就可以做到自己給自己分享檔案。&lt;&#x2F;p&gt;
+&lt;p&gt;（通常的）此類應用會先暫存到他們服務的伺服器上，再供對方下載（即第三方暫存），對於隱私潔癖的我來說就比較難受。同時這也可能帶來檔案大小的限制。通常也不支援一次傳輸整個資料夾。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-email&quot;&gt;電子郵件&lt;&#x2F;h3&gt;
+&lt;p&gt;（跨網路、第三方暫存、小檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;現今，電子郵件除了收廣告，可能就是對公事務那種衣冠禽獸一般的繁文縟節了。&lt;&#x2F;p&gt;
+&lt;p&gt;電子郵件的本質大概就是通訊軟體的懷舊復古版，使用場景我覺得也差不多。甚至電子郵件對於附件的支援就是迷，通常看收件人信箱提供商的服務態度，難說會不會被退信（攤手）。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-temporary-sharing&quot;&gt;臨時分享&lt;&#x2F;h3&gt;
+&lt;p&gt;（跨網路、第三方暫存、短時效）&lt;&#x2F;p&gt;
+&lt;p&gt;臨時分享是一類專用於臨時檔案分享的網路服務，原理就是：打開網頁就能上傳檔案，甚至不需要登入，它會給你一個方便手打的網址，通常是幾個數字和字母。檔案暫存在他們的伺服器裡，時效通常幾小時到幾天。然後在對方電腦的瀏覽器上輸入這個網址，就可以方便地下載這個檔案。&lt;&#x2F;p&gt;
+&lt;p&gt;知名的服務例如（已經死掉的）Firefox Send，以及日本樂天的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;send-anywhere.com&#x2F;&quot;&gt;Send Anywhere&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;非常適合例如傳檔給影印店等陌生電腦。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;順便提醒，在陌生電腦上無論是插隨身碟或者是登入帳密都是極度危險的！&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;而這個方式可以在不需要這些危險動作的前提下傳檔案。&lt;&#x2F;p&gt;
+&lt;p&gt;至於第三方暫存的隱私和安全性，首先你的檔案都會被丟給影印店了，安全已經被大打折扣。使用這類服務的時候，評量他們的可信度，也可以看他們的屁股硬不硬，例如 Send Anywhere 現在就是大財閥日本樂天旗下的服務。以及看看他們隱私的承諾如何如何，大公司對於資安可能會有考量。但無論再怎麼說，畢竟承諾也只是承諾，除非是自己架設服務這種的完全自己控制，也不能控制別人為所欲為⋯⋯&lt;&#x2F;p&gt;
+&lt;p&gt;如果列印、影印一些重大個資的檔案，例如身分證件、護照，基於我們看屁股硬不硬的原則，超商的事務機雖然貴，但可能是比影印店更好的選擇。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-cloud-drive&quot;&gt;雲端硬碟&lt;&#x2F;h3&gt;
+&lt;p&gt;（跨網路、第三方暫存、一拖拉庫檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;雲端硬碟例如 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.dropbox.com&#x2F;&quot;&gt;Dropbox&lt;&#x2F;a&gt;、&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;workspace.google.com&#x2F;products&#x2F;drive&#x2F;&quot;&gt;Google Drive&lt;&#x2F;a&gt;、&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;onedrive.live.com&#x2F;&quot;&gt;Microsoft OneDrive&lt;&#x2F;a&gt; 等，就是為了解決網路傳輸暫存分享檔案而生。&lt;&#x2F;p&gt;
+&lt;p&gt;而一些大平台例如 Google Drive、OneDrive 甚至整合了辦公套件，可以即時多人協作編輯一份檔案，是大學小組作業死線趕工的得力助手。&lt;&#x2F;p&gt;
+&lt;p&gt;通常雲端硬碟的價格和容量不能說是量大管飽，但是講道理它對於賽博文書工作流可以說是必備工具了。&lt;&#x2F;p&gt;
+&lt;p&gt;至於傳檔案，網路硬碟通常有分享功能，但他們的連結和「臨時分享」工具相比簡直是又臭又長，不會想手動輸入的那一種。可以搭配通訊軟體和電子郵件來傳送分享連結，彌補他們傳大檔案、資料夾的不足。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;再次提醒，不要在陌生電腦上登入網路硬碟的帳密！請用分享連結功能。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;section-remote-desktop&quot;&gt;遠端桌面&lt;&#x2F;h3&gt;
+&lt;p&gt;（跨網路、無暫存）&lt;&#x2F;p&gt;
+&lt;p&gt;遠端桌面例如 Google &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;remotedesktop.google.com&#x2F;&quot;&gt;Chrome Remote Desktop&lt;&#x2F;a&gt;、TeamViewer 等，通常會附有傳檔功能。但是講道理，這個功能比較像是 DLC，好不好用先不說，可靠性可能都是個問題，只適合順便或應急。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-private-cloud&quot;&gt;私有雲&lt;&#x2F;h3&gt;
+&lt;p&gt;（本地網路、自有暫存、大量檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;作為中年男子三大愛好之一的 NAS，好不好用和安全性取決於架設者的技術能力。如果會玩 NAS，這篇文章就顯得班門弄斧了。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-self-hosted-file-sharing&quot;&gt;自架檔案分享&lt;&#x2F;h3&gt;
+&lt;p&gt;（跨網路、自有暫存、大量檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;現在有很多開源、自架的服務，可以替代那些第三方控制的服務：雲端硬碟有 Nextcloud，檔案分享有 Zipline、PrivateBin，甚至可以說功能更為豐富。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;nextcloud.com&#x2F;&quot;&gt;Nextcloud&lt;&#x2F;a&gt; 就是全功能雲端硬碟，Google Drive、OneDrive 的替代品，甚至連協作文書套件都一應俱全。&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;immich.app&#x2F;&quot;&gt;Immich&lt;&#x2F;a&gt; 就是 Google Photos 的替代品。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;zipline.diced.sh&#x2F;&quot;&gt;Zipline&lt;&#x2F;a&gt; 是同時有短連結、PasteBin、檔案分享、網路相簿（圖床）的超多功能分享服務。例如說，Discord 對於分享的圖片和影片有大小限制，在不給 Discord 課金的前提下，我可以先傳到我的 Zipline 再傳連結到 Discord，甚至可以不用點連結就能照常顯示。&lt;&#x2F;p&gt;
+&lt;p&gt;同樣作為自給自足的技術，好不好用和安全性取決於架設者的技術力。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-sync-tools&quot;&gt;同步工具&lt;&#x2F;h3&gt;
+&lt;p&gt;（主要是本地網路，可以是無暫存，大量檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;同步工具例如 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;syncthing.net&#x2F;&quot;&gt;Syncthing&lt;&#x2F;a&gt;，說白了檔案同步也是一種傳檔。&lt;&#x2F;p&gt;
+&lt;p&gt;但是這些同步工具通常都設定精密複雜，對於網路能力的要求也頗高。若是已經有了這個系統順便用一下還好說，專門為此架設整套系統就感覺有點殺雞用牛刀了，對吧。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-peer-to-peer-distribution&quot;&gt;點對點分發&lt;&#x2F;h3&gt;
+&lt;p&gt;（主要是跨網路、可以是無暫存、大量檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;知名的點對點分發協定例如 BitTorrent。適合檔案大量分發。但是我們這裡專注傳檔，雖然也不是不行但是何必呢兄弟⋯⋯&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-remote-file-services&quot;&gt;遠端檔案服務&lt;&#x2F;h3&gt;
+&lt;p&gt;（本地網路，無暫存，大量檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;遠端檔案服務協定，例如 FTP、WebDAV、HTTP、SFTP、SCP、rsync。在電腦上架設這些服務可以說是超級麻煩，但我們這裡不講那些複雜的。&lt;&#x2F;p&gt;
+&lt;p&gt;一些手機內建或第三方的檔案總管，例如 Android 上的 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=com.amaze.filemanager&quot;&gt;Amaze File Manager&lt;&#x2F;a&gt;，有些會有「分享伺服器」或者類似名字的功能，其原理就是這些協定的伺服器。使用方法也非常簡單，首先確定兩台設備在同一個網路下，手機打開分享伺服器，然後電腦上用瀏覽器或者專用客戶端，例如 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;winscp.net&#x2F;&quot;&gt;WinSCP&lt;&#x2F;a&gt;，輸入網址，就可以存取檔案了。&lt;&#x2F;p&gt;
+&lt;p&gt;好不好用取決於這個手機上的檔案總管的 App 和電腦上的客戶端、瀏覽器好不好用，以及需要一個穩定的本地網路。&lt;&#x2F;p&gt;
+&lt;p&gt;講道理，若是要玩 FTP Client 確實有那麼一點點的技術門檻，但是考慮到現在 USB 傳輸線等實體傳輸的各種問題，可以說是現在手機對電腦傳「大量檔案」的最佳方式，沒有之一。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-network-file-protocols&quot;&gt;網路硬碟協定&lt;&#x2F;h3&gt;
+&lt;p&gt;（本地網路，無暫存，大量檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;網路硬碟協定，例如 SMB、NFS 等，例如說 Windows 上的網路芳鄰。在電腦上架設這些服務不能說是方便，但對一般人來說也算是麻煩。&lt;&#x2F;p&gt;
+&lt;p&gt;大概是電腦上設定共享資料夾，手機上的檔案總管之類的 App 連線過去。
+由於會涉及防火牆甚至 Windows 莫名其妙的帳密管理，除非原本就有這個系統順便用一下，對於一般人來說不是那麼推薦。&lt;&#x2F;p&gt;
+&lt;p&gt;還有 DLNA 是媒體分享與串流，常用於和電視播放電腦、手機或 NAS 裡的影音，難用到我不想接觸它。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-dedicated-tools&quot;&gt;專用工具&lt;&#x2F;h3&gt;
+&lt;p&gt;（本地網路，無暫存，大量檔案）（每個工具特別討論）&lt;&#x2F;p&gt;
+&lt;p&gt;本地網路傳檔的版本解答就是 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;localsend.org&#x2F;&quot;&gt;LocalSend&lt;&#x2F;a&gt;，兩邊設備都裝上之後，在同一個區域網路下就可以開箱即用，零配置。&lt;&#x2F;p&gt;
+&lt;p&gt;什麼檔案、圖片、文字、剪貼板甚至資料夾，無論是電腦對電腦、電腦對手機、手機對電腦、手機對手機，只要在同一個網路下，LocalSend 就是版本答案。&lt;&#x2F;p&gt;
+&lt;p&gt;還有其他例如 Snapdrop 也曾是一代神器，通過 WebRTC 實現網頁端點對點傳送，但是在 WebRTC 由於隱私安全被人人喊打的今天，也許不是最佳的選擇。&lt;&#x2F;p&gt;
+&lt;p&gt;以及 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;kdeconnect.kde.org&#x2F;&quot;&gt;KDE Connect&lt;&#x2F;a&gt; 這類手機與電腦協同工作的軟體，在豐富的功能裡面，通常也有傳檔功能。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-nearby-sharing&quot;&gt;隔空投送&lt;&#x2F;h3&gt;
+&lt;p&gt;（可能跨網路，可能有第三方暫存，小檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;隔空投送例如 Apple 家的被玩壞的 AirDrop，以及 Android 家的洗心革面的 Quick Share。通常用於同生態設備內的檔案互傳。好處是內建於手機。可以視為現代版藍牙檔案分享。&lt;&#x2F;p&gt;
+&lt;p&gt;AirDrop 在 Apple 生態內基本無敵，但故步自封的 Apple 讓它也只能在 Apple 生態內無敵。&lt;&#x2F;p&gt;
+&lt;p&gt;Google 從 Samsung 手上領養的 Quick Share，他們卻正在努力變得更好用，例如已經有了 PC 客戶端。最近 Quick Share 已經開始強行相容 AirDrop，部分 Android 手機甚至已經能直接和 AirDrop 互傳，但講道理我覺得期待這種事情不如儘早另謀出路。&lt;&#x2F;p&gt;
+&lt;p&gt;適合小夥伴們結伴出遊拍照後快速分享檔案，然後發現這什麼狗屁玩意兒難用死了，最後回去改用 LINE 之類的通訊軟體。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-bluetooth&quot;&gt;藍牙&lt;&#x2F;h3&gt;
+&lt;p&gt;（本地網路，無暫存，幾乎無法傳檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;拜託不要。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;section-physical-transfer&quot;&gt;實體傳輸&lt;&#x2F;h3&gt;
+&lt;p&gt;（不需要網路，無暫存，大量檔案）&lt;&#x2F;p&gt;
+&lt;p&gt;實體傳輸包括 USB 傳輸線、隨身碟、隨身硬碟、記憶卡。&lt;&#x2F;p&gt;
+&lt;p&gt;USB 的毛病多了去了，首先是設備端的 USB 支援，即使都是 USB-C 連接埠，就連 Apple 都會偷工減料是 USB 2.0，速度最高只有 480 Mbps，這個傳輸速度可能還不及現代 Wi-Fi 的零頭，即使是設備側都支援 USB 3.x，例如 5 Gbps，也得找到一條支援高速資料傳輸的線。USB-C 線能充多少瓦，和它能傳多快是兩回事；不少大功率充電線的資料通道仍然只有 USB 2.0 的 480 Mbps，甚至可能根本不能傳資料。就算是全鏈路都有了 USB 3.x 的支援，連線傳輸的時候還得像皇帝一般供著，線不能碰了，否則傳輸容易失敗。還不說 Windows 對於這種 USB 連線不知道有什麼障礙，載不出來、卡住、丟檔案更是家常便飯。&lt;&#x2F;p&gt;
+&lt;p&gt;至於隨身碟、隨身硬碟和記憶卡，要知道不同設備支援的檔案系統就像不同宗教一般水火難融，假如插入不支援的設備甚至會像問你要不要信教一樣，提示要不要格式化，一個萬一不小心按下去，整碟資料直接全部灰飛煙滅。即使排除萬難達成了跨文化的溝通，實際傳輸速度也高度取決於儲存媒體、讀卡機、連接埠和檔案系統，除了外接固態硬碟（SSD）和價格堪比黃金的高速記憶卡與讀卡機（例如 CFexpress），大部分便宜的設備，傳輸速率可能也不及 Wi-Fi 的零頭。&lt;&#x2F;p&gt;
+&lt;p&gt;建議只在無法使用網路或者網路很爛、或者實在沒辦法的克難情況下再用實體傳輸。&lt;&#x2F;p&gt;
+&lt;p&gt;實在克難用的話，建議在傳輸前後比對檔案數量和完整性。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;再次提醒，在陌生電腦上插入隨身碟等存儲裝置是非常危險的！&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h4 id=&quot;zhuan-ye-shi-wu-ji&quot;&gt;專業事務機&lt;&#x2F;h4&gt;
+&lt;p&gt;雖然我提醒了那麼多次，不可否認的是，通過隨身碟等存儲裝置傳輸卻確實是有實體的「最直覺」的方式。但常在河邊走，哪有不濕鞋。考慮到電腦染毒之後的救援和恢復，我勸還是打消這個想法。&lt;&#x2F;p&gt;
+&lt;p&gt;但值得講講的是類似 7-Eleven 的 iBon 專用機臺，基於我們在 &lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-temporary-sharing&quot;&gt;之前章節&lt;&#x2F;a&gt; 提過的，公司越大屁股越硬較為可信的思路來看，相較野生影印店之下有更好的安全性，即使是專門設計的影印系統，在資訊安全風起雲湧瞬息萬變日新月異一日千里的今天誰也沒法打保票（攤手）。但他們也有提供線上傳檔，可以用此方式替代。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;section-simple-summary&quot;&gt;簡單總結&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;跨網路下：
+&lt;ul&gt;
+&lt;li&gt;親朋好友：&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-comm-software&quot;&gt;通訊軟體&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;陌生電腦：&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-temporary-sharing&quot;&gt;臨時分享&lt;&#x2F;a&gt;（例如 Send Anywhere）&lt;&#x2F;li&gt;
+&lt;li&gt;大量檔案：&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-cloud-drive&quot;&gt;雲端硬碟&lt;&#x2F;a&gt; 的分享連結&lt;&#x2F;li&gt;
+&lt;li&gt;自力更生：&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-self-hosted-file-sharing&quot;&gt;自架檔案分享&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;本地網路（同一個 Wi-Fi）下：
+&lt;ul&gt;
+&lt;li&gt;隨手便捷：&lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-dedicated-tools&quot;&gt;專用工具&lt;&#x2F;a&gt; 的版本解答 LocalSend&lt;&#x2F;li&gt;
+&lt;li&gt;大量傳輸：手機檔案總管開啟 &lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-remote-file-services&quot;&gt;遠端檔案服務&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;沒有網路或網路實在太爛：
+&lt;ul&gt;
+&lt;li&gt;傳輸線、隨身碟等 &lt;a href=&quot;https:&#x2F;&#x2F;undecv.github.io&#x2F;blog&#x2F;posts&#x2F;file-transfer-intro&#x2F;#section-physical-transfer&quot;&gt;實體傳輸&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>BitTorrent 從入門到出門</title>
+          <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/bittorrent-intro/</link>
+          <guid>https://undecv.github.io/blog/posts/bittorrent-intro/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/bittorrent-intro/">&lt;blockquote&gt;
+&lt;p&gt;This work © 2017 by undecV is licensed under &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;&quot;&gt;CC BY-SA 4.0&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;BitTorrent 協定&lt;&#x2F;strong&gt; 俗稱 &lt;code&gt;BT下載&lt;&#x2F;code&gt;、&lt;code&gt;種子下載&lt;&#x2F;code&gt;，常見的形態還有 &lt;code&gt;Magnet（磁力鏈接）&lt;&#x2F;code&gt;，是現代主流的網路檔案分享方式之一。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gai-lun&quot;&gt;概論&lt;&#x2F;h2&gt;
+&lt;p&gt;Bit 譯作「比特」是電腦數據的基本單位，Torrent 意爲「激流」。BitTorrent 通常可以指本文所述的 &lt;strong&gt;開放的 BitTorrent 協定&lt;&#x2F;strong&gt; 或是 BitTorrent 官方客戶端，以及 BitTorrent 公司。&lt;&#x2F;p&gt;
+&lt;p&gt;相比於 BitTorrent，傳統的中心化檔案下載模式，通常是一個伺服器（發布者）分發給所有客戶端（下載者），客戶端越多，下載速率被平分，也就越慢；一旦伺服器端故障，檔案便不再可下載。&lt;&#x2F;p&gt;
+&lt;p&gt;而 BitTorrent 是一種基於端對端（Peer-to-Peer, P2P）的傳輸協定。不同於傳統的下載方式，BitTorrent 同時下載的客戶端越多，速度越快；並且在特定情況下，檔案發布者退出也不會導致檔案無法下載。&lt;&#x2F;p&gt;
+&lt;p&gt;這麼神奇的功效得益於「我為人人，人人為我」的精神：每個 &lt;strong&gt;下載者&lt;&#x2F;strong&gt; 同時也是 &lt;strong&gt;分享者&lt;&#x2F;strong&gt;，不僅 &lt;strong&gt;發布者&lt;&#x2F;strong&gt; 會傳給下載者，每個下載者將自己已經取得的部分「分享」給還未取得這部分的其他下載者，其他下載者也他們已經載好但是你還沒有的部分「分享」給你。這樣的傳輸方式可以加快傳輸的速度、減輕發布者伺服器負擔，甚至當下載者們有了檔案的每個部分，發布者退出網路也不會影響檔案的分享。&lt;&#x2F;p&gt;
+&lt;p&gt;當你想要使用 BitTorrent 下載檔案時，你會先取得一個 &lt;strong&gt;種子文件&lt;&#x2F;strong&gt;，裏頭記載着 &lt;strong&gt;追蹤伺服器&lt;&#x2F;strong&gt; 以及檔案的資訊，追蹤伺服器根據這些檔案的資訊帶你找到發佈者、分享者、下載者這些 Friends。其中，&lt;strong&gt;DHT 網路&lt;&#x2F;strong&gt; 可以當成是由參與的用戶組成的分散式追蹤伺服器。&lt;&#x2F;p&gt;
+&lt;p&gt;也可以使用 &lt;strong&gt;磁力鏈接&lt;&#x2F;strong&gt;，看上去就像一個特殊的網址，它包含了你要載的檔案的資訊。如果沒有或是你不想用種子文件，客戶端可以直接根據磁力鏈接找到你要的檔案和 Friends。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;jiao-se&quot;&gt;角色&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;檔案（File）&lt;&#x2F;strong&gt; 被分割成一個個小 &lt;strong&gt;塊（Pieces）&lt;&#x2F;strong&gt;，檔案資料以 塊 為單元被分享。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;下載者&lt;&#x2F;strong&gt; 或稱之 &lt;strong&gt;節點（Peers）&lt;&#x2F;strong&gt; 是想要檔案的人。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;分享者&lt;&#x2F;strong&gt; 或稱之 &lt;strong&gt;種子（Seeds）&lt;&#x2F;strong&gt; 是任何分享檔案的人。不只是 &lt;strong&gt;發布者&lt;&#x2F;strong&gt;，當下載者開始分享它已經取得的部分，他們也會變成種子。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;客戶端（Client）&lt;&#x2F;strong&gt; 也就是你執行 BitTorrent 下載的軟體。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;種子文件（Torrent file, &lt;code&gt;*.torrent&lt;&#x2F;code&gt;）&lt;&#x2F;strong&gt; 記載了追蹤伺服器以及你要載的一個或一堆檔案的資訊。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;磁力鏈接（Magnet）&lt;&#x2F;strong&gt; 像特殊的網址，它包含了你要載的檔案的資訊。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;追蹤伺服器（Tracker）&lt;&#x2F;strong&gt; 根據你提供的種子文件裡面的檔案資訊，帶你找到 Friends。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;DHT&lt;&#x2F;strong&gt; 譯作 &lt;strong&gt;分散式哈希表&lt;&#x2F;strong&gt; 可以想象成是特殊的分散式的追蹤伺服器。它由參與的用戶組成網路，將資訊以分布的方式存儲在每個客戶端之中。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;zhong-zi-yu-ke-yong-xing&quot;&gt;種子與可用性&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 檔案的可見性來自種子們的分享，所以當檔案的種子們 &lt;strong&gt;沒有完整的檔案&lt;&#x2F;strong&gt; 又甚至根本沒有種子了，下載就會 &lt;strong&gt;無法完成&lt;&#x2F;strong&gt;，直到有更多片段或完整檔案的種子們再次上線。&lt;&#x2F;p&gt;
+&lt;p&gt;打開 &lt;strong&gt;使用 DHT 網路&lt;&#x2F;strong&gt; 選項 或 &lt;strong&gt;手動添加追蹤伺服器&lt;&#x2F;strong&gt;（後文會提到）可能可以搶救一下。&lt;&#x2F;p&gt;
+&lt;p&gt;客戶端中的詳細任務訊息會給出當前分享網路是否有完整的檔案的 &lt;strong&gt;可用性（Availability）&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，BitTorrent 的檔案下載具有時效性，走過路過不要錯過，也請記得分享：）&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xi-xie&quot;&gt;吸血&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 的活力來源於「分享」的精神，只下載不分享的「吸血」行爲招人唾棄，會嚴重破壞 BitTorrent 的社會環境。
+也請不要使用諸如 &lt;em&gt;迅雷&lt;&#x2F;em&gt; 等吸血下載工具，現在的主流下載客戶端會對吸血行爲有保護機制。
+一些追蹤伺服器也許會追蹤分享率和分享時間。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cao-zuo&quot;&gt;操作&lt;&#x2F;h2&gt;
+&lt;p&gt;實際操作比上面的理論（？簡單多了，就像傳統下載，將下載地址導入到下載工具（客戶端），只是導入的東西變成了 &lt;strong&gt;種子文件&lt;&#x2F;strong&gt; 或 &lt;strong&gt;磁力鏈接&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ke-hu-duan&quot;&gt;客戶端&lt;&#x2F;h3&gt;
+&lt;p&gt;一些 BitTorrent 專用客戶端，例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.qbittorrent.org&#x2F;&quot;&gt;qBittorrent&lt;&#x2F;a&gt;: &lt;code&gt;自由軟體&lt;&#x2F;code&gt; 第三方客戶端，可訂製的種子搜尋功能。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;請注意！據 ghacks.net 悉（Dec 9, 2019），uTorrent 官方客戶端被多家包括 ESET-NOD32 以及 Microsoft 在內的防毒軟體標記爲惡意軟體（Malware）。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;以及一些多協定的下載工具，例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;aria2.github.io&#x2F;&quot;&gt;aria2&lt;&#x2F;a&gt;: &lt;code&gt;自由軟體&lt;&#x2F;code&gt; 多協議命令行下載工具，功能強大需要調教。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;she-ding-ke-hu-duan&quot;&gt;設定客戶端&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 客戶端就像一般下載工具，除了那些都有的例如代理、下載速度限制、最大活躍下載任務、下載位置等設定，例舉一些 BitTorrent 特有的設定：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;上傳速度限制：分享的速度限制；&lt;&#x2F;li&gt;
+&lt;li&gt;分享率：當分享的資料量達到檔案的 N 倍後結束任務；&lt;&#x2F;li&gt;
+&lt;li&gt;分享時間：當分享的時間超過 T 時間後結束任務；&lt;&#x2F;li&gt;
+&lt;li&gt;啓用 DHT 網路；&lt;&#x2F;li&gt;
+&lt;li&gt;…&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;shou-dong-tian-jia-zhui-zong-si-fu-qi-ke-xuan-bu-zou&quot;&gt;手動添加追蹤伺服器（可選步驟）&lt;&#x2F;h3&gt;
+&lt;p&gt;除了種子文件中提供的追蹤伺服器，你也可以將追蹤伺服器預置在客戶端中。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Github · &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ngosang&#x2F;trackerslist&quot;&gt;ngosang&#x2F;trackerslist&lt;&#x2F;a&gt;: Updated list of public BitTorrent trackers（&lt;strong&gt;⚠ 未測試&lt;&#x2F;strong&gt;）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;lai-yuan&quot;&gt;來源&lt;&#x2F;h3&gt;
+&lt;p&gt;一些自由軟體爲了減輕其分發的成本，會使用 BitTorrent 做爲取得的方式。
+也有一些種子文件的彙集網站。&lt;&#x2F;p&gt;
+&lt;p&gt;你會取得一個 &lt;code&gt;*.torrent&lt;&#x2F;code&gt; 的 &lt;strong&gt;種子文件&lt;&#x2F;strong&gt;，或是在 &lt;code&gt;🧲&lt;&#x2F;code&gt; 磁鐵圖標 附近找到像這樣的 &lt;strong&gt;磁力鏈接&lt;&#x2F;strong&gt;：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;URI&quot; class=&quot;language-URI &quot;&gt;&lt;code class=&quot;language-URI&quot; data-lang=&quot;URI&quot;&gt;magnet:?xt=urn:btih:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;將他們導入到你選擇的客戶端中就可以開始下載。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wen-xin-ti-shi&quot;&gt;溫馨提示&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;liu-liang-jing-gao&quot;&gt;流量警告&lt;&#x2F;h3&gt;
+&lt;p&gt;通常的，運營商統計的數據流量包括了下載和上傳（分享）的流量。在使用計量型方案請謹慎使用。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shen-fen-bao-lu-jing-gao&quot;&gt;身份暴露警告&lt;&#x2F;h3&gt;
+&lt;p&gt;BitTorrent 的設計沒有考量匿名性，當你下載任何檔案的時候，你此時的 IP 地址 會被所有參與下載的 Friends 看到。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hai-zei-ban-jing-gao&quot;&gt;海賊版警告&lt;&#x2F;h3&gt;
+&lt;p&gt;去中心化的設計 BitTorrent 可以減輕發布者的負擔，但是也爲海賊版提供了平臺。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;支持和購買正版才能夠讓美好的創作永續！&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;feng-suo-jing-gao&quot;&gt;封鎖警告&lt;&#x2F;h3&gt;
+&lt;p&gt;由於以上全部或部分的問題，一些網絡會封鎖＼禁止 BitTorrent 協定，例如學術網路或公司企業網路。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;reference&quot;&gt;REFERENCE&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;BitTorrent_(protocol)&quot;&gt;BitTorrent&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Wikipedia: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Magnet_URI_scheme&quot;&gt;Magnet URI scheme&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Quora: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.quora.com&#x2F;How-do-BitTorrent-magnet-links-work&#x2F;answer&#x2F;Stanislav-Shalunov&quot;&gt;Stanislav Shalunov’s answer to How do BitTorrent magnet links work?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Stack overflow: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;28601408&quot;&gt;What exactly is the info_Hash in a torrent file&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

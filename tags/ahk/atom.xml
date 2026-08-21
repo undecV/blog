@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;undecv.github.io&#x2F;blog</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>AHK</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー - AHK</title>
+    <link href="https://undecv.github.io/blog/tags/ahk/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog/tags/ahk/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-12-24T00:00:00+00:00</updated><id>https://undecv.github.io/blog/tags/ahk/atom.xml</id><entry xml:lang="en">
+        <title>把電腦變成床頭時鐘：在 Windows 上打造一個低干擾的睡前待機模式</title>
+        <published>2025-12-24T00:00:00+00:00</published>
+        <updated>2025-12-24T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/windows-bedside-display/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/windows-bedside-display/</id>
+        <summary type="html">我不喜歡睡覺時關掉電腦，但夜晚點亮的螢幕就像一顆 disco 球，無時無刻地對外輻射著誘惑與慾望。這篇文章記錄我嘗試在 Windows 上，用腳本一鍵把螢幕、風扇和瀏覽器調整為低干擾狀態，讓待機的電腦變成一件有溫度的傢俱。</summary>
+        </entry><entry xml:lang="en">
+        <title>簡報筆變成電腦遙控器？！Surface Pen 也可以支援 Google Slides！</title>
+        <published>2024-01-23T00:00:00+00:00</published>
+        <updated>2024-01-23T00:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/clicker-remote-control/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/clicker-remote-control/</id>
+        <summary type="html">~~你的下一台遙控器何必是遙控器。~~</summary>
+        </entry>
+</feed>
