@@ -2,7 +2,7 @@
 title: "重灌軟體自動化！Windows 的軟體管理系統"
 description: "重灌電腦最麻煩的就是灌回那些常用的軟體。我從來不覺得重灌軟體開心過。好在 Windows 上也有了軟體套件管理系統，讓我可以一鍵完成原本要花幾百年才能完成的重灌軟體的工作！"
 date: 2025-05-28 02:00:00
-updated: 2025-06-27 02:00:00
+updated: 2026-09-18 06:00:00
 slug: "windows-package-managers"
 weight: 2
 taxonomies:
@@ -56,6 +56,18 @@ winget install --id "Google.Chrome"
 [Winget]: https://learn.microsoft.com/zh-tw/windows/package-manager/winget/
 
 [^1]: Wikipedia: [Windows Package Manager 的黑歷史](https://en.wikipedia.org/wiki/Windows_Package_Manager#History)
+
+> ⚠️ **注意：** 在 Windows 上使用 WinGet 安裝 portable 應用程式時，建議先開啟 **Developer Mode（開發人員模式）**：開啟「[設定 → 系統 → 進階 → 適用於開發人員](ms-settings:developers)」，並啟用 **Developer Mode**。
+>
+> <details>
+> <summary>TL;DR: 原因如是說</summary>
+>
+> 若未開啟 Developer Mode，非系統管理員權限的 WinGet 可能無法建立 portable package 的 symbolic link，因而改為將各套件的安裝目錄直接加入使用者 `PATH`。安裝大量 CLI 工具後，可能使 User `PATH` 異常膨脹，甚至導致使用者環境變數（User Environment）禮崩樂壞。
+>
+> 相關問題可參見 [microsoft/winget-cli#3601](https://github.com/microsoft/winget-cli/issues/3601)；
+> 未開啟 Developer Mode 時 portable package 的 PATH fallback 行為另見 [#2909](https://github.com/microsoft/winget-cli/issues/2909)。
+>
+> </details>
 
 ```powershell
 # 搜尋軟體
