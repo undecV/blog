@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Symbolic Link</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/symbolic-link/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 18 Sep 2026 17:00:00 +0000</lastBuildDate>
+      <item>
+          <title>我的環境變數 BANG 不見了</title>
+          <pubDate>Fri, 18 Sep 2026 17:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/windows-user-path-too-long/</link>
+          <guid>https://undecv.github.io/blog/posts/windows-user-path-too-long/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/windows-user-path-too-long/">&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;歡迎來到 Windows 屎山一日遊！&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;大會報告，大會報告。
+現場有一位長度四千多字元的 User PATH 小朋友與 User 走散了！
+聽到廣播後，請立即前往 System Properties 認領。謝謝。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;觀察到的症狀很明顯：每次電腦開機運行一段時間之後，用桌面捷徑、開始選單、工具列開啟的 VS Code 和終端機（Terminal）等吃不到使用者環境變數（User Environment Variable），會拿到殘缺的環境。&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot; &gt;&lt;code data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;env:&lt;/span&gt;&lt;span&gt;PATH&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;env:&lt;/span&gt;&lt;span&gt;TEMP&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;env:&lt;/span&gt;&lt;span&gt;TMP&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中 PATH 不完整，TEMP、TMP 指向系統，甚至可能直接消失。而登錄檔（Registry）裡面的值又完全正常。&lt;/p&gt;
+&lt;p&gt;更妙的是，如果用 Win + X 的進階使用者選單（Power User Menu）啟動的終端機來驗牌，卻發現牌沒有問題，甚至透過這個健康的終端機重開的 &lt;code&gt;explorer.exe&lt;/code&gt;，環境又回來了。&lt;/p&gt;
+&lt;p&gt;這導致很多程式無法正常運作。每次想要正常用 VS Code 都要從健康的終端機才能進入。這根本就像 COVID-19 時期校門管制只能繞路一般的不便利。&lt;/p&gt;
+&lt;p&gt;更可笑的是這個問題困擾我多年，我都不知道怎麼解決，一直以為是 Windows 的正常發揮，反正重開電腦就好。直到我重灌之後發現問題仍然存在，我眉頭一皺，發現事情並不單純。於是我忍無可忍，拿著這個症狀去問了神醫 ChatGPT，他說還能再搶救一下。&lt;/p&gt;
+&lt;h2 id=&quot;windows-de-huan-jing-bian-shu&quot;&gt;Windows 的環境變數&lt;/h2&gt;
+&lt;p&gt;Windows（以及大部分作業系統）環境變數的運作方式是繼承自父行程（inherited from the parent process）：程式它爸拿什麼環境變數，它就拿什麼環境變數。我們的症狀顯示，多個程式受到 GUI 啟動鏈的影響，從 &lt;code&gt;explorer.exe&lt;/code&gt; 出生的程式都有毛病，所以基於上梁不正下梁歪的判斷，我們懷疑 &lt;code&gt;explorer.exe&lt;/code&gt; 可能也有點大病。&lt;/p&gt;
+&lt;p&gt;我們再看看環境變數本身，環境變數分成系統的部分和使用者的部分，前者全系統共用，後者僅適用於每個使用者。作業系統會把它們想辦法整併成一份 environment block，再交給程式。（簡化講法，實際上複雜得多。）現在越來越多程式支援只安裝在使用者側，不需要系統管理員權限，因此使用者環境變數的使用也越來越頻繁。&lt;/p&gt;
+&lt;p&gt;而 &lt;code&gt;explorer.exe&lt;/code&gt; 卻是最重要的常駐程式之一，掌管著整個 Windows 的殼（Shell）：桌面、工具列、開始選單、……，所以自開機以來，除了自爆之外基本上不會關掉，當環境變數被修改後，Windows 慣用的通知方式是向各個視窗廣播 &lt;code&gt;WM_SETTINGCHANGE(&quot;Environment&quot;)&lt;/code&gt;，意思是說：「親，環境變數已經更新，請你速速去領取唷！」，然後 &lt;code&gt;explorer.exe&lt;/code&gt; 收到之後，就會重新取得環境變數。&lt;/p&gt;
+&lt;p&gt;然後，當 explorer.exe 開始重整環境變數時，發現：「哇塞這個使用者的環境變數太重啦，搬不動啦，哭哭」遂而擺爛，最後使用者的環境變數就沒有被完整整併，於是整個環境變數禮崩樂壞，就變成了我們看到的症狀。症狀與 Microsoft 過去記錄的 Shell32 bug 高度一致。 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/windows-user-path-too-long/#fn-1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;而環境變數裡面最長的莫過於 PATH，用來指定系統要到哪些路徑底下尋找執行檔。當時我的環境大概是：Machine PATH ≈ 1885 字元，User PATH = 4163 字元，我最後保守地把 User PATH 壓到約 2000 字元以下；沒有那個美國雷德蒙德時間幫 Windows 測試精確臨界值。&lt;/p&gt;
+&lt;p&gt;講道理，我用電腦三十多年，怎麼知道還有這種長度限制，系統又沒有提示……&lt;/p&gt;
+&lt;p&gt;當我把 User PATH 大幅剪短、壓回約 2000 字元以下後，再廣播系統訊號 &lt;code&gt;WM_SETTINGCHANGE(&quot;Environment&quot;)&lt;/code&gt;，問題就修好了：&lt;code&gt;explorer.exe&lt;/code&gt; 終於拿出了正確的環境。&lt;/p&gt;
+&lt;h2 id=&quot;shui-dong-liao-wo-de-huan-jing-bian-shu&quot;&gt;誰動了我的環境變數？&lt;/h2&gt;
+&lt;p&gt;屎山之所以是屎山，都是有原因的。想必 Windows 在當年肯定也沒想到有人能把環境變數撐到那麼長，又或是，他們自己：）&lt;/p&gt;
+&lt;p&gt;我們根據剛剛的探索已經知道了，至少在殼更新環境變數的時候，User PATH 太長可能會把 &lt;code&gt;explorer.exe&lt;/code&gt; 頂到無法自拔，那我們就去 User PATH 找找，到底是誰又臭又長。&lt;/p&gt;
+&lt;p&gt;最長的莫過於 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/microsoft/winget-cli&quot;&gt;WinGet&lt;/a&gt; 所安裝程式的路徑，例如：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;%LOCALAPPDATA%\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-15.2.0-x86_64-pc-windows-msvc&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;正常設計下，WinGet 安裝 portable application 時，是把執行檔做成符號連結（symbolic link，不是一般的 LNK 捷徑），集中放在&lt;code&gt;%LOCALAPPDATA%\Microsoft\WinGet\Links&lt;/code&gt; 這裡，所以這些程式僅需要這一條 PATH。&lt;/p&gt;
+&lt;p&gt;但是 Windows 在一般權限下建立 symbolic link 有額外限制，如果沒有開啟「&lt;a href=&quot;ms-settings:developers&quot;&gt;開發者模式（Developer Mode）&lt;/a&gt;」，非提升權限的程式可能無法建立符號連結。&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot; &gt;&lt;code data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; 測試建立符號連結&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;target&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;env:&lt;/span&gt;&lt;span&gt;TEMP&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;\symlink-target.txt&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;link&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;   =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;env:&lt;/span&gt;&lt;span&gt;TEMP&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;\symlink-test.txt&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;test&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; |&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; Set-Content&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;target&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;cmd &lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;/&lt;/span&gt;&lt;span&gt;c mklink &lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;link&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;target&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Remove-Item&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;link&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;,&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;target&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Force &lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span&gt;ErrorAction SilentlyContinue&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這在開啟開發者模式前會失敗；開啟後則可以用一般使用者權限正常建立。而 WinGet 在無法建立符號連結時，會採用退守策略：把整個軟體資料夾（package directory）加進 User PATH！於是 PATH 一條一條長出來，單條可能就一百多字元。裝二、三十個之後，User PATH 自然就變成了他媽都認不得的樣子。 &lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/windows-user-path-too-long/#fn-2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;當然也不是全員惡人，有些 portable package 因為其他依賴，設計上本來就會把整個 package directory 加入 PATH，所以我們需要仔細分辨。我開啟開發者模式後重開電腦，重裝了那些被點名的軟體（記得備份）：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot; &gt;&lt;code data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; 由於怕狀態保留，這裡沒有用 reinstall&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;winget uninstall &lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span&gt;id BurntSushi.ripgrep.MSVC &lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span&gt;e&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;winget install &lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span&gt;id BurntSushi.ripgrep.MSVC &lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span&gt;e&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;之後在 &lt;code&gt;%LOCALAPPDATA%\Microsoft\WinGet\Links&lt;/code&gt; 成功看到了符號連結，但……&lt;/p&gt;
+&lt;p&gt;這些靠符號連結工作的套件，其對應的 PATH 條目並沒有消失，也就是符號連結和對應的 package-directory PATH 條目同時存在，這一定是替身攻擊！所以我把「已經有正常符號連結的」、以及「已經完全卸載的」程式留下的 PATH 條目刪掉，但保留了一部分「僅有 PATH 的」條目：結果我的 User PATH 就輕鬆從 2783 字元掉到了 1310 字元，重開 &lt;code&gt;explorer.exe&lt;/code&gt;，或者重新廣播 &lt;code&gt;WM_SETTINGCHANGE(&quot;Environment&quot;)&lt;/code&gt;，竟然就修好了。&lt;/p&gt;
+&lt;h2 id=&quot;jie-lun&quot;&gt;結論&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;若是 WinGet 使用者，在安裝 portable package 前建議先啟用「&lt;a href=&quot;ms-settings:developers&quot;&gt;開發者模式&lt;/a&gt;」。&lt;/li&gt;
+&lt;li&gt;User PATH 不宜放任無限膨脹；若碰到殼或程式取得環境變數異常，可以看看 User PATH。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;Microsoft 曾記錄過幾乎相同的 Shell32 問題：收到 &lt;code&gt;WM_SETTINGCHANGE&lt;/code&gt; 後重新建立 environment block 時，過長的 &lt;code&gt;PATH&lt;/code&gt; 會令枚舉提早失敗，留下部分初始化的 environment block。參見：&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://support.microsoft.com/en-us/servicing/os/windows/2017/01/error-messages-after-you-change-the-2047-character-limit-in-an-environment-variable-on-a-computer-th&quot;&gt;Microsoft Support&lt;/a&gt;。現代 Windows 11 上亦有 WinGet 使用者回報 User PATH 超過 2047 字元後，CMD 無法取得正確環境，進而影響 VS Code：&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/microsoft/winget-cli/issues/5557&quot;&gt;microsoft/winget-cli#5557&lt;/a&gt;。 &lt;a href=&quot;https://undecv.github.io/blog/posts/windows-user-path-too-long/#fr-1-1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;WinGet portable package 在無法建立 symbolic link 的情況下會改走 PATH-based installation；相關行為可見 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/microsoft/winget-cli/issues/2909&quot;&gt;microsoft/winget-cli#2909&lt;/a&gt;、&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/microsoft/winget-cli/issues/5220&quot;&gt;#5220&lt;/a&gt;。大量 package directory 導致 PATH 膨脹的問題另見 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/microsoft/winget-cli/issues/3601&quot;&gt;#3601&lt;/a&gt;；卸載後 PATH 殘留則另有 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/microsoft/winget-cli/issues/6160&quot;&gt;#6160&lt;/a&gt;。 &lt;a href=&quot;https://undecv.github.io/blog/posts/windows-user-path-too-long/#fr-2-1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+      </item>
+    </channel>
+</rss>

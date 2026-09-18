@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>キャンディージャー - Application</title>
+      <link>https://undecv.github.io/blog</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://undecv.github.io/blog/tags/application/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>檔案傳輸緒論：手機、電腦傳檔的一百種方式</title>
+          <pubDate>Sat, 25 Jul 2026 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/file-transfer-intro/</link>
+          <guid>https://undecv.github.io/blog/posts/file-transfer-intro/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/file-transfer-intro/">&lt;p&gt;傳一個檔案需要多少網路工程師？七個，因為網路有七層。&lt;/p&gt;
+&lt;h2 id=&quot;tl-dr-chuan-dang-fang-shi-tian-ti-tu&quot;&gt;TL;DR: 傳檔方式天梯圖&lt;/h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;類型&lt;/th&gt;&lt;th&gt;範例&lt;/th&gt;&lt;th&gt;可通過外網&lt;/th&gt;&lt;th&gt;需要網路知識&lt;/th&gt;&lt;th&gt;第三地暫存&lt;/th&gt;&lt;th&gt;小檔案&lt;/th&gt;&lt;th&gt;大檔案&lt;/th&gt;&lt;th&gt;資料夾&lt;/th&gt;&lt;th&gt;日常使用推薦&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-comm-software&quot;&gt;通訊軟體&lt;/a&gt;&lt;/td&gt;&lt;td&gt;LINE、微信&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭐⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-email&quot;&gt;電子郵件&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Gmail、Outlook&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-temporary-sharing&quot;&gt;臨時分享&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Send Anywhere&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭐⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-cloud-drive&quot;&gt;雲端硬碟&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Google Drive&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭐⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-remote-desktop&quot;&gt;遠端桌面&lt;/a&gt;&lt;/td&gt;&lt;td&gt;RDP、TeamViewer&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;🔺&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-private-cloud&quot;&gt;私有雲&lt;/a&gt;&lt;/td&gt;&lt;td&gt;NAS、Synology&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;🤯&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🤯⭐⭐⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-self-hosted-file-sharing&quot;&gt;自架檔案分享&lt;/a&gt;&lt;/td&gt;&lt;td&gt;網站、Zipline&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🤯&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🤯⭐⭐⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-sync-tools&quot;&gt;同步工具&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Syncthing&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🤯⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-peer-to-peer-distribution&quot;&gt;點對點分發&lt;/a&gt;&lt;/td&gt;&lt;td&gt;BitTorrent&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🔺&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🤯&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-remote-file-services&quot;&gt;遠端檔案服務&lt;/a&gt;&lt;/td&gt;&lt;td&gt;FTP、WebDAV、HTTP&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;🔺&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-network-file-protocols&quot;&gt;網路硬碟協定&lt;/a&gt;&lt;/td&gt;&lt;td&gt;SMB、NFS&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;🔺&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭐⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-dedicated-tools&quot;&gt;專用工具&lt;/a&gt;&lt;/td&gt;&lt;td&gt;LocalSend、Snapdrop&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭐⭐⭐⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-nearby-sharing&quot;&gt;隔空投送&lt;/a&gt;&lt;/td&gt;&lt;td&gt;AirDrop、Quick Share&lt;/td&gt;&lt;td&gt;🔺&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭐⭐&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-bluetooth&quot;&gt;藍牙&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Bluetooth&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;🔺&lt;/td&gt;&lt;td&gt;🔻&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;🤬&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-physical-transfer&quot;&gt;實體傳輸&lt;/a&gt;&lt;/td&gt;&lt;td&gt;傳輸線、隨身碟、記憶卡&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;❌&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;⭕&lt;/td&gt;&lt;td&gt;☠️&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;⭕：適合或具備&lt;/li&gt;
+&lt;li&gt;🔺：勉強可用&lt;/li&gt;
+&lt;li&gt;🔻：有限制或視情況而定&lt;/li&gt;
+&lt;li&gt;❌：不適合或不具備&lt;/li&gt;
+&lt;li&gt;🤯：適合熟悉網路與伺服器設定者&lt;/li&gt;
+&lt;li&gt;🤬：拜託先不要&lt;/li&gt;
+&lt;li&gt;☠️：注意安全&lt;/li&gt;
+&lt;li&gt;「資料夾傳輸」是指一次傳輸整個資料夾，變成壓縮檔的不算。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;還是霧煞煞？最後有 &lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-simple-summary&quot;&gt;簡單總結&lt;/a&gt; ！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;zen-mo-hui-you-na-mo-duo-chuan-dang-de-fang-fa&quot;&gt;怎麼會有那麼多傳檔的方法？&lt;/h2&gt;
+&lt;p&gt;傳個檔案而已，又不是要考 CCNA！&lt;/p&gt;
+&lt;p&gt;因為在不同的場景下，有不同的適合傳檔方式！&lt;/p&gt;
+&lt;p&gt;試想幾個場景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在影印店，要傳檔案給陌生的電腦。&lt;/li&gt;
+&lt;li&gt;在辦公室，要傳資料給同僚的電腦。&lt;/li&gt;
+&lt;li&gt;在外玩耍，要分享照片給隨行夥伴。&lt;/li&gt;
+&lt;li&gt;自己電腦，要備份或傳輸手機檔案。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在不同的場景下，網路的環境可能不同，傳輸的東西也不一樣，甚至對於檔案安全都有各自考量。所以，同樣是傳檔案，其實可以細分成這種多維度的需求，也就有了這麼多的工具。&lt;/p&gt;
+&lt;h3 id=&quot;dang-an-chu-gui-liao&quot;&gt;檔案出櫃了&lt;/h3&gt;
+&lt;p&gt;傳檔方式最大的區別就是「跨網路」，也就是本文說的「外網」和「內網」：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「外網」只要連到廣域網路，都可以使用。&lt;/li&gt;
+&lt;li&gt;「內網」僅在本地網路內傳輸，不需要廣域網路，除了高速和不消耗手機流量，（通常）會有較好的安全性和隱私。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然而「內網」卻意想不到地有著「較高的技術門檻」！雖然在普羅大眾的印象中，內網說起來也只是「同一個 Wi-Fi」這麼簡單，但是對於不擅長擺弄手邊路由器的一般使用者來說，內網卻可能是「不存在」的：家用路由器通常會把 IP 地址動態分配，手機端的 MAC 地址也可能會隨機跳變……即使歷經千辛萬苦，從名不見經傳的教學裡道聽途說來了 &lt;code&gt;ipconfig&lt;/code&gt;，終於翻到了 IP 地址，也有可能因為家用路由器開啟了「設備隔離」之類的設定，最後兩臺設備還是只能面面相覷的同床異夢了。&lt;/p&gt;
+&lt;p&gt;至於安全和隱私的部分，在網路安全界有一個「零信任」原則： &lt;strong&gt;只要不是自己控制的部分，都不會相信其安全。&lt;/strong&gt; 講道理，印表機上都有存儲裝置，都有能力偷走資料，但安全也是一種工程學，需要衡量風險和成本，而且也不是誰家都有一台事務機，本文為了通俗易懂對這個方面也是點到為止。&lt;/p&gt;
+&lt;h2 id=&quot;chuan-dang-de-yi-bai-zhong-fang-shi&quot;&gt;傳檔的一百種方式&lt;/h2&gt;
+&lt;h3 id=&quot;section-comm-software&quot;&gt;通訊軟體&lt;/h3&gt;
+&lt;p&gt;（跨網路、第三方暫存、小檔案）&lt;/p&gt;
+&lt;p&gt;眾所周知，人與人之間是無法相互理解的，人類就是如此悲哀的生物。既然放棄了人與人之間溝通，那通訊軟體拿來傳檔案也是剛好而已。&lt;/p&gt;
+&lt;p&gt;作為無論是工作上生活上手機上電腦上可能都幾乎都是最常打開的 App 沒有之一，而且還是聯絡通訊的工具，大多都有傳檔的功能，例如 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://web.telegram.org/&quot;&gt;Telegram&lt;/a&gt;、LINE、WhatsApp、Discord，以及中國常見的 QQ 和微信，甚至包含一些社群媒體的私訊，例如 Facebook Messenger。&lt;/p&gt;
+&lt;p&gt;作為人與人之間溝通的工具，當然最適合跨網路和朋友分享檔案。一些應用例如 Telegram、LINE 甚至有自說自話自言自語的功能，就可以做到自己給自己分享檔案。&lt;/p&gt;
+&lt;p&gt;（通常的）此類應用會先暫存到他們服務的伺服器上，再供對方下載（即第三方暫存），對於隱私潔癖的我來說就比較難受。同時這也可能帶來檔案大小的限制。通常也不支援一次傳輸整個資料夾。&lt;/p&gt;
+&lt;h3 id=&quot;section-email&quot;&gt;電子郵件&lt;/h3&gt;
+&lt;p&gt;（跨網路、第三方暫存、小檔案）&lt;/p&gt;
+&lt;p&gt;現今，電子郵件除了收廣告，可能就是對公事務那種衣冠禽獸一般的繁文縟節了。&lt;/p&gt;
+&lt;p&gt;電子郵件的本質大概就是通訊軟體的懷舊復古版，使用場景我覺得也差不多。甚至電子郵件對於附件的支援就是迷，通常看收件人信箱提供商的服務態度，難說會不會被退信（攤手）。&lt;/p&gt;
+&lt;h3 id=&quot;section-temporary-sharing&quot;&gt;臨時分享&lt;/h3&gt;
+&lt;p&gt;（跨網路、第三方暫存、短時效）&lt;/p&gt;
+&lt;p&gt;臨時分享是一類專用於臨時檔案分享的網路服務，原理就是：打開網頁就能上傳檔案，甚至不需要登入，它會給你一個方便手打的網址，通常是幾個數字和字母。檔案暫存在他們的伺服器裡，時效通常幾小時到幾天。然後在對方電腦的瀏覽器上輸入這個網址，就可以方便地下載這個檔案。&lt;/p&gt;
+&lt;p&gt;知名的服務例如（已經死掉的）Firefox Send，以及日本樂天的 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://send-anywhere.com/&quot;&gt;Send Anywhere&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;非常適合例如傳檔給影印店等陌生電腦。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;順便提醒，在陌生電腦上無論是插隨身碟或者是登入帳密都是極度危險的！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;而這個方式可以在不需要這些危險動作的前提下傳檔案。&lt;/p&gt;
+&lt;p&gt;至於第三方暫存的隱私和安全性，首先你的檔案都會被丟給影印店了，安全已經被大打折扣。使用這類服務的時候，評量他們的可信度，也可以看他們的屁股硬不硬，例如 Send Anywhere 現在就是大財閥日本樂天旗下的服務。以及看看他們隱私的承諾如何如何，大公司對於資安可能會有考量。但無論再怎麼說，畢竟承諾也只是承諾，除非是自己架設服務這種的完全自己控制，也不能控制別人為所欲為⋯⋯&lt;/p&gt;
+&lt;p&gt;如果列印、影印一些重大個資的檔案，例如身分證件、護照，基於我們看屁股硬不硬的原則，超商的事務機雖然貴，但可能是比影印店更好的選擇。&lt;/p&gt;
+&lt;h3 id=&quot;section-cloud-drive&quot;&gt;雲端硬碟&lt;/h3&gt;
+&lt;p&gt;（跨網路、第三方暫存、一拖拉庫檔案）&lt;/p&gt;
+&lt;p&gt;雲端硬碟例如 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://www.dropbox.com/&quot;&gt;Dropbox&lt;/a&gt;、&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://workspace.google.com/products/drive/&quot;&gt;Google Drive&lt;/a&gt;、&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://onedrive.live.com/&quot;&gt;Microsoft OneDrive&lt;/a&gt; 等，就是為了解決網路傳輸暫存分享檔案而生。&lt;/p&gt;
+&lt;p&gt;而一些大平台例如 Google Drive、OneDrive 甚至整合了辦公套件，可以即時多人協作編輯一份檔案，是大學小組作業死線趕工的得力助手。&lt;/p&gt;
+&lt;p&gt;通常雲端硬碟的價格和容量不能說是量大管飽，但是講道理它對於賽博文書工作流可以說是必備工具了。&lt;/p&gt;
+&lt;p&gt;至於傳檔案，網路硬碟通常有分享功能，但他們的連結和「臨時分享」工具相比簡直是又臭又長，不會想手動輸入的那一種。可以搭配通訊軟體和電子郵件來傳送分享連結，彌補他們傳大檔案、資料夾的不足。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;再次提醒，不要在陌生電腦上登入網路硬碟的帳密！請用分享連結功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;section-remote-desktop&quot;&gt;遠端桌面&lt;/h3&gt;
+&lt;p&gt;（跨網路、無暫存）&lt;/p&gt;
+&lt;p&gt;遠端桌面例如 Google &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://remotedesktop.google.com/&quot;&gt;Chrome Remote Desktop&lt;/a&gt;、TeamViewer 等，通常會附有傳檔功能。但是講道理，這個功能比較像是 DLC，好不好用先不說，可靠性可能都是個問題，只適合順便或應急。&lt;/p&gt;
+&lt;h3 id=&quot;section-private-cloud&quot;&gt;私有雲&lt;/h3&gt;
+&lt;p&gt;（本地網路、自有暫存、大量檔案）&lt;/p&gt;
+&lt;p&gt;作為中年男子三大愛好之一的 NAS，好不好用和安全性取決於架設者的技術能力。如果會玩 NAS，這篇文章就顯得班門弄斧了。&lt;/p&gt;
+&lt;h3 id=&quot;section-self-hosted-file-sharing&quot;&gt;自架檔案分享&lt;/h3&gt;
+&lt;p&gt;（跨網路、自有暫存、大量檔案）&lt;/p&gt;
+&lt;p&gt;現在有很多開源、自架的服務，可以替代那些第三方控制的服務：雲端硬碟有 Nextcloud，檔案分享有 Zipline、PrivateBin，甚至可以說功能更為豐富。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://nextcloud.com/&quot;&gt;Nextcloud&lt;/a&gt; 就是全功能雲端硬碟，Google Drive、OneDrive 的替代品，甚至連協作文書套件都一應俱全。&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://immich.app/&quot;&gt;Immich&lt;/a&gt; 就是 Google Photos 的替代品。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://zipline.diced.sh/&quot;&gt;Zipline&lt;/a&gt; 是同時有短連結、PasteBin、檔案分享、網路相簿（圖床）的超多功能分享服務。例如說，Discord 對於分享的圖片和影片有大小限制，在不給 Discord 課金的前提下，我可以先傳到我的 Zipline 再傳連結到 Discord，甚至可以不用點連結就能照常顯示。&lt;/p&gt;
+&lt;p&gt;同樣作為自給自足的技術，好不好用和安全性取決於架設者的技術力。&lt;/p&gt;
+&lt;h3 id=&quot;section-sync-tools&quot;&gt;同步工具&lt;/h3&gt;
+&lt;p&gt;（主要是本地網路，可以是無暫存，大量檔案）&lt;/p&gt;
+&lt;p&gt;同步工具例如 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://syncthing.net/&quot;&gt;Syncthing&lt;/a&gt;，說白了檔案同步也是一種傳檔。&lt;/p&gt;
+&lt;p&gt;但是這些同步工具通常都設定精密複雜，對於網路能力的要求也頗高。若是已經有了這個系統順便用一下還好說，專門為此架設整套系統就感覺有點殺雞用牛刀了，對吧。&lt;/p&gt;
+&lt;h3 id=&quot;section-peer-to-peer-distribution&quot;&gt;點對點分發&lt;/h3&gt;
+&lt;p&gt;（主要是跨網路、可以是無暫存、大量檔案）&lt;/p&gt;
+&lt;p&gt;知名的點對點分發協定例如 BitTorrent。適合檔案大量分發。但是我們這裡專注傳檔，雖然也不是不行但是何必呢兄弟⋯⋯&lt;/p&gt;
+&lt;h3 id=&quot;section-remote-file-services&quot;&gt;遠端檔案服務&lt;/h3&gt;
+&lt;p&gt;（本地網路，無暫存，大量檔案）&lt;/p&gt;
+&lt;p&gt;遠端檔案服務協定，例如 FTP、WebDAV、HTTP、SFTP、SCP、rsync。在電腦上架設這些服務可以說是超級麻煩，但我們這裡不講那些複雜的。&lt;/p&gt;
+&lt;p&gt;一些手機內建或第三方的檔案總管，例如 Android 上的 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://play.google.com/store/apps/details?id=com.amaze.filemanager&quot;&gt;Amaze File Manager&lt;/a&gt;，有些會有「分享伺服器」或者類似名字的功能，其原理就是這些協定的伺服器。使用方法也非常簡單，首先確定兩台設備在同一個網路下，手機打開分享伺服器，然後電腦上用瀏覽器或者專用客戶端，例如 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://winscp.net/&quot;&gt;WinSCP&lt;/a&gt;，輸入網址，就可以存取檔案了。&lt;/p&gt;
+&lt;p&gt;好不好用取決於這個手機上的檔案總管的 App 和電腦上的客戶端、瀏覽器好不好用，以及需要一個穩定的本地網路。&lt;/p&gt;
+&lt;p&gt;講道理，若是要玩 FTP Client 確實有那麼一點點的技術門檻，但是考慮到現在 USB 傳輸線等實體傳輸的各種問題，可以說是現在手機對電腦傳「大量檔案」的最佳方式，沒有之一。&lt;/p&gt;
+&lt;h3 id=&quot;section-network-file-protocols&quot;&gt;網路硬碟協定&lt;/h3&gt;
+&lt;p&gt;（本地網路，無暫存，大量檔案）&lt;/p&gt;
+&lt;p&gt;網路硬碟協定，例如 SMB、NFS 等，例如說 Windows 上的網路芳鄰。在電腦上架設這些服務不能說是方便，但對一般人來說也算是麻煩。&lt;/p&gt;
+&lt;p&gt;大概是電腦上設定共享資料夾，手機上的檔案總管之類的 App 連線過去。
+由於會涉及防火牆甚至 Windows 莫名其妙的帳密管理，除非原本就有這個系統順便用一下，對於一般人來說不是那麼推薦。&lt;/p&gt;
+&lt;p&gt;還有 DLNA 是媒體分享與串流，常用於和電視播放電腦、手機或 NAS 裡的影音，難用到我不想接觸它。&lt;/p&gt;
+&lt;h3 id=&quot;section-dedicated-tools&quot;&gt;專用工具&lt;/h3&gt;
+&lt;p&gt;（本地網路，無暫存，大量檔案）（每個工具特別討論）&lt;/p&gt;
+&lt;p&gt;本地網路傳檔的版本解答就是 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://localsend.org/&quot;&gt;LocalSend&lt;/a&gt;，兩邊設備都裝上之後，在同一個區域網路下就可以開箱即用，零配置。&lt;/p&gt;
+&lt;p&gt;什麼檔案、圖片、文字、剪貼板甚至資料夾，無論是電腦對電腦、電腦對手機、手機對電腦、手機對手機，只要在同一個網路下，LocalSend 就是版本答案。&lt;/p&gt;
+&lt;p&gt;還有其他例如 Snapdrop 也曾是一代神器，通過 WebRTC 實現網頁端點對點傳送，但是在 WebRTC 由於隱私安全被人人喊打的今天，也許不是最佳的選擇。&lt;/p&gt;
+&lt;p&gt;以及 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://kdeconnect.kde.org/&quot;&gt;KDE Connect&lt;/a&gt; 這類手機與電腦協同工作的軟體，在豐富的功能裡面，通常也有傳檔功能。&lt;/p&gt;
+&lt;h3 id=&quot;section-nearby-sharing&quot;&gt;隔空投送&lt;/h3&gt;
+&lt;p&gt;（可能跨網路，可能有第三方暫存，小檔案）&lt;/p&gt;
+&lt;p&gt;隔空投送例如 Apple 家的被玩壞的 AirDrop，以及 Android 家的洗心革面的 Quick Share。通常用於同生態設備內的檔案互傳。好處是內建於手機。可以視為現代版藍牙檔案分享。&lt;/p&gt;
+&lt;p&gt;AirDrop 在 Apple 生態內基本無敵，但故步自封的 Apple 讓它也只能在 Apple 生態內無敵。&lt;/p&gt;
+&lt;p&gt;Google 從 Samsung 手上領養的 Quick Share，他們卻正在努力變得更好用，例如已經有了 PC 客戶端。最近 Quick Share 已經開始強行相容 AirDrop，部分 Android 手機甚至已經能直接和 AirDrop 互傳，但講道理我覺得期待這種事情不如儘早另謀出路。&lt;/p&gt;
+&lt;p&gt;適合小夥伴們結伴出遊拍照後快速分享檔案，然後發現這什麼狗屁玩意兒難用死了，最後回去改用 LINE 之類的通訊軟體。&lt;/p&gt;
+&lt;h3 id=&quot;section-bluetooth&quot;&gt;藍牙&lt;/h3&gt;
+&lt;p&gt;（本地網路，無暫存，幾乎無法傳檔案）&lt;/p&gt;
+&lt;p&gt;拜託不要。&lt;/p&gt;
+&lt;h3 id=&quot;section-physical-transfer&quot;&gt;實體傳輸&lt;/h3&gt;
+&lt;p&gt;（不需要網路，無暫存，大量檔案）&lt;/p&gt;
+&lt;p&gt;實體傳輸包括 USB 傳輸線、隨身碟、隨身硬碟、記憶卡。&lt;/p&gt;
+&lt;p&gt;USB 的毛病多了去了，首先是設備端的 USB 支援，即使都是 USB-C 連接埠，就連 Apple 都會偷工減料是 USB 2.0，速度最高只有 480 Mbps，這個傳輸速度可能還不及現代 Wi-Fi 的零頭，即使是設備側都支援 USB 3.x，例如 5 Gbps，也得找到一條支援高速資料傳輸的線。USB-C 線能充多少瓦，和它能傳多快是兩回事；不少大功率充電線的資料通道仍然只有 USB 2.0 的 480 Mbps，甚至可能根本不能傳資料。就算是全鏈路都有了 USB 3.x 的支援，連線傳輸的時候還得像皇帝一般供著，線不能碰了，否則傳輸容易失敗。還不說 Windows 對於這種 USB 連線不知道有什麼障礙，載不出來、卡住、丟檔案更是家常便飯。&lt;/p&gt;
+&lt;p&gt;至於隨身碟、隨身硬碟和記憶卡，要知道不同設備支援的檔案系統就像不同宗教一般水火難融，假如插入不支援的設備甚至會像問你要不要信教一樣，提示要不要格式化，一個萬一不小心按下去，整碟資料直接全部灰飛煙滅。即使排除萬難達成了跨文化的溝通，實際傳輸速度也高度取決於儲存媒體、讀卡機、連接埠和檔案系統，除了外接固態硬碟（SSD）和價格堪比黃金的高速記憶卡與讀卡機（例如 CFexpress），大部分便宜的設備，傳輸速率可能也不及 Wi-Fi 的零頭。&lt;/p&gt;
+&lt;p&gt;建議只在無法使用網路或者網路很爛、或者實在沒辦法的克難情況下再用實體傳輸。&lt;/p&gt;
+&lt;p&gt;實在克難用的話，建議在傳輸前後比對檔案數量和完整性。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;再次提醒，在陌生電腦上插入隨身碟等存儲裝置是非常危險的！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;zhuan-ye-shi-wu-ji&quot;&gt;專業事務機&lt;/h4&gt;
+&lt;p&gt;雖然我提醒了那麼多次，不可否認的是，通過隨身碟等存儲裝置傳輸卻確實是有實體的「最直覺」的方式。但常在河邊走，哪有不濕鞋。考慮到電腦染毒之後的救援和恢復，我勸還是打消這個想法。&lt;/p&gt;
+&lt;p&gt;但值得講講的是類似 7-Eleven 的 iBon 專用機臺，基於我們在 &lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-temporary-sharing&quot;&gt;之前章節&lt;/a&gt; 提過的，公司越大屁股越硬較為可信的思路來看，相較野生影印店之下有更好的安全性，即使是專門設計的影印系統，在資訊安全風起雲湧瞬息萬變日新月異一日千里的今天誰也沒法打保票（攤手）。但他們也有提供線上傳檔，可以用此方式替代。&lt;/p&gt;
+&lt;h2 id=&quot;section-simple-summary&quot;&gt;簡單總結&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;跨網路下：
+&lt;ul&gt;
+&lt;li&gt;親朋好友：&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-comm-software&quot;&gt;通訊軟體&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;陌生電腦：&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-temporary-sharing&quot;&gt;臨時分享&lt;/a&gt;（例如 Send Anywhere）&lt;/li&gt;
+&lt;li&gt;大量檔案：&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-cloud-drive&quot;&gt;雲端硬碟&lt;/a&gt; 的分享連結&lt;/li&gt;
+&lt;li&gt;自力更生：&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-self-hosted-file-sharing&quot;&gt;自架檔案分享&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;本地網路（同一個 Wi-Fi）下：
+&lt;ul&gt;
+&lt;li&gt;隨手便捷：&lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-dedicated-tools&quot;&gt;專用工具&lt;/a&gt; 的版本解答 LocalSend&lt;/li&gt;
+&lt;li&gt;大量傳輸：手機檔案總管開啟 &lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-remote-file-services&quot;&gt;遠端檔案服務&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;沒有網路或網路實在太爛：
+&lt;ul&gt;
+&lt;li&gt;傳輸線、隨身碟等 &lt;a href=&quot;https://undecv.github.io/blog/posts/file-transfer-intro/#section-physical-transfer&quot;&gt;實體傳輸&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      </item>
+      <item>
+          <title>全能型影片播放器 mpv 被迫支援觸控螢幕辛酸畫面流出</title>
+          <pubDate>Fri, 11 Jul 2025 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/</link>
+          <guid>https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/">&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://www.youtube.com/&quot;&gt;YouTube&lt;/a&gt; 作為年輕人的電視，可以說是承包了我所有休息時間。而它作為全世界最大的影片平台，從電腦到手機，從網頁到應用，它的播放器也許是最多人使用的存在。&lt;/p&gt;
+&lt;p&gt;雖然作為播放器，它沒有過多的元素，功能更不複雜，但也確實還是實用的。除掉那些該有的基本操作之外，錦上添花的也有像是進度條預覽的功能。並且作為支援行動裝置的播放器，自然有一些觸手友善的簡單手勢功能。包括經典的縮放，雙擊快進快退，以及大家都歧視&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/#fn-1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;但我就是喜歡的長按兩倍速。&lt;/p&gt;
+&lt;p&gt;自從 iPhone 定義了滑手機就是搓玻璃的時代，觸控就是行動裝置互動的基本，所以手機上的影片播放器正是為了觸控螢幕而設計。而這些為了觸控螢幕而生的手勢，也讓我感覺到了操作影片播放器的直覺和便利。&lt;/p&gt;
+&lt;p&gt;但在 Windows 上，作為一個桌面端的作業系統，其平台的影片播放器多是為了桌面而設計，少有支援觸控。 &lt;del&gt;畢竟除了 Surface 也沒幾台 Windows 設備支援觸控螢幕，&lt;/del&gt; 更不要說桌面系統支援觸控是千古難題（想看我吐槽可以看看&lt;a href=&quot;https://undecv.github.io/blog/posts/make-surface-great-again/make-surface-great-again-intro/&quot;&gt;上篇文章&lt;/a&gt;）。&lt;/p&gt;
+&lt;p&gt;電腦是這樣的，手機的影片播放器只要全身心的支援觸控螢幕，拖拉推拽，煎炒烹炸就可以，可電腦要考慮的事情就很多了。&lt;/p&gt;
+&lt;p&gt;其實網頁版的 YouTube 是支援觸控螢幕的，這讓我在 Surface 有了行動裝置本該有的體驗。但，本地檔案的播放器呢？&lt;/p&gt;
+&lt;p&gt;Windows 內建的播放器在觸控支援上還是有的，但其功能也就只能說夠用，一些進階的功能是沒有的，例如說直覺的手勢，但對我來說最致命的還是缺少支援一些奇奇怪怪的格式。&lt;/p&gt;
+&lt;p&gt;而第三方播放器，大家常用的例如 PotPlayer 和 KMPlayer 免費專有軟體，不得不說他們功能確實強大，但大多都帶有廣告，甚至一些還在安裝的時候夾帶私貨。雖說這是賺錢的事兒不寒磣吧，但我既然還有得選，就⋯⋯&lt;/p&gt;
+&lt;p&gt;自由軟體，常見的 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://codecguide.com/&quot;&gt;Codec Guide&lt;/a&gt; 的 MPC-HC 其實是幾百個世紀前（？）的播放器改版維護至今，雖然介面老派，但功能也絕對不輸，老當益壯說的就是他。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://www.videolan.org/vlc/&quot;&gt;VLC&lt;/a&gt; 也有現代而不當代的介面，不僅支援眾多歪門邪道的編碼，甚至在串流上有所造詣，而且介面也可以安裝外觀造型。但可惜的是，也許是因為他的團隊重心想在編碼和串流這些背後的重要技術，前端播放介面的更新比較慢熱，我非常期待的第四代至今還在難產 :( ，但還是我最常用的播放器。&lt;/p&gt;
+&lt;p&gt;但是話說回來，他們都不支援觸控耶？直到我再次遇到了 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://mpv.io/&quot;&gt;mpv&lt;/a&gt;，其實我一直知道這貨的存在，可是講道理，雖然它是強到根本就像轉生異世界開掛龍傲天一般的存在，但那精簡到沒有的介面、指令的操作、手動格式綁定、甚至官方都沒有提供開箱即用的安裝安裝程式（第三方支援），無一不讓我望而卻步。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;欸欸欸欸欸別走啊！我後面準備好了一份懶人包，一鍵安裝 mpv 以及這次介紹的所有模組。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;但要知道，這種使用門檻高到鯉魚躍龍門一般難如登天的軟體，萬一不小心上了手，那可就像成癮一般再也回不去了，頭都不回的那種：像是音樂播放器 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://www.foobar2000.org/&quot;&gt;Foobar2000&lt;/a&gt;，又像是多協定下載器 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://aria2.github.io/&quot;&gt;Aria2&lt;/a&gt;，再像是文字編輯器的 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://www.vim.org/&quot;&gt;Vim&lt;/a&gt; 和 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://www.gnu.org/s/emacs/&quot;&gt;Emacs&lt;/a&gt; ⋯⋯這都是超硬核的骨灰級玩家才嚐得到的醍醐味。&lt;/p&gt;
+&lt;p&gt;話是那麼說，但 mpv 其實不難理解，他的播放器介面渾然一體，按鈕、進度條漂浮在影片之上，平時隱藏不見，滑鼠移過去就會顯示，稱之 OSC（Over Screen Control），更多高級功能藏在快速鍵中。&lt;/p&gt;
+&lt;p&gt;可是我為什麼只是想看個影片還要背快速鍵啊，我不知道還要考試，我又沒有唸書！也沒關係，我們可以通過 scripts 對 mpv 做客製化，這正是它的迷人之處。&lt;/p&gt;
+&lt;p&gt;而 mpv 的 scripts，就像瀏覽器擴充套件、或是遊戲模組，可以理解為超級靈活的設定檔，幾乎讓 mpv 有無限的可能。我們入門玩家也不需要自己寫，社群裡也已經有前輩們準備了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下都是一鍵安裝腳本包含的內容，如果想要使用腳本，這些都 &lt;strong&gt;不需要&lt;/strong&gt; 操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我推薦使用 Scoop 軟體套件管理器安裝 mpv，簡單無痛。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先去 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://scoop.sh/&quot;&gt;Scoop&lt;/a&gt; 官方網站，按照指定的步驟安裝 Scoop；&lt;/li&gt;
+&lt;li&gt;到軟體倉庫中找到 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://scoop.sh/#/apps?q=mpv&amp;amp;id=b05b47128464d8969416289383fbfc69a47353e3&quot;&gt;extras/mpv&lt;/a&gt; 並且安裝。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意！有 &lt;code&gt;mpv&lt;/code&gt; 和 &lt;code&gt;mpv-git&lt;/code&gt; 前者是穩定版較穩定，後者是開發版較新但可能不穩定。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果用 Scoop 安裝，mpv 的設定檔通常放在 &lt;code&gt;%USERPROFILE%\scoop\apps\mpv\current\portable_config&lt;/code&gt;，設定檔路徑可能隨著按照的方式各有不同。這個設定檔資料夾因為太長下面統稱 &lt;code&gt;$configDir&lt;/code&gt;，除了 mpv 的設定檔 &lt;code&gt;mpv.conf&lt;/code&gt; 直接放在這個資料夾下，裡面還有兩個資料夾：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Scripts 通常是「&lt;code&gt;.lua&lt;/code&gt; 檔案」放這裡面：&lt;code&gt;$configDir/scripts&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Scripts 對應的「&lt;code&gt;.conf&lt;/code&gt; 設定檔」放這裡面：&lt;code&gt;$configDir/script-opts&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上就是初學者所需知道的一切，只需要丟東西到指定地方即可。&lt;/p&gt;
+&lt;p&gt;為了強迫 mpv 支援更友善的介面和觸控手勢，我們建立一個設定檔 &lt;code&gt;mpv.conf&lt;/code&gt; 添加兩三個選項。而設定檔的內容只要參照 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://mpv.io/manual/master/&quot;&gt;官方文檔&lt;/a&gt; 就有。&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot; &gt;&lt;code data-lang=&quot;toml&quot; data-name=&quot;mpv.conf&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; 關閉原生的 OSD Bar，uosc 會替代他的功能。&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;osd-bar&lt;/span&gt;&lt;span&gt;=&lt;/span&gt;&lt;span&gt;n&lt;/span&gt;&lt;span style=&quot;color: light-dark(#B31D28, #FDAEB7);font-style: italic;&quot;&gt;o&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; 觸控手勢需要使用邊框和禁止視窗拖動。&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;border&lt;/span&gt;&lt;span&gt;=&lt;/span&gt;&lt;span&gt;y&lt;/span&gt;&lt;span style=&quot;color: light-dark(#B31D28, #FDAEB7);font-style: italic;&quot;&gt;es&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;window-dragging&lt;/span&gt;&lt;span&gt;=&lt;/span&gt;&lt;span&gt;n&lt;/span&gt;&lt;span style=&quot;color: light-dark(#B31D28, #FDAEB7);font-style: italic;&quot;&gt;o&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR: 如果沒禁止「視窗拖動」，拖動視窗的任意部分都會拖動整個視窗，會使得觸控手勢失效，「邊框」是為了在禁止視窗拖動之後還能移動視窗（拖動邊框即可）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然後給它加裝一些 scripts。都只是按照他們提供的說明，簡單下載指定的檔案放到指定的地方即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/tomasklaen/uosc&quot;&gt;uosc&lt;/a&gt;（LGPL-2.1）是更友善、現代、介面豐富的 osc 介面；&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/po5/thumbfast&quot;&gt;thumbfast&lt;/a&gt;（MPL-2.0）支援進度條預覽功能；&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/christoph-heinrich/mpv-pointer-event&quot;&gt;mpv-pointer-event&lt;/a&gt;（GPL-2.0）和 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/christoph-heinrich/mpv-touch-gestures&quot;&gt;mpv-touch-gestures&lt;/a&gt;（GPL-2.0）支援觸控手勢。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最後就可以在 &lt;code&gt;script-opts&lt;/code&gt; 資料夾，客製化 scripts 的一些設定，他們預設的設定檔裡通常都有詳盡的說明，所以我就不再贅述。&lt;/p&gt;
+&lt;p&gt;其實比想象的還要簡單得多對吧！但我還是整理了上述所有除了安裝 Scoop 之外的所有步驟，製作成了這個一鍵安裝懶人包。可以把下面的安裝指令貼到 Powershell 中一鍵安裝。&lt;/p&gt;
+&lt;p&gt;雖說我已經檢查過這個指令的有效性，但我還是希望您在使用的時候能明白每列指令在做啥 :) ，這個指令用 Scoop 安裝 mpv 之後，偵測設定檔資料夾路徑，直接從社群腳本的倉庫下載所需檔案並放到指定位置。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;時效性：截稿時 2025 年 7 月，安裝指令的內容可能隨時改變和失效。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot; &gt;&lt;code data-lang=&quot;powershell&quot; data-name=&quot;touch_mpv.ps1&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; This script is licensed under the MIT License, See &amp;lt;https://opensource.org/licenses/MIT&amp;gt;.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Install mpv and dependencies&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Installing mpv and dependents (yt-dlp and ffmpeg) ...&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;scoop bucket add extras&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;scoop install extras&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;/&lt;/span&gt;&lt;span&gt;mpv&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;scoop bucket add main&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;scoop install main&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;/&lt;/span&gt;&lt;span&gt;yt&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span&gt;dlp&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;scoop install main&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;/&lt;/span&gt;&lt;span&gt;ffmpeg&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Done&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Locate mpv installation and config folders&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;mpvDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; =&lt;/span&gt;&lt;span&gt; (&lt;/span&gt;&lt;span&gt;scoop prefix mpv&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;span&gt;.Trim&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;configDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;mpvDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;portable_config&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;scriptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;configDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;scripts&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;scriptOptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;configDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;script-opts&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Config path: &lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;`&amp;quot;&lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;configDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;`&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;New-Item&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;ItemType Directory &lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span&gt;Force &lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-&lt;/span&gt;&lt;span&gt;Path &lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;configDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;,&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;scriptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;,&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;scriptOptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; |&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; Out-Null&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Install uosc&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Installing uosc ...&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;uoscZip&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;env:&lt;/span&gt;&lt;span&gt;TEMP&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;uosc.zip&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Invoke-WebRequest&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Uri &lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;https://github.com/tomasklaen/uosc/releases/latest/download/uosc.zip&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;OutFile &lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;uoscZip&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Expand-Archive&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Path &lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;uoscZip&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;DestinationPath &lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;configDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Force&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Remove-Item&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Force &lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;uoscZip&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Invoke-WebRequest&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Uri &lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;https://github.com/tomasklaen/uosc/releases/latest/download/uosc.conf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;OutFile &lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;scriptOptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;uosc.conf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Done&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Create mpv.conf&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Creating mpv.conf ...&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;mpvConf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;configDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;mpv.conf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;if&lt;/span&gt;&lt;span&gt; (&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;-not&lt;/span&gt;&lt;span&gt; (&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Test-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;mpvConf&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;@&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;# uosc provides seeking &amp;amp; volume indicators (via flash-timeline and flash-volume commands)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;# if you decide to use them, you don&amp;#39;t need osd-bar&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;osd-bar=no&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;# uosc will draw its own window controls and border if you disable window border&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;border=yes&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;window-dragging=no&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;# If the UI feels sluggish/slow while playing video, you can remedy this a bit&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;# video-sync=display-resample&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;@&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; |&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; Set-Content&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Encoding UTF8 &lt;/span&gt;&lt;span&gt;$&lt;/span&gt;&lt;span&gt;mpvConf&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Done&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Install thumbfast&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Installing thumbfast ...&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Invoke-WebRequest&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Uri &lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;https://raw.githubusercontent.com/po5/thumbfast/refs/heads/master/thumbfast.lua&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;OutFile &lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;scriptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;thumbfast.lua&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Invoke-WebRequest&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Uri &lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;https://raw.githubusercontent.com/po5/thumbfast/refs/heads/master/thumbfast.conf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;OutFile &lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;scriptOptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;thumbfast.conf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Done&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Install pointer-event&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Installing pointer-event ...&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Invoke-WebRequest&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Uri &lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;https://raw.githubusercontent.com/christoph-heinrich/mpv-pointer-event/refs/heads/master/pointer-event.lua&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;OutFile &lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;scriptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;pointer-event.lua&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Done&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Install touch-gestures&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Installing touch-gestures ...&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Invoke-WebRequest&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Uri &lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;https://raw.githubusercontent.com/christoph-heinrich/mpv-touch-gestures/refs/heads/master/touch-gestures.lua&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;OutFile &lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;scriptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;touch-gestures.lua&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Invoke-WebRequest&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Uri &lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;https://raw.githubusercontent.com/christoph-heinrich/mpv-touch-gestures/refs/heads/master/touch-gestures.conf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;OutFile &lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;scriptOptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;touch-gestures.conf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Invoke-WebRequest&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;Uri &lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;https://raw.githubusercontent.com/christoph-heinrich/mpv-touch-gestures/refs/heads/master/pointer-event.conf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;OutFile &lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Join-Path&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;scriptOptsDir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;pointer-event.conf&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;Done&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;Write-Host&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;mpv + uosc + gesture environment is ready!&lt;/span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;/span&gt;&lt;span&gt;ForegroundColor Green&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;section class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;商周 - 網路溫度計 DailyView：&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://www.businessweekly.com.tw/focus/blog/3018096&quot;&gt;Netflix小編稱1.5倍速追劇，為什麼被炎上？&lt;/a&gt; &lt;a href=&quot;https://undecv.github.io/blog/posts/make-surface-great-again/mpv-touch-gestures/#fr-1-1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+      </item>
+      <item>
+          <title>Android 生態的平行宇宙：F-Droid</title>
+          <pubDate>Sun, 06 Jul 2025 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/recommended-applications/f-droid/</link>
+          <guid>https://undecv.github.io/blog/posts/recommended-applications/f-droid/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/recommended-applications/f-droid/">&lt;p&gt;無論是在 Android 還是 iOS 上，「應用市場」絕對是手機上最重要的應用沒有之一，應用市場可以說本身就是一個生態系統的代表。&lt;/p&gt;
+&lt;p&gt;除去薛錢的部分，以應用安裝的角度來說，應用市場的本質其實就像電腦上的「軟體套件管理器（Package Manager）」：諸如 Red Hat 上的 RPM、或是 Debian 上的 APT、又或是 Windows 的 Winget（&lt;a href=&quot;https://undecv.github.io/blog/posts/command-line-guide/windows-package-managers/&quot;&gt;專文介紹&lt;/a&gt;），是極為便利的存在，讓人安裝軟體不再需要在網頁搜尋裡眾裡尋她千百度，可以直接在這個管理器中統一的安裝和升級。&lt;/p&gt;
+&lt;p&gt;對於搓玻璃多過滾鍵盤的新生代，安裝應用程式本就應該只是在應用市場點一下安裝那麼簡單。想當年，在電腦上安裝軟體，首先需要用搜尋引擎找到軟體官方網站，再在裡面找到對應電腦版本安裝包，再下載下來安裝，然後一直點下一步的時候，還要防範藏在裡面的捆綁軟體陷阱⋯⋯那種野性而純樸的年代，大概很難想像和理解了吧。&lt;/p&gt;
+&lt;p&gt;不像在電腦上為所欲為的開放環境，手機的生態卻是封閉、受控，更是惡劣得多。在手機上，內建的官方應用市場往往是安裝手機應用唯一的途徑。這一是為了安全，但實則是為了壟斷生態。&lt;/p&gt;
+&lt;p&gt;而「側載（Sideloading）」，通常是指在應用市場之外下載和安裝應用程式。好處當然就是帶來了自由奔放的環境。而壞處就是給了壞壞程式可乘之隙。&lt;/p&gt;
+&lt;p&gt;不像 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://altstore.io/&quot;&gt;Altstore&lt;/a&gt; 之於 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://www.apple.com/app-store/&quot;&gt;Apple App Store&lt;/a&gt;，限制之多，不僅是歐盟地區限定，還有應用簽名之類的麻煩事，搞得像是黑市交易一樣遮遮掩掩，可見 Apple 是根本就沒有誠心開放側載的，即使在歐盟多管閒事的法律壓力下，仍是處處設限。&lt;/p&gt;
+&lt;p&gt;而在那個很強大的國家，某些魔改的「安卓」，因為一些大人的原因，雖然不是徹底封死了側載的門路，但也是用各種幌子百般阻撓。假借安全之名，拼命的想要排異側載的應用。&lt;/p&gt;
+&lt;p&gt;但真正的 Android 上就沒有這麼多無理的限制，&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://play.google.com/&quot;&gt;Google Play&lt;/a&gt; 不是唯一的安裝渠道，側載應用非常容易，系統也提供了相應的權限、來源控制等防呆措施，一定程度上在安全和自由上做到了平衡。&lt;/p&gt;
+&lt;p&gt;而無論是 iOS 的 App Store 還是 Google Play，眾所周知是需要繳納入場費和抽成税的。這一是支付平台託管和審查費用，另一個理由當然就是這些資本機器需要賺錢。這時一定會有一些愛好自由的人，不願把自己的心血送進資本機器被壓榨。&lt;/p&gt;
+&lt;p&gt;所以，我們需要一個開放自由的應用市場，這正是「&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://f-droid.org/&quot;&gt;F-Droid&lt;/a&gt;」，一個 Android 生態的平行宇宙！&lt;/p&gt;
+&lt;p&gt;F-Droid 裡面收容了很多很多優秀的自由和開源（FOSS）應用程式。不僅大多應用都是免費的，有些甚至不輸 Google Play 中的付費應用。&lt;/p&gt;
+&lt;p&gt;而且 F-Droid 不只是一個「應用市場」，更是一個開放的「應用套件管理系統」，雖然因此看起來較難理解，其實比想像的簡單得多，也就兩個部分：&lt;/p&gt;
+&lt;p&gt;一是「前端（Client）」，即是我們所看到的「應用市場」介面：從眾多「倉庫」中，瀏覽、安裝和管理其中的應用。&lt;/p&gt;
+&lt;p&gt;二是「倉庫（Repository）」，用於收容應用程式的資訊和安裝檔。&lt;/p&gt;
+&lt;p&gt;對於一般用戶來說，也就只要安裝一個前端，例如官方的前端，然後直接使用內建的倉庫，或再導入其他的倉庫，就可以像其他所熟知的應用市場一樣用了。&lt;/p&gt;
+&lt;p&gt;真正決定內容的是「倉庫」，倉庫是由社群用愛發電維護的，會收容怎樣的應用也是各有各的風格和標準。最有名的倉庫理所當然正是「F-Droid 官方倉庫」，但它遵循嚴格的開源原教旨主義（就像 Linux 世界的 Debian），比較要求開源的根正苗紅（完全純粹，不得含有任何非開源程式碼）。所以我們還有更加開放一些的知名第三方倉庫「&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://apt.izzysoft.de/fdroid/&quot;&gt;IzzyOnDroid&lt;/a&gt;」。甚至，一些應用程式因為各種理由，自己維護一個倉庫例如「Breezy Weather」。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;當然，倉庫是否可靠，安不安全，還得靠自己的慧眼判斷！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在前端中添加倉庫也非常的簡單，只要把倉庫的連結貼到前端相應的設定中。或者一些前端有提供掃描二維碼的功能，掃描倉庫提供的二維碼也是更便利的方法。&lt;/p&gt;
+&lt;p&gt;那講到前端，由於「F-Droid」官方前端可能是為了相容性或是什麼原因，介面有些返祖，但確是我用過好用的。但也可以選擇其他的前端，最有名的可能是「&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://droidify.eu.org/&quot;&gt;Droid-ify&lt;/a&gt;」和「&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/NeoApplications/Neo-Store&quot;&gt;Neo Store&lt;/a&gt;」，它們提供了更現代的介面和更多功能。&lt;/p&gt;
+&lt;p&gt;Droid-ify 以簡單易用的設計和輕量化特性著稱，而 Neo Store 則以現代化的用戶介面和高自定義性吸引使用者。相較於官方 F-Droid 客戶端，他們的介面應該比較容易被接受，並且它們內建了更多知名的非官方倉庫這點尤為便利。它們之中我更推薦 Droid-ify，因為支援正體中文。&lt;/p&gt;
+&lt;p&gt;而為什麼我說 F-Droid 是 Android 生態的平行宇宙？因為一些極為優秀的應用只通過 F-Droid 發布，並且還沒有在 Google Play 裡面上架。
+包括 &lt;a href=&quot;https://undecv.github.io/blog/posts/recommended-applications/breezy-weather/&quot;&gt;專文介紹&lt;/a&gt; 過的「&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/breezy-weather/breezy-weather&quot;&gt;Breezy Weather&lt;/a&gt;」，強大的終端機模擬器「&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://termux.com/&quot;&gt;Termux&lt;/a&gt;」、在分享照片時過濾掉隱私資訊的「&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://codeberg.org/Starfish/Imagepipe&quot;&gt;Imagepipe&lt;/a&gt;」、還有臨時讓螢幕長亮一段時間的「&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/mueller-ma/Coffee&quot;&gt;Coffee&lt;/a&gt;」⋯⋯ 這些無論是強大還是小巧、實用甚至免費、無廣告的應用讓我根本欲罷不能，所以我說在手機裡面裝一個 F-Droid 絕對是穩賺不賠，值得一試。&lt;/p&gt;
+</description>
+      </item>
+      <item>
+          <title>純粹而不簡單的看天氣 Breezy Weather</title>
+          <pubDate>Mon, 30 Jun 2025 22:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/recommended-applications/breezy-weather/</link>
+          <guid>https://undecv.github.io/blog/posts/recommended-applications/breezy-weather/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/recommended-applications/breezy-weather/">&lt;p&gt;自由開源・免費・&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/breezy-weather/breezy-weather&quot;&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;講到天氣那肯定不得不講 The Weather Channel 和 AccuWeather。
+但他們是營利的，緩慢臃腫還有廣告，每次點開都覺得自己被資本做局了，但掙錢嘛，生意，不寒磣。
+不服可以花錢升級嘛。又或者，換一個嘛。&lt;/p&gt;
+&lt;p&gt;Breezy Weather 有好看又流暢的界面，也有融入當代風格的桌面小部件。
+背靠多個資訊源，不僅有開源且強大的 Open-Meteo，
+也有例如台灣中央氣象局（CWA）的官方氣象機構資訊源，
+甚至還有支援某個把天氣資訊當成主權的很厲害的國家。&lt;/p&gt;
+&lt;p&gt;要說問題，就是第三方應用，在後台更新會有些障礙。
+以及出於各種大人的原因，它有著獨特的&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/breezy-weather/breezy-weather/blob/main/INSTALL.md&quot;&gt;安裝方式&lt;/a&gt;：它不支援 Google Play，
+而是用開源世界的 F-Droid，但它預設的版本是閹割版，需要先導入它的官方倉庫，並且切換來源後再安裝。&lt;/p&gt;
+&lt;p&gt;雖然有較高門檻的安裝方式，但絕對是值得的。
+除了基本的天氣資訊，還有空氣品質、花粉、降水量、警特報和體感溫度。
+甚至有長達 15天 的預報可以回到未來。
+可以分別為不同的指標單獨選擇資訊源，無論什麼地方、用什麼主資訊源都能互補顯示完整資訊。&lt;/p&gt;
+&lt;p&gt;特別是支援「警特報」，以防同溫層太厚感受不到世間冷暖。&lt;/p&gt;
+</description>
+      </item>
+      <item>
+          <title>Android 上的本地漫畫閱讀器推薦：Kuro Reader</title>
+          <pubDate>Mon, 30 Jun 2025 15:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/recommended-applications/kuro-reader/</link>
+          <guid>https://undecv.github.io/blog/posts/recommended-applications/kuro-reader/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/recommended-applications/kuro-reader/">&lt;p&gt;專有・免費增值・&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://kurotoshiro.dev/&quot;&gt;Homepage&lt;/a&gt;・&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://play.google.com/store/apps/details?id=br.com.kurotoshiro.kuro_reader&quot;&gt;Google Play&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;電腦裡面開了一家漫畫&lt;del&gt;和同人誌&lt;/del&gt;圖書館，怎麼辦？急，在線等。&lt;/p&gt;
+&lt;p&gt;相比直接在電腦上面看，不受桌椅束縛的在手機、平板上面看漫畫可還是比在電腦上優雅多了。&lt;/p&gt;
+&lt;p&gt;「漫畫」相較「電子書」來說其實更為複雜，
+電子書已經有了 EPUB / PDF 等檔案解決方案，甚至分發都有 OPDS 這種開放標準系統。
+但漫畫閱讀器考慮的事情就很多了，漫畫的包裝方式例如 CBZ 其實就是一拖拉庫的圖檔塞進 ZIP 壓縮檔。
+而且漫畫閱讀器對圖檔的渲染也需要優化，所以漫畫閱讀器還是和電子書閱讀器有所差別的。&lt;/p&gt;
+&lt;p&gt;這裡撇開那些大平臺自有的閱讀器不談，
+Android 上的漫畫閱讀器，我粗略地分成「線上」和「本地」漫畫閱讀器：
+「線上」漫畫閱讀器，即是即時加載網路上的資源，例如 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://mihon.app/&quot;&gt;Mihon&lt;/a&gt;（前 Tachiyomi）及其變種；
+「本地」漫畫閱讀器，則是閱讀在本機或內部網路的資源。&lt;/p&gt;
+&lt;p&gt;但與其把漫畫拷貝到手機上，手機上可憐的內部存儲容量不說，不如在本地網路直接訪問電腦來的方便。
+那現在有兩個選擇：一個是「架設網路服務」，通過 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://komga.org/&quot;&gt;Komga&lt;/a&gt; 等服務架設漫畫伺服器，再用 Mihon 閱讀。
+雖然體驗是極好的，但這還是太麻煩了，不僅要維護伺服器服務，Komga 對資料夾的結構還有要求，而且掃描、建立索引也要一段時間。&lt;/p&gt;
+&lt;p&gt;另一個方式就是通過本地網路，例如 SMB / CIFS 或 NFS、FTP、SFTP 等協定，直接讀取電腦上的資料夾和檔案。
+雖然沒有那麼優雅，但卻是快捷便利的選擇。只要在電腦上，通過網路芳鄰開啟分享存放漫畫的資料夾即可。&lt;/p&gt;
+&lt;p&gt;所以我對於「本地」漫畫閱讀器的要求是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;好看、易用、流暢使用；&lt;/li&gt;
+&lt;li&gt;活躍或穩定更新；&lt;/li&gt;
+&lt;li&gt;能讀 CBZ / ZIP 之類的壓縮檔案；&lt;/li&gt;
+&lt;li&gt;本地網路 SMB / CIFS 等協定支援。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;既然是漫畫閱讀器，能讀壓縮檔案是基本了，但這也排除了很多電子書閱讀器。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://seeneva.app/&quot;&gt;Seeneva&lt;/a&gt; 是一個好看好用的本地閱讀器，但不支援本地網路的協定。
+我曾經試過用 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/wa2c/cifs-documents-provider&quot;&gt;CIFS Documents Provider&lt;/a&gt; 將本地網路的資料夾掛載，
+再用 Seeneva 讀取，但效果不太理想，還是只用在手機裡面的檔案最好。&lt;/p&gt;
+&lt;p&gt;其實以前一直在使用的 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://play.google.com/store/apps/details?id=com.rookiestudio.perfectviewer&quot;&gt;Perfect Viewer&lt;/a&gt;，
+雖說其介面有點返祖，卻還是非常好用的。
+但它的問題是（也有可能是我的問題），它的 SMB 連線極不穩定，經常在加載的時候整個程式當機，或者中間有一兩頁顯示不出來。
+我 &lt;em&gt;合理懷疑&lt;/em&gt; 它可能用的是遠古時代的 SMBv1 客戶端。&lt;/p&gt;
+&lt;p&gt;還有 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://play.google.com/store/apps/details?id=com.progdigy.cdisplay.free&quot;&gt;CDisplayEx&lt;/a&gt;
+雖然 Android App 的體驗不錯，但從社群討論可見它有著流氓軟體的傳言，讓我望而卻步，而且（好像）也有同樣的連線問題。&lt;/p&gt;
+&lt;p&gt;直到我搜尋到了 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://kurotoshiro.dev/&quot;&gt;Kuro Reader&lt;/a&gt;，
+它有著優雅的、現代的、可以靈活客製化的用戶介面設計，
+先進的圖書館管理系統（書架），分類、標註、收藏等功能（但對我而言可能較少用到）。&lt;/p&gt;
+&lt;p&gt;它看上去對 SMB 有做特別的優化，我 &lt;em&gt;合理懷疑&lt;/em&gt; 它支援 SMBv2+ 的現代協定。
+不像 Perfect Viewer 是邊看邊下載，它是先整個檔案抓下來再開啟。
+雖然這在打開的時候需要等待，但是因為多線程的加持，其實下載速度感覺還是蠻快的。（雖然我還是希望邊看邊下載功能未來會實現。）
+但我使用的時間還不長，看上去是穩定的，尚未發現連線問題。&lt;/p&gt;
+&lt;p&gt;（截稿時）就連免費版本都 &lt;strong&gt;沒有廣告&lt;/strong&gt;！也就只是鎖定了 暗黑模式 和 Google Drive 同步這些非核心功能。
+付費版本也只要 NT$ 100，可以說是良心到根本就是 shut up and take my money 了。
+對於希望輕量、無後端、能直接走本地網路讀取漫畫的人來說，Kuro Reader 是目前我找到最稱職的選擇。&lt;/p&gt;
+</description>
+      </item>
+      <item>
+          <title>［封存］推薦的 Windows 應用軟體列表</title>
+          <pubDate>Wed, 26 Jul 2017 00:00:00 +0000</pubDate>
+          <author>undecV</author>
+          <link>https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/</link>
+          <guid>https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/</guid>
+          <description xml:base="https://undecv.github.io/blog/posts/ash-heap-of-history/recommended-windows-softwares-legacy/">&lt;p&gt;推薦一些 Windows 平台下的軟體， 適合日常以及非日常使用。&lt;br /&gt;
+並不一定每一款軟體你都需要或適合你，也未必是大眾的選擇；&lt;br /&gt;
+&lt;del&gt;但是那些無時無刻不在彈廣告的辣雞軟件一定不會是你的選擇。&lt;/del&gt;&lt;/p&gt;
+&lt;!-- # List of Windows Application Software --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;裝機必備的實用軟體大合集！&lt;/del&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Version 5.3.1 (2023-06-29): 更新和修正了部分內容。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Copyright © 2023 undecV.&lt;br /&gt;
+&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;http://creativecommons.org/licenses/by-nc-sa/4.0/&quot;&gt;&lt;img src=&quot;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&quot; alt=&quot;Creative Commons License&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
+This work is licensed under a &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;http://creativecommons.org/licenses/by-nc-sa/4.0/&quot;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;gai-lun&quot;&gt;概論&lt;/h2&gt;
+&lt;p&gt;提示，本文討論的範圍是 應用軟體，不包括例如 Google Docs, Spotify, Telegram 之類的 SaaS 網頁應用和服務。&lt;/p&gt;
+&lt;p&gt;文章其中的一些軟體，我可能不常用，沒有追著最新版更新，甚至時下可能還沒有安裝，但我一定都有用過、體驗過。&lt;/p&gt;
+&lt;p&gt;也請注意，這裡的選擇標準非常的… 主觀。（不是排名，不分先後）&lt;br /&gt;
+以下是粗略的選擇的標準：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;確實能夠解決問題，且有效的解決問題；&lt;/li&gt;
+&lt;li&gt;沒有騷擾性質的廣告；&lt;/li&gt;
+&lt;li&gt;界面端莊優雅，易於使用。&lt;/li&gt;
+&lt;li&gt;FOSS，即是 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://zh.wikipedia.org/wiki/%E8%87%AA%E7%94%B1%E8%BD%AF%E4%BB%B6&quot;&gt;自由軟體（Free Software）&lt;/a&gt; 以及 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://zh.wikipedia.org/wiki/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6&quot;&gt;開放原始碼軟體（Open Source Software，OSS）&lt;/a&gt;，這裡的 Free 表示「自由（libre）」而不是「免費（gratis）」；開放原始碼軟體保留一部分權利並允許用戶學習、修改、增進提高這款軟體的品質。自由軟體更加的開放，可以不受限制地自由使用、複製、研究、修改和分發。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;di-san-ban-geng-xin-de-fei-hua&quot;&gt;第三版更新的廢話&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;由於篇幅刪除了「瀏覽器插件」章節：瀏覽器的 插件、UserScript、UserStyles 能大幅增益網路使用體驗，以後有機會我會再撰文介紹。&lt;/li&gt;
+&lt;li&gt;刪除了「防毒軟體」章節：免費的防毒軟體體驗確實差&lt;del&gt;（其實付費也是）&lt;/del&gt;，如果你使用的是正版 Windows 作業系統，自帶原生的 Windows Security 就可以滿足需求。電腦的安全更需要的是建立安全意識，並且保持良好的網路使用習慣，不要看網路上的野路子教學一頓風騷操作說關就關防火牆和防毒軟體之類的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這份列表從大學的一個突發奇想到現在已四年有餘，感謝各位的捧場，&lt;br /&gt;
+你們與我的討論也讓我感受到了編寫這份列表的價值。&lt;br /&gt;
+希望能對各位有所幫助，在完成電腦上繁雜工作的時候可以感到舒適和效率：）&lt;/p&gt;
+&lt;h2 id=&quot;biao-ji&quot;&gt;標記&lt;/h2&gt;
+&lt;p&gt;本文的標記可能並不完全或有誤，甚至隨着時間的流逝而與現時不符，所以&lt;strong&gt;僅供參考&lt;/strong&gt;，若發現有漏標或錯標，又或是你有更好的軟體選擇，歡迎在這個 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://github.com/undecV/undecV_Tutorial/issues&quot;&gt;Repo&lt;/a&gt; 提出修改建議：）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;沒有標記的，一般來說都是&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://zh.wikipedia.org/wiki/%E5%85%8D%E8%B2%BB%E8%BB%9F%E9%AB%94&quot;&gt;免費軟體（Freeware）&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt;：FOSS，自由軟體（Free Software）和開放原始碼軟體（Open Source Software，OSS）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;/code&gt;：&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://zh.wikipedia.org/wiki/%E5%95%86%E4%B8%9A%E8%BD%AF%E4%BB%B6&quot;&gt;商業軟體（Commercial Software）&lt;/a&gt;，一般來說，要錢買的。但有免費版本的不標示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tui-jian-ruan-ti-lie-biao&quot;&gt;推薦軟體列表&lt;/h2&gt;
+&lt;h3&gt;Web Browser - 網路瀏覽器&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.mozilla.org/zh-TW/firefox/all/&quot;&gt;&lt;strong&gt;Mozilla Firefox&lt;/strong&gt;&lt;/a&gt;: 讓你的心智與網路一樣自由開闊。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.google.com.tw/chrome/browser/desktop/index.html&quot;&gt;&lt;strong&gt;Google Chrome&lt;/strong&gt;&lt;/a&gt;: 無比簡易、安全又快速的瀏覽器。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/zh-tw/edge/download&quot;&gt;&lt;strong&gt;Microsoft Edge&lt;/strong&gt;&lt;/a&gt;: 基於 Chromium，內建豐富功能，以及搭載AI的次世代搜尋。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Internet - 網路&lt;/h3&gt;
+&lt;ul&gt;
+&lt;/ul&gt;&lt;h4&gt;Download - 下載&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://aria2.github.io/&quot;&gt;&lt;strong&gt;aria2&lt;/strong&gt;&lt;/a&gt;: 多協議命令行下載器，功能強大，高學習成本；但是，用會了就不會再考慮其他下載器了。(&lt;a href=&quot;https://www.appinn.com/aria2-in-windows-setup/&quot;&gt;小众软件&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.qbittorrent.org/&quot;&gt;&lt;strong&gt;qBittorrent&lt;/strong&gt;&lt;/a&gt;: 自由的 BitTorrent 客戶端，擁有可訂製的種子搜尋功能。(&lt;a href=&quot;https://portableapps.com/apps/internet/qbittorrent_portable&quot;&gt;PortableApps&lt;/a&gt;, &lt;a href=&quot;https://www.zhihu.com/question/43640207/answer/202058150&quot;&gt;知乎&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Email - 電子郵件&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.mozilla.org/en-US/thunderbird/all/&quot;&gt;&lt;strong&gt;Mozilla Thunderbird&lt;/strong&gt;&lt;/a&gt;: 與 Firefox 師出同門 Mozilla，老牌、自由的電郵軟體。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Remote Access - 遠端&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://github.com/Genymobile/scrcpy&quot;&gt;&lt;strong&gt;scrcpy&lt;/strong&gt;&lt;/a&gt;: Android -&gt; Windows 熒幕投影。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://localsend.org/&quot;&gt;&lt;strong&gt;LocalSend&lt;/strong&gt;&lt;/a&gt;: 零配置、可靠的區域網路下跨平臺檔案分享。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.android.com/better-together/nearby-share-app/&quot;&gt;&lt;strong&gt;Nearby Share Beta for Windows&lt;/strong&gt;&lt;/a&gt;: Android 原生跨平臺檔案分享。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://winscp.net/eng/index.php&quot;&gt;&lt;strong&gt;WinSCP&lt;/strong&gt;&lt;/a&gt;: 遠端存儲（SFTP）客戶端。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://cyberduck.io/&quot;&gt;&lt;strong&gt;Cyberduck&lt;/strong&gt;&lt;/a&gt;: 遠端存儲客戶端，WinSCP 之前不支援新版 SSH 的時候找的替代。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.chiark.greenend.org.uk/~sgtatham/putty/&quot;&gt;&lt;strong&gt;PuTTY&lt;/strong&gt;&lt;/a&gt;: 經典的 SSH 客戶端。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://remotedesktop.google.com/&quot;&gt;&lt;strong&gt;Chrome Remote Desktop&lt;/strong&gt;&lt;/a&gt;: Google 出品，免費、快速、簡單的遠端桌面。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;/code&gt; &lt;a href=&quot;https://www.teamviewer.com/zhtw/&quot;&gt;&lt;strong&gt;TeamViewer&lt;/strong&gt;&lt;/a&gt;: 老牌遠端桌面。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Multimedia - 多媒體&lt;/h3&gt;
+&lt;h4&gt;Audio - 音訊&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.foobar2000.org/&quot;&gt;&lt;strong&gt;foobar2000&lt;/strong&gt;&lt;/a&gt;: 音樂播放器，專業強大，需要調教。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.aimp.ru/&quot;&gt;&lt;strong&gt;AIMP&lt;/strong&gt;&lt;/a&gt;: 類 Winamp，來自戰鬥民族的高顏值音樂播放器，支持換外觀。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.crintsoft.com/&quot;&gt;&lt;strong&gt;MiniLyrics&lt;/strong&gt;&lt;/a&gt;: 為多種播放器自動下載並顯示歌詞。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.audacityteam.org/&quot;&gt;&lt;strong&gt;Audacity&lt;/strong&gt;&lt;/a&gt;: 錄音，音訊剪輯、處理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Video - 視訊&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;http://www.codecguide.com/&quot;&gt;&lt;strong&gt;K-Lite Codec Pack&lt;/strong&gt;&lt;/a&gt;: 播放器和編解碼器的軟體合集，專業、設定多、功能強大。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.videolan.org/vlc/&quot;&gt;&lt;strong&gt;VLC media player&lt;/strong&gt;&lt;/a&gt;: 支持多格式的跨平臺播放器，支持串流，支持換外觀。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://maruko.appinn.me/&quot;&gt;&lt;strong&gt;小丸工具箱&lt;/strong&gt;&lt;/a&gt;: 簡單易用的壓制工具。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;http://avidemux.org/&quot;&gt;&lt;strong&gt;Avidemux&lt;/strong&gt;&lt;/a&gt;: 簡單的影片處理剪輯。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://obsproject.com/&quot;&gt;&lt;strong&gt;Open Broadcaster Software (OBS)&lt;/strong&gt;&lt;/a&gt;: 實況、直播串流、錄屏。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://mkvtoolnix.download/index.html&quot;&gt;&lt;strong&gt;MKVToolNix&lt;/strong&gt;&lt;/a&gt;: MKV 打包解包工具。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;http://www.aegisub.org/&quot;&gt;&lt;strong&gt;Aegisub&lt;/strong&gt;&lt;/a&gt;: 字幕時間軸。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Image - 圖像&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://nomacs.org/&quot;&gt;&lt;strong&gt;nomacs&lt;/strong&gt;&lt;/a&gt;: 輕量級圖片瀏覽器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://imageglass.org/&quot;&gt;&lt;strong&gt;ImageGlass&lt;/strong&gt;&lt;/a&gt;: 輕量級圖片瀏覽器。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.irfanview.com/&quot;&gt;&lt;strong&gt;IrfanView&lt;/strong&gt;&lt;/a&gt;: 快速小巧且功能強大的圖片瀏覽器，不僅僅是看圖。(&lt;a href=&quot;https://xbeta.info/use-irfanview.htm&quot;&gt;善用佳软&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.bahraniapps.com/gifcam/&quot;&gt;&lt;strong&gt;GifCam&lt;/strong&gt;&lt;/a&gt;: GIF 錄屏，動圖生成。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://getsharex.com/&quot;&gt;&lt;strong&gt;ShareX&lt;/strong&gt;&lt;/a&gt;: 截圖、分享、貼圖，功能強大。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://flameshot.org/&quot;&gt;&lt;strong&gt;Flameshot&lt;/strong&gt;&lt;/a&gt;: 小巧的截圖工具。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Comic Reader - 漫畫閱讀&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://bitbucket.org/neelabo/neeview/wiki/Home&quot;&gt;&lt;strong&gt;NeeView&lt;/strong&gt;&lt;/a&gt;: 漫畫閱讀器，觸控熒幕友善。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.yacreader.com/&quot;&gt;&lt;strong&gt;YACReader&lt;/strong&gt;&lt;/a&gt;: 漫畫閱讀、管理器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;strong&gt;Sumatra PDF&lt;/strong&gt;: 也可以看漫畫，觸屏友好，見 Office / PDF 章節。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;strong&gt;Calibre&lt;/strong&gt;: 也可以看漫畫，見 Office / EPUB 章節。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Creation - 創作&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;/code&gt; &lt;a href=&quot;http://www.adobe.com/&quot;&gt;&lt;strong&gt;Adobe 全家桶&lt;/strong&gt;&lt;/a&gt;: [&lt;code&gt;Family&lt;/code&gt;] 不二的選擇。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.blender.org/&quot;&gt;&lt;strong&gt;Blender&lt;/strong&gt;&lt;/a&gt;: 著名 3D 創作軟體，還能剪影片。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.gimp.org/&quot;&gt;&lt;strong&gt;GIMP&lt;/strong&gt;&lt;/a&gt;: 點陣圖編輯軟體，自由軟體界的 Photoshop。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://inkscape.org/en/&quot;&gt;&lt;strong&gt;Inkscape&lt;/strong&gt;&lt;/a&gt;: 矢量圖編輯軟體，自由軟體界的 Ai 或 CorelDRAW。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://krita.org/en/&quot;&gt;&lt;strong&gt;Krita&lt;/strong&gt;&lt;/a&gt;: KDE 家族的繪圖軟體，自由軟體界的 SAI（？）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Embellish and Easy Access - 美化和便捷使用&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://macrodeck.org/&quot;&gt;&lt;strong&gt;Macro Deck&lt;/strong&gt;&lt;/a&gt;: 讓任何觸控設備變成巨集鍵盤。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ssp.shillest.net/&quot;&gt;&lt;strong&gt;SSP&lt;/strong&gt;&lt;/a&gt;: 偽春菜（伺か）引擎。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.rainmeter.net/&quot;&gt;&lt;strong&gt;Rainmeter&lt;/strong&gt;&lt;/a&gt;: 桌面小部件，系統美化的必備。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://qttabbar.wikidot.com/&quot;&gt;&lt;strong&gt;QTTabBar&lt;/strong&gt;&lt;/a&gt;: 為檔案總管添加標籤頁功能。(&lt;a href=&quot;https://www.appinn.com/qt-tabbar/&quot;&gt;小众软件&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;http://carnackeys.com/&quot;&gt;&lt;strong&gt;Carnac&lt;/strong&gt;&lt;/a&gt;: 在屏幕上顯示鍵盤輸入。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;/code&gt; &lt;a href=&quot;http://store.steampowered.com/app/431960/Wallpaper_Engine/&quot;&gt;&lt;strong&gt;Wallpaper Engine&lt;/strong&gt;&lt;/a&gt;: &lt;del&gt;整個桌布都是我的播放器，&lt;/del&gt;可高度客製化的動態桌布。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Files - 檔案處理&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://syncthing.net/&quot;&gt;&lt;strong&gt;Syncthing&lt;/strong&gt;&lt;/a&gt;: 自建置檔案同步。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://files.community/&quot;&gt;&lt;strong&gt;Files&lt;/strong&gt;&lt;/a&gt;: 現代的檔案總管。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://git-scm.com/&quot;&gt;&lt;strong&gt;Git&lt;/strong&gt;&lt;/a&gt;: 分佈式版本管理。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.uderzo.it/main_products/space_sniffer/index.html&quot;&gt;&lt;strong&gt;SpaceSniffer&lt;/strong&gt;&lt;/a&gt;: 以「矩形式樹狀結構繪圖法」檢視硬碟佔用空間分佈。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://winmerge.org/&quot;&gt;&lt;strong&gt;WinMerge&lt;/strong&gt;&lt;/a&gt;: 資料夾比較、同步。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://dupeguru.voltaicideas.net/&quot;&gt;&lt;strong&gt;dupeGuru&lt;/strong&gt;&lt;/a&gt;: 尋找重複檔案。&lt;/li&gt;
+&lt;/ul&gt;&lt;h4&gt;Compression - 壓縮&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;http://www.7-zip.org/&quot;&gt;&lt;strong&gt;7-Zip&lt;/strong&gt;&lt;/a&gt;: 7z 格式原生，高壓縮率。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;http://www.peazip.org/&quot;&gt;&lt;strong&gt;PeaZip&lt;/strong&gt;&lt;/a&gt;: 多格式支持。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;/code&gt; &lt;a href=&quot;https://www.bandisoft.com/bandizip/&quot;&gt;&lt;strong&gt;Bandizip&lt;/strong&gt;&lt;/a&gt;: 多格式支持，方便的文字編碼轉換；v7 新版本免費添加廣告，&lt;del&gt;（可以退回 v6 版本或課金享受&lt;/del&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;/code&gt; &lt;a href=&quot;http://www.rarlab.com/download.htm&quot;&gt;&lt;strong&gt;WinRAR&lt;/strong&gt;&lt;/a&gt;: RAR 格式原生，可添加恢復用冗餘。&lt;del&gt;（其實不要錢也能用）&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Desktop Search - 桌面搜尋&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.voidtools.com/&quot;&gt;&lt;strong&gt;Everything&lt;/strong&gt;&lt;/a&gt;: 超高速文件搜尋。(&lt;a href=&quot;https://www.appinn.com/tag/everything/&quot;&gt;小众软件&lt;/a&gt;)&lt;/li&gt;
+&lt;ul&gt;&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://github.com/stnkl/EverythingToolbar&quot;&gt;&lt;strong&gt;EverythingToolbar&lt;/strong&gt;&lt;/a&gt;: 把 Everything 放到工作列上。&lt;/li&gt;
+&lt;/ul&gt;&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;http://www.launchy.net/&quot;&gt;&lt;strong&gt;Launchy&lt;/strong&gt;&lt;/a&gt;: 搜尋式啟動器，停止更新多年。(&lt;a href=&quot;https://www.appinn.com/launchy/&quot;&gt;小众软件&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://ueli.app&quot;&gt;&lt;strong&gt;ueli&lt;/strong&gt;&lt;/a&gt;: 搜尋式啟動器。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://hp.vector.co.jp/authors/VA018351/en/claunch.html&quot;&gt;&lt;strong&gt;CLaunch&lt;/strong&gt;&lt;/a&gt;: 圖標式啟動器。(&lt;a href=&quot;https://undecv.github.io/posts/CLaunchZHTW.html#CLaunchZHTW&quot;&gt;本站&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Security - 安全&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://eraser.heidi.ie/&quot;&gt;&lt;strong&gt;Eraser&lt;/strong&gt;&lt;/a&gt;: FBI等級徹底地擦除檔案，幾乎無法被恢復。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.veracrypt.fr/&quot;&gt;&lt;strong&gt;VeraCrypt&lt;/strong&gt;&lt;/a&gt;: TrueCrypt 傳承者，磁碟＼卷＼虛擬卷加密。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://gpg4win.org/&quot;&gt;&lt;strong&gt;Gpg4win&lt;/strong&gt;&lt;/a&gt;: 用公＼私密鑰驗證、加密檔案和郵件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;&lt;strong&gt;VirtualBox&lt;/strong&gt;&lt;/a&gt;: 虛擬機器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://keepassxc.org/&quot;&gt;&lt;strong&gt;KeePassXC&lt;/strong&gt;&lt;/a&gt;: 密碼管理器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Office - 辦公室＼文書處理&lt;/h3&gt;
+&lt;h4&gt;PDF - 可攜式文件格式&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://get.adobe.com/tw/reader/&quot;&gt;&lt;strong&gt;Adobe Acrobat Reader DC&lt;/strong&gt;&lt;/a&gt;: 原生 PDF 閱讀器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.sumatrapdfreader.org/free-pdf-reader.html&quot;&gt;&lt;strong&gt;Sumatra PDF&lt;/strong&gt;&lt;/a&gt;: 小巧快速的 PDF、電子書、漫畫閱讀器，觸屏友好。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Database - 資料庫&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;商業&lt;/code&gt; &lt;a href=&quot;https://mementodatabase.com/&quot;&gt;&lt;strong&gt;Memento Database&lt;/strong&gt;&lt;/a&gt;: 強大易用的資料庫管理應用，配合 Android 版食用風味更加。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Office suite - 辦公室套件&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.libreoffice.org/&quot;&gt;&lt;strong&gt;LibreOffice&lt;/strong&gt;&lt;/a&gt;: 自由軟體界的 M$ Office。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;http://www.openoffice.org/&quot;&gt;&lt;strong&gt;OpenOffice.org&lt;/strong&gt;&lt;/a&gt;: 自由軟體界的 M$ Office。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Mind Map - 心智圖＼思維導圖&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;freeplane.sourceforge.net/&quot;&gt;&lt;strong&gt;Freeplane&lt;/strong&gt;&lt;/a&gt;: 心智圖繪製軟體。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Notes, Knowledge Base - 筆記＼知識庫&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://simplenote.com/&quot;&gt;&lt;strong&gt;Simplenote&lt;/strong&gt;&lt;/a&gt;: Wordpress 出品，跨平臺同步。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://github.com/zadam/trilium&quot;&gt;&lt;strong&gt;Trilium Notes&lt;/strong&gt;&lt;/a&gt;: 強大的知識庫，自建置（Self-Host）同步。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://joplinapp.org/&quot;&gt;&lt;strong&gt;Joplin&lt;/strong&gt;&lt;/a&gt;: 自建置（Self-Host）跨平臺同步。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://logseq.com/&quot;&gt;&lt;strong&gt;Logseq&lt;/strong&gt;&lt;/a&gt;: 大綱式知識庫。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://obsidian.md/&quot;&gt;&lt;strong&gt;Obsidian&lt;/strong&gt;&lt;/a&gt;: 使用 Markdown 的知識庫。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://strlen.com/treesheets/&quot;&gt;&lt;strong&gt;TreeSheets&lt;/strong&gt;&lt;/a&gt;: 自由格式的資料整理，表格、心智圖、大綱，功能強大。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/en-us/microsoft-365/onenote/digital-note-taking-app&quot;&gt;&lt;strong&gt;Microsoft OneNote&lt;/strong&gt;&lt;/a&gt;: Surface 上只能用它。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;EPUB&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://calibre-ebook.com/&quot;&gt;&lt;strong&gt;Calibre&lt;/strong&gt;&lt;/a&gt;: 電子書書櫃、EPUB、漫畫閱讀器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://sigil-ebook.com/&quot;&gt;&lt;strong&gt;Sigil&lt;/strong&gt;&lt;/a&gt;: EPUB 編輯器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://komga.org/&quot;&gt;&lt;strong&gt;Komga&lt;/strong&gt;&lt;/a&gt;: 自建置漫畫圖書館。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Text editor - 文本编辑器&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://notepad-plus-plus.org/zh/&quot;&gt;&lt;strong&gt;Notepad++&lt;/strong&gt;&lt;/a&gt;: 純文字＼程式碼編輯器，代替記事本，從此再也不怕亂碼。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;&lt;strong&gt;Visual Studio Code&lt;/strong&gt;&lt;/a&gt;: Microsoft 出品，Visual Studio 系列，純文字＼程式碼編輯器，強大的擴展性，假裝是編輯器的 IDE。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Clipboard Manager - 剪貼板管理器&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://hluk.github.io/CopyQ/&quot;&gt;&lt;strong&gt;CopyQ&lt;/strong&gt;&lt;/a&gt;: 強大的剪貼板管理器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://ditto-cp.sourceforge.io/&quot;&gt;&lt;strong&gt;Ditto&lt;/strong&gt;&lt;/a&gt;: 小巧的剪貼板管理器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Languages - 語言&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;http://rime.im/&quot;&gt;&lt;strong&gt;RIME&lt;/strong&gt;&lt;/a&gt;: 擊響中文之韻。中文輸入法引擎，支持注音、拼音、五筆等各種常見和不常見的輸入法，專業強大、跨平臺、自由度極高、可高度定製、校難上手。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://github.com/xupefei/Locale-Emulator/releases&quot;&gt;&lt;strong&gt;Locale-Emulator&lt;/strong&gt;&lt;/a&gt;: 轉區工具。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Misc Utilities Application - 應用工具&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://zint.org.uk/&quot;&gt;&lt;strong&gt;Zint&lt;/strong&gt;&lt;/a&gt;: 條碼生成器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://devtoys.app/&quot;&gt;&lt;strong&gt;DevToys&lt;/strong&gt;&lt;/a&gt;: 程式工程師的瑞士刀，編碼轉換、跳脫字串、圖片轉換等。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://autohotkey.com/&quot;&gt;&lt;strong&gt;AutoHotkey&lt;/strong&gt;&lt;/a&gt;: 強大的自動化工具，需要一點寫手稿語言能力。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://cheatengine.org/index.php&quot;&gt;&lt;strong&gt;Cheat Engine&lt;/strong&gt;&lt;/a&gt;: 通用遊戲記憶體修改器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://www.microsoft.com/en-us/p/eartrumpet/9nblggh516xp&quot;&gt;&lt;strong&gt;EarTrumpet&lt;/strong&gt;&lt;/a&gt;: 給軟體指定聲音設備、控制音量，需要 Win10 1803 以上。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://kdeconnect.kde.org/&quot;&gt;&lt;strong&gt;KDE Connect&lt;/strong&gt;&lt;/a&gt;: KDE 家族，連接電腦和手機，同步通知、傳檔案、遙控器、簡報筆...。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/en-us/download/details.aspx?id=35460&quot;&gt;&lt;strong&gt;Microsoft Garage Mouse without Borders&lt;/strong&gt;&lt;/a&gt;: 無縫在多台的電腦上分享切換一套鍵鼠。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://docs.microsoft.com/en-us/windows/powertoys/&quot;&gt;&lt;strong&gt;Microsoft PowerToys&lt;/strong&gt;&lt;/a&gt;: Windows 官方出品，更靈活的視窗佈局、圖片改大小、批量改檔名等一大堆實用功能。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://github.com/Splode/pomotroid/releases&quot;&gt;&lt;strong&gt;Pomotroid&lt;/strong&gt;&lt;/a&gt;: 簡潔、可換外觀的番茄工作法計時器。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.moo0.com/&quot;&gt;&lt;strong&gt;Moo0 家族&lt;/strong&gt;&lt;/a&gt;: [&lt;code&gt;Family&lt;/code&gt;] 45 款小巧實用的工具合集，好看易用。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.xiles.net/&quot;&gt;&lt;strong&gt;xiles 家族&lt;/strong&gt;&lt;/a&gt;: [&lt;code&gt;Family&lt;/code&gt;] 簡單、精心設計和易於使用的軟體。&lt;/li&gt;
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;nexusfile&lt;/strong&gt;: 檔案總管。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;nexusfont&lt;/strong&gt;: 字形瀏覽器。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;nexusimage&lt;/strong&gt;: 圖片瀏覽器。&lt;/li&gt;
+&lt;/ul&gt;&lt;/ul&gt;
+&lt;h3&gt;System Utilities - 系統工具&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://crystalmark.info/en/software/&quot;&gt;&lt;strong&gt;Crystal Disk&lt;/strong&gt;&lt;/a&gt;: [&lt;code&gt;Family&lt;/code&gt;] 可愛的水晶雫幫你監測硬碟狀態。&lt;/li&gt;
+&lt;ul&gt;&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;strong&gt;CrystalDiskInfo&lt;/strong&gt;: 硬碟狀態監測。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;strong&gt;CrystalDiskMark&lt;/strong&gt;: 硬碟讀寫測速。&lt;/li&gt;
+&lt;/ul&gt;&lt;/ul&gt;
+&lt;h3&gt;Package Manager - 程式管家&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://store.steampowered.com/&quot;&gt;&lt;strong&gt;Steam&lt;/strong&gt;&lt;/a&gt;: 數位發行平台，遊戲、軟體、影片、音樂...&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://portableapps.com/&quot;&gt;&lt;strong&gt;PortableApps.com&lt;/strong&gt;&lt;/a&gt;: 便攜軟體，使得軟體不依賴電腦。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;自由&lt;/code&gt; &lt;a href=&quot;https://chocolatey.org/&quot;&gt;&lt;strong&gt;Chocolatey&lt;/strong&gt;&lt;/a&gt;: 軟體包管理器，Windows 的 apt 或 yum。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--
+Flags filter: [&#39;Abandon&#39;, &#39;Pro&#39;, &#39;Old&#39;, &#39;Discontinued&#39;]
+Count: {filter: 34, folders: 29, elements: 108}
+--&gt;
+&lt;h2 id=&quot;ru-he-xun-zhao-shi-yong-you-xiu-ruan-ti&quot;&gt;如何尋找實用優秀軟體&lt;/h2&gt;
+&lt;h3 id=&quot;zen-mo-zhao&quot;&gt;怎麼找？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;電腦的軟體的強大，不在於能做到多少事情，而是一件事情能做得多好。&lt;/li&gt;
+&lt;li&gt;應用軟體應該旨在幫助用戶完成工作，提高效率。 &lt;del&gt;而不是讓用戶的電腦成為廣告投放機。&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;遠離流氓軟件，享受健康生活。&lt;/li&gt;
+&lt;li&gt;一些很棒的軟體功能非常強大，但是學習門檻較高，或是需要經過調教，&lt;del&gt;甚至可能需要老司機帶路，&lt;/del&gt;但是學會了就能夠享受它們的便利了。&lt;/li&gt;
+&lt;li&gt;不要小看網頁瀏覽器的附加元件＼擴充套件，他們能夠極大地提高體驗和便利。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;qu-na-li-zhao&quot;&gt;去哪裡找？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;看緣分（這是真…&lt;/li&gt;
+&lt;li&gt;維基百科：根據你想要的功能搜尋，特別是一些列表和比較的頁面，標題通常像是「List of …」或「Comparison of …」。&lt;/li&gt;
+&lt;li&gt;尋找現有軟體的替代品：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://alternativeto.net/&quot;&gt;AlternativeTo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;相關的部落格＼網站：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;http://www.appinn.com/&quot;&gt;小众软件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;http://www.azofreeware.com/&quot;&gt;阿榮福利味&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://free.com.tw/&quot;&gt;免費資源網路社群&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https://pcrookie.com/&quot;&gt;軟體玩家&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;http://www.playpcesor.com/&quot;&gt;電腦玩物&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;http://xbeta.info/&quot;&gt;善用佳软&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;release-notes&quot;&gt;Release Notes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;5.3.1 (2023-06-29): 更新和修正了部分內容。&lt;/li&gt;
+&lt;li&gt;5.3.0 (2023-06-18): 更新和修正了一拖拉庫內容。&lt;/li&gt;
+&lt;li&gt;5.1.0 (2021-01-06): 第五版更新。更新和修正了部分內容；程式碼演進，模板更新；軟體資訊由 YAML 格式儲存和整理，再由 Python 和 Jinja2 渲染而成。&lt;/li&gt;
+&lt;li&gt;5.0.0 (2020-12-13): 第五版更新。更新和修正了部分內容；程式碼重寫，文章生成基於 Python、jinja2 和 YAML。&lt;/li&gt;
+&lt;li&gt;3.0.1 (2020-07-24): 第三版更新。更新和修正了部分內容；原始資料重新結構；程式碼重寫。&lt;/li&gt;
+&lt;li&gt;2.1.2 (2019-04-15): 更新和修正了部分內容。&lt;/li&gt;
+&lt;li&gt;2.1.1 (2019-01-31): 更新和修正了部分內容。&lt;/li&gt;
+&lt;li&gt;2.1.0 (2019-01-16): 更新和修正了部分內容；合併一些瑣碎的分類；獨立出 &lt;code&gt;Licenses&lt;/code&gt; 標記；程式碼更新。&lt;/li&gt;
+&lt;li&gt;2.0.0 (2018-08-18): 第二版更新。更新和修正了部分內容；增加了更詳細的標記；修正了不兼容的排版；程式碼更新。&lt;/li&gt;
+&lt;li&gt;1.4.1 (2018-03-24): 更新和修正了部分內容。&lt;/li&gt;
+&lt;li&gt;1.4.0 (2018-03-01): 更新和修正了部分內容；文章生成基於 Python 和 YAML。&lt;/li&gt;
+&lt;li&gt;1.3.1 (2018-02-07): 修正了不兼容的排版。&lt;/li&gt;
+&lt;li&gt;1.3.0 (2018-02-06): 修正了不兼容的排版。&lt;/li&gt;
+&lt;li&gt;1.2.4 (2017-12-30)&lt;/li&gt;
+&lt;li&gt;1.2.3 (2017-12-18)&lt;/li&gt;
+&lt;li&gt;1.2.2 (2017-12-02)&lt;/li&gt;
+&lt;li&gt;1.2.1 (2017-11-30)&lt;/li&gt;
+&lt;li&gt;1.2.0 (2017-08-21)&lt;/li&gt;
+&lt;li&gt;1.1.0 (2017-07-26)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>
