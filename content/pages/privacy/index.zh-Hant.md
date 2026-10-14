@@ -1,10 +1,9 @@
 ---
 title: "隱私權政策"
 template: "info-page.html"
-path: "zh-Hant/privacy"
 ---
 
-[English](@/pages/privacy.en.md) | [正體中文](@/pages/privacy.zh-Hant.md)
+[English](@/pages/privacy/index.en.md) | [正體中文](@/pages/privacy/index.zh-Hant.md)
 
 ## 🍃 簡明版（快速說明）
 

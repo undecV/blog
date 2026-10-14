@@ -14,6 +14,10 @@ feed_filenames = ["atom.xml", "rss.xml"]
 # Whether to build a search index to be used later on by a JavaScript library
 # build_search_index = true
 
+taxonomies = [
+    {name = "tags", feed = true},
+]
+
 [markdown]
 bottom_footnotes = true
 smart_punctuation = true
@@ -28,9 +32,20 @@ dark_theme = "github-dark"
 
 error_on_missing_language = false
 
-[[taxonomies]]
-name = "tags"
-feed = true
+[languages.ja]
+title = "キャンディージャー"
+generate_feeds = true # there will be a feed for French content
+taxonomies = [
+    {name = "tags", feed = true},
+]
+
+[languages.en]
+title = "キャンディージャー"
+generate_feeds = true # there will be a feed for French content
+build_search_index = true
+taxonomies = [
+    {name = "tags", feed = true},
+]
 
 # [search]
 # index_format = "elasticlunr_json" # Or the less efficient "elasticlunr_javascript".
@@ -129,9 +144,9 @@ footer_menu = [
     # {url = "privacy", name = "privacy", trailing_slash = true},
     # {url = "rss.xml", name = "RSS", trailing_slash = false},
     # {url = "atom.xml", name = "Atom", trailing_slash = false},
-    {url = "https://github.com/undecV/blog/discussions", name = "Discussions", trailing_slash = true},
-    {url = "privacy", name = "Privacy", trailing_slash = false},
-    {url = "sitemap.xml", name = "Sitemap", trailing_slash = false},
+    {name = "Discussions", url = "https://github.com/undecV/blog/discussions", trailing_slash = true},
+    {name = "privacy", url = "pages/privacy", trailing_slash = false},
+    {name = "sitemap", url = "sitemap.xml", trailing_slash = false},
 ]
 
 copyright = "© 1996-$CURRENT_YEAR undecV $SEPARATOR Unless otherwise noted, the content in this website is all rights reserved."
@@ -153,8 +168,8 @@ short_date_format = "yyyy-MM-dd"
 # avatar = "avatars/undecV.png"
 # biography = ""
 
-[extra.analytics]
-service = "umami"
-id = "d6047041-a412-4ec6-863b-c5f31d16e678"
-self_hosted_url = "https://umami.d.poi48.xyz"
-do_not_track = false
+# [extra.analytics]
+# service = "umami"
+# id = "d6047041-a412-4ec6-863b-c5f31d16e678"
+# self_hosted_url = "https://umami.d.poi48.xyz"
+# do_not_track = false

@@ -1,8 +1,7 @@
 ---
 title: "About"
 template: "info-page.html"
-path: "about"
-render: false
+draft: true
 ---
 
 ## Page #1

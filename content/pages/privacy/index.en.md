@@ -1,10 +1,9 @@
 ---
 title: "Privacy Policy"
 template: "info-page.html"
-path: "privacy"
 ---
 
-[English](@/pages/privacy.en.md) | [正體中文](@/pages/privacy.zh-Hant.md)
+[English](@/pages/privacy/index.en.md) | [正體中文](@/pages/privacy/index.zh-Hant.md)
 
 ## 🍃 Summary (Friendly Version)
 
