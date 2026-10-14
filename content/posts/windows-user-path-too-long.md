@@ -1,5 +1,5 @@
 ---
-title: "我的環境變數 BANG 不見了"
+title: "我的環境變數 BANG 不見了：Windows 11 User PATH 過長與 WinGet 修復記"
 description: "大會報告，大會報告。現場有一位長度四千多字元的 User PATH 小朋友與 User 走散了！聽到廣播後，請立即前往 System Properties 認領。謝謝。"
 slug: "windows-user-path-too-long"
 date: 2026-09-18 17:00:00
@@ -64,6 +64,8 @@ Windows（以及大部分作業系統）環境變數的運作方式是繼承自�
 正常設計下，WinGet 安裝 portable application 時，是把執行檔做成符號連結（symbolic link，不是一般的 LNK 捷徑），集中放在`%LOCALAPPDATA%\Microsoft\WinGet\Links` 這裡，所以這些程式僅需要這一條 PATH。
 
 但是 Windows 在一般權限下建立 symbolic link 有額外限制，如果沒有開啟「[開發者模式（Developer Mode）](ms-settings:developers)」，非提升權限的程式可能無法建立符號連結。
+
+> **開發者模式** 除了允許一般使用者建立符號連結，也會開放其他應用程式部署與偵錯功能，〔免責聲明的腔調〕可能增加系統的安全風險。當然也可依需求啟用，並隨時關閉。詳見 [Microsoft 官方說明](https://learn.microsoft.com/zh-tw/windows/advanced-settings/developer-mode)。
 
 ```powershell
 # 測試建立符號連結
