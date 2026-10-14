@@ -4,7 +4,8 @@ base_url = "https://undecv.github.io/blog"
 theme = "tabi"
 title = "キャンディージャー"
 author = "undecV"
-default_language = "en"
+description = "undecV 的個人部落格，收藏 Windows、Linux、網路技術、開源軟體，以及各種電腦疑難雜症的研究與折騰紀錄。"
+default_language = "zh-Hant"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -71,15 +72,15 @@ sort_by = "update_date"
 # ## SEO
 favicon = "favicon.32.png"
 # favicon_emoji = "👾"
-# base_canonical_url = "https://example.com"
+base_canonical_url = "https://undecv.github.io/blog"
 fediverse_creator = { handle = "undecv", domain = "g0v.social" }
 
 # ## Navigation
 menu = [
-    { name = "Posts", url = "posts", trailing_slash = true },
-    { name = "Archive", url = "archive", trailing_slash = true },
-    { name = "Tags", url = "tags", trailing_slash = true },
-    { name = "Projects", url = "projects", trailing_slash = true },
+    { name = "blog", url = "posts", trailing_slash = true },
+    { name = "archive", url = "archive", trailing_slash = true },
+    { name = "tags", url = "tags", trailing_slash = true },
+    { name = "projects", url = "projects", trailing_slash = true },
     # { name = "about", url = "about", trailing_slash = true },
     # { name = "Github", url = "https://github.com/undecv", trailing_slash = false },
 ]
