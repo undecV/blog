@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-Hant">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https://undecv.github.io/blog</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>
+            這是Web Feed，又稱為Atom Feed，把現在的網址複製到新聞閱讀器即可訂閱本站文章。造訪「About Feeds」來了解更多資訊。
+        </tabi:about_feeds>
+        <tabi:visit_the_site>
+            造訪網站
+        </tabi:visit_the_site>
+        <tabi:recent_posts>
+            近期文章
+        </tabi:recent_posts>
+        <tabi:last_updated_on>
+            更新於 $DATE
+        </tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>Comic Reader</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー - Comic Reader</title>
+        <subtitle>undecV 的個人部落格，收藏 Windows、Linux、網路技術、開源軟體，以及各種電腦疑難雜症的研究與折騰紀錄。</subtitle>
+    <link href="https://undecv.github.io/blog/tags/comic-reader/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog/tags/comic-reader/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-06-30T15:00:00+00:00</updated><id>https://undecv.github.io/blog/tags/comic-reader/atom.xml</id><entry xml:lang="zh-Hant">
+        <title>Android 上的本地漫畫閱讀器推薦：Kuro Reader</title>
+        <published>2025-06-30T15:00:00+00:00</published>
+        <updated>2025-06-30T15:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/recommended-applications/kuro-reader/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/recommended-applications/kuro-reader/</id>
+        <summary type="html">電腦裡面開了一家漫畫圖書館，怎麼辦？急，在線等。這裏有一款介面現代且流暢、支援壓縮檔、可以直接讀取本地網路的無廣告漫畫閱讀器。</summary>
+        </entry>
+</feed>

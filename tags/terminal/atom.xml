@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://undecv.github.io/blog/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-Hant">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https://undecv.github.io/blog</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>
+            這是Web Feed，又稱為Atom Feed，把現在的網址複製到新聞閱讀器即可訂閱本站文章。造訪「About Feeds」來了解更多資訊。
+        </tabi:about_feeds>
+        <tabi:visit_the_site>
+            造訪網站
+        </tabi:visit_the_site>
+        <tabi:recent_posts>
+            近期文章
+        </tabi:recent_posts>
+        <tabi:last_updated_on>
+            更新於 $DATE
+        </tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>updated</tabi:post_listing_date>
+        <tabi:current_section>Terminal</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://undecv.github.io/blog/skins/lowcontrast_orange.css?h=43aaccb17d8ec616ace4" /><title>キャンディージャー - Terminal</title>
+        <subtitle>undecV 的個人部落格，收藏 Windows、Linux、網路技術、開源軟體，以及各種電腦疑難雜症的研究與折騰紀錄。</subtitle>
+    <link href="https://undecv.github.io/blog/tags/terminal/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://undecv.github.io/blog/tags/terminal/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2026-09-18T17:00:00+00:00</updated><id>https://undecv.github.io/blog/tags/terminal/atom.xml</id><entry xml:lang="zh-Hant">
+        <title>我的環境變數 BANG 不見了：Windows 11 User PATH 過長與 WinGet 修復記</title>
+        <published>2026-09-18T17:00:00+00:00</published>
+        <updated>2026-09-18T17:00:00+00:00</updated>
+        <author>
+            <name>undecV</name>
+        </author>
+        <link rel="alternate" href="https://undecv.github.io/blog/posts/windows-user-path-too-long/" type="text/html"/>
+        <id>https://undecv.github.io/blog/posts/windows-user-path-too-long/</id>
+        <summary type="html">大會報告，大會報告。現場有一位長度四千多字元的 User PATH 小朋友與 User 走散了！聽到廣播後，請立即前往 System Properties 認領。謝謝。</summary>
+        </entry>
+</feed>
